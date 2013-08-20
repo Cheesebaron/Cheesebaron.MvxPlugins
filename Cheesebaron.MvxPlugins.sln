@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureAccessControl", "Azure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.Droid", "Cheesebaron.MvxPlugins.AzureAccessControl.Droid\Cheesebaron.MvxPlugins.AzureAccessControl.Droid.csproj", "{421A99FA-C25F-481F-A7F6-30670A972B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.iOS", "Cheesebaron.MvxPlugins.AzureAccessControl.iOS\Cheesebaron.MvxPlugins.AzureAccessControl.iOS.csproj", "{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,14 @@ Global
 		{421A99FA-C25F-481F-A7F6-30670A972B8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{421A99FA-C25F-481F-A7F6-30670A972B8D}.Release|ARM.ActiveCfg = Release|Any CPU
 		{421A99FA-C25F-481F-A7F6-30670A972B8D}.Release|x86.ActiveCfg = Release|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +65,6 @@ Global
 		{70B42C5A-7F65-45AC-AB9A-0A4225F8F337} = {99EA762E-AF36-4ADE-BB4F-2BD3E9D4966D}
 		{B6778EAD-258E-475D-8D41-89216E9C3E77} = {99EA762E-AF36-4ADE-BB4F-2BD3E9D4966D}
 		{421A99FA-C25F-481F-A7F6-30670A972B8D} = {99EA762E-AF36-4ADE-BB4F-2BD3E9D4966D}
+		{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE} = {99EA762E-AF36-4ADE-BB4F-2BD3E9D4966D}
 	EndGlobalSection
 EndGlobal

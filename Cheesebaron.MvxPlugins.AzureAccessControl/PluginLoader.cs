@@ -20,22 +20,38 @@ using Cirrious.CrossCore.Plugins;
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     public class PluginLoader 
-        : IMvxPluginLoader
+        : IMvxConfigurablePluginLoader
     {
         public static readonly  PluginLoader Instance = new PluginLoader();
 
         private bool _loaded;
+        private string _realm;
+        private string _serviceNamespace;
 
         public void EnsureLoaded()
         {
             if (_loaded) return;
-            
-            Mvx.RegisterSingleton<IIdentityProviderClient>(new JSONIdentityProviderDiscoveryClient());
+
+            var instance = new JSONIdentityProviderDiscoveryClient
+            {
+                Realm = _realm,
+                ServiceNamespace = _serviceNamespace
+            };
+            Mvx.RegisterSingleton<IIdentityProviderClient>(instance);
 
             var manager = Mvx.Resolve<IMvxPluginManager>();
             manager.EnsurePlatformAdaptionLoaded<PluginLoader>();
 
             _loaded = true;
+        }
+
+        public void Configure(IMvxPluginConfiguration configuration)
+        {
+            var config = configuration as AzureAccessControlConfiguration;
+            if (config == null) return;
+
+            _realm = config.Realm;
+            _serviceNamespace = config.ServiceNamespace;
         }
     }
 }

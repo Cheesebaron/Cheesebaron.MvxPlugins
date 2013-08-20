@@ -27,6 +27,16 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
     public class JSONIdentityProviderDiscoveryClient 
         : IIdentityProviderClient
     {
+        private const string Url = "https://{0}.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&realm={1}&version=1.0";
+
+        public string Realm { get; set; }
+        public string ServiceNamespace { get; set; }
+
+        public async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync()
+        {
+            return await GetIdentityProviderListAsync(GetDefaultIdentityProviderListServiceEndpoint());
+        }
+
         public async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync(Uri identityProviderListServiceEndpoint)
         {
             using(var client = new HttpClient())
@@ -45,15 +55,25 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
             }
         }
 
-        public Uri GetDefaultIdentityProviderListServiceEndpoint(string realm, string nameSpace)
+        public Uri GetDefaultIdentityProviderListServiceEndpoint(string realm, string serviceNamespace)
         {
+            if (!string.IsNullOrEmpty(realm))
+                throw new ArgumentException("Realm cannot be null or empty", "realm");
+
+            if (!string.IsNullOrEmpty(serviceNamespace))
+                throw new ArgumentException("Service Namespace cannot be null or empty", "serviceNamespace");
+
             return new Uri(
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    "https://{0}.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&realm={1}&version=1.0",
-                    nameSpace,
-                    Uri.EscapeUriString(realm)
-                ),UriKind.Absolute);
+                string.Format(CultureInfo.InvariantCulture, Url, serviceNamespace, Uri.EscapeUriString(realm)),
+                UriKind.Absolute);
+        }
+
+        public Uri GetDefaultIdentityProviderListServiceEndpoint()
+        {
+            if (!string.IsNullOrEmpty(ServiceNamespace) || !string.IsNullOrEmpty(Realm))
+                throw new InvalidOperationException("ServiceNamespace and/or Realm is null or empty, please set them using MvxPluginConfiguration");
+
+            return GetDefaultIdentityProviderListServiceEndpoint(Realm, ServiceNamespace);
         }
     }
 }

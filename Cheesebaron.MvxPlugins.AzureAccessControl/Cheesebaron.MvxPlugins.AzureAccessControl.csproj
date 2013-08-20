@@ -33,9 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AzureAccessControlConfiguration.cs" />
     <Compile Include="ClaimTypes.cs" />
     <Compile Include="IdentityProviderInformationEventArgs.cs" />
     <Compile Include="IIdentityProviderClient.cs" />
+    <Compile Include="ILoginIdentityProviderTask.cs" />
     <Compile Include="ISimpleWebTokenStore.cs" />
     <Compile Include="RequestSecurityTokenResponseEventArgs.cs" />
     <Compile Include="PluginLoader.cs" />
@@ -44,6 +46,7 @@
     <Compile Include="JSONIdentityProviderDiscoveryClient.cs" />
     <Compile Include="RequestSecurityTokenResponse.cs" />
     <Compile Include="SimpleWebToken.cs" />
+    <Compile Include="ViewModels\DefaultIdentityProviderCollectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
