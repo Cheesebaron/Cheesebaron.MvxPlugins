@@ -30,10 +30,10 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using System.Runtime.Serialization;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     /// <summary>
     /// DataContract for IdentityProviderInformation returned by the Identity Provider Discover Service

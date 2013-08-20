@@ -22,11 +22,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
-    internal class JSONIdentityProviderDiscoveryClient
+    public class JSONIdentityProviderDiscoveryClient 
+        : IIdentityProviderClient
     {
-        internal async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync(Uri identityProviderListServiceEndpoint)
+        public async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync(Uri identityProviderListServiceEndpoint)
         {
             using(var client = new HttpClient())
             {
@@ -42,6 +43,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
 
                 return identityProviders;
             }
+        }
+
+        public Uri GetDefaultIdentityProviderListServiceEndpoint(string realm, string nameSpace)
+        {
+            return new Uri(
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    "https://{0}.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&realm={1}&version=1.0",
+                    nameSpace,
+                    Uri.EscapeUriString(realm)
+                ),UriKind.Absolute);
         }
     }
 }

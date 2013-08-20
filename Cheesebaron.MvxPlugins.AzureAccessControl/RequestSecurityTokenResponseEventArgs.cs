@@ -16,7 +16,7 @@
 
 using System;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.EventArguments
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     public class RequestSecurityTokenResponseEventArgs : EventArgs
     {

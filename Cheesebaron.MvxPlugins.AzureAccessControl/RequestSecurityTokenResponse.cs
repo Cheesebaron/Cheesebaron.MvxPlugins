@@ -40,7 +40,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     /// <summary>
     /// Contains the data returned in a RequestSecurityTokenResponse
@@ -51,36 +51,28 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
         private const string WsSecuritySecExtNamespace = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
         private const string BinarySecurityTokenName = "BinarySecurityToken";
 
-        public RequestSecurityTokenResponse()
-        {
-            SecurityToken = null;
-            TokenType = null;
-            Expires = 0;
-            Created = 0;
-        }
-
         /// <summary>
         /// The raw string value of the security token contained in the RequestSecurityTokenResponse
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "securityToken")]
         public string SecurityToken { get; set; }
 
         /// <summary>
         /// The uri which uniquely identifies the type of token contained in the RequestSecurityTokenResponse
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "tokenType")]
         public string TokenType { get; set; }
 
         /// <summary>
         /// The expiration time of the token in the RequestSecurityTokenResponse
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "expires")]
         public long Expires { get; set; }
 
         /// <summary>
         /// The creation time of the token in the RequestSecurityTokenResponse
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "created")]
         public long Created { get; set; }
 
         internal static async Task<RequestSecurityTokenResponse> FromJSON(string jsonRequestSecurityTokenService)
@@ -106,33 +98,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Utilities
             }
 
             return returnToken;
-        }
-
-        public bool IsExpired
-        {
-            get
-            {
-                bool result;
-                if (Expires <= 0) return true;
-                var now = ConvertToUnixTimestamp(DateTime.UtcNow);
-                var diff = now - Expires;
-
-                result = diff >= 0;
-                return result;
-            }
-        }
-
-        static long ConvertToUnixTimestamp(DateTime date)
-        {
-            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var diff = date - origin;
-            return (long)Math.Floor(diff.TotalSeconds);
-        }
-
-        public override string ToString()
-        {
-            return string.Format("Created {0}\nExpires {1}\nIsExpired {2}\nType {3}\nToken {4}", Created, Expires,
-                IsExpired, TokenType, SecurityToken);
         }
     }
 }

@@ -31,9 +31,8 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using Cheesebaron.MvxPlugins.AzureAccessControl.Utilities;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.EventArguments
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     /// <summary>
     /// Provides data for the AccessControlServiceSignIn control NavigatingToIdentityProvider event.
