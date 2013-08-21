@@ -40,28 +40,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.Droid">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.Droid.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding.Droid">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Droid">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Droid">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -92,17 +92,17 @@
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidJavaSource Include="..\Cheesebaron.MvxPlugins.AzureAccessControl.Droid\AccessControlJavascriptNotify.java">
+    <AndroidJavaSource Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.Droid\AccessControlJavascriptNotify.java">
       <Link>AccessControlJavascriptNotify.java</Link>
     </AndroidJavaSource>
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl.Droid\Cheesebaron.MvxPlugins.AzureAccessControl.Droid.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.Droid\Cheesebaron.MvxPlugins.AzureAccessControl.Droid.csproj">
       <Project>{421a99fa-c25f-481f-a7f6-30670a972b8d}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>

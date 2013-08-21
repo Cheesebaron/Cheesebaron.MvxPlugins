@@ -72,7 +72,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             if (IsLoggedIn)
                 NavigateBackCommand.Execute(null);
 
-            Uri serviceListEndpoint = null;
+            Uri serviceListEndpoint;
             if (!IsLoggedIn && parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
                 serviceListEndpoint =

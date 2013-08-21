@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="10dp"
+        android:paddingBottom="15dp"
         local:MvxBind="Visibility IsLoggedIn, Converter=Visibility">
         <TextView
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp"
             local:MvxBind="Text LoggedInProvider" />
     </LinearLayout>
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/identity_provider_loggedin"
-        android:paddingBottom="10dp"
+        android:paddingBottom="15dp"
         android:text="Select a Identity Provider to Log In to."
         local:MvxBind="Visibility IsLoggedIn, Converter=InvertedVisibility" />
     <Mvx.MvxListView

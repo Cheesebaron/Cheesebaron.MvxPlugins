@@ -1,21 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl", "Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj", "{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl", "AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj", "{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.WP8", "Cheesebaron.MvxPlugins.AzureAccessControl.WP8\Cheesebaron.MvxPlugins.AzureAccessControl.WP8.csproj", "{B6778EAD-258E-475D-8D41-89216E9C3E77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.WP8", "AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.WP8\Cheesebaron.MvxPlugins.AzureAccessControl.WP8.csproj", "{B6778EAD-258E-475D-8D41-89216E9C3E77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureAccessControl", "AzureAccessControl", "{99EA762E-AF36-4ADE-BB4F-2BD3E9D4966D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.Droid", "Cheesebaron.MvxPlugins.AzureAccessControl.Droid\Cheesebaron.MvxPlugins.AzureAccessControl.Droid.csproj", "{421A99FA-C25F-481F-A7F6-30670A972B8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.Droid", "AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.Droid\Cheesebaron.MvxPlugins.AzureAccessControl.Droid.csproj", "{421A99FA-C25F-481F-A7F6-30670A972B8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.iOS", "Cheesebaron.MvxPlugins.AzureAccessControl.iOS\Cheesebaron.MvxPlugins.AzureAccessControl.iOS.csproj", "{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.AzureAccessControl.iOS", "AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.iOS\Cheesebaron.MvxPlugins.AzureAccessControl.iOS.csproj", "{0EBF0D71-7D85-45DC-90DD-B85C50B01FCE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{FC5A91C0-A918-4995-8AB6-48B392001CCE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FC5A91C0-A918-4995-8AB6-48B392001CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample", "AzureAccessControl.Sample\AzureAccessControl.Sample.csproj", "{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample", "Samples\AzureAccessControl.Sample\AzureAccessControl.Sample.csproj", "{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Droid", "AzureAccessControl.Sample.Droid\AzureAccessControl.Sample.Droid.csproj", "{B37D798A-0D76-4DB5-BE06-4B2C938D3488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Droid", "Samples\AzureAccessControl.Sample.Droid\AzureAccessControl.Sample.Droid.csproj", "{B37D798A-0D76-4DB5-BE06-4B2C938D3488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

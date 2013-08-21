@@ -38,14 +38,14 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
