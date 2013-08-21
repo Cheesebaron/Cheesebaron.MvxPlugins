@@ -23,7 +23,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         private readonly Exception _error;
         private readonly String _response;
 
-        internal RequestSecurityTokenResponseEventArgs(String requestSecurityTokenResponse, Exception error)
+        public RequestSecurityTokenResponseEventArgs(String requestSecurityTokenResponse, Exception error)
         {
             _error = error;
             _response = requestSecurityTokenResponse;

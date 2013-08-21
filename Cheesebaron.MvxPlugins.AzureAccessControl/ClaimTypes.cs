@@ -79,6 +79,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         public const string Webpage = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/webpage";
         public const string WindowsAccountName = "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname";
         public const string X500DistinguishedName = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname";
+        public const string IdentityProvider = "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/IdentityProvider";
 
         public static class Prip
         {

@@ -57,20 +57,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
 
         public Uri GetDefaultIdentityProviderListServiceEndpoint(string realm, string serviceNamespace)
         {
-            if (!string.IsNullOrEmpty(realm))
+            if (string.IsNullOrEmpty(realm))
                 throw new ArgumentException("Realm cannot be null or empty", "realm");
 
-            if (!string.IsNullOrEmpty(serviceNamespace))
+            if (string.IsNullOrEmpty(serviceNamespace))
                 throw new ArgumentException("Service Namespace cannot be null or empty", "serviceNamespace");
 
             return new Uri(
-                string.Format(CultureInfo.InvariantCulture, Url, serviceNamespace, Uri.EscapeUriString(realm)),
+                string.Format(CultureInfo.InvariantCulture, Url, realm, System.Net.WebUtility.HtmlDecode(serviceNamespace)),
                 UriKind.Absolute);
         }
 
         public Uri GetDefaultIdentityProviderListServiceEndpoint()
         {
-            if (!string.IsNullOrEmpty(ServiceNamespace) || !string.IsNullOrEmpty(Realm))
+            if (string.IsNullOrEmpty(ServiceNamespace) || string.IsNullOrEmpty(Realm))
                 throw new InvalidOperationException("ServiceNamespace and/or Realm is null or empty, please set them using MvxPluginConfiguration");
 
             return GetDefaultIdentityProviderListServiceEndpoint(Realm, ServiceNamespace);

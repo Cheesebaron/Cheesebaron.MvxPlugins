@@ -87,6 +87,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         public string RawToken { get; private set; }
 
         /// <summary>
+        /// Gets the token's IdentityProvider
+        /// </summary>
+        public string IdentityProvider 
+        {
+            get
+            {
+                return Claims[ClaimTypes.IdentityProvider];
+            } 
+        }
+
+        /// <summary>
         /// Gets the token's UserIdentifier
         /// </summary>
         public string NameIdentifier
@@ -154,6 +165,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                         break;
                     case ExpiresOnTokenName:
                         ExpiresOn = ToDateTimeFromEpoch(long.Parse(values, CultureInfo.InvariantCulture));
+                        break;
+                    case ClaimTypes.IdentityProvider:
+                        values = values.Replace('+', ' ');
+                        Claims[key] = values;
                         break;
                     default:
                         Claims[key] = values;

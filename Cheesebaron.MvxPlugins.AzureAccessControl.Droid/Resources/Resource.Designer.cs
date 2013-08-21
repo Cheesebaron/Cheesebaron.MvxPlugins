@@ -27,6 +27,21 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public static int MvxBind = 2130771968;
+			
+			// aapt resource value: 0x7f010003
+			public static int MvxDropDownItemTemplate = 2130771971;
+			
+			// aapt resource value: 0x7f010002
+			public static int MvxItemTemplate = 2130771970;
+			
+			// aapt resource value: 0x7f010001
+			public static int MvxLang = 2130771969;
+			
+			// aapt resource value: 0x7f010004
+			public static int MvxSource = 2130771972;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -37,21 +52,85 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			}
 		}
 		
-		public partial class String
+		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f020001
-			public static int ApplicationName = 2130837505;
+			// aapt resource value: 0x7f030000
+			public static int MvxBindingTagUnique = 2130903040;
 			
-			// aapt resource value: 0x7f020000
-			public static int Hello = 2130837504;
+			// aapt resource value: 0x7f030002
+			public static int identity_provider_header = 2130903042;
 			
-			static String()
+			// aapt resource value: 0x7f030003
+			public static int identity_provider_listview = 2130903043;
+			
+			// aapt resource value: 0x7f030001
+			public static int identity_provider_loggedin = 2130903041;
+			
+			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private String()
+			private Id()
+			{
+			}
+		}
+		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f020000
+			public static int identityproviderlistview = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public static int listitem_identityprovider = 2130837505;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] MvxBinding = new int[] {
+					2130771968,
+					2130771969};
+			
+			// aapt resource value: 0
+			public static int MvxBinding_MvxBind = 0;
+			
+			// aapt resource value: 1
+			public static int MvxBinding_MvxLang = 1;
+			
+			public static int[] MvxImageView = new int[] {
+					2130771972};
+			
+			// aapt resource value: 0
+			public static int MvxImageView_MvxSource = 0;
+			
+			public static int[] MvxListView = new int[] {
+					2130771970,
+					2130771971};
+			
+			// aapt resource value: 1
+			public static int MvxListView_MvxDropDownItemTemplate = 1;
+			
+			// aapt resource value: 0
+			public static int MvxListView_MvxItemTemplate = 0;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

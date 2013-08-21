@@ -38,6 +38,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Cirrious.CrossCore;
 using Newtonsoft.Json;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
@@ -75,7 +76,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         [DataMember(Name = "created")]
         public long Created { get; set; }
 
-        internal static async Task<RequestSecurityTokenResponse> FromJSON(string jsonRequestSecurityTokenService)
+        public static async Task<RequestSecurityTokenResponse> FromJSON(string jsonRequestSecurityTokenService)
         {
             RequestSecurityTokenResponse returnToken;
 
@@ -85,9 +86,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 var mystr = await str.ReadToEndAsync();
                 returnToken = JsonConvert.DeserializeObject<RequestSecurityTokenResponse>(mystr);
 
-                returnToken.SecurityToken = Uri.UnescapeDataString(returnToken.SecurityToken);
+                returnToken.SecurityToken = System.Net.WebUtility.HtmlDecode(returnToken.SecurityToken);
             }
-                
+            
+            Mvx.Trace("Security token {0}", returnToken.SecurityToken);
+
             using (var sr = new StringReader(returnToken.SecurityToken))
             using (var reader = XmlReader.Create(sr))
             {

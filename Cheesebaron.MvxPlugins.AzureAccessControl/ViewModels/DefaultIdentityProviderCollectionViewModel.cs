@@ -39,7 +39,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
-        private Type _cameFrom;
 
         private IEnumerable<IdentityProviderInformation> _identityProviders;
         public IEnumerable<IdentityProviderInformation> IdentityProviders
@@ -48,32 +47,37 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             set
             {
                 _identityProviders = value;
-                RaisePropertyChanged(() => IdentityProviders);
+                RaisePropertyChanged("IdentityProviders");
             }
+        }
+
+        public bool IsLoggedIn
+        {
+            get { return _simpleWebTokenStore.IsValid(); }
+        }
+
+        public string LoggedInProvider
+        {
+            get { return _simpleWebTokenStore.SimpleWebToken.IdentityProvider; }
         }
 
         public class NavigationParameters
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
-            public Type CameFrom { get; set; }
         }
 
         public async void Init(NavigationParameters parameters)
         {
-            if (_cameFrom == null && parameters != null && parameters.CameFrom != null)
-                _cameFrom = parameters.CameFrom;
-
-            if (_simpleWebTokenStore.IsValid() && _cameFrom != null)
-                NavigateBackCommand.Execute(_cameFrom);
+            if (IsLoggedIn)
+                NavigateBackCommand.Execute(null);
 
             Uri serviceListEndpoint = null;
-            if (!_simpleWebTokenStore.IsValid() && parameters != null)
+            if (!IsLoggedIn && parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
-                if (!string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
-                    serviceListEndpoint =
-                        _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
-                            parameters.ServiceNamespace);
+                serviceListEndpoint =
+                    _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
+                        parameters.ServiceNamespace);
             }
             else
             {
@@ -87,21 +91,24 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             _identityProviderClient = client;
             _simpleWebTokenStore = store;
             _loginIdentityProviderTask = loginIdentityProviderTask;
+
+            RaisePropertyChanged("IsLoggedIn");
+            RaisePropertyChanged("LoggedInProvider");
         }
 
         public ICommand LoginSelectedIdentityProviderCommand
         {
             get
             {
-                return new MvxCommand<string>(DoLoginSelectedIdentity);
+                return new MvxCommand<IdentityProviderInformation>(DoLoginSelectedIdentity);
             }
         }
 
-        private void DoLoginSelectedIdentity(string url)
+        private void DoLoginSelectedIdentity(IdentityProviderInformation provider)
         {
             try
             {
-                _loginIdentityProviderTask.LogIn(url, OnLoggedIn, AssumeCancelled);
+                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled);
             }
             catch(Exception e)
             {
@@ -117,7 +124,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         protected virtual void AssumeCancelled()
         {
-            NavigateBackCommand.Execute(_cameFrom);
+            NavigateBackCommand.Execute(null);
         }
 
         protected virtual void OnLoggedIn(RequestSecurityTokenResponse requestSecurityTokenResponse)
@@ -131,14 +138,18 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             var simpleWebToken = new SimpleWebToken(requestSecurityTokenResponse.SecurityToken);
             _simpleWebTokenStore.SimpleWebToken = simpleWebToken;
 
-            NavigateBackCommand.Execute(_cameFrom);
+            RaisePropertyChanged("IsLoggedIn");
+            RaisePropertyChanged("LoggedInProvider");
+
+            if (IsLoggedIn)
+                NavigateBackCommand.Execute(null);
         }
 
         public ICommand NavigateBackCommand
         {
             get
             {
-                return new MvxCommand<Type>(type => ShowViewModel(type));
+                return new MvxCommand(() => Close(this));
             }
         }
     }

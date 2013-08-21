@@ -15,6 +15,7 @@
 //---------------------------------------------------------------------------------
 
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
@@ -25,8 +26,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         public static readonly  PluginLoader Instance = new PluginLoader();
 
         private bool _loaded;
-        private string _realm;
-        private string _serviceNamespace;
+        private AzureAccessControlConfiguration _config;
 
         public void EnsureLoaded()
         {
@@ -34,8 +34,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
 
             var instance = new JSONIdentityProviderDiscoveryClient
             {
-                Realm = _realm,
-                ServiceNamespace = _serviceNamespace
+                Realm = _config.Realm,
+                ServiceNamespace = _config.ServiceNamespace
             };
             Mvx.RegisterSingleton<IIdentityProviderClient>(instance);
 
@@ -47,11 +47,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
 
         public void Configure(IMvxPluginConfiguration configuration)
         {
-            var config = configuration as AzureAccessControlConfiguration;
-            if (config == null) return;
+            if (configuration != null && !(configuration is AzureAccessControlConfiguration))
+                throw new MvxException(
+                    "Plugin configuration only supports instances of AzureAccessControlConfiguration, you provided {0}",
+                    configuration.GetType().Name);
 
-            _realm = config.Realm;
-            _serviceNamespace = config.ServiceNamespace;
+            _config = (AzureAccessControlConfiguration)configuration;
         }
     }
 }
