@@ -59,10 +59,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                                 result.Data.GetStringExtra(
                                     "cheesebaron.mvxplugins.azureaccesscontrol.droid.RequestSecurityTokenResponse");
                             var token = await RequestSecurityTokenResponse.FromJSON(res);
-                            _onLoggedIn.Invoke(token);
+                            _onLoggedIn(token);
                             break;
                         case Result.Canceled:
-                            _assumeCancelled.Invoke();
+                            _assumeCancelled();
                             break;
                     }
                     break;
