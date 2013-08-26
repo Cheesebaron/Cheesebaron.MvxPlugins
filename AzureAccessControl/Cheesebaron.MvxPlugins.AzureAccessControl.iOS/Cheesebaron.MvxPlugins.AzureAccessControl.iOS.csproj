@@ -41,7 +41,12 @@
     <Compile Include="Views\AccessControlWebAuthController.cs" />
     <Compile Include="Views\DefaultLoginIdentityProviderTableViewController.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControliOS\Cheesebaron.MvxPlugins.AzureAccessControliOS.csproj">
+      <Project>{966836aa-107a-4e7a-be66-983f87423b73}</Project>
+      <Name>Cheesebaron.MvxPlugins.AzureAccessControliOS</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
@@ -77,12 +82,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
-      <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

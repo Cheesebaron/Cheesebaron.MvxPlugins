@@ -33,7 +33,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
         private Action<RequestSecurityTokenResponse> _onLoggedIn;
         private Action _assumeCancelled;
 
-        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled)
+        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
             _onLoggedIn = onLoggedIn;
             _assumeCancelled = assumeCancelled;

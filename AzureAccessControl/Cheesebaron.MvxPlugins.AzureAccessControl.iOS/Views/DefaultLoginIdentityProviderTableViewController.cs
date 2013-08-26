@@ -10,6 +10,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
     public class DefaultLoginIdentityProviderTableViewController 
         : MvxTableViewController
     {
+        public DefaultLoginIdentityProviderTableViewController() 
+            : base(UITableViewStyle.Grouped) { }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -23,6 +26,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
             });
 
             TableView.Source = source;
+
             TableView.ReloadData();
         }
 
@@ -36,6 +40,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                     tableView, UITableViewCellStyle.Default, Identifier, BindingText,
                     UITableViewCellAccessory.DisclosureIndicator)
             {
+                UseAnimations = true;
             }
         }
     }

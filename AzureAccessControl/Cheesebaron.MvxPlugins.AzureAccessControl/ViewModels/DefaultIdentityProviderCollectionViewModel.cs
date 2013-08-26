@@ -69,32 +69,25 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         public async void Init(NavigationParameters parameters)
         {
-            if (IsLoggedIn)
+            Uri serviceListEndpoint;
+            if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
-                NavigateBackCommand.Execute(null);
+                serviceListEndpoint =
+                    _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
+                        parameters.ServiceNamespace);
             }
             else
             {
-                Uri serviceListEndpoint;
-                if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
-                {
-                    serviceListEndpoint =
-                        _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
-                            parameters.ServiceNamespace);
-                }
-                else
-                {
-                    serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
-                }
-                IdentityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);    
+                serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
             }
+            IdentityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, ILoginIdentityProviderTask loginIdentityProviderTask)
         {
-            _identityProviderClient = client;
             _simpleWebTokenStore = store;
             _loginIdentityProviderTask = loginIdentityProviderTask;
+            _identityProviderClient = client;       
 
             RaisePropertyChanged("IsLoggedIn");
             RaisePropertyChanged("LoggedInProvider");
@@ -112,7 +105,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             try
             {
-                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled);
+                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name);
             }
             catch(Exception e)
             {

@@ -15,8 +15,8 @@
 //---------------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using System.Text;
-using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
@@ -25,7 +25,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
     public delegate void FinishedLogginInEventHandler(object sender, AccessControlWebAuthController.FinishedLoggingInEventArgs args);
 
     public class AccessControlWebAuthController 
-        : MvxViewController
+        : UIViewController
     {
         private const string ScriptNotify = @"
             <script type=""text/javascript"">
@@ -55,39 +55,41 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         }
 
         public NSUrl Url { get; set; }
+        public string IdentityProviderName { get; set; }
 
         public event FinishedLogginInEventHandler FinishedLoggingIn;
         public event EventHandler Canceled;
 
         private UIWebView _webView;
 
-        public override void LoadView()
+        public override void ViewDidLoad()
         {
-            base.LoadView();
+            base.ViewDidLoad();
 
-            _webView = new UIWebView
+            if (!string.IsNullOrEmpty(IdentityProviderName))
+                Title = IdentityProviderName;
+
+            _webView = new UIWebView(new RectangleF(0,0, View.Bounds.Width, View.Bounds.Height))
             {
-                AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth,
-                ScalesPageToFit = true
+                AutoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin
             };
             _webView.ShouldStartLoad += ShouldStartLoad;
             _webView.LoadStarted +=
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
             _webView.LoadFinished +=
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-            _webView.LoadError += (sender, args) =>
+            _webView.LoadError += async (sender, args) =>
             {
                 UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
                 if (Canceled != null)
                     Canceled(this, EventArgs.Empty);
 
-                NavigationController.PopViewControllerAnimated(true);
+                await DismissViewControllerAsync(true);
             };
 
-            _webView.LoadRequest(new NSUrlRequest(Url)); 
-
-            View.AutosizesSubviews = true;
             View.AddSubview(_webView);
+
+            _webView.LoadRequest(new NSUrlRequest(Url));
         }
 
         private bool ShouldStartLoad(UIWebView webView, NSUrlRequest request, UIWebViewNavigationType navigationType)
@@ -105,7 +107,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 if (FinishedLoggingIn != null)
                     FinishedLoggingIn(this, new FinishedLoggingInEventArgs {RequestToken = b.ToString()});
 
-                NavigationController.PopViewControllerAnimated(true);
+                DismissViewController(true, null);
             }
 
             NSUrlConnection.FromRequest(request, new LoginConnectionDelegate(this));

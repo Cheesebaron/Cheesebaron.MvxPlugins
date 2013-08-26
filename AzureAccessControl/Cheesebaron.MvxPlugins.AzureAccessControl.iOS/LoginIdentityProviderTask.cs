@@ -25,9 +25,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         : MvxTouchTask
         , ILoginIdentityProviderTask
     {
-        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled)
+        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
-            var webAuthController = new AccessControlWebAuthController {RawUrl = url};
+            var webAuthController = new AccessControlWebAuthController { RawUrl = url, IdentityProviderName = identityProviderName };
 
             webAuthController.FinishedLoggingIn += async (sender, args) =>
             {
