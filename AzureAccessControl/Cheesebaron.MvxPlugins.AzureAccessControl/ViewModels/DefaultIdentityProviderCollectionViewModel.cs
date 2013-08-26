@@ -70,20 +70,24 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         public async void Init(NavigationParameters parameters)
         {
             if (IsLoggedIn)
-                NavigateBackCommand.Execute(null);
-
-            Uri serviceListEndpoint;
-            if (!IsLoggedIn && parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
-                serviceListEndpoint =
-                    _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
-                        parameters.ServiceNamespace);
+                NavigateBackCommand.Execute(null);
             }
             else
             {
-                serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
+                Uri serviceListEndpoint;
+                if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
+                {
+                    serviceListEndpoint =
+                        _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
+                            parameters.ServiceNamespace);
+                }
+                else
+                {
+                    serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
+                }
+                IdentityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);    
             }
-            IdentityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, ILoginIdentityProviderTask loginIdentityProviderTask)

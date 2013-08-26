@@ -15,7 +15,6 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using Cheesebaron.MvxPlugins.AzureAccessControl.iOS.Views;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.CrossCore.Touch.Views;

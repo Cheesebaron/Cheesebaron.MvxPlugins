@@ -106,9 +106,9 @@
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.csproj">
+    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
-      <Name>AzureAccessControl.Sample</Name>
+      <Name>AzureAccessControl.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

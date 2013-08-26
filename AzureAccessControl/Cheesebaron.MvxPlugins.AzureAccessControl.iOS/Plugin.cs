@@ -24,7 +24,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
     {
         public void Load()
         {
+            Mvx.Trace("Registering AzureAccessControl.iOS plugin");
             Mvx.RegisterSingleton<ISimpleWebTokenStore>(new SimpleWebTokenStore());
+
+            Mvx.Trace("Can resolve ISimpleWebTokenStore {0}", Mvx.CanResolve<ISimpleWebTokenStore>());
+
+            Mvx.RegisterType<ILoginIdentityProviderTask, LoginIdentityProviderTask>();
         }
     }
 }

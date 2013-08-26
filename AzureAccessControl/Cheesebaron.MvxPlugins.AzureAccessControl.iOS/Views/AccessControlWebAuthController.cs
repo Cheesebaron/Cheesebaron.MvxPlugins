@@ -20,7 +20,7 @@ using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS.Views
+namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
 {
     public delegate void FinishedLogginInEventHandler(object sender, AccessControlWebAuthController.FinishedLoggingInEventArgs args);
 
@@ -80,6 +80,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS.Views
                 UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
                 if (Canceled != null)
                     Canceled(this, EventArgs.Empty);
+
+                NavigationController.PopViewControllerAnimated(true);
             };
 
             _webView.LoadRequest(new NSUrlRequest(Url)); 

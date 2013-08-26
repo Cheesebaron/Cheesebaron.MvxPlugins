@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\identityproviderlistview.axml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
