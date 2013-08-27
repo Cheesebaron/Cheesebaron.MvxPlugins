@@ -17,7 +17,7 @@
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Plugins;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.WP8
+namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
 {
     public class Plugin
         : IMvxPlugin
@@ -25,6 +25,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WP8
         public void Load()
         {
             Mvx.RegisterSingleton<ISimpleWebTokenStore>(new SimpleWebTokenStore());
+            Mvx.RegisterType<ILoginIdentityProviderTask, LoginIdentityProviderTask>();
         }
     }
 }

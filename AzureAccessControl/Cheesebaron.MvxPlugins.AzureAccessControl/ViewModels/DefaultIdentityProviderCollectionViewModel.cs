@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
@@ -40,8 +41,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
 
-        private IEnumerable<IdentityProviderInformation> _identityProviders;
-        public IEnumerable<IdentityProviderInformation> IdentityProviders
+        private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
+        public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
         {
             get { return _identityProviders; }
             set
@@ -80,7 +81,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             {
                 serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
             }
-            IdentityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);
+            var identityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);
+            IdentityProviders =
+                identityProviders.Select(
+                    identityProvider => new DefaultIdentityProviderViewModel(identityProvider) {Parent = this}).ToList();
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, ILoginIdentityProviderTask loginIdentityProviderTask)
@@ -97,11 +101,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             get
             {
-                return new MvxCommand<IdentityProviderInformation>(DoLoginSelectedIdentity);
+                return new MvxCommand<DefaultIdentityProviderViewModel>(DoLoginSelectedIdentity);
             }
         }
 
-        private void DoLoginSelectedIdentity(IdentityProviderInformation provider)
+        private void DoLoginSelectedIdentity(DefaultIdentityProviderViewModel provider)
         {
             try
             {
@@ -121,6 +125,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         protected virtual void AssumeCancelled()
         {
+            RaisePropertyChanged("IsLoggedIn");
+            RaisePropertyChanged("LoggedInProvider");
+
             NavigateBackCommand.Execute(null);
         }
 

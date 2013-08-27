@@ -16,19 +16,24 @@
 
 using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Plugins.Messenger;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 {
     [Activity(Label = "Web Log In")]
     public class AccessControlWebAuthActivity : Activity
     {
+        private IMvxMessenger _messageHub;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            _messageHub = Mvx.Resolve<IMvxMessenger>();
 
             var url = Intent.GetStringExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.Url");
             System.Diagnostics.Debug.WriteLine(url);
@@ -60,20 +65,22 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
             AddContentView(webView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
         }
 
-        private void GotSecurityTokenResponse(object sender, RequestSecurityTokenResponseEventArgs e)
+        private async void GotSecurityTokenResponse(object sender, RequestSecurityTokenResponseEventArgs e)
         {
             if (e.Error == null)
             {
-                var data = new Intent();
-                data.PutExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.RequestSecurityTokenResponse", e.Response);
+                var token = await RequestSecurityTokenResponse.FromJSONAsync(e.Response);
+                _messageHub.Publish(new RequestTokenMessage(this) {TokenResponse = token});
 
                 if (Parent == null)
-                    SetResult(Result.Ok, data);
+                    SetResult(Result.Ok);
                 else
-                    Parent.SetResult(Result.Ok, data);
+                    Parent.SetResult(Result.Ok);
             }
             else
             {
+                _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = null });
+
                 if (Parent == null)
                     SetResult(Result.Canceled);
                 else

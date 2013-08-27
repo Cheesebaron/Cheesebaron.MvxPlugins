@@ -51,6 +51,9 @@
     <Reference Include="Cirrious.MvvmCross.Droid">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
@@ -71,7 +74,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessControlWebAuthActivity.cs" />
+    <Compile Include="Views\AccessControlWebAuthActivity.cs" />
     <Compile Include="LoginIdentityProviderTask.cs" />
     <Compile Include="ManagedAccessControlJavascriptNotify.cs" />
     <Compile Include="Plugin.cs" />

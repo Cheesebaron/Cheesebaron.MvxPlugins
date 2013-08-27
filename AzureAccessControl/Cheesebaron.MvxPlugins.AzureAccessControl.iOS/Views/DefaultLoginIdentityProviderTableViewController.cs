@@ -147,7 +147,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
             public CustomStringElement()
             {
                 this.CreateBindingContext();
-                this.DelayBind(() => this.CreateBinding().For(me => me.Caption).To<IdentityProviderInformation>(p => p.Name).Apply());
+                this.DelayBind(() => this.CreateBinding().For(me => me.Caption).To<DefaultIdentityProviderViewModel>(p => p.Name).Apply());
             }
 
 

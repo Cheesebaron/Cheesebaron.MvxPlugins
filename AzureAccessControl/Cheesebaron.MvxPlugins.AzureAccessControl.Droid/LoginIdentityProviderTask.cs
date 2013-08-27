@@ -22,21 +22,31 @@ using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.CrossCore.Droid.Views;
 using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Plugins.Messenger;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 {
     public class LoginIdentityProviderTask 
         : MvxAndroidTask
         , ILoginIdentityProviderTask
+        , IDisposable
     {
         private const int LoginIdentityRequestCode = 9001; //IT'S OVER NINE THOUSAND!
         private Action<RequestSecurityTokenResponse> _onLoggedIn;
         private Action _assumeCancelled;
+        private IMvxMessenger _messageHub;
+        private MvxSubscriptionToken _subscriptionToken;
+        private RequestSecurityTokenResponse _response;
 
         public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
             _onLoggedIn = onLoggedIn;
             _assumeCancelled = assumeCancelled;
+            _messageHub = Mvx.Resolve<IMvxMessenger>();
+            _subscriptionToken = _messageHub.Subscribe<RequestTokenMessage>(message =>
+            {
+                _response = message.TokenResponse;
+            });
 
             var intent = new Intent(Mvx.Resolve<IMvxAndroidGlobals>()
                 .ApplicationContext, typeof(AccessControlWebAuthActivity));
@@ -45,25 +55,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
             StartActivityForResult(LoginIdentityRequestCode, intent);
         }
 
-        protected override async void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
+        protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
         {
             Mvx.Trace("ProcessMvxIntentResult started...");
 
             switch(result.RequestCode)
             {
                 case LoginIdentityRequestCode:
-                    switch(result.ResultCode)
+                    if (_response != null)
                     {
-                        case Result.Ok:
-                            var res =
-                                result.Data.GetStringExtra(
-                                    "cheesebaron.mvxplugins.azureaccesscontrol.droid.RequestSecurityTokenResponse");
-                            var token = await RequestSecurityTokenResponse.FromJSON(res);
-                            _onLoggedIn(token);
-                            break;
-                        case Result.Canceled:
-                            _assumeCancelled();
-                            break;
+                        _onLoggedIn(_response);
+                    }
+                    else
+                    {
+                        _assumeCancelled();
                     }
                     break;
                 default:
@@ -72,6 +77,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                                    result.RequestCode);
                     break;
             }
+        }
+
+        public void Dispose()
+        {
+            _subscriptionToken.Dispose();
+            _subscriptionToken = null;
         }
     }
 }

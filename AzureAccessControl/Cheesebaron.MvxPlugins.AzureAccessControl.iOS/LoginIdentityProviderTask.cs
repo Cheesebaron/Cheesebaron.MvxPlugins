@@ -18,6 +18,7 @@ using System;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.CrossCore.Touch.Views;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using MonoTouch.UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
@@ -26,16 +27,23 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         : MvxTouchTask
         , ILoginIdentityProviderTask
     {
+        private IMvxMessenger _messageHub;
+        private MvxSubscriptionToken _subscriptionToken;
+
         public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
             var webAuthController = new AccessControlWebAuthController { RawUrl = url, IdentityProviderName = identityProviderName };
 
-            webAuthController.FinishedLoggingIn += async (sender, args) =>
+            _messageHub = Mvx.Resolve<IMvxMessenger>();
+            _subscriptionToken = _messageHub.Subscribe<RequestTokenMessage>(message =>
             {
-                var token = await RequestSecurityTokenResponse.FromJSON(args.RequestToken);
-                onLoggedIn(token);
-            };
-            webAuthController.Canceled += (sender, args) => assumeCancelled();
+                webAuthController.OnCancel();
+
+                if (message.TokenResponse != null)
+                    onLoggedIn(message.TokenResponse);
+                else
+                    assumeCancelled();
+            });
 
             var navControl = new UINavigationController(webAuthController)
             {
@@ -43,7 +51,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 NavigationBarHidden = false,
             };
             webAuthController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem("Cancel", UIBarButtonItemStyle.Done,
-                (s, e) => webAuthController.OnCancel());
+                (sender, args) =>
+                {
+                    webAuthController.OnCancel();
+                    assumeCancelled();
+                });
 
             var modalHost = Mvx.Resolve<IMvxTouchModalHost>();
             modalHost.PresentModalViewController(navControl, true);

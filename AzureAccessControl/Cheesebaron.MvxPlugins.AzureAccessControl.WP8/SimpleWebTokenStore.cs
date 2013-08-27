@@ -17,7 +17,7 @@
 using System;
 using System.IO.IsolatedStorage;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.WP8
+namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
 {
     public class SimpleWebTokenStore : ISimpleWebTokenStore
     {

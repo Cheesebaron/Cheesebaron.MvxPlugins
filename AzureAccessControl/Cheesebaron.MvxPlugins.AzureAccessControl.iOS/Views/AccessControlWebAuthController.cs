@@ -17,16 +17,19 @@
 using System;
 using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
 {
-    public delegate void FinishedLogginInEventHandler(object sender, AccessControlWebAuthController.FinishedLoggingInEventArgs args);
-
     public class AccessControlWebAuthController 
         : UIViewController
     {
+        private readonly IMvxMessenger _messageHub;
+
         private const string ScriptNotify = @"
             <script type=""text/javascript"">
                 window.external = {
@@ -38,6 +41,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                     }
                 };
             </script>";
+
+        public AccessControlWebAuthController()
+        {
+            _messageHub = Mvx.Resolve<IMvxMessenger>();
+        }
 
         public class FinishedLoggingInEventArgs : EventArgs
         {
@@ -57,9 +65,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         public NSUrl Url { get; set; }
         public string IdentityProviderName { get; set; }
 
-        public event FinishedLogginInEventHandler FinishedLoggingIn;
-        public event EventHandler Canceled;
-
         private UIWebView _webView;
 
         public override void ViewDidLoad()
@@ -78,7 +83,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
             _webView.LoadFinished +=
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-            _webView.LoadError += (sender, args) => OnCancel();
+            _webView.LoadError += (sender, args) => _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = null });
 
             View.AddSubview(_webView);
 
@@ -88,8 +93,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         public async void OnCancel()
         {
             UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-            if (Canceled != null)
-                Canceled(this, EventArgs.Empty);
             await DismissViewControllerAsync(true);
         }
 
@@ -105,8 +108,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 var b = new StringBuilder(Uri.UnescapeDataString(request.Url.ToString()));
                 b.Replace("acs://settoken?token=", string.Empty);
 
-                if (FinishedLoggingIn != null)
-                    FinishedLoggingIn(this, new FinishedLoggingInEventArgs {RequestToken = b.ToString()});
+                var token = RequestSecurityTokenResponse.FromJSON(b.ToString());
+                _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = token });
 
                 DismissViewController(true, null);
             }

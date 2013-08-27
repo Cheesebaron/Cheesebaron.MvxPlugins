@@ -76,7 +76,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         [DataMember(Name = "created")]
         public long Created { get; set; }
 
-        public static async Task<RequestSecurityTokenResponse> FromJSON(string jsonRequestSecurityTokenService)
+        public static RequestSecurityTokenResponse FromJSON(string jsonRequestSecurityTokenService)
+        {
+            var requestSecurityTokenResponse = FromJSONAsync(jsonRequestSecurityTokenService).Result;
+            return requestSecurityTokenResponse;
+        }
+
+        public static async Task<RequestSecurityTokenResponse> FromJSONAsync(string jsonRequestSecurityTokenService)
         {
             RequestSecurityTokenResponse returnToken;
 
