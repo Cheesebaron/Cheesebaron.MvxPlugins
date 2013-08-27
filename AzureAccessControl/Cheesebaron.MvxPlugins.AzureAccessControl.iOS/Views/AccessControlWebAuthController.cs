@@ -78,18 +78,19 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
             _webView.LoadFinished +=
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-            _webView.LoadError += async (sender, args) =>
-            {
-                UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-                if (Canceled != null)
-                    Canceled(this, EventArgs.Empty);
-
-                await DismissViewControllerAsync(true);
-            };
+            _webView.LoadError += (sender, args) => OnCancel();
 
             View.AddSubview(_webView);
 
             _webView.LoadRequest(new NSUrlRequest(Url));
+        }
+
+        public async void OnCancel()
+        {
+            UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
+            if (Canceled != null)
+                Canceled(this, EventArgs.Empty);
+            await DismissViewControllerAsync(true);
         }
 
         private bool ShouldStartLoad(UIWebView webView, NSUrlRequest request, UIWebViewNavigationType navigationType)

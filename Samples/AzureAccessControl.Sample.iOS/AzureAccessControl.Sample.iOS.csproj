@@ -100,13 +100,13 @@
       <Project>{0ebf0d71-7d85-45dc-90dd-b85c50b01fce}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControliOS\Cheesebaron.MvxPlugins.AzureAccessControliOS.csproj">
-      <Project>{966836aa-107a-4e7a-be66-983f87423b73}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControliOS</Name>
+    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+      <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
+      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample.Core.iOS\AzureAccessControl.Sample.Core.iOS.csproj">
-      <Project>{c48ebaf7-f1df-412c-bf4d-28294ea6c3ed}</Project>
-      <Name>AzureAccessControl.Sample.Core.iOS</Name>
+    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
+      <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
+      <Name>AzureAccessControl.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +127,9 @@
     <Reference Include="Cirrious.MvvmCross.Binding.Touch">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
@@ -136,7 +139,14 @@
     <Reference Include="Cirrious.MvvmCross.Touch">
       <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="CrossUI.Core">
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CrossUI.Touch">
+      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Touch.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <!-- Hack to get PCL compiling -->
     <Reference Include="System.Collections">
       <Private>True</Private>
     </Reference>
@@ -173,16 +183,17 @@
     <Reference Include="System.Threading.Tasks">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
     <Reference Include="System.Xml.ReaderWriter">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.XDocument">
       <Private>True</Private>
     </Reference>
+    <!-- End of hack -->
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>
