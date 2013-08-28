@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Android.Content;
 using Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
@@ -30,6 +32,13 @@ namespace AzureAccessControl.Sample.Droid
 
             var container = Mvx.Resolve<IMvxViewsContainer>();
             container.AddAll(viewModelLookup);
+        }
+
+        protected override Assembly[] GetViewModelAssemblies()
+        {
+            var toReturn = base.GetViewModelAssemblies().ToList();
+            toReturn.Add(typeof(DefaultIdentityProviderCollectionViewModel).Assembly);
+            return toReturn.ToArray();
         }
 
         protected override IMvxPluginConfiguration GetPluginConfiguration(Type plugin)

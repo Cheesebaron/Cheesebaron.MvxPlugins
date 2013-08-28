@@ -35,14 +35,12 @@ namespace AzureAccessControl.Sample.WP
             container.AddAll(viewModelLookup);
         }
 
-
         protected override Assembly[] GetViewModelAssemblies()
         {
             var toReturn = base.GetViewModelAssemblies().ToList();
             toReturn.Add(typeof(DefaultIdentityProviderCollectionViewModel).Assembly);
             return toReturn.ToArray();
         }
-
 
         protected override IMvxPluginConfiguration GetPluginConfiguration(Type plugin)
         {

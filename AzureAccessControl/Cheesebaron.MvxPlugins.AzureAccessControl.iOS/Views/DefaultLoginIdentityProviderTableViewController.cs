@@ -45,31 +45,49 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
             set { base.ViewModel = value; }
         }
 
+        private Section _loginDetailSection;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             var bindings = this.CreateInlineBindingTarget<DefaultIdentityProviderCollectionViewModel>();
 
+            if (_loginDetailSection == null)
+            {
+                _loginDetailSection = new Section("Log in details")
+                {
+                    new StringElement("Logged in with: ")
+                        .Bind(bindings, element => element.Value, vm => vm.LoggedInProvider),
+                    new StringElement("Log out")
+                    {
+                        ShouldDeselectAfterTouch = true
+                    }
+                        .Bind(bindings, element => element.SelectedCommand, vm => vm.LogOutCommand)
+                };
+            }
+
             Root = new RootElement("Log in")
             {
                 new BindableSection<CustomStringElement>("Log in using")
                     .Bind(bindings, element => element.SelectedCommand, vm => vm.LoginSelectedIdentityProviderCommand)
                     .Bind(bindings, element => element.ItemsSource, vm => vm.IdentityProviders),
-                    
-                new Section("Log in details")
-                {
-                    new StringElement("Logged in with: ")
-                        .Bind(bindings, element => element.Value, vm => vm.LoggedInProvider)
-                        .Bind(bindings, element => element.Visible, vm => vm.IsLoggedIn),
-                    new StringElement("Log out")
-                    {
-                        ShouldDeselectAfterTouch = true
-                    }
-                    .Bind(bindings, element => element.SelectedCommand, vm => vm.LogOutCommand)
-                    .Bind(bindings, element => element.Visible, vm => vm.IsLoggedIn)
-                }
             };
+
+            //Section Visible is not bindable :'(
+            if (ViewModel.IsLoggedIn)
+                if (!Root.Sections.Contains(_loginDetailSection))
+                    Root.Add(_loginDetailSection);
+
+            ViewModel.WeakSubscribe(() => ViewModel.IsLoggedIn, (s, e) =>
+            {
+                if (ViewModel.IsLoggedIn)
+                {
+                    if (!Root.Sections.Contains(_loginDetailSection))
+                        Root.Add(_loginDetailSection);
+                }
+                else if (Root.Sections.Contains(_loginDetailSection))
+                    Root.Remove(_loginDetailSection);
+            });
         }
 
         #region Dunno if this can be made differently, lol!

@@ -21,6 +21,11 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             local:MvxBind="Text LoggedInProvider" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            local:MvxBind="Click LogOutCommand" />
     </LinearLayout>
     <TextView
         android:id="@+id/identity_provider_header"

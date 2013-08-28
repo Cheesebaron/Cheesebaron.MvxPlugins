@@ -57,11 +57,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 
         public void ClearAllBrowserCaches()
         {
-            var webView = new WebView(Mvx.Resolve<IMvxAndroidGlobals>()
-                .ApplicationContext);
-            webView.ClearHistory();
-            webView.ClearFormData();
-            webView.ClearCache(true);
+            var context = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
+            //context.DeleteDatabase("webview.db");
+            //context.DeleteDatabase("webviewCache.db");
+
+            var webview = new WebView(context);
+            webview.ClearCache(true);
+            webview.ClearHistory();
+            webview.ClearFormData();
         }
 
         protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
