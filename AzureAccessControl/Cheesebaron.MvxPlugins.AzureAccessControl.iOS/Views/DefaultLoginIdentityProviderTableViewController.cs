@@ -39,6 +39,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
         public DefaultLoginIdentityProviderTableViewController() 
             : base(UITableViewStyle.Grouped, null, true) { }
 
+        public new DefaultIdentityProviderCollectionViewModel ViewModel
+        {
+            get { return (DefaultIdentityProviderCollectionViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -51,11 +57,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                     .Bind(bindings, element => element.SelectedCommand, vm => vm.LoginSelectedIdentityProviderCommand)
                     .Bind(bindings, element => element.ItemsSource, vm => vm.IdentityProviders),
                     
-                new Section
+                new Section("Log in details")
                 {
                     new StringElement("Logged in with: ")
                         .Bind(bindings, element => element.Value, vm => vm.LoggedInProvider)
-                        .Bind(bindings, element => element.Visible, vm => vm.IsLoggedIn)
+                        .Bind(bindings, element => element.Visible, vm => vm.IsLoggedIn),
+                    new StringElement("Log out")
+                    {
+                        ShouldDeselectAfterTouch = true
+                    }
+                    .Bind(bindings, element => element.SelectedCommand, vm => vm.LogOutCommand)
+                    .Bind(bindings, element => element.Visible, vm => vm.IsLoggedIn)
                 }
             };
         }
@@ -96,7 +108,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
                 {
                     _subscription.Dispose();
                     _subscription = null;
-                };
+                }
                 _itemsSource = value;
                 if (_itemsSource != null && !(_itemsSource is IList))
                     MvxBindingTrace.Trace(MvxTraceLevel.Warning,
