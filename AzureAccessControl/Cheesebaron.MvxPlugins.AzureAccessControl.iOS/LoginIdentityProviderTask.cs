@@ -19,6 +19,7 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.CrossCore.Touch.Views;
 using Cirrious.MvvmCross.Plugins.Messenger;
+using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
@@ -59,6 +60,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.iOS
 
             var modalHost = Mvx.Resolve<IMvxTouchModalHost>();
             modalHost.PresentModalViewController(navControl, true);
+        }
+
+        public void ClearAllBrowserCaches()
+        {
+            var storage = NSHttpCookieStorage.SharedStorage;
+            foreach(var cookie in storage.Cookies)
+                storage.DeleteCookie(cookie);
         }
     }
 }

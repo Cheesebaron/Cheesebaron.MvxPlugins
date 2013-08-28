@@ -8,7 +8,8 @@ using Cirrious.MvvmCross.Plugins.Messenger;
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
 {
     public class LoginIdentityProviderTask
-        : MvxWindowsPhoneTask, ILoginIdentityProviderTask
+        : MvxWindowsPhoneTask
+        , ILoginIdentityProviderTask
     {
         private IMvxMessenger _messageHub;
         private MvxSubscriptionToken _subscriptionToken;
@@ -41,6 +42,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
                             System.Net.WebUtility.UrlEncode(url), System.Net.WebUtility.UrlEncode(identityProviderName)),
                         UriKind.Relative));
             }
+        }
+
+        public void ClearAllBrowserCaches()
+        {
+            //TODO: Impossiburu on Windows Phone :(
         }
     }
 }

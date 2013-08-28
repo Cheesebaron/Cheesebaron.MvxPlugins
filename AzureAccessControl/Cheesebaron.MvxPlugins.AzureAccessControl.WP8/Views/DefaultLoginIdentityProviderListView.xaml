@@ -29,21 +29,39 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox ItemsSource="{Binding IdentityProviders}" SelectionMode="Single">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="0,0,0,25" Width="432">
-                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeExtraLarge}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock x:Name="NotLoggedInTextBlock" Grid.Row="0" Text="Log in using one of the providers below"/>
+
+                <StackPanel x:Name="LogedInPanel" Grid.Row="0">
+                    <Grid Margin="12,0,12,0">
+                        <TextBlock Text="Logged into" />
+                        <TextBlock HorizontalAlignment="Right" FontWeight="Bold" Text="{Binding LoggedInProvider}" />
+                    </Grid>
+
+                    <Button Content="Log Out" Tap="LogOutButtonTap"/>
+                </StackPanel>
+
+                <ListBox Grid.Row="1" ItemsSource="{Binding IdentityProviders}" SelectionMode="Single">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,25" Width="432">
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeExtraLarge}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <commands:MvxEventToCommand Command="{Binding LoginIdentityProviderCommand}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
     </Grid>
 

@@ -59,7 +59,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         public string LoggedInProvider
         {
-            get { return _simpleWebTokenStore.SimpleWebToken.IdentityProvider; }
+            get
+            {
+                return _simpleWebTokenStore.SimpleWebToken != null ? _simpleWebTokenStore.SimpleWebToken.IdentityProvider : "";
+            }
         }
 
         public class NavigationParameters
@@ -120,6 +123,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                             Exception = e,
                             Message = "An exception occured when attempting to log in."
                         });
+            }
+        }
+
+        public ICommand LogOutCommand
+        {
+            get { 
+                return new MvxCommand(() =>
+                {
+                    _loginIdentityProviderTask.ClearAllBrowserCaches();
+                    _simpleWebTokenStore.SimpleWebToken = null;
+                    
+                    RaisePropertyChanged("IsLoggedIn");
+                    RaisePropertyChanged("LoggedInProvider");
+                }); 
             }
         }
 

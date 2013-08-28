@@ -17,6 +17,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Webkit;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
@@ -29,7 +30,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
     public class LoginIdentityProviderTask 
         : MvxAndroidTask
         , ILoginIdentityProviderTask
-        , IDisposable
     {
         private const int LoginIdentityRequestCode = 9001; //IT'S OVER NINE THOUSAND!
         private Action<RequestSecurityTokenResponse> _onLoggedIn;
@@ -55,6 +55,15 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
             StartActivityForResult(LoginIdentityRequestCode, intent);
         }
 
+        public void ClearAllBrowserCaches()
+        {
+            var webView = new WebView(Mvx.Resolve<IMvxAndroidGlobals>()
+                .ApplicationContext);
+            webView.ClearHistory();
+            webView.ClearFormData();
+            webView.ClearCache(true);
+        }
+
         protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
         {
             Mvx.Trace("ProcessMvxIntentResult started...");
@@ -77,12 +86,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                                    result.RequestCode);
                     break;
             }
-        }
-
-        public void Dispose()
-        {
-            _subscriptionToken.Dispose();
-            _subscriptionToken = null;
         }
     }
 }

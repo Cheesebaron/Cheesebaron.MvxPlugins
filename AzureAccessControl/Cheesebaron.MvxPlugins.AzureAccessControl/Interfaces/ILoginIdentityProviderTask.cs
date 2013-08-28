@@ -21,5 +21,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
     public interface ILoginIdentityProviderTask
     {
         void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null);
+        void ClearAllBrowserCaches();
     }
 }
