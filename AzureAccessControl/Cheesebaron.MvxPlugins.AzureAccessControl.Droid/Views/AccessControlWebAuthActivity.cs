@@ -37,7 +37,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
             _messageHub = Mvx.Resolve<IMvxMessenger>();
 
             var url = Intent.GetStringExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.Url");
-            System.Diagnostics.Debug.WriteLine(url);
 
             Window.RequestFeature(WindowFeatures.Progress);
 
@@ -94,6 +93,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
         {
             public event EventHandler<RequestSecurityTokenResponseEventArgs> GotSecurityTokenResponse;
 
+#if __ANDROID_17__
+            [JavascriptInterface]
+#endif
             public override void Notify(Java.Lang.String securityTokenResponse)
             {
                 Exception ex = null;

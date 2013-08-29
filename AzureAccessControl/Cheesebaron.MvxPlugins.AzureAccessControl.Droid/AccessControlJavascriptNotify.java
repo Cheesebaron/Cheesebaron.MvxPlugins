@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------
-// Copyright 2012 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2012-2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -17,9 +17,11 @@
 package cheesebaron.mvxplugins.azureaccesscontrol.droid;
 
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 
 public class AccessControlJavascriptNotify
 {
 	private static final String TAG = "AccessControlJavascriptNotify";
+	@JavascriptInterface
 	public void notify(String securityTokenResponse) { Log.v(TAG, securityTokenResponse); }
 }

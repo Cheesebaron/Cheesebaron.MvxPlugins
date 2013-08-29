@@ -95,7 +95,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 returnToken.SecurityToken = System.Net.WebUtility.HtmlDecode(returnToken.SecurityToken);
             }
             
-            Mvx.Trace("Security token {0}", returnToken.SecurityToken);
+            //Mvx.Trace("Security token {0}", returnToken.SecurityToken);
 
             using (var sr = new StringReader(returnToken.SecurityToken))
             using (var reader = XmlReader.Create(sr))

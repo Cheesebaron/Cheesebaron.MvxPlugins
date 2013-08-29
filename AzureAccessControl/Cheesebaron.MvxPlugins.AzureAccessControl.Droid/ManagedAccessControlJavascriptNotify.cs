@@ -16,6 +16,7 @@
 
 using System;
 using Android.Runtime;
+using Android.Webkit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 {
