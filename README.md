@@ -9,6 +9,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 Thanks to
 =========
 
+- Stuart Lodge and the community for [MvvmCross](https://github.com/slodge/MvvmCross)
 - Microsoft for [Windows Azure Toolkits](https://github.com/WindowsAzure-Toolkits) which the Azure Access Control plugin is based on.
 
 Documentation
