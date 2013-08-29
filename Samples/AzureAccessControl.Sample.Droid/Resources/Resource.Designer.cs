@@ -45,6 +45,8 @@ namespace AzureAccessControl.Sample.Droid
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
+			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -94,20 +96,20 @@ namespace AzureAccessControl.Sample.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int MvxBindingTagUnique = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int MvxBindingTagUnique = 2131034112;
 			
-			// aapt resource value: 0x7f040002
-			public const int identity_provider_header = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int identity_provider_header = 2131034114;
 			
-			// aapt resource value: 0x7f040003
-			public const int identity_provider_listview = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int identity_provider_listview = 2131034115;
 			
-			// aapt resource value: 0x7f040001
-			public const int identity_provider_loggedin = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int identity_provider_loggedin = 2131034113;
 			
-			// aapt resource value: 0x7f040004
-			public const int textView1 = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int textView1 = 2131034116;
 			
 			static Id()
 			{
@@ -144,11 +146,11 @@ namespace AzureAccessControl.Sample.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f040001
+			public const int ApplicationName = 2130968577;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int Hello = 2130968576;
 			
 			static String()
 			{
