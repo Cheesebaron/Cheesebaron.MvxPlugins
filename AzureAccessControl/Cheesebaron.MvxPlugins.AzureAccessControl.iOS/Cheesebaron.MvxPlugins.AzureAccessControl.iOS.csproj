@@ -37,7 +37,6 @@
     <Compile Include="LoginIdentityProviderTask.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleWebTokenStore.cs" />
     <Compile Include="Views\AccessControlWebAuthController.cs" />
     <Compile Include="Views\DefaultLoginIdentityProviderTableViewController.cs" />
   </ItemGroup>
@@ -90,6 +89,10 @@
     <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
       <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />

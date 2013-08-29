@@ -24,7 +24,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
     {
         public void Load()
         {
-            Mvx.RegisterSingleton<ISimpleWebTokenStore>(new SimpleWebTokenStore());
             Mvx.RegisterType<ILoginIdentityProviderTask, LoginIdentityProviderTask>();
         }
     }

@@ -38,6 +38,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 ServiceNamespace = _config.ServiceNamespace
             };
             Mvx.RegisterSingleton<IIdentityProviderClient>(instance);
+            Mvx.RegisterSingleton<ISimpleWebTokenStore>(new SimpleWebTokenStore());
 
             var manager = Mvx.Resolve<IMvxPluginManager>();
             manager.EnsurePlatformAdaptionLoaded<PluginLoader>();

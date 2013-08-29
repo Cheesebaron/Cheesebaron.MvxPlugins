@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -179,6 +180,14 @@
     <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
       <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
+      <Project>{51E76B2B-7276-48CF-AF3F-30D417110B2C}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings.WindowsPhone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
     <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>

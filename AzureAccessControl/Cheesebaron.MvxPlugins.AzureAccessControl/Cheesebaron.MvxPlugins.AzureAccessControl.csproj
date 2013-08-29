@@ -47,6 +47,7 @@
     <Compile Include="RequestSecurityTokenResponse.cs" />
     <Compile Include="RequestTokenMessage.cs" />
     <Compile Include="SimpleWebToken.cs" />
+    <Compile Include="SimpleWebTokenStore.cs" />
     <Compile Include="ViewModels\DefaultIdentityProviderCollectionViewModel.cs" />
     <Compile Include="ViewModels\DefaultIdentityProviderViewModel.cs" />
   </ItemGroup>
@@ -76,7 +77,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.9-beta\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.9-beta\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

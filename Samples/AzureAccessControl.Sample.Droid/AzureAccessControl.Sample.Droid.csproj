@@ -117,9 +117,17 @@
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
+      <Project>{4456f80a-718a-479a-a2d9-f3f986fd82ac}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
       <Name>AzureAccessControl.Sample.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

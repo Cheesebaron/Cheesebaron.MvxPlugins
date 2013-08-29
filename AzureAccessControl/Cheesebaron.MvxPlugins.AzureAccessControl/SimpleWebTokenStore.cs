@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------------
 // Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
@@ -15,17 +15,15 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using Android.Content;
+using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
+namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     public class SimpleWebTokenStore
         : ISimpleWebTokenStore
     {
         private const string SimpleWebTokenSettingKeyName = "Cheesebaron.MvxPlugins.AzureAccessControl.SimpleWebTokenStore";
-        private const string SimpleWebTokenSettingFileName = "Cheesebaron.MvxPlugins.AzureAccessControl.SimpleWebTokenStore.xml";
         private const long ExpirationBuffer = 10;
 
         private SimpleWebToken _token;
@@ -36,47 +34,30 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
             {
                 if (_token != null) return _token;
 
-                if (Settings.Contains(SimpleWebTokenSettingKeyName))
-                {
-                    var token = Settings.GetString(SimpleWebTokenSettingKeyName, "");
-                    if (!string.IsNullOrEmpty(token))
-                        return null;
-                    _token = new SimpleWebToken(token);
-                }
+                var settings = Mvx.Resolve<ISettings>();
+                var token = settings.GetValue(SimpleWebTokenSettingKeyName, "");
+                if (string.IsNullOrEmpty(token))
+                    return null;
+                _token = new SimpleWebToken(token);
 
                 return _token;
             }
             set
             {
-                if (null == value && Settings.Contains(SimpleWebTokenSettingKeyName))
+                var settings = Mvx.Resolve<ISettings>();
+                if (null == value && settings.Contains(SimpleWebTokenSettingKeyName))
                 {
-                    var edit = Settings.Edit();
-                    edit.Remove(SimpleWebTokenSettingKeyName);
-                    edit.Commit();
+                    settings.DeleteValue(SimpleWebTokenSettingKeyName);
                 }
                 else
                 {
                     if (value != null)
                     {
-                        var edit = Settings.Edit();
-                        edit.Clear();
-                        edit.PutString(SimpleWebTokenSettingKeyName, value.RawToken);
-                        edit.Commit();
+                        settings.AddOrUpdateValue(SimpleWebTokenSettingKeyName, value.RawToken);
                     }
                 }
 
                 _token = value;
-            }
-        }
-
-        private static ISharedPreferences Settings
-        {
-            get
-            {
-                var prefs =
-                    Mvx.Resolve<IMvxAndroidGlobals>()
-                        .ApplicationContext.GetSharedPreferences(SimpleWebTokenSettingFileName, FileCreationMode.Append);
-                return prefs;
             }
         }
 
