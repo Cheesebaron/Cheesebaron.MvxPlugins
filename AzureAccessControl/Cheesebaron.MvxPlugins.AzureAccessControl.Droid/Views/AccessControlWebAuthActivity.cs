@@ -28,6 +28,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
     public class AccessControlWebAuthActivity : Activity
     {
         private IMvxMessenger _messageHub;
+        private WebView _webView;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -40,7 +41,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 
             Window.RequestFeature(WindowFeatures.Progress);
 
-            var webView = new WebView(this)
+            _webView = new WebView(this)
             {
                 VerticalScrollBarEnabled = true,
                 HorizontalScrollBarEnabled = true,
@@ -48,21 +49,21 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                 ScrollbarFadingEnabled = true
             };
 
-            webView.Settings.JavaScriptEnabled = true;
-            webView.Settings.SetSupportZoom(true);
-            webView.Settings.BuiltInZoomControls = true;
-            webView.Settings.LoadWithOverviewMode = true; //Load 100% zoomed out
+            _webView.Settings.JavaScriptEnabled = true;
+            _webView.Settings.SetSupportZoom(true);
+            _webView.Settings.BuiltInZoomControls = true;
+            _webView.Settings.LoadWithOverviewMode = true; //Load 100% zoomed out
             
             var notify = new AccessControlJavascriptNotify();
             notify.GotSecurityTokenResponse += GotSecurityTokenResponse;
 
-            webView.AddJavascriptInterface(notify, "external");
-            webView.SetWebViewClient(new AuthWebViewClient());
-            webView.SetWebChromeClient(new AuthWebChromeClient(this));
+            _webView.AddJavascriptInterface(notify, "external");
+            _webView.SetWebViewClient(new AuthWebViewClient());
+            _webView.SetWebChromeClient(new AuthWebChromeClient(this));
 
-            webView.LoadUrl(url);
+            _webView.LoadUrl(url);
 
-            AddContentView(webView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
+            AddContentView(_webView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent));
         }
 
         private async void GotSecurityTokenResponse(object sender, RequestSecurityTokenResponseEventArgs e)

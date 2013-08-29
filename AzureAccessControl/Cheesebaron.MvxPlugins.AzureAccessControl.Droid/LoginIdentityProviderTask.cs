@@ -15,7 +15,6 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using Android.App;
 using Android.Content;
 using Android.Webkit;
 using Cirrious.CrossCore;
@@ -57,14 +56,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 
         public void ClearAllBrowserCaches()
         {
-            var context = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
-            //context.DeleteDatabase("webview.db");
-            //context.DeleteDatabase("webviewCache.db");
-
-            var webview = new WebView(context);
-            webview.ClearCache(true);
-            webview.ClearHistory();
-            webview.ClearFormData();
+            CookieManager.Instance.RemoveAllCookie();
         }
 
         protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
