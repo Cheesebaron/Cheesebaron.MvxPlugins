@@ -96,6 +96,7 @@
     <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SimpleWebTokenBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -188,6 +189,14 @@
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone.csproj">
+      <Project>{876A3847-817E-4B84-B83B-54D793CACBE4}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8BD5A2EA-BEF2-4237-B7BD-F07742C5171C}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
     </ProjectReference>
     <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>

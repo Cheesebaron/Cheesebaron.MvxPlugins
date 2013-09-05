@@ -5,18 +5,18 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{24EE3829-6818-477A-9750-9D3F3D0013D8}</ProjectGuid>
+    <ProjectGuid>{0976CCE1-ED03-495E-B9CB-83BF0C606230}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Cheesebaron.MvxPlugins.Settings.Touch</RootNamespace>
+    <RootNamespace>Cheesebaron.MvxPlugins.SimpleWebToken.Touch</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Cheesebaron.MvxPlugins.Settings.Touch</AssemblyName>
+    <AssemblyName>Cheesebaron.MvxPlugins.SimpleWebToken.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\Touch\</OutputPath>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,31 +27,32 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\Touch\</OutputPath>
+    <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Plugin.cs" />
+    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Plugin.cs">
+      <Link>Plugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\SimpleWebToken.cs">
+      <Link>SimpleWebToken.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Cheesebaron.MvxPlugins.SimpleWebTokenTouch\Cheesebaron.MvxPlugins.SimpleWebTokenTouch.csproj">
+      <Project>{60afb271-47c7-446d-a276-e5cadcbc2ea7}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebTokenTouch</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.SettingsTouch\Cheesebaron.MvxPlugins.SettingsTouch.csproj">
-      <Project>{5bef696e-3b08-4928-82d6-8744406c1f40}</Project>
-      <Name>Cheesebaron.MvxPlugins.SettingsTouch</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

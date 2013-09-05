@@ -70,6 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{B0FF73C1-0D99-4D83-AFAA-8CFB321811EF}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
       <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>

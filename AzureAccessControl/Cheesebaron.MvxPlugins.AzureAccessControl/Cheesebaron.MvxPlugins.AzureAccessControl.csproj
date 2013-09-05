@@ -46,7 +46,6 @@
     <Compile Include="JSONIdentityProviderDiscoveryClient.cs" />
     <Compile Include="RequestSecurityTokenResponse.cs" />
     <Compile Include="RequestTokenMessage.cs" />
-    <Compile Include="SimpleWebToken.cs" />
     <Compile Include="SimpleWebTokenStore.cs" />
     <Compile Include="ViewModels\DefaultIdentityProviderCollectionViewModel.cs" />
     <Compile Include="ViewModels\DefaultIdentityProviderViewModel.cs" />
@@ -81,6 +80,10 @@
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

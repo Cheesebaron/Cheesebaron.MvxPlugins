@@ -14,6 +14,8 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
+
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
     public interface ISimpleWebTokenStore
@@ -21,7 +23,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         /// <summary>
         /// Gets or sets the configured SimpleWebToken
         /// </summary>
-        SimpleWebToken SimpleWebToken { get; set; }
+        ISimpleWebToken SimpleWebToken { get; set; }
 
         /// <summary>
         /// Checks if the Simple Web Token currently stored is valid

@@ -16,6 +16,7 @@
 
 using System;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
@@ -26,9 +27,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         private const string SimpleWebTokenSettingKeyName = "Cheesebaron.MvxPlugins.AzureAccessControl.SimpleWebTokenStore";
         private const long ExpirationBuffer = 10;
 
-        private SimpleWebToken _token;
+        private ISimpleWebToken _token;
 
-        public SimpleWebToken SimpleWebToken
+        public ISimpleWebToken SimpleWebToken
         {
             get
             {
@@ -38,7 +39,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 var token = settings.GetValue(SimpleWebTokenSettingKeyName, "");
                 if (string.IsNullOrEmpty(token))
                     return null;
-                _token = new SimpleWebToken(token);
+                _token = Mvx.Resolve<ISimpleWebToken>().CreateTokenFromRaw(token);
 
                 return _token;
             }

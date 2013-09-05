@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
@@ -40,6 +41,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
+        private Type _returnViewModelType;
 
         private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
         public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
@@ -69,10 +71,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
+            public Type ReturnViewModel { get; set; }
         }
 
         public async void Init(NavigationParameters parameters)
         {
+            if (parameters != null && parameters.ReturnViewModel != null)
+                _returnViewModelType = parameters.ReturnViewModel;
+
             Uri serviceListEndpoint;
             if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
@@ -155,8 +161,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "Got an empty response from IdentityProvider");
                 return;
             }
-
-            var simpleWebToken = new SimpleWebToken(requestSecurityTokenResponse.SecurityToken);
+            
+            var simpleWebToken = Mvx.Resolve<ISimpleWebToken>().CreateTokenFromRaw(requestSecurityTokenResponse.SecurityToken);
             _simpleWebTokenStore.SimpleWebToken = simpleWebToken;
 
             RaisePropertyChanged("IsLoggedIn");
@@ -170,7 +176,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             get
             {
-                return new MvxCommand(() => Close(this));
+                return new MvxCommand(() =>
+                {
+                    if (_returnViewModelType != null)
+                        ShowViewModel(_returnViewModelType);
+                    else
+                        Close(this);
+                });
             }
         }
     }
