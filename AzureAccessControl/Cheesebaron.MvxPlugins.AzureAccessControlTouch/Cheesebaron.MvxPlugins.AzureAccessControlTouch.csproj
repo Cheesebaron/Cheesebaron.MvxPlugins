@@ -70,9 +70,6 @@
     <Compile Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\RequestTokenMessage.cs">
       <Link>RequestTokenMessage.cs</Link>
     </Compile>
-    <Compile Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\SimpleWebToken.cs">
-      <Link>SimpleWebToken.cs</Link>
-    </Compile>
     <Compile Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\SimpleWebTokenStore.cs">
       <Link>SimpleWebTokenStore.cs</Link>
     </Compile>
