@@ -41,7 +41,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
-        private Type _returnViewModelType;
 
         private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
         public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
@@ -71,14 +70,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
-            public Type ReturnViewModel { get; set; }
         }
 
         public async void Init(NavigationParameters parameters)
         {
-            if (parameters != null && parameters.ReturnViewModel != null)
-                _returnViewModelType = parameters.ReturnViewModel;
-
             Uri serviceListEndpoint;
             if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
@@ -174,16 +169,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         public ICommand NavigateBackCommand
         {
-            get
-            {
-                return new MvxCommand(() =>
-                {
-                    if (_returnViewModelType != null)
-                        ShowViewModel(_returnViewModelType);
-                    else
-                        Close(this);
-                });
-            }
+            get { return new MvxCommand(() => Close(this)); }
         }
     }
 }
