@@ -12,7 +12,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken.Test
         public void FromValidEncoded()
         {
             const string tokenString = "http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=upwJyUGTUPWMEiU3ds61jcsJUeUFjRza6sNEcdyNYnw%3d&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=uri%3aWindowsLiveID&Audience=http%3a%2f%2fnoisesentinel-dev-adminapi.azurewebsites.net%2f&ExpiresOn=1356650451&Issuer=https%3a%2f%2fbruelandkjaer.accesscontrol.windows.net%2f&HMACSHA256=npM6PtfuNUtG6EJ1gpS0s9rVvEx%2buP4UIXe3GB1t4CM%3d";
-            var swt = new SimpleWebToken(tokenString);
+            var swt = new SimpleWebToken().CreateTokenFromRaw(tokenString);
             Assert.AreEqual(tokenString, swt.RawToken);
             Assert.AreEqual(new DateTime(2012, 12, 27, 23, 20, 51, DateTimeKind.Utc), swt.ExpiresOn);
             Assert.AreEqual("https://bruelandkjaer.accesscontrol.windows.net/", swt.Issuer);
@@ -36,7 +36,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken.Test
             var expiresOn = new DateTime(2034, 4, 7, 23, 12, 34, DateTimeKind.Utc);
             const string signingKey = "nh0BPopBTc7MAzviohoUbWNhO6NlV+LYm+sXOTPULxk=";
 
-            var swt = new SimpleWebToken(issuer, audience, expiresOn, signingKey);
+            var swt = new SimpleWebToken().CreateToken(issuer, audience, expiresOn, signingKey);
             Assert.AreEqual(expiresOn, swt.ExpiresOn);
             Assert.AreEqual(issuer, swt.Issuer);
             Assert.AreEqual(audience, swt.Audience);
@@ -60,7 +60,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken.Test
             var expiresOn = new DateTime(2034, 4, 7, 23, 12, 34, DateTimeKind.Utc);
             const string signingKey = "nh0BPopBTc7MAzviohoUbWNhO6NlV+LYm+sXOTPULxk=";
 
-            var swt = new SimpleWebToken(issuer, audience, expiresOn, signingKey, args);
+            var swt = new SimpleWebToken().CreateToken(issuer, audience, expiresOn, signingKey, args);
             Assert.AreEqual(expiresOn, swt.ExpiresOn);
             Assert.AreEqual(issuer, swt.Issuer);
             Assert.AreEqual(audience, swt.Audience);
@@ -88,8 +88,8 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken.Test
             var expiresOn = new DateTime(2034, 4, 7, 23, 12, 34, DateTimeKind.Utc);
             const string signingKey = "nh0BPopBTc7MAzviohoUbWNhO6NlV+LYm+sXOTPULxk=";
 
-            var swt0 = new SimpleWebToken(issuer, audience, expiresOn, signingKey, args);
-            var swt = new SimpleWebToken(swt0.RawToken);
+            var swt0 = new SimpleWebToken().CreateToken(issuer, audience, expiresOn, signingKey, args);
+            var swt = new SimpleWebToken().CreateTokenFromRaw(swt0.RawToken);
             Assert.IsTrue(swt.ValidateSignature(signingKey));
             Assert.AreEqual(expiresOn, swt.ExpiresOn);
             Assert.AreEqual(issuer, swt.Issuer);

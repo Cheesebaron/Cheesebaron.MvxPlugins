@@ -69,12 +69,11 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
             }
         }
 
-        public SimpleWebToken(string rawToken)
+        public ISimpleWebToken CreateTokenFromRaw(string rawToken)
         {
             if (string.IsNullOrEmpty(rawToken)) throw new ArgumentNullException("rawToken");
 
-            RawToken = rawToken;
-            Properties = new Dictionary<string, string>();
+            var token = new SimpleWebToken {RawToken = rawToken, Properties = new Dictionary<string, string>()};
 
             foreach (var rawNameValue in rawToken.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries))
             {
@@ -92,28 +91,30 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
                 var key = WebUtility.UrlDecode(nameValue[0]);
                 var values = WebUtility.UrlDecode(nameValue[1]);
 
-                switch(key)
+                switch (key)
                 {
                     case SimpleWebTokenConstants.Issuer:
-                        Issuer = values;
+                        token.Issuer = values;
                         break;
                     case SimpleWebTokenConstants.Audience:
-                        Audience = values;
+                        token.Audience = values;
                         break;
                     case SimpleWebTokenConstants.ExpiresOn:
-                        ExpiresOn = GetTimeAsDateTime(string.IsNullOrEmpty(values) ? "0" : values);
+                        token.ExpiresOn = GetTimeAsDateTime(string.IsNullOrEmpty(values) ? "0" : values);
                         break;
                     case SimpleWebTokenConstants.Signature:
-                        Signature = values;
+                        token.Signature = values;
                         break;
                     default:
-                        Properties[key] = values;
+                        token.Properties[key] = values;
                         break;
                 }
             }
+            return token;
         }
 
-        public SimpleWebToken(string issuer, string audience, DateTime expiryTime, string signingKey,
+        public ISimpleWebToken CreateToken(
+            string issuer, string audience, DateTime expiryTime, string signingKey,
             IEnumerable<KeyValuePair<string, string>> values = null)
         {
             if (string.IsNullOrEmpty(issuer)) throw new ArgumentNullException("issuer");
@@ -125,17 +126,20 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
             var signingKeyBytes = Convert.FromBase64String(signingKey);
             if (signingKeyBytes.Length != 32) throw new ArgumentOutOfRangeException("signingKey", "Signing key must be 32 bytes.");
 
-            Issuer = issuer;
-            Audience = audience;
-            ExpiresOn = expiryTime;
-            
-            Properties = new Dictionary<string, string>();
+            var token = new SimpleWebToken
+            {
+                Issuer = issuer,
+                Audience = audience,
+                ExpiresOn = expiryTime,
+                Properties = new Dictionary<string, string>()
+            };
+
             var sb = new StringBuilder();
             if (values != null)
             {
                 foreach (var item in values)
                 {
-                    Properties.Add(item.Key, item.Value);
+                    token.Properties.Add(item.Key, item.Value);
                     sb.AppendFormat("{0}={1}&", WebUtility.UrlEncode(item.Key), WebUtility.UrlEncode(item.Value));
                 }
             }
@@ -143,22 +147,11 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
             sb.AppendFormat("{0}={1}&", SimpleWebTokenConstants.Audience, WebUtility.UrlEncode(audience));
             sb.AppendFormat("{0}={1}&", SimpleWebTokenConstants.ExpiresOn, GetSwtTime(expiryTime));
             sb.AppendFormat("{0}={1}", SimpleWebTokenConstants.Issuer, WebUtility.UrlEncode(issuer));
-            Signature = GenerateSignature(sb.ToString(), signingKeyBytes);
+            token.Signature = GenerateSignature(sb.ToString(), signingKeyBytes);
             sb.AppendFormat("&{0}={1}", SimpleWebTokenConstants.Signature, WebUtility.UrlEncode(Signature));
 
-            RawToken = sb.ToString();
-        }
-
-        public ISimpleWebToken CreateTokenFromRaw(string rawToken)
-        {
-            return new SimpleWebToken(rawToken);
-        }
-
-        public ISimpleWebToken CreateToken(
-            string issuer, string audience, DateTime expiryTime, string signingKey,
-            IEnumerable<KeyValuePair<string, string>> values = null)
-        {
-            return new SimpleWebToken(issuer, audience, expiryTime, signingKey, values);
+            token.RawToken = sb.ToString();
+            return token;
         }
 
         public bool ValidateSignature(string keyString)

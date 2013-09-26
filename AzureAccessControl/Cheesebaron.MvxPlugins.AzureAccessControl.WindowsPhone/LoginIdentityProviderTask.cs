@@ -25,7 +25,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
             _subscriptionToken = _messageHub.Subscribe<RequestTokenMessage>(message =>
             {
                 _response = message.TokenResponse;
-                if (root != null) root.GoBack();
 
                 if (_response != null)
                     onLoggedIn(_response);
