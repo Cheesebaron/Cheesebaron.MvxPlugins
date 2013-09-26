@@ -50,8 +50,10 @@ namespace Cheesebaron.MvxPlugins.AppId
         {
             get
             {
-                return "WindowsPhone " + Environment.OSVersion;
+                return Environment.OSVersion.ToString();
             }
         }
+
+        public string Platform { get { return "WP"; } }
     }
 }

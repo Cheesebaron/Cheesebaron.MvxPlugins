@@ -27,5 +27,7 @@
         /// Gives you the version of the OS on the device
         /// </summary>
         string OsVersion { get; }
+
+        string Platform { get; }
     }
 }

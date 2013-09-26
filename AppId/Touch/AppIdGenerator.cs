@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Permissions;
 using MonoTouch.UIKit;
 
 namespace Cheesebaron.MvxPlugins.AppId
@@ -48,5 +47,7 @@ namespace Cheesebaron.MvxPlugins.AppId
                 return "iOS " + UIDevice.CurrentDevice.SystemVersion;
             }
         }
+
+        public string Platform { get { return "iOS"; } }
     }
 }

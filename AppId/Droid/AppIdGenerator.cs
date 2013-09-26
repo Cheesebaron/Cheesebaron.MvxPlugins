@@ -63,5 +63,7 @@ namespace Cheesebaron.MvxPlugins.AppId
                 return "Android " + Build.VERSION.Release;
             }
         }
+
+        public string Platform { get { return "Android"; } }
     }
 }
