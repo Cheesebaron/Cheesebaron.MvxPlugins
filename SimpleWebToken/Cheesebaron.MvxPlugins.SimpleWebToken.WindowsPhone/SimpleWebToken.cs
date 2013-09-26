@@ -148,7 +148,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
             sb.AppendFormat("{0}={1}&", SimpleWebTokenConstants.ExpiresOn, GetSwtTime(expiryTime));
             sb.AppendFormat("{0}={1}", SimpleWebTokenConstants.Issuer, WebUtility.UrlEncode(issuer));
             token.Signature = GenerateSignature(sb.ToString(), signingKeyBytes);
-            sb.AppendFormat("&{0}={1}", SimpleWebTokenConstants.Signature, WebUtility.UrlEncode(Signature));
+            sb.AppendFormat("&{0}={1}", SimpleWebTokenConstants.Signature, WebUtility.UrlEncode(token.Signature));
 
             token.RawToken = sb.ToString();
             return token;
