@@ -28,3 +28,4 @@ License
 - **AppId** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 - **Azure Access Control** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 - **Settings** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
+- **SimpleWebToken** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
