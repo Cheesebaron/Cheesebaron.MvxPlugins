@@ -5,8 +5,10 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 
 - **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
 - **Azure Access Control** This plugin provides Authentication against Windows Azure ACS (don't confuse it with Windows Azure Mobile Services).
+- **Connectivity** A plugin for gettint network information and status.
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
+- **SMS** A simple task to send SMS using default/install SMS applications on device.
 - More to come! If you have a good idea, feel free to pitch it with me.
 
 Thanks to
@@ -27,5 +29,7 @@ License
 
 - **AppId** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 - **Azure Access Control** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
+- **Connectivity** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 - **Settings** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 - **SimpleWebToken** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
+- **SMS** plugin is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
