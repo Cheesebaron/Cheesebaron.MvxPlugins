@@ -17,9 +17,20 @@
 using System;
 using Android.Runtime;
 using Android.Webkit;
+using Java.Interop;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 {
+    public abstract class NewAccessControlJavascriptNotify : Java.Lang.Object
+    {
+        [Export("Notify")]
+        [JavascriptInterface]
+        public virtual void Notify(string securityTokenResponse)
+        {
+            
+        }
+    }
+
     [Register("cheesebaron/mvxplugins/azureaccesscontrol/droid/AccessControlJavascriptNotify", DoNotGenerateAcw = true)]
     public abstract class ManagedAccessControlJavascriptNotify : Java.Lang.Object
     {
