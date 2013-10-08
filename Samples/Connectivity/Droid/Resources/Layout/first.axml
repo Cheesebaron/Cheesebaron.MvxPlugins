@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:text="Host:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="Enter host name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Text Host" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        orientation="horizontal">
+        <TextView
+            android:text="Is Host Reachable: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="False"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Text HostReachable" />
+    </LinearLayout>
+    <Button
+        android:text="Check Host Reachability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click CheckIfHostReachableCommand" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        orientation="horizontal">
+        <TextView
+            android:text="Is Connected: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="False"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Text IsConnected" />
+    </LinearLayout>
+    <Button
+        android:text="Check Connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click CheckIfPhoneConnected" />
+    <TextView
+        android:text="Other Info:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Connection Type:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Mvx.MvxListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        local:MvxBind="ItemsSource ConnectionType" />
+    <TextView
+        android:text="Bandwidth:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Mvx.MvxListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        local:MvxBind="ItemsSource Bandwidth" />
+    <Button
+        android:text="Refresh Other Info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click GetOtherInfoCommand" />
+</LinearLayout>

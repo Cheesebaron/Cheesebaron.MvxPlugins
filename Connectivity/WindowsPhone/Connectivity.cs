@@ -15,66 +15,80 @@
 //---------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
     public class Connectivity : IConnectivity
     {
-        public Connectivity()
-        {
-            DeviceNetworkInformation.NetworkAvailabilityChanged += DeviceNetworkInformationOnNetworkAvailabilityChanged;
-        }
-
-        public bool IsNetworkAvailable
+        public bool IsConnected
         {
             get { return DeviceNetworkInformation.IsNetworkAvailable; }
         }
 
-        private void DeviceNetworkInformationOnNetworkAvailabilityChanged(
-            object sender, NetworkNotificationEventArgs args)
+        public async Task<bool> IsHostReachable(string host, int msTimeout = 5000)
         {
-            var networkChangedArgs = new NetworkChangedEventArgs
-            {
-                Bandwidth = args.NetworkInterface.Bandwidth,
-                Connected = IsNetworkAvailable,
-                Description = args.NetworkInterface.Description,
-                InterfaceName = args.NetworkInterface.InterfaceName,
-                Roaming = args.NetworkInterface.Characteristics == NetworkCharacteristics.Roaming
-            };
-            switch (args.NetworkInterface.InterfaceSubtype)
-            {
-                case NetworkInterfaceSubType.WiFi:
-                    networkChangedArgs.ConnectionType = ConnectionType.WiFi;
-                    break;
-                case NetworkInterfaceSubType.Desktop_PassThru:
-                    networkChangedArgs.ConnectionType = ConnectionType.Desktop;
-                    break;
-                case NetworkInterfaceSubType.Unknown:
-                    networkChangedArgs.ConnectionType = ConnectionType.Other;
-                    break;
-                default:
-                    networkChangedArgs.ConnectionType = ConnectionType.Cellular;
-                    break;
-            }
-            switch(args.NotificationType)
-            {
-                case NetworkNotificationType.InterfaceConnected:
-                    if (Connected != null)
-                        Connected(this, EventArgs.Empty);
-                    break;
-                case NetworkNotificationType.InterfaceDisconnected:
-                    if (Disconnected != null)
-                        Disconnected(this, EventArgs.Empty);
-                    break;
-            }
+            if (string.IsNullOrEmpty(host))
+                throw new ArgumentNullException("host");
 
-            if (NetworkChanged != null)
-                NetworkChanged(this, networkChangedArgs);
+            return await Task.Run(() =>
+                {
+                    var manualResetEvent = new ManualResetEvent(false);
+                    var reachable = false;
+                    DeviceNetworkInformation.ResolveHostNameAsync(new DnsEndPoint(host, 80), result =>
+                        {
+                            reachable = result.NetworkInterface != null;
+                            manualResetEvent.Set();
+                        }, null);
+                    manualResetEvent.WaitOne(TimeSpan.FromMilliseconds(msTimeout));
+                    return reachable;
+                });
         }
 
-        public event NetworkChangedEventHandler NetworkChanged;
-        public event EventHandler Connected;
-        public event EventHandler Disconnected;
+        public ConnectionType[] ConnectionTypes {
+            get
+            {
+                var type = new List<ConnectionType>();
+                var networkInterfaceList = new NetworkInterfaceList();
+                foreach (var networkInterfaceInfo in networkInterfaceList.Where(networkInterfaceInfo => networkInterfaceInfo.InterfaceState == ConnectState.Connected))
+                {
+                    switch (networkInterfaceInfo.InterfaceSubtype)
+                    {
+                        case NetworkInterfaceSubType.Desktop_PassThru:
+                            type.Add(ConnectionType.Desktop);
+                            break;
+                        case NetworkInterfaceSubType.WiFi:
+                            type.Add(ConnectionType.WiFi);
+                            break;
+                        case NetworkInterfaceSubType.Unknown:
+                            type.Add(ConnectionType.Other);
+                            break;
+                        default:
+                            type.Add(ConnectionType.Cellular);
+                            break;
+                    }
+                    
+                }
+                return type.ToArray();
+            }
+        }
+
+        public int[] Bandwidths
+        {
+            get
+            {
+                var networkInterfaceList = new NetworkInterfaceList();
+                return
+                    networkInterfaceList.Where(
+                        networkInterfaceInfo => networkInterfaceInfo.InterfaceState == ConnectState.Connected)
+                                        .Select(networkInterfaceInfo => networkInterfaceInfo.Bandwidth)
+                                        .ToArray();
+            }
+        }
     }
 }

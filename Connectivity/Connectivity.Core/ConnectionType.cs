@@ -13,9 +13,6 @@
 // See the Apache 2 License for the specific language governing 
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
-
-using System;
-
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
     public enum ConnectionType
@@ -23,18 +20,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         Cellular,
         WiFi,
         Desktop,
+        Wimax,
         Other
     }
-
-    public class NetworkChangedEventArgs : EventArgs
-    {
-        public bool Roaming { get; set; }
-        public int Bandwidth { get; set; }
-        public ConnectionType ConnectionType { get; set; }
-        public bool Connected { get; set; }
-        public string Description { get; set; }
-        public string InterfaceName { get; set; }
-    }
-
-    public delegate void NetworkChangedEventHandler(object sender, NetworkChangedEventArgs args);
 }

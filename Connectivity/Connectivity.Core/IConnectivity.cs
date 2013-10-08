@@ -14,16 +14,15 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using System;
+using System.Threading.Tasks;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
     public interface IConnectivity
     {
-        bool IsNetworkAvailable { get; }
-
-        event NetworkChangedEventHandler NetworkChanged;
-        event EventHandler Connected;
-        event EventHandler Disconnected;
+        bool IsConnected{ get; }
+        Task<bool> IsHostReachable(string host, int msTimeout = 5000);
+        ConnectionType[] ConnectionTypes { get; }
+        int[] Bandwidths { get; }
     }
 }
