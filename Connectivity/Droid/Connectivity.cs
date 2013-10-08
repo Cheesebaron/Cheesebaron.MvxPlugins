@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Net;
@@ -57,7 +59,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             }
         }
 
-        public async Task<bool> IsHostReachable(string host, int msTimeout = 5000)
+        public async Task<bool> IsPingReachable(string host, int msTimeout = 5000)
         {
             if (string.IsNullOrEmpty(host))
                 throw new ArgumentNullException("host");
@@ -70,8 +72,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                     bool reachable;
                     try
                     {
-                        var address = InetAddress.GetByName(host);
-                        reachable = !string.IsNullOrEmpty(address.HostAddress);
+                        reachable = InetAddress.GetByName(host).IsReachable(msTimeout);
                     }
                     catch (UnknownHostException)
                     {
@@ -81,7 +82,27 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                 });
         }
 
-        public ConnectionType[] ConnectionTypes
+        public async Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000)
+        {
+            return await Task.Run(async () =>
+                {
+                    var sockaddr = new InetSocketAddress(host, port);
+                    using (var sock = new Socket())
+                    {
+                        try
+                        {
+                            await sock.ConnectAsync(sockaddr, msTimeout);
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+                            return false;
+                        }
+                    }
+                });
+        }
+
+        public IEnumerable<ConnectionType> ConnectionTypes
         {
             get
             {
@@ -99,17 +120,16 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                         type = ConnectionType.Cellular;
                         break;
                 }
-                return new[] {type};
+                yield return type;
             }
         }
 
-        public int[] Bandwidths
+        public IEnumerable<int> Bandwidths
         {
             get
             {
-                return ConnectionTypes[0] == ConnectionType.WiFi
-                           ? new[] {WifiManager.ConnectionInfo.LinkSpeed}
-                           : new[] {-1};
+                if (ConnectionTypes.FirstOrDefault() == ConnectionType.WiFi)
+                    yield return WifiManager.ConnectionInfo.LinkSpeed;
             }
         }
     }

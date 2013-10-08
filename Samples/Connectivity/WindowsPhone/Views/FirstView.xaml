@@ -35,8 +35,12 @@
                     <TextBox Width="419" Text="{Binding Host, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Host Reachable: " Style="{StaticResource PhoneTextNormalStyle}"/>
-                    <TextBlock Text="{Binding HostReachable}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Text="Ping Reachable: " Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Text="{Binding PingReachable}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Port Reachable: " Style="{StaticResource PhoneTextNormalStyle}"/>
+                    <TextBlock Text="{Binding PortReachable}" Style="{StaticResource PhoneTextNormalStyle}"/>
                 </StackPanel>
                 <Button Content="Check Host Reachability" Command="{Binding CheckIfHostReachableCommand}"/>
                 <StackPanel Orientation="Horizontal">

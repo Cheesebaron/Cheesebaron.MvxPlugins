@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Cheesebaron.MvxPlugins.Connectivity;
 using Cirrious.MvvmCross.ViewModels;
 
@@ -24,14 +25,25 @@ namespace Core.ViewModels
             }
         }
 
-        private bool _hostReachable;
-        public bool HostReachable
+        private bool _pingReachable;
+        public bool PingReachable
         {
-            get { return _hostReachable; }
+            get { return _pingReachable; }
             set
             {
-                _hostReachable = value;
-                RaisePropertyChanged("HostReachable");
+                _pingReachable = value;
+                RaisePropertyChanged("PingReachable");
+            }
+        }
+
+        private bool _portReachable;
+        public bool PortReachable
+        {
+            get { return _portReachable; }
+            set
+            {
+                _portReachable = value;
+                RaisePropertyChanged("PortReachable");
             }
         }
 
@@ -46,8 +58,8 @@ namespace Core.ViewModels
             }
         }
 
-        private ConnectionType[] _connectionType;
-        public ConnectionType[] ConnectionType
+        private IEnumerable<ConnectionType> _connectionType;
+        public IEnumerable<ConnectionType> ConnectionType
         {
             get { return _connectionType; }
             set
@@ -57,8 +69,8 @@ namespace Core.ViewModels
             }
         }
 
-        private int[] _bandwidth;
-        public int[] Bandwidth
+        private IEnumerable<int> _bandwidth;
+        public IEnumerable<int> Bandwidth
         {
             get { return _bandwidth; }
             set
@@ -86,7 +98,8 @@ namespace Core.ViewModels
             {
                 return new MvxCommand(async () =>
                     {
-                        HostReachable = await _connectivity.IsHostReachable(Host);
+                        PingReachable = await _connectivity.IsPingReachable(Host);
+                        PortReachable = await _connectivity.IsPortReachable(Host);
                     });
             }
         }

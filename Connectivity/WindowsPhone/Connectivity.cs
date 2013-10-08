@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Phone.Net.NetworkInformation;
@@ -31,7 +32,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             get { return DeviceNetworkInformation.IsNetworkAvailable; }
         }
 
-        public async Task<bool> IsHostReachable(string host, int msTimeout = 5000)
+        public async Task<bool> IsPingReachable(string host, int msTimeout = 5000)
         {
             if (string.IsNullOrEmpty(host))
                 throw new ArgumentNullException("host");
@@ -50,35 +51,65 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                 });
         }
 
-        public ConnectionType[] ConnectionTypes {
+        public async Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000)
+        {
+            if (string.IsNullOrEmpty(host))
+                throw new ArgumentNullException("host");
+
+            return await Task.Run(() =>
+                {
+                    var clientDone = new ManualResetEvent(false);
+                    var reachable = false;
+                    var hostEntry = new DnsEndPoint(host, port);
+                    using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+                    {
+                        var socketEventArg = new SocketAsyncEventArgs { RemoteEndPoint = hostEntry };
+                        socketEventArg.Completed += (s, e) =>
+                        {
+                            reachable = e.SocketError == SocketError.Success;
+
+                            clientDone.Set();
+                        };
+
+                        clientDone.Reset();
+
+                        socket.ConnectAsync(socketEventArg);
+
+                        clientDone.WaitOne(msTimeout);
+
+                        return reachable;
+                    }
+                });
+        }
+
+        public IEnumerable<ConnectionType> ConnectionTypes {
             get
             {
-                var type = new List<ConnectionType>();
                 var networkInterfaceList = new NetworkInterfaceList();
                 foreach (var networkInterfaceInfo in networkInterfaceList.Where(networkInterfaceInfo => networkInterfaceInfo.InterfaceState == ConnectState.Connected))
                 {
+                    ConnectionType type;
                     switch (networkInterfaceInfo.InterfaceSubtype)
                     {
                         case NetworkInterfaceSubType.Desktop_PassThru:
-                            type.Add(ConnectionType.Desktop);
+                            type = ConnectionType.Desktop;
                             break;
                         case NetworkInterfaceSubType.WiFi:
-                            type.Add(ConnectionType.WiFi);
+                            type = ConnectionType.WiFi;
                             break;
                         case NetworkInterfaceSubType.Unknown:
-                            type.Add(ConnectionType.Other);
+                            type = ConnectionType.Other;
                             break;
                         default:
-                            type.Add(ConnectionType.Cellular);
+                            type = ConnectionType.Cellular;
                             break;
                     }
-                    
+                    yield return type;
                 }
-                return type.ToArray();
             }
         }
 
-        public int[] Bandwidths
+        public IEnumerable<int> Bandwidths
         {
             get
             {

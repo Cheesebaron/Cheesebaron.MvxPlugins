@@ -14,6 +14,7 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
@@ -21,8 +22,9 @@ namespace Cheesebaron.MvxPlugins.Connectivity
     public interface IConnectivity
     {
         bool IsConnected{ get; }
-        Task<bool> IsHostReachable(string host, int msTimeout = 5000);
-        ConnectionType[] ConnectionTypes { get; }
-        int[] Bandwidths { get; }
+        Task<bool> IsPingReachable(string host, int msTimeout = 5000);
+        Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000);
+        IEnumerable<ConnectionType> ConnectionTypes { get; }
+        IEnumerable<int> Bandwidths { get; }
     }
 }

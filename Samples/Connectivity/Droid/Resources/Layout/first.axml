@@ -20,14 +20,28 @@
         android:layout_height="wrap_content"
         orientation="horizontal">
         <TextView
-            android:text="Is Host Reachable: "
+            android:text="Is Ping Reachable: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:text="False"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Text HostReachable" />
+            local:MvxBind="Text PingReachable" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        orientation="horizontal">
+        <TextView
+            android:text="Is Port Reachable: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="False"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Text PortReachable" />
     </LinearLayout>
     <Button
         android:text="Check Host Reachability"
