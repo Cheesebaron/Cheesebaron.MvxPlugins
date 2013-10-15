@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>CheeseBaron.MvvmCross.Plugins.Sms</id>
+		<id>Cheesebaron.MvvmCross.Plugins.Sms</id>
 		<version>1.0.0</version>
-		<title>CheeseBaron's Awesome MvvmCross Sms Plugin</title>
+		<title>MvvmCross SMS Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
 		<licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description>This package contains an 'Sms' plugin for MvvmCross v3</description>
+		<description>This package contains an 'SMS' plugin for MvvmCross v3, which uses platform specific apps or methods to send an SMS.</description>
 		<tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone</tags>
 		<dependencies>
 		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.0.12" />
