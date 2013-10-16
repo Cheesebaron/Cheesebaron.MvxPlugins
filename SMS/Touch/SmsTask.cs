@@ -21,7 +21,7 @@ using Cirrious.CrossCore.Touch.Views;
 using MonoTouch.MessageUI;
 using MonoTouch.UIKit;
 
-namespace Cheesebaron.MvxPlugins.SMS
+namespace Cheesebaron.MvxPlugins.SMS.Touch
 {
     public class SmsTask: MvxTouchTask, ISmsTask
     {
