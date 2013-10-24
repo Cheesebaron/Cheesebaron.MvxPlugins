@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
@@ -41,7 +40,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
-        private readonly ISimpleWebToken _simpleWebTokenFactory;
 
         private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
         public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
@@ -93,12 +91,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, 
-            ILoginIdentityProviderTask loginIdentityProviderTask, ISimpleWebToken simpleWebToken)
+            ILoginIdentityProviderTask loginIdentityProviderTask)
         {
             _simpleWebTokenStore = store;
             _loginIdentityProviderTask = loginIdentityProviderTask;
             _identityProviderClient = client;
-            _simpleWebTokenFactory = simpleWebToken;
 
             RaisePropertyChanged("IsLoggedIn");
             RaisePropertyChanged("LoggedInProvider");
@@ -159,9 +156,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "Got an empty response from IdentityProvider");
                 return;
             }
-
-            var simpleWebToken = _simpleWebTokenFactory.CreateTokenFromRaw(requestSecurityTokenResponse.SecurityToken);
-            _simpleWebTokenStore.SimpleWebToken = simpleWebToken;
 
             RaisePropertyChanged("IsLoggedIn");
             RaisePropertyChanged("LoggedInProvider");
