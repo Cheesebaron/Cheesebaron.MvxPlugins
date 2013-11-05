@@ -95,10 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.WindowsPhone">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

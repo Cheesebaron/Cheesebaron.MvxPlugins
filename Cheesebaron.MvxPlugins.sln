@@ -87,7 +87,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppId.Touch", "AppId\Touch\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Connectivity", "Connectivity", "{89704D8E-2DA2-44B7-9A6B-B768AB7005C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connectivity.Core", "Connectivity\Connectivity.Core\Connectivity.Core.csproj", "{FD5C4102-936B-4F6A-B7AF-BE5D53B40C90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connectivity.Core", "Connectivity\Core\Connectivity.Core.csproj", "{FD5C4102-936B-4F6A-B7AF-BE5D53B40C90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connectivity.Droid", "Connectivity\Droid\Connectivity.Droid.csproj", "{7E6FBC2D-A9B0-42A6-8F84-15DCE5A8AF7D}"
 EndProject

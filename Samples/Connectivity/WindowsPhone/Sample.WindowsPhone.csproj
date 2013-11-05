@@ -164,19 +164,19 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.WindowsPhone">
-      <HintPath>..\..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.WindowsPhone">
-      <HintPath>..\..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />
