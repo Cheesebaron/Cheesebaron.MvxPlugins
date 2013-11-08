@@ -86,17 +86,17 @@
     <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.SettingsTouch\Cheesebaron.MvxPlugins.SettingsTouch.csproj">
-      <Project>{5bef696e-3b08-4928-82d6-8744406c1f40}</Project>
-      <Name>Cheesebaron.MvxPlugins.SettingsTouch</Name>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebTokenTouch\Cheesebaron.MvxPlugins.SimpleWebTokenTouch.csproj">
-      <Project>{60afb271-47c7-446d-a276-e5cadcbc2ea7}</Project>
-      <Name>Cheesebaron.MvxPlugins.SimpleWebTokenTouch</Name>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControlTouch\Cheesebaron.MvxPlugins.AzureAccessControlTouch.csproj">
-      <Project>{fb118872-3190-4cf5-912e-9b18ba3bb16a}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControlTouch</Name>
+    <ProjectReference Include="..\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+      <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
+      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />

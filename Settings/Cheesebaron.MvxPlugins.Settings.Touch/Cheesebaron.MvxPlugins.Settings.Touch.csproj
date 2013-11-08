@@ -48,9 +48,9 @@
     <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cheesebaron.MvxPlugins.SettingsTouch\Cheesebaron.MvxPlugins.SettingsTouch.csproj">
-      <Project>{5bef696e-3b08-4928-82d6-8744406c1f40}</Project>
-      <Name>Cheesebaron.MvxPlugins.SettingsTouch</Name>
+    <ProjectReference Include="..\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />

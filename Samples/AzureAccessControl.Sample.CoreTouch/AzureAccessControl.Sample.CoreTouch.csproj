@@ -50,11 +50,5 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControlTouch\Cheesebaron.MvxPlugins.AzureAccessControlTouch.csproj">
-      <Project>{fb118872-3190-4cf5-912e-9b18ba3bb16a}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControlTouch</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>
