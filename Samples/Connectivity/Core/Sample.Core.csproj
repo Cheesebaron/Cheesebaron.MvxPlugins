@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\..\..\Connectivity\Connectivity.Core\Connectivity.Core.csproj">
+    <ProjectReference Include="..\..\..\Connectivity\Core\Connectivity.Core.csproj">
       <Project>{fd5c4102-936b-4f6a-b7af-be5d53b40c90}</Project>
       <Name>Connectivity.Core</Name>
     </ProjectReference>
