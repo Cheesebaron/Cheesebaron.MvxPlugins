@@ -14,7 +14,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 Thanks to
 =========
 
-- [Stuart Lodge](slodge) and the community for [MvvmCross](https://github.com/slodge/MvvmCross)
+- [Stuart Lodge](https://github.com/slodge) and the community for [MvvmCross](https://github.com/slodge/MvvmCross)
 - Microsoft for [Windows Azure Toolkits](https://github.com/WindowsAzure-Toolkits) which the Azure Access Control plugin is based on.
 - [James Montemagno](https://github.com/jamesmontemagno) for his [Settings](https://github.com/ceton/Mvx.Plugins.Settings) plugin, which the **Settings** plugin in this repository is based on.
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
@@ -24,6 +24,15 @@ Documentation
 =============
 
 For the moment look at the samples. More detailed docs will come in the Wiki.
+
+Other MvvmCross plugins
+=======================
+
+Other people are doing MvvmCross plugins as well and I think it is great to mention them, as they might have a useful plugin for your MvvmCross project.
+
+- [Kerry Street](https://github.com/kstreet) - [Street.MvxPlugins](https://github.com/kstreet/Street.MvxPlugins)
+- [James Montemagno](https://github.com/jamesmontemagno) for ceton [Mvx.Plugins.Settings](https://github.com/ceton/Mvx.Plugins.Settings)
+- [Geoffrey Huntley](https://github.com/ghuntley) - [Ghuntley.MvxPlugins.FaceTime](https://github.com/ghuntley/Ghuntley.MvxPlugins.FaceTime)
 
 License
 =======
