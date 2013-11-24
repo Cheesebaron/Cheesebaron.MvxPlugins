@@ -90,6 +90,7 @@
     <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
+    <BundleResource Include="Bootstrap\SimpleWebTokenPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -102,72 +103,84 @@
       <Project>{0ebf0d71-7d85-45dc-90dd-b85c50b01fce}</Project>
       <Name>Cheesebaron.MvxPlugins.AzureAccessControl.Touch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControlTouch\Cheesebaron.MvxPlugins.AzureAccessControlTouch.csproj">
-      <Project>{fb118872-3190-4cf5-912e-9b18ba3bb16a}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControlTouch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.SettingsTouch\Cheesebaron.MvxPlugins.SettingsTouch.csproj">
-      <Project>{5bef696e-3b08-4928-82d6-8744406c1f40}</Project>
-      <Name>Cheesebaron.MvxPlugins.SettingsTouch</Name>
+    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+      <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
+      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Touch\Cheesebaron.MvxPlugins.Settings.Touch.csproj">
       <Project>{24ee3829-6818-477a-9750-9d3f3d0013d8}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings.Touch</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample.CoreTouch\AzureAccessControl.Sample.CoreTouch.csproj">
-      <Project>{cf30a9e7-56f1-4487-8cbe-17dca9134a78}</Project>
-      <Name>AzureAccessControl.Sample.CoreTouch</Name>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.Touch\Cheesebaron.MvxPlugins.SimpleWebToken.Touch.csproj">
+      <Project>{0976cce1-ed03-495e-b9cb-83bf0c606230}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken.Touch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
+      <Project>{0e2cfed2-c94c-455b-ae17-0aeefae2a1c5}</Project>
+      <Name>AzureAccessControl.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
     <Reference Include="CrossUI.Core">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Core.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Core.dll</HintPath>
     </Reference>
     <Reference Include="CrossUI.Touch">
-      <HintPath>..\..\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Touch.dll</HintPath>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <!-- Hack to get PCL compiling -->
-    <Reference Include="System.Resources.ResourceManager">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <Private>True</Private>
-    </Reference>
     <!-- End of hack -->
     <Reference Include="monotouch" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

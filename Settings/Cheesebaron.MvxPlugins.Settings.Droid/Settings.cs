@@ -66,6 +66,13 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                 case TypeCode.String:
                     returnVal = SharedPreferences.GetString(key, Convert.ToString(defaultValue));
                     break;
+                case TypeCode.DateTime:
+                    var ticks = SharedPreferences.GetLong(key, -1);
+                    if (ticks == -1)
+                        returnVal = defaultValue;
+                    else
+                        returnVal = new DateTime(ticks);
+                    break;
                 default:
                     returnVal = defaultValue;
                     break;
@@ -100,6 +107,9 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                     break;
                 case TypeCode.String:
                     editor.PutString(key, Convert.ToString(value));
+                    break;
+                case TypeCode.DateTime:
+                    editor.PutLong(key, ((DateTime)(object)value).Ticks);
                     break;
                 default:
                     throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");

@@ -21,6 +21,6 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         WiFi,
         Desktop,
         Wimax,
-        Other
+        Other,
     }
 }
