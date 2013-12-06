@@ -157,9 +157,9 @@
       <Project>{74640D84-B9DE-4295-A28A-AB0E495FA52C}</Project>
       <Name>Connectivity.WindowsPhone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Sample.Core.csproj">
+    <ProjectReference Include="..\Core\Connectivity.Sample.Core.csproj">
       <Project>{2F974916-A087-42DB-8E94-11F04040F7FE}</Project>
-      <Name>Sample.Core</Name>
+      <Name>Connectivity.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

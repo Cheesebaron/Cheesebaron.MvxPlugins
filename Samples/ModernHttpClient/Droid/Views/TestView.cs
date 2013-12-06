@@ -1,0 +1,24 @@
+using Android.App;
+using Android.OS;
+using Cirrious.MvvmCross.Droid.Views;
+using Core.ViewModels;
+
+namespace Droid.Views
+{
+    [Activity(Label = "Test")]
+    public class TestView : MvxActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            SetContentView(Resource.Layout.main);
+        }
+
+        public new TestViewModel ViewModel
+        {
+            get { return (TestViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+    }
+}

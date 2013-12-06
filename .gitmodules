@@ -1,3 +1,6 @@
 [submodule "submodules/MvvmCross-Binaries"]
 	path = submodules/MvvmCross-Binaries
 	url = https://github.com/MvvmCross/MvvmCross-Binaries.git
+[submodule "submodules/Cirrious.FluentLayout"]
+	path = submodules/Cirrious.FluentLayout
+	url = https://github.com/slodge/Cirrious.FluentLayout.git
