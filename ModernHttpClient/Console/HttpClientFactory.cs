@@ -14,18 +14,12 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Plugins;
+using System.Net.Http;
 
-namespace Cheesebaron.MvxPlugins.ModernHttpClient
+namespace Cheesebaron.MvxPlugins.ModernHttpClient.Console
 {
-    public class PluginLoader : IMvxPluginLoader
+    public class HttpClientFactory : IHttpClientFactory
     {
-        public static readonly PluginLoader Instance = new PluginLoader();
-        public void EnsureLoaded()
-        {
-            var manager = Mvx.Resolve<IMvxPluginManager>();
-            manager.EnsurePlatformAdaptionLoaded<PluginLoader>();
-        }
+        public HttpClient Get() { return new HttpClient(); }
     }
 }

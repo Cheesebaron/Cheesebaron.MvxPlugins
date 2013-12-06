@@ -17,15 +17,14 @@
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Plugins;
 
-namespace Cheesebaron.MvxPlugins.ModernHttpClient
+namespace Cheesebaron.MvxPlugins.ModernHttpClient.Console
 {
-    public class PluginLoader : IMvxPluginLoader
+    public class Plugin
+        : IMvxPlugin
     {
-        public static readonly PluginLoader Instance = new PluginLoader();
-        public void EnsureLoaded()
+        public void Load()
         {
-            var manager = Mvx.Resolve<IMvxPluginManager>();
-            manager.EnsurePlatformAdaptionLoaded<PluginLoader>();
+            Mvx.RegisterType<IHttpClientFactory, HttpClientFactory>();
         }
     }
 }
