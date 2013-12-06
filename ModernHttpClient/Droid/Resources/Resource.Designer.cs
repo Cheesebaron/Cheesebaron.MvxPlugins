@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Cheesebaron.MvxPlugins.SimpleWebToken.Droid.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Cheesebaron.MvxPlugins.ModernHttpClient.Droid.Resource", IsApplication=false)]
 
-namespace Cheesebaron.MvxPlugins.SimpleWebToken.Droid
+namespace Cheesebaron.MvxPlugins.ModernHttpClient.Droid
 {
 	
 	
@@ -40,11 +40,14 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f020002
+			public static int ApplicationName = 2130837506;
+			
 			// aapt resource value: 0x7f020001
-			public static int ApplicationName = 2130837505;
+			public static int Hello = 2130837505;
 			
 			// aapt resource value: 0x7f020000
-			public static int Hello = 2130837504;
+			public static int library_name = 2130837504;
 			
 			static String()
 			{
