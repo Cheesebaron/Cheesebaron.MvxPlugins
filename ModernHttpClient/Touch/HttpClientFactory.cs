@@ -23,7 +23,9 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
     {
         public HttpClient Get()
         {
-            return new HttpClient(new AFNetworkHandler());
+            var handler = new AFNetworkHandler();
+            var client = new HttpClient(handler);
+            return client;
         }
     }
 }
