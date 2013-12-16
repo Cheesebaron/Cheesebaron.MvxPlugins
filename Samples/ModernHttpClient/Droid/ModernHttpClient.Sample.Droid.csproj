@@ -5,22 +5,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5858DDBC-9C92-4886-9451-06D83DE4AF19}</ProjectGuid>
+    <ProjectGuid>{56867214-67F6-4608-B6BF-9F6C3938FE9F}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Connectivity.Sample.Droid</RootNamespace>
-    <AssemblyName>Connectivity.Sample.Droid</AssemblyName>
+    <RootNamespace>Droid</RootNamespace>
+    <AssemblyName>Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidSupportedAbis>armeabi%3barmeabi-v7a%3bx86</AndroidSupportedAbis>
-    <AndroidStoreUncompressedFileExtensions />
-    <MandroidI18n />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,53 +57,61 @@
     <Reference Include="Cirrious.MvvmCross.Droid">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="ModernHttpClient.Android, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ModernHttpClient\vendor\MonoAndroid\ModernHttpClient.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="OkHttp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ModernHttpClient\vendor\MonoAndroid\OkHttp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\ConnectivityPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\ModernHttpClientPluginBootstrap.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\FirstView.cs" />
+    <Compile Include="SplashScreenActivity.cs" />
+    <Compile Include="Views\TestView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Layout\first.axml">
+    <AndroidResource Include="Resources\layout\splashscreen.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\main.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\values\mvxbindingattributes.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Connectivity\Core\Connectivity.Core.csproj">
-      <Project>{FD5C4102-936B-4F6A-B7AF-BE5D53B40C90}</Project>
-      <Name>Connectivity.Core</Name>
+    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+      <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
+      <Name>ModernHttpClient.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Connectivity\Droid\Connectivity.Droid.csproj">
-      <Project>{7e6fbc2d-a9b0-42a6-8f84-15dce5a8af7d}</Project>
-      <Name>Connectivity.Droid</Name>
+    <ProjectReference Include="..\..\..\ModernHttpClient\Droid\ModernHttpClient.Droid.csproj">
+      <Project>{b230cacb-2002-469c-900c-ec383eb23182}</Project>
+      <Name>ModernHttpClient.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Sample.Core.csproj">
-      <Project>{2F974916-A087-42DB-8E94-11F04040F7FE}</Project>
-      <Name>Sample.Core</Name>
+    <ProjectReference Include="..\Core\ModernHttpClient.Sample.Core.csproj">
+      <Project>{b4f402f0-6cb0-411d-9f1d-b5de4b42b3eb}</Project>
+      <Name>ModernHttpClient.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
