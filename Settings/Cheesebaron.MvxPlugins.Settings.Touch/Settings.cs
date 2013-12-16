@@ -43,6 +43,9 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                     returnVal = defaults.BoolForKey(key);
                     break;
                 case TypeCode.Int64:
+                    var savedval = defaults.StringForKey(key);
+                    returnVal = Convert.ToInt64(savedval);
+                    break;
                 case TypeCode.Double:
                     returnVal = defaults.DoubleForKey(key);
                     break;
@@ -79,6 +82,8 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                     defaults.SetBool(Convert.ToBoolean(value), key);
                     break;
                 case TypeCode.Int64:
+                    defaults.SetString(Convert.ToString(value), key);
+                    break;
                 case TypeCode.Double:
                     defaults.SetDouble(Convert.ToDouble(value), key);
                     break;
