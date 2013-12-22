@@ -38,8 +38,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.0.14\lib\portable-win+net45+MonoAndroid+MonoTouch+sl40+wp71\Cirrious.CrossCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
