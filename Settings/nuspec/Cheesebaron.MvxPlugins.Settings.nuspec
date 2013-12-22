@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Cheesebaron.MvxPlugins.Settings</id>
+		<version>1.0.0.4</version>
+		<title>MvvmCross Settings Plugin</title>
+		<authors>Ceton Corp, Tomasz Cielecki, Benjamin Mayrargue</authors>
+		<owners>Ceton Corp, Tomasz Cielecki, Benjamin Mayrargue</owners>
+    <licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>This package contains a 'Settings' plugin for MvvmCross v3. Nuget</description>
+		<tags>mvvm mvvmcross xamarin xamarin.android xamarin.ios monodroid monotouch wpf wp wpdev windowsphone</tags>
+		<dependencies>
+		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.0.14" />
+		</dependencies>
+	</metadata>
+	<files>		
+		<!-- PCL -->
+    <file src="..\..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\portable-win+net45+MonoAndroid+MonoTouch+sl50+wp8\Cheesebaron.MvxPlugins.Settings.dll" />
+
+    <!-- phone -->
+    <file src="..\..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\wp8\Cheesebaron.MvxPlugins.Settings.dll" />
+    <file src="..\..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" target="lib\wp8\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" />
+    <file src="BootstrapContent\PluginBootstrap.cs.pp" target="content\wp8\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+
+    <!-- droid -->
+		<file src="..\..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\MonoAndroid\Cheesebaron.MvxPlugins.Settings.dll" />
+		<file src="..\..\bin\Release\Droid\Cheesebaron.MvxPlugins.Settings.Droid.dll" target="lib\MonoAndroid\Cheesebaron.MvxPlugins.Settings.Droid.dll" />
+    <file src="BootstrapContent\PluginBootstrap.cs.pp" target="content\MonoAndroid\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+		
+		<!-- touch -->
+		<file src="..\..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\MonoTouch\Cheesebaron.MvxPlugins.Settings.dll" />
+		<file src="..\..\bin\Release\Touch\Cheesebaron.MvxPlugins.Settings.Touch.dll" target="lib\MonoTouch\Cheesebaron.MvxPlugins.Settings.Touch.dll" />
+    <file src="BootstrapContent\PluginBootstrap.Touch.cs.pp" target="content\MonoTouch\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+		
+	</files>
+</package>
