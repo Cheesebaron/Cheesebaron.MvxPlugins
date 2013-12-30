@@ -86,34 +86,44 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                 throw new ArgumentException("Key must have a value", "key");
 
             var editor = SharedPreferences.Edit();
-            var type = value.GetType();
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+
+            if (value == null)
             {
-                type = Nullable.GetUnderlyingType(type);
+                editor.Remove(key);
             }
-            switch(Type.GetTypeCode(type))
+            else
             {
-                case TypeCode.Boolean:
-                    editor.PutBoolean(key, Convert.ToBoolean(value));
-                    break;
-                case TypeCode.Int64:
-                    editor.PutLong(key, Convert.ToInt64(value));
-                    break;
-                case TypeCode.Int32:
-                    editor.PutInt(key, Convert.ToInt32(value));
-                    break;
-                case TypeCode.Single:
-                    editor.PutFloat(key, Convert.ToSingle(value));
-                    break;
-                case TypeCode.String:
-                    editor.PutString(key, Convert.ToString(value));
-                    break;
-                case TypeCode.DateTime:
-                    editor.PutLong(key, ((DateTime)(object)value).Ticks);
-                    break;
-                default:
-                    throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                var type = value.GetType();
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    type = Nullable.GetUnderlyingType(type);
+                }
+                switch (Type.GetTypeCode(type))
+                {
+                    case TypeCode.Boolean:
+                        editor.PutBoolean(key, Convert.ToBoolean(value));
+                        break;
+                    case TypeCode.Int64:
+                        editor.PutLong(key, Convert.ToInt64(value));
+                        break;
+                    case TypeCode.Int32:
+                        editor.PutInt(key, Convert.ToInt32(value));
+                        break;
+                    case TypeCode.Single:
+                        editor.PutFloat(key, Convert.ToSingle(value));
+                        break;
+                    case TypeCode.String:
+                        editor.PutString(key, Convert.ToString(value));
+                        break;
+                    case TypeCode.DateTime:
+                        editor.PutLong(key, ((DateTime)(object)value).Ticks);
+                        break;
+                    default:
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                }
+                
             }
+
             return editor.Commit();
         }
 
