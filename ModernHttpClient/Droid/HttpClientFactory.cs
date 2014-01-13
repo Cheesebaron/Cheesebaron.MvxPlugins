@@ -23,9 +23,19 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Droid
     {
         public HttpClient Get()
         {
-            var handler = new OkHttpNetworkHandler();
+            var handler = GetHandler();
+            var client = Get(handler);
+            return client;
+        }
+        public HttpClient Get(HttpMessageHandler handler)
+        {
             var client = new HttpClient(handler);
             return client;
+        }
+        public HttpMessageHandler GetHandler()
+        {
+            var handler = new OkHttpNetworkHandler();
+            return handler;
         }
     }
 }

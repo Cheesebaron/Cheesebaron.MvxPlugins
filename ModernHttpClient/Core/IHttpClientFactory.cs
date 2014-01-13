@@ -14,6 +14,7 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using System;
 using System.Net.Http;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient
@@ -21,5 +22,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient
     public interface IHttpClientFactory
     {
         HttpClient Get();
+        HttpClient Get(HttpMessageHandler handler);
+        HttpMessageHandler GetHandler();
     }
 }

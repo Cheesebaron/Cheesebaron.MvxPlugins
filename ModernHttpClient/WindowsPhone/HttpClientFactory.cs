@@ -21,5 +21,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
     public class HttpClientFactory : IHttpClientFactory
     {
         public HttpClient Get() { return new HttpClient(); }
+        public HttpClient Get(HttpMessageHandler handler) { return new HttpClient(handler); }
+        public HttpMessageHandler GetHandler() { return null; }
     }
 }

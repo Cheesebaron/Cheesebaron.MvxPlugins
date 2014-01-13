@@ -18,8 +18,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
+using Cheesebaron.MvxPlugins.ModernHttpClient;
+using Cirrious.CrossCore;
 using Newtonsoft.Json;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
@@ -39,20 +40,21 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
 
         public async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync(Uri identityProviderListServiceEndpoint)
         {
-            using(var client = new HttpClient())
+            var clientFactory = Mvx.Resolve<IHttpClientFactory>();
+            var handler = clientFactory.GetHandler();
+            var outerHandler = new RetryHandler(handler);
+            var client = clientFactory.Get(outerHandler);
+            var json = await client.GetStringAsync(identityProviderListServiceEndpoint);
+            var identityProviders = JsonConvert.DeserializeObject<IEnumerable<IdentityProviderInformation>>(json);
+
+            var windowsLiveId = identityProviders.FirstOrDefault(i => i.Name.Equals("Windows Live™ ID", StringComparison.OrdinalIgnoreCase));
+            if (windowsLiveId != null)
             {
-                var json = await client.GetStringAsync(identityProviderListServiceEndpoint);
-                var identityProviders = JsonConvert.DeserializeObject<IEnumerable<IdentityProviderInformation>>(json);
-
-                var windowsLiveId = identityProviders.FirstOrDefault(i => i.Name.Equals("Windows Live™ ID", StringComparison.OrdinalIgnoreCase));
-                if (windowsLiveId != null)
-                {
-                    var separator = windowsLiveId.LoginUrl.Contains("?") ? "&" : "?";
-                    windowsLiveId.LoginUrl = string.Format(CultureInfo.InvariantCulture, "{0}{1}pcexp=false", windowsLiveId.LoginUrl, separator);
-                }
-
-                return identityProviders;
+                var separator = windowsLiveId.LoginUrl.Contains("?") ? "&" : "?";
+                windowsLiveId.LoginUrl = string.Format(CultureInfo.InvariantCulture, "{0}{1}pcexp=false", windowsLiveId.LoginUrl, separator);
             }
+
+            return identityProviders;
         }
 
         public Uri GetDefaultIdentityProviderListServiceEndpoint(string realm, string serviceNamespace)
