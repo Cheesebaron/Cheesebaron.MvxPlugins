@@ -14,7 +14,6 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using System;
 using System.Net.Http;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient

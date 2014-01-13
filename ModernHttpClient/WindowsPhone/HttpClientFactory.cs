@@ -14,14 +14,27 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using System;
 using System.Net.Http;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
 {
     public class HttpClientFactory : IHttpClientFactory
     {
-        public HttpClient Get() { return new HttpClient(); }
-        public HttpClient Get(HttpMessageHandler handler) { return new HttpClient(handler); }
-        public HttpMessageHandler GetHandler() { return null; }
+        public HttpClient Get()
+        {
+            var handler = GetHandler();
+            var client = Get(handler);
+            return client;
+        }
+
+        public HttpClient Get(HttpMessageHandler handler)
+        {
+            if (handler == null) throw new ArgumentNullException("handler");
+            var client = new HttpClient(handler);
+            return client;
+        }
+
+        public HttpMessageHandler GetHandler() { return new HttpClientHandler(); }
     }
 }
