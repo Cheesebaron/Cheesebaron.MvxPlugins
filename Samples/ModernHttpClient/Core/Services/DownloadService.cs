@@ -18,8 +18,10 @@ namespace Core.Services
         {
             _currentToken = token ?? new CancellationTokenSource();
 
-            var httpClient = _httpClientFactory.Get();
-            var msg = await httpClient.GetAsync(url, _currentToken.Token);
+            var handler = _httpClientFactory.GetHandler();
+            var outerHandler = new RetryHandler(handler, 3);
+            var client = _httpClientFactory.Get(outerHandler);
+            var msg = await client.GetAsync(url, _currentToken.Token);
 
             if (!msg.IsSuccessStatusCode) return "Something derped";
 

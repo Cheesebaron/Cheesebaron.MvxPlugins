@@ -80,7 +80,7 @@ namespace Core.ViewModels
 
                     st.Start();
                     Time = "0";
-
+                    Raw = "";
                     try
                     {
                         if (Cancelable)
