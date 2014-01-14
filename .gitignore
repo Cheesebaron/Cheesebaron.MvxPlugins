@@ -110,3 +110,6 @@ UpgradeLog*.XML
 
 # nupkg for nuget
 *.nupkg
+
+# Xamarin components
+[Cc]omponents
