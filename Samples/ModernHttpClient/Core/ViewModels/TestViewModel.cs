@@ -19,7 +19,7 @@ namespace Core.ViewModels
         public TestViewModel(IDownloadService downloadService)
         {
             _downloadService = downloadService;
-            Url = "http://ostebaronen.dk";
+            Url = "https://bruelandkjaer.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&realm=uri://setupcompanion-dev.noisesentinel.com/&version=1.0";
         }
         
         public string Raw

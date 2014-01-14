@@ -17,8 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
 
@@ -41,6 +43,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
 
+        private bool _loadingIdentityProviders;
+
         private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
         public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
         {
@@ -48,7 +52,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             set
             {
                 _identityProviders = value;
-                RaisePropertyChanged("IdentityProviders");
+                RaisePropertyChanged(() => IdentityProviders);
+            }
+        }
+
+        public bool LoadingIdentityProviders
+        {
+            get { return _loadingIdentityProviders; }
+            set
+            {
+                _loadingIdentityProviders = value;
+                RaisePropertyChanged(() => LoadingIdentityProviders);
             }
         }
 
@@ -71,23 +85,44 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             public string ServiceNamespace { get; set; }
         }
 
+        private Uri _serviceListEndpoint;
+
         public async void Init(NavigationParameters parameters)
         {
-            Uri serviceListEndpoint;
             if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
-                serviceListEndpoint =
+                _serviceListEndpoint =
                     _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
                         parameters.ServiceNamespace);
             }
             else
             {
-                serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
+                _serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
             }
-            var identityProviders = await _identityProviderClient.GetIdentityProviderListAsync(serviceListEndpoint);
-            IdentityProviders =
-                identityProviders.Select(
-                    identityProvider => new DefaultIdentityProviderViewModel(identityProvider) {Parent = this}).ToList();
+
+            await ReloadIdentityProviders();
+        }
+
+        private async Task ReloadIdentityProviders()
+        {
+            LoadingIdentityProviders = true;
+
+            IEnumerable<IdentityProviderInformation> identityProviders = null;
+            try
+            {
+                identityProviders = await _identityProviderClient.GetIdentityProviderListAsync(_serviceListEndpoint);
+            }
+            catch (Exception e)
+            {
+                Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "An exception occured fetching ProviderList: {0}", e.ToLongString());
+            }
+
+            if (identityProviders != null)
+                IdentityProviders =
+                    identityProviders.Select(
+                        identityProvider => new DefaultIdentityProviderViewModel(identityProvider) { Parent = this }).ToList();
+
+            LoadingIdentityProviders = false;
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, 
@@ -97,8 +132,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             _loginIdentityProviderTask = loginIdentityProviderTask;
             _identityProviderClient = client;
 
-            RaisePropertyChanged("IsLoggedIn");
-            RaisePropertyChanged("LoggedInProvider");
+            RaisePropertyChanged(() => IsLoggedIn);
+            RaisePropertyChanged(() => LoggedInProvider);
         }
 
         public ICommand LoginSelectedIdentityProviderCommand
@@ -134,17 +169,22 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 {
                     _loginIdentityProviderTask.ClearAllBrowserCaches();
                     _simpleWebTokenStore.SimpleWebToken = null;
-                    
-                    RaisePropertyChanged("IsLoggedIn");
-                    RaisePropertyChanged("LoggedInProvider");
+
+                    RaisePropertyChanged(() => IsLoggedIn);
+                    RaisePropertyChanged(() => LoggedInProvider);
                 }); 
             }
         }
 
+        public ICommand RefreshIdentityProvidersCommand
+        {
+            get { return new MvxCommand(() => ReloadIdentityProviders(), () => !LoadingIdentityProviders); }
+        }
+
         protected virtual void AssumeCancelled()
         {
-            RaisePropertyChanged("IsLoggedIn");
-            RaisePropertyChanged("LoggedInProvider");
+            RaisePropertyChanged(() => IsLoggedIn);
+            RaisePropertyChanged(() => LoggedInProvider);
 
             NavigateBackCommand.Execute(null);
         }
@@ -157,8 +197,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 return;
             }
 
-            RaisePropertyChanged("IsLoggedIn");
-            RaisePropertyChanged("LoggedInProvider");
+            RaisePropertyChanged(() => IsLoggedIn);
+            RaisePropertyChanged(() => LoggedInProvider);
 
             if (IsLoggedIn)
                 NavigateBackCommand.Execute(null);

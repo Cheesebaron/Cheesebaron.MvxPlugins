@@ -14,9 +14,12 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using System;
 using Android.App;
 using Android.OS;
+using Android.Views;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
+using Cirrious.CrossCore.WeakSubscription;
 using Cirrious.MvvmCross.Droid.Views;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
@@ -25,6 +28,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
     public class DefaultLoginIdentityProviderListView 
         : MvxActivity
     {
+        private IDisposable _loadingToken;
+        private bool _showRefresh;
+
         public new DefaultIdentityProviderCollectionViewModel ViewModel
         {
             get { return (DefaultIdentityProviderCollectionViewModel)base.ViewModel; }
@@ -36,6 +42,36 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.identityproviderlistview);
+
+            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) =>
+            {
+                _showRefresh = !ViewModel.LoadingIdentityProviders;
+                InvalidateOptionsMenu();
+            });
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.login, menu);
+            
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnPrepareOptionsMenu(IMenu menu)
+        {
+            var refresh = menu.FindItem(Resource.Id.mvxplugins_action_relogin);
+            refresh.SetVisible(_showRefresh);
+
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnMenuItemSelected(int featureId, IMenuItem item)
+        {
+            if (item.ItemId != Resource.Id.mvxplugins_action_relogin) 
+                return base.OnMenuItemSelected(featureId, item);
+
+            ViewModel.RefreshIdentityProvidersCommand.Execute(null);
+            return true;
         }
     }
 }
