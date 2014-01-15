@@ -18,10 +18,9 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Views;
-using AppCompatExtensions.Droid;
+using AppCompatExtensions.Droid.v7;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
 using Cirrious.CrossCore.WeakSubscription;
-using Cirrious.MvvmCross.Droid.Views;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {

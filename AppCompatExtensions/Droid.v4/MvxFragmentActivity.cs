@@ -2,8 +2,7 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Support.V7.App;
-using Android.Views;
+using Android.Support.V4.App;
 using Cirrious.CrossCore.Core;
 using Cirrious.CrossCore.Droid.Views;
 using Cirrious.MvvmCross.Binding.BindingContext;
@@ -11,13 +10,13 @@ using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
 
-namespace AppCompatExtensions.Droid
+namespace AppCompatExtensions.Droid.v4
 {
-    public abstract class MvxActionBarCompatAcitivity
-        : MvxActionBarCompatEventSourceActivity
+    public abstract class MvxFragmentActivity
+        : MvxFragmentEventSourceActivity
         , IMvxAndroidView
     {
-        protected MvxActionBarCompatAcitivity()
+        protected MvxFragmentActivity()
         {
             BindingContext = new MvxAndroidBindingContext(this, this);
             this.AddEventListeners();
@@ -55,15 +54,10 @@ namespace AppCompatExtensions.Droid
         protected virtual void OnViewModelSet()
         {
         }
-
-        public new virtual bool OnMenuItemSelected(int featureId, IMenuItem item)
-        {
-            return base.OnMenuItemSelected(featureId, item);
-        }
     }
 
-    public class MvxActionBarCompatEventSourceActivity
-        : ActionBarActivity
+    public class MvxFragmentEventSourceActivity
+        : FragmentActivity
         , IMvxEventSourceActivity
     {
         protected override void OnCreate(Bundle bundle)

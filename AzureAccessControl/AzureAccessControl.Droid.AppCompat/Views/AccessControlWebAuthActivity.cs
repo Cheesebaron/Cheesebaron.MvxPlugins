@@ -19,7 +19,7 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
-using AppCompatExtensions.Droid;
+using AppCompatExtensions.Droid.v7;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 
