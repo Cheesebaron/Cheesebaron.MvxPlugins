@@ -99,13 +99,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.Touch\Cheesebaron.MvxPlugins.AzureAccessControl.Touch.csproj">
-      <Project>{0ebf0d71-7d85-45dc-90dd-b85c50b01fce}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl.Touch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
+      <Name>AzureAccessControl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Touch\AzureAccessControl.Touch.csproj">
+      <Project>{0ebf0d71-7d85-45dc-90dd-b85c50b01fce}</Project>
+      <Name>AzureAccessControl.Touch</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Touch\Cheesebaron.MvxPlugins.Settings.Touch.csproj">
       <Project>{24ee3829-6818-477a-9750-9d3f3d0013d8}</Project>

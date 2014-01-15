@@ -5,45 +5,34 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B37D798A-0D76-4DB5-BE06-4B2C938D3488}</ProjectGuid>
+    <ProjectGuid>{3EF16344-217D-4A0E-BDFC-9E11C13FB224}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AzureAccessControl.Sample.Droid</RootNamespace>
-    <AssemblyName>AzureAccessControl.Sample.Droid</AssemblyName>
+    <RootNamespace>Cheesebaron.MvxPlugins.AzureAccessControl.Droid</RootNamespace>
+    <AssemblyName>Cheesebaron.MvxPlugins.AzureAccessControl.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidSupportedAbis>armeabi%3barmeabi-v7a%3bx86</AndroidSupportedAbis>
-    <AndroidStoreUncompressedFileExtensions />
-    <MandroidI18n />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
     <AndroidUseLatestPlatformSdk />
-    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Debug\Droid\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\bin\Release\Droid\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -74,75 +63,69 @@
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
-    <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\..\Components\xamandroidsupportv7appcompat-7.18.0\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\..\Components\xamandroidsupportv7appcompat-7.18.0\lib\android\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="..\AzureAccessControl.Droid.AppCompat\LoginIdentityProviderTask.cs">
+      <Link>LoginIdentityProviderTask.cs</Link>
+    </Compile>
+    <Compile Include="..\AzureAccessControl.Droid.AppCompat\ManagedAccessControlJavascriptNotify.cs">
+      <Link>ManagedAccessControlJavascriptNotify.cs</Link>
+    </Compile>
+    <Compile Include="..\AzureAccessControl.Droid.AppCompat\Plugin.cs">
+      <Link>Plugin.cs</Link>
+    </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Setup.cs" />
-    <Compile Include="SplashScreenActivity.cs" />
+    <Compile Include="Views\AccessControlWebAuthActivity.cs" />
+    <Compile Include="Views\DefaultLoginIdentityProviderListView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\menu\login.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\mvxplugins_ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\mvxplugins_ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\mvxplugins_ic_action_refresh.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\mvxplugins_ic_action_refresh.png" />
+    <AndroidResource Include="Resources\values\mvxattrs.xml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\menu-v14\login.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\layout\identityproviderlistview.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\layout\listitem_identityprovider.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>AzureAccessControl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Droid.AppCompat\AzureAccessControl.Droid.AppCompat.csproj">
-      <Project>{421a99fa-c25f-481f-a7f6-30670a972b8d}</Project>
-      <Name>AzureAccessControl.Droid.AppCompat</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
-      <Project>{4456f80a-718a-479a-a2d9-f3f986fd82ac}</Project>
-      <Name>Cheesebaron.MvxPlugins.Settings.Droid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
-      <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
-      <Name>AzureAccessControl.Sample.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
-      <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
-      <Name>Cheesebaron.MvxPlugins.Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
-      <Visible>False</Visible>
-      <Version>7.18.0</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-     Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/mvxplugins_action_relogin"
+        android:icon="@drawable/mvxplugins_ic_action_refresh"
+        android:title="@string/mvxplugins_action_relogin"
+        android:showAsAction="always"/>
+</menu>

@@ -45,12 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
+      <Name>AzureAccessControl.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

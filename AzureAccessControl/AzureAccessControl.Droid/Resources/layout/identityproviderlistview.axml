@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/identity_provider_loggedin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        local:MvxBind="Visibility IsLoggedIn, Converter=Visibility">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You are already logged in to" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            local:MvxBind="Text LoggedInProvider" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            local:MvxBind="Click LogOutCommand" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/identity_provider_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/identity_provider_loggedin"
+        android:paddingBottom="15dp"
+        android:text="Select a Identity Provider to Log In to."
+        local:MvxBind="Visibility IsLoggedIn, Converter=InvertedVisibility" />
+    <Mvx.MvxListView
+        android:id="@+id/identity_provider_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/identity_provider_header"
+        local:MvxItemTemplate="@layout/listitem_identityprovider"
+        local:MvxBind="ItemsSource IdentityProviders; ItemClick LoginSelectedIdentityProviderCommand" />
+</RelativeLayout>

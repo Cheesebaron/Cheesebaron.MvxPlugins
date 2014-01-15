@@ -174,13 +174,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone\Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.csproj">
-      <Project>{B6778EAD-258E-475D-8D41-89216E9C3E77}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl\Cheesebaron.MvxPlugins.AzureAccessControl.csproj">
+    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
-      <Name>Cheesebaron.MvxPlugins.AzureAccessControl</Name>
+      <Name>AzureAccessControl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj">
+      <Project>{B6778EAD-258E-475D-8D41-89216E9C3E77}</Project>
+      <Name>AzureAccessControl.WindowsPhone</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
       <Project>{51E76B2B-7276-48CF-AF3F-30D417110B2C}</Project>
