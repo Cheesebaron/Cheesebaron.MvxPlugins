@@ -24,7 +24,7 @@ using Cirrious.MvvmCross.Droid.Views;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
-    [Activity(Label = "Log In")]
+    [Activity(Label = "Log In", NoHistory = true)]
     public class DefaultLoginIdentityProviderListView
         : MvxActivity
     {
