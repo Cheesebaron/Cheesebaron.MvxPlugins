@@ -32,11 +32,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
         {
             if (_loaded) return;
 
-            var instance = new JSONIdentityProviderDiscoveryClient
+            var instance = new JSONIdentityProviderDiscoveryClient();
+            if (_config != default(IMvxPluginConfiguration))
             {
-                Realm = _config.Realm,
-                ServiceNamespace = _config.ServiceNamespace
-            };
+                instance.Realm = _config.Realm;
+                instance.ServiceNamespace = _config.ServiceNamespace;
+            }
+
             Mvx.RegisterSingleton<IIdentityProviderClient>(instance);
             Mvx.RegisterSingleton<ISimpleWebTokenStore>(new SimpleWebTokenStore());
 
