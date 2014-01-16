@@ -21,7 +21,7 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>AzureAccessControl.Sample.WP_$(Configuration)_$(Platform).xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>AzureAccessControl.Sample.WP.App</SilverlightAppEntry>
+    <SilverlightAppEntry>AzureAccessControl.Sample.WindowsPhone.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\ModernHttpClientPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SimpleWebTokenBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
@@ -181,6 +182,14 @@
     <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj">
       <Project>{B6778EAD-258E-475D-8D41-89216E9C3E77}</Project>
       <Name>AzureAccessControl.WindowsPhone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+      <Project>{FA15C468-BF0B-4197-9602-3B49DCB53699}</Project>
+      <Name>ModernHttpClient.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ModernHttpClient\WindowsPhone\ModernHttpClient.WindowsPhone.csproj">
+      <Project>{193918F9-3880-4BA2-A98A-4D0DF7FDE2F7}</Project>
+      <Name>ModernHttpClient.WindowsPhone</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
       <Project>{51E76B2B-7276-48CF-AF3F-30D417110B2C}</Project>
