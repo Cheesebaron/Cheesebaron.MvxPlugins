@@ -25,7 +25,7 @@ using Cirrious.MvvmCross.Plugins.Messenger;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
-    [Activity(Label = "Web Log In", NoHistory = true)]
+    [Activity(Label = "Web Log In")]
     public class AccessControlWebAuthActivity 
         : MvxActivity
     {
