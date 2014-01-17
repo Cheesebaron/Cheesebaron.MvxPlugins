@@ -22,6 +22,7 @@ using Android.Webkit;
 using AppCompatExtensions.Droid.v7;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
+using Java.Interop;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
@@ -54,8 +55,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             _webView.Settings.SetSupportZoom(true);
             _webView.Settings.BuiltInZoomControls = true;
             _webView.Settings.LoadWithOverviewMode = true; //Load 100% zoomed out
-            
-            var notify = new AccessControlJavascriptNotify();
+
+            var notify = new external();
             notify.GotSecurityTokenResponse += GotSecurityTokenResponse;
 
             _webView.AddJavascriptInterface(notify, "external");
@@ -91,16 +92,30 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             Finish();
         }
 
-        public class AccessControlJavascriptNotify : NewAccessControlJavascriptNotify
+        public class external : Java.Lang.Object
         {
             public event EventHandler<RequestSecurityTokenResponseEventArgs> GotSecurityTokenResponse;
 
+            [Export("Notify")]
             [JavascriptInterface]
-            public override void Notify(string securityTokenResponse)
+            public void Notify(string securityTokenResponse)
             {
                 Exception ex = null;
 
-                if (!string.IsNullOrEmpty(securityTokenResponse))
+                if (string.IsNullOrEmpty(securityTokenResponse))
+                    ex = new ArgumentNullException("securityTokenResponse", "Did not recieve a Token Response");
+
+                if (GotSecurityTokenResponse != null)
+                    GotSecurityTokenResponse(this, new RequestSecurityTokenResponseEventArgs(securityTokenResponse, ex));
+            }
+
+            [Export("notify")]
+            [JavascriptInterface]
+            public void notify(string securityTokenResponse)
+            {
+                Exception ex = null;
+
+                if (string.IsNullOrEmpty(securityTokenResponse))
                     ex = new ArgumentNullException("securityTokenResponse", "Did not recieve a Token Response");
 
                 if (GotSecurityTokenResponse != null)
