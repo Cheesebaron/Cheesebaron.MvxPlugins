@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
@@ -196,6 +197,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "Got an empty response from IdentityProvider");
                 return;
             }
+
+            var tokenStore = Mvx.Resolve<ISimpleWebTokenStore>();
+            var tokenFactory = Mvx.Resolve<ISimpleWebToken>();
+
+            var token = tokenFactory.CreateTokenFromRaw(requestSecurityTokenResponse.SecurityToken);
+            tokenStore.SimpleWebToken = token;
 
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
