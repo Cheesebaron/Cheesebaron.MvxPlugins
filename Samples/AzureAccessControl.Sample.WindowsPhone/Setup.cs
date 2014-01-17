@@ -48,8 +48,8 @@ namespace AzureAccessControl.Sample.WindowsPhone
             {
                 return new Cheesebaron.MvxPlugins.AzureAccessControl.AzureAccessControlConfiguration
                 {
-                    Realm = "bruelandkjaer",
-                    ServiceNamespace = "uri://setupcompanion-dev.noisesentinel.com/"
+                    Realm = "tnoisesentinel",
+                    ServiceNamespace = "uri://setupcompanion-test.noisesentinel.com/"
                 };
             }
 

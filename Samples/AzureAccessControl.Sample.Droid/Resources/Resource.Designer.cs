@@ -26,17 +26,22 @@ namespace AzureAccessControl.Sample.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::ModernHttpClient.Resource.String.library_name = global::AzureAccessControl.Sample.Droid.Resource.String.library_name;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxBind;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxItemTemplate;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxLang;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxSource = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxSource;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Drawable.mvxplugins_ic_action_refresh = global::AzureAccessControl.Sample.Droid.Resource.Drawable.mvxplugins_ic_action_refresh;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.MvxBindingTagUnique = global::AzureAccessControl.Sample.Droid.Resource.Id.MvxBindingTagUnique;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_header = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_header;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_listview = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_listview;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_loggedin = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_loggedin;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.Id.mvxplugins_action_relogin;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.identityproviderlistview = global::AzureAccessControl.Sample.Droid.Resource.Layout.identityproviderlistview;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.listitem_identityprovider = global::AzureAccessControl.Sample.Droid.Resource.Layout.listitem_identityprovider;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Menu.login = global::AzureAccessControl.Sample.Droid.Resource.Menu.login;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_action_relogin;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxBind;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxLang;
@@ -47,6 +52,8 @@ namespace AzureAccessControl.Sample.Droid
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
 			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
 			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
+			global::Cheesebaron.MvxPlugins.SimpleWebToken.Droid.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
+			global::Cheesebaron.MvxPlugins.SimpleWebToken.Droid.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -83,6 +90,9 @@ namespace AzureAccessControl.Sample.Droid
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int mvxplugins_ic_action_refresh = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -107,6 +117,9 @@ namespace AzureAccessControl.Sample.Droid
 			
 			// aapt resource value: 0x7f050001
 			public const int identity_provider_loggedin = 2131034113;
+			
+			// aapt resource value: 0x7f050005
+			public const int mvxplugins_action_relogin = 2131034117;
 			
 			// aapt resource value: 0x7f050004
 			public const int textView1 = 2131034116;
@@ -143,6 +156,22 @@ namespace AzureAccessControl.Sample.Droid
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int login = 2131099648;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
@@ -151,6 +180,12 @@ namespace AzureAccessControl.Sample.Droid
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040003
+			public const int library_name = 2130968579;
+			
+			// aapt resource value: 0x7f040002
+			public const int mvxplugins_action_relogin = 2130968578;
 			
 			static String()
 			{

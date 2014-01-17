@@ -28,7 +28,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
             BrowserSignInControl.Navigated += SignInWebBrowserControlNavigated;
             BrowserSignInControl.Navigating += SignInWebBrowserControlNavigating;
             BrowserSignInControl.ScriptNotify += SignInWebBrowserControlScriptNotify;
-            BrowserSignInControl.NavigateToString("<html><head><title></title></head><body></body></html>");
+            BrowserSignInControl.NavigateToString("<html><head><title></title></head><body><h1>Loading...<h1></body></html>");
         }
 
         private async void SignInWebBrowserControlScriptNotify(object sender, NotifyEventArgs e)

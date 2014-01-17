@@ -63,6 +63,7 @@
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,9 +74,6 @@
   <ItemGroup>
     <Compile Include="..\AzureAccessControl.Droid.AppCompat\LoginIdentityProviderTask.cs">
       <Link>LoginIdentityProviderTask.cs</Link>
-    </Compile>
-    <Compile Include="..\AzureAccessControl.Droid.AppCompat\ManagedAccessControlJavascriptNotify.cs">
-      <Link>ManagedAccessControlJavascriptNotify.cs</Link>
     </Compile>
     <Compile Include="..\AzureAccessControl.Droid.AppCompat\Plugin.cs">
       <Link>Plugin.cs</Link>
