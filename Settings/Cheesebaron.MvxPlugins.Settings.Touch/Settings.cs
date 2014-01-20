@@ -63,7 +63,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                     break;
             }
 
-            if (returnVal.Equals(default(T)))
+            if (Equals(default(T), returnVal))
             {
                 returnVal = defaultValue;
             }
