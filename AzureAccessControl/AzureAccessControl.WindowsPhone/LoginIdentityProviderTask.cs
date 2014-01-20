@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.WindowsPhone.Tasks;
 using Cirrious.MvvmCross.Plugins.Messenger;

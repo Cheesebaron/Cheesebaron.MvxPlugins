@@ -71,20 +71,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public static int MvxBindingTagUnique = 2130968576;
+			// aapt resource value: 0x7f050000
+			public static int MvxBindingTagUnique = 2131034112;
 			
-			// aapt resource value: 0x7f040002
-			public static int identity_provider_header = 2130968578;
+			// aapt resource value: 0x7f050002
+			public static int identity_provider_header = 2131034114;
 			
-			// aapt resource value: 0x7f040003
-			public static int identity_provider_listview = 2130968579;
+			// aapt resource value: 0x7f050003
+			public static int identity_provider_listview = 2131034115;
 			
-			// aapt resource value: 0x7f040001
-			public static int identity_provider_loggedin = 2130968577;
+			// aapt resource value: 0x7f050001
+			public static int identity_provider_loggedin = 2131034113;
 			
-			// aapt resource value: 0x7f040004
-			public static int mvxplugins_action_relogin = 2130968580;
+			// aapt resource value: 0x7f050004
+			public static int mvxplugins_action_relogin = 2131034116;
 			
 			static Id()
 			{
@@ -134,8 +134,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050000
-			public static int mvxplugins_action_relogin = 2131034112;
+			// aapt resource value: 0x7f040001
+			public static int ApplicationName = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public static int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public static int mvxplugins_action_relogin = 2130968578;
 			
 			static String()
 			{

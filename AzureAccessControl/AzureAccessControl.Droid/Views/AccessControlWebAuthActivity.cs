@@ -19,8 +19,8 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
+using AppCompatExtensions.Droid.v4;
 using Cirrious.CrossCore;
-using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Java.Interop;
 
@@ -28,7 +28,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
     [Activity(Label = "Web Log In")]
     public class AccessControlWebAuthActivity 
-        : MvxActivity
+        : MvxKillableActivity
     {
         private IMvxMessenger _messageHub;
         private WebView _webView;

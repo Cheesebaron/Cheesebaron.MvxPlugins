@@ -108,6 +108,14 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AppCompatExtensions\CheeseyDroidExtensions\CheeseyDroidExtensions.csproj">
+      <Project>{3a01b788-e1a6-4fd9-b1fb-17ecdbbbe007}</Project>
+      <Name>CheeseyDroidExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AppCompatExtensions\Droid.v4\AppCompatExtensions.Droid.v4.csproj">
+      <Project>{ad0c8f18-0648-4acb-8830-fdf8790840bc}</Project>
+      <Name>AppCompatExtensions.Droid.v4</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>

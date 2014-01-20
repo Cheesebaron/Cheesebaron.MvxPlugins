@@ -27,6 +27,10 @@ namespace AzureAccessControl.Sample.Droid
 		public static void UpdateIdValues()
 		{
 			global::ModernHttpClient.Resource.String.library_name = global::AzureAccessControl.Sample.Droid.Resource.String.library_name;
+			global::CheeseyDroidExtensions.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
+			global::CheeseyDroidExtensions.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
+			global::AppCompatExtensions.Droid.v4.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
+			global::AppCompatExtensions.Droid.v4.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxBind;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxItemTemplate;
@@ -41,6 +45,8 @@ namespace AzureAccessControl.Sample.Droid
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.identityproviderlistview = global::AzureAccessControl.Sample.Droid.Resource.Layout.identityproviderlistview;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.listitem_identityprovider = global::AzureAccessControl.Sample.Droid.Resource.Layout.listitem_identityprovider;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Menu.login = global::AzureAccessControl.Sample.Droid.Resource.Menu.login;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_action_relogin;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxBind;

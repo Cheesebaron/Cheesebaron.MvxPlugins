@@ -16,17 +16,18 @@
 
 using System;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
+using AppCompatExtensions.Droid.v4;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
 using Cirrious.CrossCore.WeakSubscription;
-using Cirrious.MvvmCross.Droid.Views;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
     [Activity(Label = "Log In")]
     public class DefaultLoginIdentityProviderListView
-        : MvxActivity
+        : MvxKillableActivity
     {
         private IDisposable _loadingToken;
         private bool _showRefresh;
@@ -40,6 +41,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+#if __ANDROID_14__
+            Window.RequestFeature(WindowFeatures.ActionBar);
+            ActionBar.SetDisplayHomeAsUpEnabled(ViewModel.CanGoBack);
+#endif
 
             SetContentView(Resource.Layout.identityproviderlistview);
 
@@ -67,11 +73,36 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
         public override bool OnMenuItemSelected(int featureId, IMenuItem item)
         {
-            if (item.ItemId != Resource.Id.mvxplugins_action_relogin) 
-                return base.OnMenuItemSelected(featureId, item);
+#if __ANDROID_14__
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                OnBackPressed();
+                return true;
+            }
+#endif
+            if (item.ItemId == Resource.Id.mvxplugins_action_relogin)
+            {
+                ViewModel.RefreshIdentityProvidersCommand.Execute(null);
+                return true;
+            }
 
-            ViewModel.RefreshIdentityProvidersCommand.Execute(null);
-            return true;
+            return base.OnMenuItemSelected(featureId, item);
+        }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            ViewModel.NavigateBackCommand.Execute(null);
+        }
+
+        public class KillMeBroadcastReceiver : BroadcastReceiver
+        {
+            public Action OnReceiveAction;
+            public override void OnReceive(Context context, Intent intent)
+            {
+                if (OnReceiveAction != null)
+                    OnReceiveAction.Invoke();
+            }
         }
     }
 }

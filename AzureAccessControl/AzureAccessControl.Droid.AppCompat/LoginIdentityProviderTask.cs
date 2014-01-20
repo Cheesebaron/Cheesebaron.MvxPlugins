@@ -18,7 +18,6 @@ using System;
 using Android.Content;
 using Android.Webkit;
 using Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views;
-using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;

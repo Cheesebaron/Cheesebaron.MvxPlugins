@@ -80,16 +80,39 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
+        private bool _canGoBack;
+        public bool CanGoBack
+        {
+            get { return _canGoBack; }
+            set
+            {
+                _canGoBack = value;
+                RaisePropertyChanged(() => CanGoBack);
+            }
+        }
+
         public class NavigationParameters
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
+            public bool Logout { get; set; }
+            public bool? CanGoBack { get; set; }
+            public Action OnLoggedIn { get; set; }
         }
 
         private Uri _serviceListEndpoint;
 
         public async void Init(NavigationParameters parameters)
         {
+            if (parameters != null)
+            {
+                if (parameters.OnLoggedIn != null)
+                    OnLoggedInAction = parameters.OnLoggedIn;
+                if (parameters.Logout)
+                    LogOutCommand.Execute(null);
+                CanGoBack = parameters.CanGoBack.HasValue && parameters.CanGoBack.Value;
+            }
+
             if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
             {
                 _serviceListEndpoint =
@@ -190,6 +213,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             NavigateBackCommand.Execute(null);
         }
 
+        public Action OnLoggedInAction;
+
         protected virtual void OnLoggedIn(RequestSecurityTokenResponse requestSecurityTokenResponse)
         {
             if (requestSecurityTokenResponse == null)
@@ -209,6 +234,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
             if (IsLoggedIn)
                 NavigateBackCommand.Execute(null);
+
+            if (OnLoggedInAction != null)
+                OnLoggedInAction.Invoke();
         }
 
         public ICommand NavigateBackCommand
