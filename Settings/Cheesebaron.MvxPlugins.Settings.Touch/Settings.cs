@@ -37,6 +37,11 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
 
             object returnVal;
             var defaults = NSUserDefaults.StandardUserDefaults;
+
+			if (defaults.ValueForKey ( (NSString) NSObject.FromObject(key)) == null) {
+				return defaultValue;
+			}
+
             switch (Type.GetTypeCode(type))
             {
                 case TypeCode.Boolean:
