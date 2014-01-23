@@ -143,6 +143,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f040002
 			public static int mvxplugins_action_relogin = 2130968578;
 			
+			// aapt resource value: 0x7f040003
+			public static int mvxplugins_dialog_loading = 2130968579;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

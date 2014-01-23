@@ -23,9 +23,10 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="log in" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="HeaderText" HorizontalAlignment="Left" Text="log in" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <Button x:Name="RefreshButton" HorizontalAlignment="Right" Content="Refresh" Command="{Binding RefreshIdentityProvidersCommand}"/>
+        </Grid>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -43,10 +44,10 @@
                         <TextBlock HorizontalAlignment="Right" FontWeight="Bold" Text="{Binding LoggedInProvider}" />
                     </Grid>
 
-                    <Button Content="Log Out" Tap="LogOutButtonTap"/>
+                    <Button x:Name="LogOutButton" Content="Log Out" Tap="LogOutButtonTap"/>
                 </StackPanel>
 
-                <ListBox Grid.Row="1" ItemsSource="{Binding IdentityProviders}" SelectionMode="Single">
+                <ListBox Grid.Row="1" x:Name="ProviderList" ItemsSource="{Binding IdentityProviders}" SelectionMode="Single">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,25" Width="432">
@@ -63,6 +64,11 @@
                 </ListBox>
             </Grid>
         </Grid>
+        
+        <StackPanel x:Name="LoadingPanel" Grid.Row="1" Margin="12,0,12,0" Visibility="Collapsed">
+            <TextBlock Text="Please wait" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            <TextBlock Text="Loading Identity Providers..." Margin="12,5,0,0" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
     </Grid>
 
 </views:BaseLoginIdentityProviderListView>

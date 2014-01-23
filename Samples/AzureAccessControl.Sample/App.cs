@@ -14,7 +14,9 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using System;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
+using Cirrious.CrossCore.UI;
 using Cirrious.MvvmCross.ViewModels;
 
 namespace AzureAccessControl.Sample
@@ -26,7 +28,21 @@ namespace AzureAccessControl.Sample
         {
             Cheesebaron.MvxPlugins.AzureAccessControl.PluginLoader.Instance.EnsureLoaded();
 
-            RegisterAppStart<DefaultIdentityProviderCollectionViewModel>();
+            RegisterAppStart(new ACSSampleAppStart());
+        }
+
+        public class ACSSampleAppStart : MvxNavigatingObject, IMvxAppStart
+        {
+            public void Start(object hint = null)
+            {
+                ShowViewModel<DefaultIdentityProviderCollectionViewModel>(
+                    new DefaultIdentityProviderCollectionViewModel.NavigationParameters
+                    {
+                        BackgroundColor = BitConverter.ToInt32 (new byte [] { 235, 245, 235, 255 }, 0),
+                        ForegroundColor = BitConverter.ToInt32 (new byte[] { 75, 81, 68, 255 }, 0)
+                    });
+                ;
+            }
         }
     }
 }

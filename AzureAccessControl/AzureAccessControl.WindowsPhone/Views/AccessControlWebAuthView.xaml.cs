@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Navigation;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
@@ -23,7 +24,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
             base.OnNavigatedTo(e);
 
             _url = NavigationContext.QueryString["url"];
-            PageName.Text = NavigationContext.QueryString["name"];
 
             BrowserSignInControl.Navigated += SignInWebBrowserControlNavigated;
             BrowserSignInControl.Navigating += SignInWebBrowserControlNavigating;
@@ -34,6 +34,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
         private async void SignInWebBrowserControlScriptNotify(object sender, NotifyEventArgs e)
         {
             BrowserSignInControl.ScriptNotify -= SignInWebBrowserControlScriptNotify;
+            GdProgress.Visibility = Visibility.Visible;
             try
             {
                 var rswt = await RequestSecurityTokenResponse.FromJSONAsync(e.Value);
@@ -50,11 +51,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
 
         private void SignInWebBrowserControlNavigating(object sender, NavigatingEventArgs e)
         {
-            
+            GdProgress.Visibility = Visibility.Visible;
         }
 
         private void SignInWebBrowserControlNavigated(object sender, NavigationEventArgs e)
         {
+            GdProgress.Visibility = Visibility.Collapsed;
             if (e.Uri == null && !string.IsNullOrEmpty(_url))
             {
                 BrowserSignInControl.Navigate(new Uri(_url));

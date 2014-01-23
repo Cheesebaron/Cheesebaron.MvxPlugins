@@ -48,6 +48,7 @@ namespace AzureAccessControl.Sample.Droid
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.ApplicationName = global::AzureAccessControl.Sample.Droid.Resource.String.ApplicationName;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.Hello = global::AzureAccessControl.Sample.Droid.Resource.String.Hello;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_action_relogin;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_dialog_loading = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_dialog_loading;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxBind;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxLang;
@@ -187,11 +188,14 @@ namespace AzureAccessControl.Sample.Droid
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040003
-			public const int library_name = 2130968579;
+			// aapt resource value: 0x7f040004
+			public const int library_name = 2130968580;
 			
 			// aapt resource value: 0x7f040002
 			public const int mvxplugins_action_relogin = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int mvxplugins_dialog_loading = 2130968579;
 			
 			static String()
 			{

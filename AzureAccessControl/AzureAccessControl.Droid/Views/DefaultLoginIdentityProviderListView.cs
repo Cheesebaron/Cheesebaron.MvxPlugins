@@ -16,7 +16,6 @@
 
 using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Views;
 using AppCompatExtensions.Droid.v4;
@@ -30,12 +29,26 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         : MvxKillableActivity
     {
         private IDisposable _loadingToken;
-        private bool _showRefresh;
 
         public new DefaultIdentityProviderCollectionViewModel ViewModel
         {
             get { return (DefaultIdentityProviderCollectionViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
+        }
+
+        private ProgressDialog _loadingDialog;
+        private ProgressDialog LoadingDialog
+        {
+            get
+            {
+                if (_loadingDialog != null) return _loadingDialog;
+
+                _loadingDialog = new ProgressDialog(this) { Indeterminate = true };
+                _loadingDialog.SetProgressStyle(ProgressDialogStyle.Spinner);
+                _loadingDialog.SetMessage(Resources.GetString(Resource.String.mvxplugins_dialog_loading));
+
+                return _loadingDialog;
+            }
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -51,7 +64,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
             _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) =>
             {
-                _showRefresh = !ViewModel.LoadingIdentityProviders;
+                if (ViewModel.LoadingIdentityProviders)
+                    LoadingDialog.Show();
+                else
+                    LoadingDialog.Dismiss();
+
                 InvalidateOptionsMenu();
             });
         }
@@ -66,7 +83,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
             var refresh = menu.FindItem(Resource.Id.mvxplugins_action_relogin);
-            refresh.SetVisible(_showRefresh);
+            refresh.SetVisible(!ViewModel.LoadingIdentityProviders);
 
             return base.OnPrepareOptionsMenu(menu);
         }
@@ -93,16 +110,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         {
             base.OnBackPressed();
             ViewModel.NavigateBackCommand.Execute(null);
-        }
-
-        public class KillMeBroadcastReceiver : BroadcastReceiver
-        {
-            public Action OnReceiveAction;
-            public override void OnReceive(Context context, Intent intent)
-            {
-                if (OnReceiveAction != null)
-                    OnReceiveAction.Invoke();
-            }
         }
     }
 }

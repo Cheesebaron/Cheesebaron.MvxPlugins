@@ -91,13 +91,36 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
+        private int _foregroundColor;
+        public int ForegroundColor
+        {
+            get { return _foregroundColor; }
+            set
+            {
+                _foregroundColor = value;
+                RaisePropertyChanged(() => ForegroundColor);
+            }
+        }
+
+        private int _backgroundColor;
+        public int BackgroundColor
+        {
+            get { return _backgroundColor; }
+            set
+            {
+                _backgroundColor = value;
+                RaisePropertyChanged(() => BackgroundColor);
+            }
+        }
+        
         public class NavigationParameters
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
             public bool Logout { get; set; }
-            public bool? CanGoBack { get; set; }
-            public Action OnLoggedIn { get; set; }
+            public bool CanGoBack { get; set; }
+            public int ForegroundColor { get; set; }
+            public int BackgroundColor { get; set; }
         }
 
         private Uri _serviceListEndpoint;
@@ -106,23 +129,22 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             if (parameters != null)
             {
-                if (parameters.OnLoggedIn != null)
-                    OnLoggedInAction = parameters.OnLoggedIn;
                 if (parameters.Logout)
                     LogOutCommand.Execute(null);
-                CanGoBack = parameters.CanGoBack.HasValue && parameters.CanGoBack.Value;
-            }
+                CanGoBack = parameters.CanGoBack;
 
-            if (parameters != null && !string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
-            {
-                _serviceListEndpoint =
+                ForegroundColor = parameters.ForegroundColor;
+                BackgroundColor = parameters.BackgroundColor;
+
+                if (!string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
+                    _serviceListEndpoint =
                     _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint(parameters.Realm,
                         parameters.ServiceNamespace);
+                else
+                    _serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
             }
             else
-            {
                 _serviceListEndpoint = _identityProviderClient.GetDefaultIdentityProviderListServiceEndpoint();
-            }
 
             await ReloadIdentityProviders();
         }
@@ -213,8 +235,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             NavigateBackCommand.Execute(null);
         }
 
-        public Action OnLoggedInAction;
-
         protected virtual void OnLoggedIn(RequestSecurityTokenResponse requestSecurityTokenResponse)
         {
             if (requestSecurityTokenResponse == null)
@@ -234,9 +254,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
             if (IsLoggedIn)
                 NavigateBackCommand.Execute(null);
-
-            if (OnLoggedInAction != null)
-                OnLoggedInAction.Invoke();
         }
 
         public ICommand NavigateBackCommand

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using Cirrious.CrossCore;
@@ -31,14 +32,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
                 else
                     assumeCancelled();
             });
-            
+
             if (root != null)
             {
                 root.Navigate(
                     new Uri(
                         string.Format(
                             "/Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone;component/Views/AccessControlWebAuthView.xaml?url={0}&name={1}",
-                            System.Net.WebUtility.UrlEncode(url), System.Net.WebUtility.UrlEncode(identityProviderName)),
+                            WebUtility.UrlEncode(url), WebUtility.UrlEncode(identityProviderName)),
                         UriKind.Relative));
             }
         }

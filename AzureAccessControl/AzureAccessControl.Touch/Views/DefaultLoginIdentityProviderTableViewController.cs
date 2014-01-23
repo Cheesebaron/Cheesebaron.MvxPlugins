@@ -18,7 +18,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using BigTed;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
 using Cirrious.CrossCore.Platform;
 using Cirrious.CrossCore.WeakSubscription;
@@ -36,6 +38,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
     public class DefaultLoginIdentityProviderTableViewController 
         : MvxDialogViewController
     {
+        private IDisposable _loggedInToken, _loadingToken;
+
         public DefaultLoginIdentityProviderTableViewController() 
             : base(UITableViewStyle.Grouped, null, true) { }
 
@@ -78,7 +82,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                 if (!Root.Sections.Contains(_loginDetailSection))
                     Root.Add(_loginDetailSection);
 
-            ViewModel.WeakSubscribe(() => ViewModel.IsLoggedIn, (s, e) =>
+            _loggedInToken = ViewModel.WeakSubscribe(() => ViewModel.IsLoggedIn, (s, e) =>
             {
                 if (ViewModel.IsLoggedIn)
                 {
@@ -88,6 +92,37 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                 else if (Root.Sections.Contains(_loginDetailSection))
                     Root.Remove(_loginDetailSection);
             });
+
+            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) =>
+            {
+                if (ViewModel.LoadingIdentityProviders)
+                    BTProgressHUD.Show("Loading Providers...");
+                else
+                    BTProgressHUD.Dismiss();
+            });
+
+            ViewModel.LoginError += (s, e) =>
+            {
+                //TODO: Do something if log-in failed.
+            };
+
+            NavigationItem.RightBarButtonItem = new UIBarButtonItem("Refresh", UIBarButtonItemStyle.Plain,
+                (s, e) => ViewModel.RefreshIdentityProvidersCommand.Execute(null));
+        }
+
+        public Task<int> ShowAlert(string title, string message, params string[] buttons)
+        {
+            var tcs = new TaskCompletionSource<int>();
+            var alert = new UIAlertView
+            {
+                Title = title,
+                Message = message
+            };
+            foreach (var button in buttons)
+                alert.AddButton(button);
+            alert.Clicked += (s, e) => tcs.TrySetResult(e.ButtonIndex);
+            alert.Show();
+            return tcs.Task;
         }
 
         #region Dunno if this can be made differently, lol!
