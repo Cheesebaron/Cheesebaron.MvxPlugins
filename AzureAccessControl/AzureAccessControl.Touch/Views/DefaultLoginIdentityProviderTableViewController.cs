@@ -65,8 +65,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                     new StringElement("Log out")
                     {
                         ShouldDeselectAfterTouch = true
-                    }
-                        .Bind(bindings, element => element.SelectedCommand, vm => vm.LogOutCommand)
+                    } .Bind(bindings, element => element.SelectedCommand, vm => vm.LogOutCommand)
                 };
             }
 
@@ -93,13 +92,19 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                     Root.Remove(_loginDetailSection);
             });
 
-            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) =>
+            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) => InvokeOnMainThread(() =>
             {
                 if (ViewModel.LoadingIdentityProviders)
+                {
+                    UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
                     BTProgressHUD.Show("Loading Providers...");
+                }
                 else
+                {
+                    UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
                     BTProgressHUD.Dismiss();
-            });
+                }    
+            }));
 
             ViewModel.LoginError += (s, e) =>
             {

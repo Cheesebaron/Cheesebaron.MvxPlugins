@@ -23,6 +23,7 @@ using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.ViewModels;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
@@ -43,6 +44,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
+        private readonly IMvxMessenger _messenger;
 
         private bool _loadingIdentityProviders;
 
@@ -151,29 +153,33 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         private async Task ReloadIdentityProviders()
         {
-            LoadingIdentityProviders = true;
-
-            IEnumerable<IdentityProviderInformation> identityProviders = null;
+            if (LoadingIdentityProviders) return;
             try
             {
-                identityProviders = await _identityProviderClient.GetIdentityProviderListAsync(_serviceListEndpoint);
+                LoadingIdentityProviders = true;
+
+                var identityProviders = await _identityProviderClient.GetIdentityProviderListAsync(_serviceListEndpoint);
+
+                if (identityProviders != null)
+                    IdentityProviders =
+                        identityProviders.Select(
+                            identityProvider => new DefaultIdentityProviderViewModel(identityProvider) { Parent = this }).ToList();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "An exception occured fetching ProviderList: {0}", e.ToLongString());
+                Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel",
+                    "An exception occured fetching ProviderList: {0}", e.ToLongString());
             }
-
-            if (identityProviders != null)
-                IdentityProviders =
-                    identityProviders.Select(
-                        identityProvider => new DefaultIdentityProviderViewModel(identityProvider) { Parent = this }).ToList();
-
-            LoadingIdentityProviders = false;
+            finally
+            {
+                LoadingIdentityProviders = false;  
+            }
         }
 
         public DefaultIdentityProviderCollectionViewModel(IIdentityProviderClient client, ISimpleWebTokenStore store, 
-            ILoginIdentityProviderTask loginIdentityProviderTask)
+            ILoginIdentityProviderTask loginIdentityProviderTask, IMvxMessenger messenger)
         {
+            _messenger = messenger;
             _simpleWebTokenStore = store;
             _loginIdentityProviderTask = loginIdentityProviderTask;
             _identityProviderClient = client;
@@ -194,6 +200,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             try
             {
+                LogOutCommand.Execute(null);
                 _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name);
             }
             catch(Exception e)
@@ -208,13 +215,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
+        private MvxCommand _logOutCommand;
         public ICommand LogOutCommand
         {
             get { 
-                return new MvxCommand(() =>
+                return _logOutCommand = _logOutCommand ?? new MvxCommand(() =>
                 {
+                    _messenger.Publish(new LoggedOutMessage(this)
+                    {
+                        IdentityProvider = LoggedInProvider
+                    });
                     _loginIdentityProviderTask.ClearAllBrowserCaches();
-                    _simpleWebTokenStore.SimpleWebToken = null;
 
                     RaisePropertyChanged(() => IsLoggedIn);
                     RaisePropertyChanged(() => LoggedInProvider);
@@ -222,9 +233,15 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
+        private MvxCommand _refreshingIdentityProvidersCommand;
         public ICommand RefreshIdentityProvidersCommand
         {
-            get { return new MvxCommand(() => ReloadIdentityProviders(), () => !LoadingIdentityProviders); }
+            get
+            {
+                return
+                    _refreshingIdentityProvidersCommand =
+                        _refreshingIdentityProvidersCommand ?? new MvxCommand(() => ReloadIdentityProviders());
+            }
         }
 
         protected virtual void AssumeCancelled()

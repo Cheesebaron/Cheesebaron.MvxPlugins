@@ -40,6 +40,7 @@
     <Compile Include="Interfaces\ILoginIdentityProviderTask.cs" />
     <Compile Include="Interfaces\ISimpleWebTokenStore.cs" />
     <Compile Include="EventArguments\RequestSecurityTokenResponseEventArgs.cs" />
+    <Compile Include="LoggedOutMessage.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IdentityProviderInformation.cs" />

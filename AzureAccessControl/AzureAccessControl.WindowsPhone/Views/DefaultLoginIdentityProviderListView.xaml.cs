@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
@@ -35,8 +36,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
                     var color = Color.FromArgb(bytes[3], bytes[2], bytes[1], bytes[0]);
 
                     SystemTray.ForegroundColor = color;
-                    ProviderList.Foreground = RefreshButton.BorderBrush = LogOutButton.Foreground = LogOutButton.BorderBrush =
-                            RefreshButton.Foreground = HeaderText.Foreground = Foreground = new SolidColorBrush(color);
+                    LoadingDesc.Foreground = LoadingLabel.Foreground = ProviderList.Foreground = RefreshButton.BorderBrush = 
+                        LogOutButton.Foreground = LogOutButton.BorderBrush = RefreshButton.Foreground = 
+                        HeaderText.Foreground = Foreground = new SolidColorBrush(color);
                 }
 
                 var progressIndicator = new ProgressIndicator

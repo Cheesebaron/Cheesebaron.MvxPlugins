@@ -73,6 +73,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             });
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _loadingToken.Dispose();
+        }
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.login, menu);

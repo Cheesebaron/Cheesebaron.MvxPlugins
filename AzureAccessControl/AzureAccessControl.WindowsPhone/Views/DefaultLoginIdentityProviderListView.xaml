@@ -51,13 +51,12 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0,0,0,25" Width="432">
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeExtraLarge}">
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" FontSize="{StaticResource PhoneFontSizeExtraLarge}" />
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Tap">
                                         <commands:MvxEventToCommand Command="{Binding LoginIdentityProviderCommand}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                </TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -66,8 +65,8 @@
         </Grid>
         
         <StackPanel x:Name="LoadingPanel" Grid.Row="1" Margin="12,0,12,0" Visibility="Collapsed">
-            <TextBlock Text="Please wait" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-            <TextBlock Text="Loading Identity Providers..." Margin="12,5,0,0" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="LoadingLabel" Text="Please wait" Margin="12,0,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            <TextBlock x:Name="LoadingDesc" Text="Loading Identity Providers..." Margin="12,5,0,0" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
     </Grid>
 

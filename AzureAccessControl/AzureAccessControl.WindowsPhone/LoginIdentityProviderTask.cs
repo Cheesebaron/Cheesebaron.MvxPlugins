@@ -28,9 +28,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
                 _response = message.TokenResponse;
 
                 if (_response != null)
+                {
                     onLoggedIn(_response);
+                }
                 else
+                {
                     assumeCancelled();
+                }
+
+                if (root == null) return;
+                if (root.CanGoBack)
+                    root.GoBack();
             });
 
             if (root != null)
