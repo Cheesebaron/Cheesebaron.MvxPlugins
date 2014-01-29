@@ -40,6 +40,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 
         public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
+            var appContext = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
+            CookieSyncManager.CreateInstance(appContext);
+
+            var manager = CookieManager.Instance;
+            if (manager != null)
+                manager.SetAcceptCookie(true);
+
             _onLoggedIn = onLoggedIn;
             _assumeCancelled = assumeCancelled;
             _messageHub = Mvx.Resolve<IMvxMessenger>();
@@ -48,16 +55,21 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                 _response = message.TokenResponse;
             });
 
-            var intent = new Intent(Mvx.Resolve<IMvxAndroidGlobals>()
-                .ApplicationContext, typeof(AccessControlWebAuthActivity));
+            var intent = new Intent(appContext, typeof(AccessControlWebAuthActivity));
             intent.PutExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.Url", url);
 
             StartActivityForResult(LoginIdentityRequestCode, intent);
         }
 
-        public void ClearAllBrowserCaches()
+        public void ClearAllBrowserCaches() 
         {
-            CookieManager.Instance.RemoveAllCookie();
+            var appContext = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
+            CookieSyncManager.CreateInstance(appContext);
+
+            var manager = CookieManager.Instance;
+            if (manager == null) return;
+            if (manager.HasCookies)
+                manager.RemoveAllCookie();
         }
 
         protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)

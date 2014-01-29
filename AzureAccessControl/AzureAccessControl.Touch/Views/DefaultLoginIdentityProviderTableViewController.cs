@@ -54,6 +54,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
         {
             base.ViewDidLoad();
 
+            if (ViewModel.LoadingIdentityProviders)
+            {
+                UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+                BTProgressHUD.Show("Loading Providers...");    
+            }
+
             var bindings = this.CreateInlineBindingTarget<DefaultIdentityProviderCollectionViewModel>();
 
             if (_loginDetailSection == null)

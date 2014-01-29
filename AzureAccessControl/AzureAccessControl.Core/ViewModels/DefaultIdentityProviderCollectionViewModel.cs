@@ -221,6 +221,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             get { 
                 return _logOutCommand = _logOutCommand ?? new MvxCommand(() =>
                 {
+                    _simpleWebTokenStore.SimpleWebToken = null;
                     _messenger.Publish(new LoggedOutMessage(this)
                     {
                         IdentityProvider = LoggedInProvider
