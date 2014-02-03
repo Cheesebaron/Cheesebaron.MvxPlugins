@@ -103,18 +103,23 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                 if (ViewModel.LoadingIdentityProviders)
                 {
                     UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
+                    if (BTProgressHUD.IsVisible)
+                        BTProgressHUD.Dismiss();
                     BTProgressHUD.Show("Loading Providers...");
                 }
                 else
                 {
                     UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-                    BTProgressHUD.Dismiss();
+                    if (BTProgressHUD.IsVisible)
+                        BTProgressHUD.Dismiss();
                 }    
             }));
 
             ViewModel.LoginError += (s, e) =>
             {
-                //TODO: Do something if log-in failed.
+                if (BTProgressHUD.IsVisible)
+                        BTProgressHUD.Dismiss();
+                BTProgressHUD.ShowErrorWithStatus(e.Message, 4000);
             };
 
             NavigationItem.RightBarButtonItem = new UIBarButtonItem("Refresh", UIBarButtonItemStyle.Plain,

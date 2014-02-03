@@ -169,6 +169,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             {
                 Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel",
                     "An exception occured fetching ProviderList: {0}", e.ToLongString());
+                if (LoginError != null)
+                    LoginError(this, new LoginErrorEventArgs
+                    {
+                        Exception = e,
+                        Message = "Could not fetch Identity Providers, are you connected to the Internet?"
+                    });
             }
             finally
             {

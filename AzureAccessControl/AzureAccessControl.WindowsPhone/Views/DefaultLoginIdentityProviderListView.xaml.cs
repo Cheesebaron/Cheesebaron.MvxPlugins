@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
@@ -64,6 +63,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
 
                     SystemTray.ProgressIndicator.IsVisible = ViewModel.LoadingIdentityProviders;
                 });
+
+                ViewModel.LoginError += (s, a) => MessageBox.Show(a.Message, "Error", MessageBoxButton.OK);
             };
         }
 

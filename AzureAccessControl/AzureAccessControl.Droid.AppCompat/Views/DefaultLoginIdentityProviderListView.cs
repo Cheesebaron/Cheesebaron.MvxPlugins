@@ -66,6 +66,16 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
                 InvalidateOptionsMenu();
             });
+
+            ViewModel.LoginError += (sender, args) =>
+            {
+                var builder = new AlertDialog.Builder(this);
+                builder.SetTitle("Error");
+                builder.SetIcon(Android.Resource.Drawable.IcDialogAlert);
+                builder.SetMessage(args.Message);
+                builder.SetPositiveButton("Dismiss", (s, e) => { });
+                builder.Create().Show();
+            };
         }
 
         protected override void OnDestroy()
