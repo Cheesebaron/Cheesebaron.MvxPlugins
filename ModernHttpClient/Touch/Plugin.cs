@@ -15,6 +15,7 @@
 //---------------------------------------------------------------------------------
 
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
@@ -22,9 +23,41 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
     public class Plugin
         : IMvxPlugin
     {
+        private TouchModernHttpClientConfiguration _config;
+        private bool _loaded;
+
         public void Load()
         {
-            Mvx.RegisterType<IHttpClientFactory, HttpClientFactory>();
+            if (_loaded) return;
+
+            var instance = new HttpClientFactory
+            {
+                DefaultHandler = _config != null ? _config.HttpClientHandler : HttpClientHandlerType.AFNetworkHandler
+            };
+            Mvx.RegisterSingleton<IHttpClientFactory>(instance);
+
+            _loaded = true;
         }
+
+        public void Configure(IMvxPluginConfiguration configuration)
+        {
+            if (configuration != null && !(configuration is TouchModernHttpClientConfiguration))
+                throw new MvxException(
+                    "Plugin configuration only supports instances of TouchModernHttpClientConfiguration, you provided {0}",
+                    configuration.GetType().Name);
+
+            _config = (TouchModernHttpClientConfiguration)configuration;
+        }
+    }
+
+    public class TouchModernHttpClientConfiguration
+        : IMvxPluginConfiguration
+    {
+        public TouchModernHttpClientConfiguration() 
+        {
+            HttpClientHandler = HttpClientHandlerType.AFNetworkHandler;    
+        }
+
+        public HttpClientHandlerType HttpClientHandler { get; set; }
     }
 }
