@@ -82,7 +82,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = true;
             _webView.LoadFinished +=
                 (sender, args) => UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
-            _webView.LoadError += (sender, args) => _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = null });
+
+            _webView.LoadError += (sender, args) =>
+            {
+                //Some providers have this strange Frame Interrupted Error :-/
+                if (args.Error.Code == 102 && args.Error.Domain == "WebKitErrorDomain") return;
+
+                _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = null });
+            };
 
             View.AddSubview(_webView);
 
