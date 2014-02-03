@@ -47,8 +47,8 @@ namespace AzureAccessControl.Sample.Droid
             {
                 return new Cheesebaron.MvxPlugins.AzureAccessControl.AzureAccessControlConfiguration
                 {
-                    Realm = "bruelandkjaer",
-                    ServiceNamespace = "uri://setupcompanion-dev.noisesentinel.com/"
+                    ServiceNamespace = "bruelandkjaer",
+                    Realm = "uri://setupcompanion-dev.noisesentinel.com/"
                 };
             }
             

@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Cheesebaron.MvxPlugins.ModernHttpClient;
 using Cirrious.CrossCore;
@@ -28,7 +29,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
     public class JSONIdentityProviderDiscoveryClient 
         : IIdentityProviderClient
     {
-        private const string Url = "https://{0}.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&realm={1}&version=1.0";
+        private const string Url = "https://{0}.accesscontrol.windows.net/v2/metadata/IdentityProviders.js?protocol=javascriptnotify&version=1.0&realm={1}";
 
         public string Realm { get; set; }
         public string ServiceNamespace { get; set; }
@@ -66,7 +67,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 throw new ArgumentException("Service Namespace cannot be null or empty", "serviceNamespace");
 
             return new Uri(
-                string.Format(CultureInfo.InvariantCulture, Url, realm, System.Net.WebUtility.HtmlDecode(serviceNamespace)),
+                string.Format(CultureInfo.InvariantCulture, Url, serviceNamespace,  WebUtility.HtmlDecode(realm)),
                 UriKind.Absolute);
         }
 
