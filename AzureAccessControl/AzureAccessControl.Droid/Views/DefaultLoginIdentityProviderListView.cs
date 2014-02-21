@@ -29,6 +29,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         : MvxKillableActivity
     {
         private IDisposable _loadingToken;
+        private IDisposable _loadingAfterLoginToken;
 
         public new DefaultIdentityProviderCollectionViewModel ViewModel
         {
@@ -72,6 +73,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
                 InvalidateOptionsMenu();
             });
 
+            _loadingAfterLoginToken = ViewModel.WeakSubscribe(() => ViewModel.ShowProgressAfterLogin, (s, e) =>
+            {
+                if (ViewModel.ShowProgressAfterLogin)
+                    LoadingDialog.Show();
+                else
+                    LoadingDialog.Dismiss();
+            });
+
             ViewModel.LoginError += (sender, args) =>
             {
                 var builder = new AlertDialog.Builder(this);
@@ -81,12 +90,16 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
                 builder.SetPositiveButton("Dismiss", (s, e) => { });
                 builder.Create().Show();
             };
+
+            if (ViewModel.LoadingIdentityProviders)
+                LoadingDialog.Show();
         }
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
             _loadingToken.Dispose();
+            _loadingAfterLoginToken.Dispose();
+            base.OnDestroy();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

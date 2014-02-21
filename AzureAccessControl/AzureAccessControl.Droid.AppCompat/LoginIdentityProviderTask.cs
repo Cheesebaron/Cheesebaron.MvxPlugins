@@ -22,7 +22,6 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.CrossCore.Droid.Views;
-using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Plugins.Messenger;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
@@ -38,7 +37,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
         private MvxSubscriptionToken _subscriptionToken;
         private RequestSecurityTokenResponse _response;
 
-        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
+        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null, bool goBack = true)
         {
             var appContext = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
             CookieSyncManager.CreateInstance(appContext);
@@ -74,8 +73,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 
         protected override void ProcessMvxIntentResult(MvxIntentResultEventArgs result)
         {
-            Mvx.Trace("ProcessMvxIntentResult started...");
-
             switch(result.RequestCode)
             {
                 case LoginIdentityRequestCode:
@@ -90,8 +87,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                     break;
                 default:
                     // ignore this result - it's not for us
-                    MvxTrace.Trace("Unexpected request received from MvxIntentResult - request was {0}",
+                    Mvx.Trace("Unexpected request received from MvxIntentResult - request was {0}",
                                    result.RequestCode);
+                    _assumeCancelled();
                     break;
             }
         }
