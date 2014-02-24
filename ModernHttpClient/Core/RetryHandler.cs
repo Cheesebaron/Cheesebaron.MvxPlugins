@@ -11,7 +11,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient
     {
         private readonly int _maxRetries;
 
-        public RetryHandler(HttpMessageHandler innerHandler, int maxRetries = 3)
+        public RetryHandler(HttpMessageHandler innerHandler, int maxRetries = 5)
             : base(innerHandler) { _maxRetries = maxRetries; }
 
         protected override async Task<HttpResponseMessage> SendAsync(
