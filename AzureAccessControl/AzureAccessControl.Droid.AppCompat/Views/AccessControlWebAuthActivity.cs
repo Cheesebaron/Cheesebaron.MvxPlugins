@@ -32,6 +32,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
     {
         private IMvxMessenger _messageHub;
         private WebView _webView;
+        private external _notify;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -47,19 +48,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             {
                 VerticalScrollBarEnabled = true,
                 HorizontalScrollBarEnabled = true,
-                ScrollBarStyle = ScrollbarStyles.OutsideOverlay,
-                ScrollbarFadingEnabled = true
+                ScrollbarFadingEnabled = false,
+                ScrollBarStyle = ScrollbarStyles.OutsideOverlay
             };
 
             _webView.Settings.JavaScriptEnabled = true;
             _webView.Settings.SetSupportZoom(true);
             _webView.Settings.BuiltInZoomControls = true;
-            _webView.Settings.LoadWithOverviewMode = true; //Load 100% zoomed out
+            _webView.Settings.LoadWithOverviewMode = true;
+            _webView.Settings.UseWideViewPort = true;
 
-            var notify = new external();
-            notify.GotSecurityTokenResponse += GotSecurityTokenResponse;
+            _notify = new external();
+            _notify.GotSecurityTokenResponse += GotSecurityTokenResponse;
 
-            _webView.AddJavascriptInterface(notify, "external");
+            _webView.AddJavascriptInterface(_notify, "external");
             _webView.SetWebViewClient(new AuthWebViewClient());
             _webView.SetWebChromeClient(new AuthWebChromeClient(this));
 
@@ -70,6 +72,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
         private async void GotSecurityTokenResponse(object sender, RequestSecurityTokenResponseEventArgs e)
         {
+            _notify.GotSecurityTokenResponse -= GotSecurityTokenResponse;
             if (e.Error == null)
             {
                 var token = await RequestSecurityTokenResponse.FromJSONAsync(e.Response);

@@ -16,11 +16,14 @@
 
 using System;
 using System.Net.Http;
+using Cirrious.CrossCore;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
 {
     public class HttpClientFactory : IHttpClientFactory
     {
+        public HttpClientHandlerType DefaultHandler { get; set; }
+
         public HttpClient Get()
         {
             var handler = GetHandler();
@@ -35,6 +38,24 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
             return client;
         }
 
-        public HttpMessageHandler GetHandler() { return new HttpClientHandler(); }
+        public HttpMessageHandler GetHandler(HttpClientHandlerType handlerType)
+        {
+            switch (handlerType)
+            {
+                case HttpClientHandlerType.CFNetworkHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use CFNetworkHandler on WP defaulting to HttpClientHandler");
+                    return new HttpClientHandler();
+                case HttpClientHandlerType.AFNetworkHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use AFNetworkHandler on WP defaulting to HttpClientHandler");
+                    return new HttpClientHandler();
+                case HttpClientHandlerType.OkHttpHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use AFNetworkHandler on WP defaulting to HttpClientHandler");
+                    return new HttpClientHandler();
+                default:
+                    return new HttpClientHandler();
+            }
+        }
+
+        public HttpMessageHandler GetHandler() { return GetHandler(DefaultHandler); }
     }
 }

@@ -15,25 +15,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You are already logged in to" />
+            android:text="You are already logged in" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             local:MvxBind="Text LoggedInProvider" />
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log out"
-            local:MvxBind="Click LogOutCommand" />
+            android:text="Select one of the Identity Providers below to change user" />
     </LinearLayout>
     <TextView
         android:id="@+id/identity_provider_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_below="@+id/identity_provider_loggedin"
         android:paddingBottom="15dp"
-        android:text="Select a Identity Provider to Log In to."
+        android:text="Select a Identity Provider to Log In to"
         local:MvxBind="Visibility IsLoggedIn, Converter=InvertedVisibility" />
     <Mvx.MvxListView
         android:id="@+id/identity_provider_listview"

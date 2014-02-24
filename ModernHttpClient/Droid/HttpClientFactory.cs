@@ -16,12 +16,15 @@
 
 using System;
 using System.Net.Http;
+using Cirrious.CrossCore;
 using ModernHttpClient;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Droid
 {
     public class HttpClientFactory : IHttpClientFactory
     {
+        public HttpClientHandlerType DefaultHandler { get; set; }
+
         public HttpClient Get()
         {
             var handler = GetHandler();
@@ -36,10 +39,26 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Droid
             return client;
         }
 
+        public HttpMessageHandler GetHandler(HttpClientHandlerType handlerType)
+        {
+            switch (handlerType)
+            {
+                case HttpClientHandlerType.CFNetworkHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use CFNetworkHandler on Droid defaulting to OkHttpNetworkHandler");
+                    return new OkHttpNetworkHandler();
+                case HttpClientHandlerType.AFNetworkHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use AFNetworkHandler on Droid defaulting to OkHttpNetworkHandler");
+                    return new OkHttpNetworkHandler();
+                case HttpClientHandlerType.HttpClientHandler:
+                    return new HttpClientHandler();
+                default:
+                    return new OkHttpNetworkHandler();
+            }
+        }
+
         public HttpMessageHandler GetHandler()
         {
-            var handler = new OkHttpNetworkHandler();
-            return handler;
+            return GetHandler(DefaultHandler);
         }
     }
 }

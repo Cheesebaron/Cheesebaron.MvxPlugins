@@ -16,12 +16,15 @@
 
 using System;
 using System.Net.Http;
+using Cirrious.CrossCore;
 using ModernHttpClient;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
 {
     public class HttpClientFactory : IHttpClientFactory
     {
+        public HttpClientHandlerType DefaultHandler { get; set; }
+
         public HttpClient Get()
         {
             var handler = GetHandler();
@@ -31,8 +34,23 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
 
         public HttpMessageHandler GetHandler()
         {
-            var handler = new AFNetworkHandler();
-            return handler;
+            return GetHandler(DefaultHandler);
+        }
+
+        public HttpMessageHandler GetHandler(HttpClientHandlerType handlerType)
+        {
+            switch (handlerType)
+            {
+                case HttpClientHandlerType.CFNetworkHandler:
+                    return new CFNetworkHandler();
+                case HttpClientHandlerType.HttpClientHandler:
+                    return new HttpClientHandler();
+                case HttpClientHandlerType.OkHttpHandler:
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use OkHttpNetworkHandler on iOS defaulting to AFNetworkHandler");
+                    return new AFNetworkHandler();
+                default:
+                    return new AFNetworkHandler();
+            }
         }
 
         public HttpClient Get(HttpMessageHandler handler)

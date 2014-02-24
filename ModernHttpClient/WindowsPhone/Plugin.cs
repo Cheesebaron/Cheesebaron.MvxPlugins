@@ -22,9 +22,19 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
     public class Plugin
         : IMvxPlugin
     {
+        private bool _loaded;
+
         public void Load()
         {
-            Mvx.RegisterType<IHttpClientFactory, HttpClientFactory>();
+            if (_loaded) return;
+
+            var instance = new HttpClientFactory
+            {
+                DefaultHandler = HttpClientHandlerType.HttpClientHandler
+            };
+            Mvx.RegisterSingleton<IHttpClientFactory>(instance);
+
+            _loaded = true;
         }
     }
 }

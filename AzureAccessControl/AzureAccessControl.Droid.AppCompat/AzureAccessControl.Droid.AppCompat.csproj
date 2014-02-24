@@ -106,16 +106,6 @@
     <Compile Include="Views\DefaultLoginIdentityProviderListView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\identityproviderlistview.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_identityprovider.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\mvxattrs.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +136,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\mvxplugins_ic_action_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\AzureAccessControl.Droid\Resources\layout\identityproviderlistview.axml">
+      <Link>Resources\layout\identityproviderlistview.axml</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\AzureAccessControl.Droid\Resources\layout\listitem_identityprovider.axml">
+      <Link>Resources\layout\listitem_identityprovider.axml</Link>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

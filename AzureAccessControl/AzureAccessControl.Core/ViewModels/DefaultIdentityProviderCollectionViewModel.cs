@@ -207,7 +207,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             try
             {
                 LogOutCommand.Execute(null);
-                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name);
+                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name, CanGoBack);
             }
             catch(Exception e)
             {
@@ -259,11 +259,24 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             NavigateBackCommand.Execute(null);
         }
 
+        private bool _showProgressAfterLogin;
+        public bool ShowProgressAfterLogin
+        {
+            get { return _showProgressAfterLogin; }
+            set
+            {
+                _showProgressAfterLogin = value;
+                RaisePropertyChanged(() => ShowProgressAfterLogin);
+            }
+        }
+
         protected virtual void OnLoggedIn(RequestSecurityTokenResponse requestSecurityTokenResponse)
         {
             if (requestSecurityTokenResponse == null)
             {
                 Mvx.TaggedTrace(MvxTraceLevel.Error, "DefaultIdentityProviderCollectionViewModel", "Got an empty response from IdentityProvider");
+                if (LoginError != null)
+                    LoginError(this, new LoginErrorEventArgs { Message = "Got an empty response from IdentityProvider, try logging in again."});
                 return;
             }
 
@@ -273,10 +286,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             var token = tokenFactory.CreateTokenFromRaw(requestSecurityTokenResponse.SecurityToken);
             tokenStore.SimpleWebToken = token;
 
+            if (!CanGoBack)
+                ShowProgressAfterLogin = true;
+
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
 
-            if (IsLoggedIn)
+            if (tokenStore.IsValid() && CanGoBack)
                 NavigateBackCommand.Execute(null);
         }
 
