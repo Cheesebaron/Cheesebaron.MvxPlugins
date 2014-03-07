@@ -117,3 +117,5 @@ UpgradeLog*.XML
 # Don't add ModernHttpClient binaries
 ModernHttpClient/vendor/MonoAndroid/*
 ModernHttpClient/vendor/MonoTouch/*
+
+*.mdb
