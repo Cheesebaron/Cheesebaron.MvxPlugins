@@ -1,10 +1,13 @@
-﻿namespace Cheesebaron.MvxPlugins.ModernHttpClient
+﻿using System;
+
+namespace Cheesebaron.MvxPlugins.ModernHttpClient
 {
     public enum HttpClientHandlerType
     {
         /// <summary>
-        /// OBSOLETE!!! AFNetworkHandler (Only available on iOS)
+        /// AFNetworkHandler (Only available on iOS)
         /// </summary>
+        [Obsolete("Use CFNetworkHandler instead")]
         AFNetworkHandler = 0,
         /// <summary>
         /// CFNetworkHandler (Only available on iOS)
