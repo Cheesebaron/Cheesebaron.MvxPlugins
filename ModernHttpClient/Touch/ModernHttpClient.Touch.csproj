@@ -45,14 +45,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="AFNetworking, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\vendor\MonoTouch\AFNetworking.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.CrossCore.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient.iOS, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ModernHttpClient.iOS, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\vendor\MonoTouch\ModernHttpClient.iOS.dll</HintPath>
     </Reference>

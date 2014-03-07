@@ -17,6 +17,7 @@
 using System;
 using System.Net.Http;
 using Cirrious.CrossCore;
+
 using ModernHttpClient;
 
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
@@ -41,15 +42,17 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
         {
             switch (handlerType)
             {
-                case HttpClientHandlerType.CFNetworkHandler:
-                    return new CFNetworkHandler();
+                //case HttpClientHandlerType.CFNetworkHandler:
+                //    return new CFNetworkHandler();
                 case HttpClientHandlerType.HttpClientHandler:
                     return new HttpClientHandler();
+                case HttpClientHandlerType.NSUrlSessionHandler:
+                    return new NSUrlSessionHandler();
                 case HttpClientHandlerType.OkHttpHandler:
-                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use OkHttpNetworkHandler on iOS defaulting to AFNetworkHandler");
-                    return new AFNetworkHandler();
+                    Mvx.TaggedTrace("HttpClientFactory", "Cannot use OkHttpNetworkHandler on iOS defaulting to NSUrlSessionHandler");
+                    return new NSUrlSessionHandler();
                 default:
-                    return new AFNetworkHandler();
+                    return new NSUrlSessionHandler();
             }
         }
 

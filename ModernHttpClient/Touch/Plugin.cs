@@ -32,7 +32,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
 
             var instance = new HttpClientFactory
             {
-                DefaultHandler = _config != null ? _config.HttpClientHandler : HttpClientHandlerType.AFNetworkHandler
+                DefaultHandler = _config != null ? _config.HttpClientHandler : HttpClientHandlerType.NSUrlSessionHandler
             };
             Mvx.RegisterSingleton<IHttpClientFactory>(instance);
 
@@ -55,7 +55,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
     {
         public TouchModernHttpClientConfiguration() 
         {
-            HttpClientHandler = HttpClientHandlerType.AFNetworkHandler;    
+            HttpClientHandler = HttpClientHandlerType.NSUrlSessionHandler;    
         }
 
         public HttpClientHandlerType HttpClientHandler { get; set; }
