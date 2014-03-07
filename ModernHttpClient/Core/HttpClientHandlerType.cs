@@ -7,7 +7,7 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient
         /// <summary>
         /// AFNetworkHandler (Only available on iOS)
         /// </summary>
-        [Obsolete("Use CFNetworkHandler instead")]
+        [Obsolete("Use CFNetworkHandler or NSUrlSessionHandler instead")]
         AFNetworkHandler = 0,
         /// <summary>
         /// CFNetworkHandler (Only available on iOS)
