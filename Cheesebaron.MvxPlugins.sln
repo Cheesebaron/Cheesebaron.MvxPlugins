@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Core", "AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj", "{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.WindowsPhone", "AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj", "{B6778EAD-258E-475D-8D41-89216E9C3E77}"
@@ -130,13 +132,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheeseyDroidExtensions", "AppCompatExtensions\CheeseyDroidExtensions\CheeseyDroidExtensions.csproj", "{3A01B788-E1A6-4FD9-B1FB-17ECDBBBE007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Samples\SMS\Core\Core.csproj", "{461A84F4-682C-4ADB-8E2F-F34A8F0E0BCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Sample.Core", "Samples\SMS\Core\SMS.Sample.Core.csproj", "{461A84F4-682C-4ADB-8E2F-F34A8F0E0BCA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SMS", "SMS", "{DC46D7D7-16D4-49E3-B2B6-913255810CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid", "Samples\SMS\Droid\Droid.csproj", "{D4B05DF2-BDF6-414B-A633-13AD329EA283}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Sample.Droid", "Samples\SMS\Droid\SMS.Sample.Droid.csproj", "{D4B05DF2-BDF6-414B-A633-13AD329EA283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Touch", "Samples\SMS\Touch\Touch.csproj", "{1D1905FB-A50E-4029-9E1F-7F7D121F5618}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Sample.Touch", "Samples\SMS\Touch\SMS.Sample.Touch.csproj", "{1D1905FB-A50E-4029-9E1F-7F7D121F5618}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1648,6 +1650,7 @@ Global
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.AppStore|Mixed Platforms.Build.0 = AppStore|iPhone
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{C09B6462-3ADB-4DC0-B891-B6FF7D9B45E7}.Debug|iPhone.Build.0 = Debug|iPhone
@@ -1926,6 +1929,7 @@ Global
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.AppStore|Mixed Platforms.Deploy.0 = AppStore|iPhone
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{1D1905FB-A50E-4029-9E1F-7F7D121F5618}.Debug|iPhone.Build.0 = Debug|iPhone

@@ -100,9 +100,9 @@
       <Project>{7412ebe1-49d3-44e0-b3a0-5db66d7e3f99}</Project>
       <Name>SMS.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\Core\SMS.Sample.Core.csproj">
       <Project>{461a84f4-682c-4adb-8e2f-f34a8f0e0bca}</Project>
-      <Name>Core</Name>
+      <Name>SMS.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
