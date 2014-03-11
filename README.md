@@ -32,11 +32,14 @@ Other MvvmCross plugins
 
 Other people are doing MvvmCross plugins as well and I think it is great to mention them, as they might have a useful plugin for your MvvmCross project.
 
-- [Kerry Street](https://github.com/kstreet) - [Street.MvxPlugins](https://github.com/kstreet/Street.MvxPlugins)
-- [James Montemagno](https://github.com/jamesmontemagno) for ceton [Mvx.Plugins.Settings](https://github.com/ceton/Mvx.Plugins.Settings)
-- [Geoffrey Huntley](https://github.com/ghuntley) - [Ghuntley.MvxPlugins.FaceTime](https://github.com/ghuntley/Ghuntley.MvxPlugins.FaceTime)
-- [Artur Rybak](https://github.com/wedkarz) - [IHS.MvvmCross.Plugins.Keychain](https://github.com/wedkarz/IHS.MvvmCross.Plugins.Keychain)
-- [Allan Ritchie](https://github.com/aritchie) - [acrmvvmcross](https://github.com/aritchie/acrmvvmcross)
+| Dev        | Plugin           |
+| ------------- |-------------|
+| [Kerry Street](https://github.com/kstreet)                       | [Street.MvxPlugins](https://github.com/kstreet/Street.MvxPlugins)|
+| [James Montemagno](https://github.com/jamesmontemagno) for ceton | [Mvx.Plugins.Settings](https://github.com/ceton/Mvx.Plugins.Settings) |
+| [Geoffrey Huntley](https://github.com/ghuntley)                  | [Ghuntley.MvxPlugins.FaceTime](https://github.com/ghuntley/Ghuntley.MvxPlugins.FaceTime)     |
+| [Artur Rybak](https://github.com/wedkarz)                        | [IHS.MvvmCross.Plugins.Keychain](https://github.com/wedkarz/IHS.MvvmCross.Plugins.Keychain) |
+| [Allan Ritchie](https://github.com/aritchie)                     | [acrmvvmcross](https://github.com/aritchie/acrmvvmcross) |
+
 
 License
 =======
