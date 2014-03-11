@@ -6,7 +6,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 - **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
 - **Azure Access Control** This plugin provides Authentication against Windows Azure ACS (don't confuse it with Windows Azure Mobile Services).
 - **Connectivity** A plugin for getting network information and status.
-- **ModernHttpClient** A wrapper around [Paul Betts's ModernHttpClient](https://github.com/paulcbetts/ModernHttpClient).
+- **ModernHttpClient** A wrapper around [Paul Betts'][paulb] [ModernHttpClient][modern].
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
 - **SMS** A simple task to send SMS using default/install SMS applications on device.
@@ -16,11 +16,11 @@ Thanks to
 =========
 
 - [Stuart Lodge][slodge] and the community for [MvvmCross][mvx]
-- Microsoft for [Windows Azure Toolkits](https://github.com/WindowsAzure-Toolkits) which the Azure Access Control plugin is based on.
-- [James Montemagno](https://github.com/jamesmontemagno) for his [Settings](https://github.com/ceton/Mvx.Plugins.Settings) plugin, which the **Settings** plugin in this repository is based on.
+- Microsoft for [Windows Azure Toolkits][wat] which the Azure Access Control plugin is based on.
+- [James Montemagno][james] for his [Settings][ceton] plugin, which the **Settings** plugin in this repository is based on.
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
-- [Xamarin](http://xamarin.com) for providing a [reachability sample](https://github.com/xamarin/monotouch-samples/blob/master/ReachabilitySample/reachability.cs) for Touch projects.
-- [Paul Bett's](https://github.com/paulcbetts) for his great work on [ModernHttpClient](https://github.com/paulcbetts/ModernHttpClient).
+- [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
+- [Paul Betts][paulb] for his great work on [ModernHttpClient][modern].
 
 Documentation
 =============
@@ -47,7 +47,7 @@ License
 - **AppId** plugin is licensed under [Apache 2.0][apache]
 - **Azure Access Control** plugin is licensed under [Apache 2.0][apache]
 - **Connectivity** plugin is licensed under [Apache 2.0][apache]
-- **ModernHttpClient** plugin is licensed under [Apache 2.0][apache] the assemblies used inside of it are [AFNetworking](http://afnetworking.com/), which is under the [MIT License][mit] and [OkHttp](http://square.github.io/okhttp/) which is licensed under [Apache 2.0][apache]. [ModernHttpClient](https://github.com/paulcbetts/ModernHttpClient) which this plugin wraps is under the [following license](https://github.com/paulcbetts/ModernHttpClient/blob/master/COPYING).
+- **ModernHttpClient** plugin is licensed under [Apache 2.0][apache] the assemblies used inside of it are [AFNetworking](http://afnetworking.com/), which is under the [MIT License][mit] and [OkHttp](http://square.github.io/okhttp/) which is licensed under [Apache 2.0][apache]. [ModernHttpClient][modern] which this plugin wraps is under the [following license](https://github.com/paulcbetts/ModernHttpClient/blob/master/COPYING).
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
 - **SMS** plugin is licensed under [Apache 2.0][apache]
@@ -66,3 +66,8 @@ License
 [acrmvvmcross]: https://github.com/aritchie/acrmvvmcross
 [slodge]: https://github.com/slodge
 [mvx]: https://github.com/slodge/MvvmCross
+[wat]: https://github.com/WindowsAzure-Toolkits
+[xam]: http://xamarin.com
+[modern]: https://github.com/paulcbetts/ModernHttpClient
+[paulb]: https://github.com/paulcbetts
+[reach]: https://github.com/xamarin/monotouch-samples/blob/master/ReachabilitySample/reachability.cs
