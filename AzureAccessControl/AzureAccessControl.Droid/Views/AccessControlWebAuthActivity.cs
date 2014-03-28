@@ -19,16 +19,25 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
-using AppCompatExtensions.Droid.v4;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Java.Interop;
 
+#if __APPCOMPAT__
+using AppCompatExtensions.Droid.v7;
+#else
+using AppCompatExtensions.Droid.v4;
+#endif
+
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
     [Activity(Label = "Web Log In")]
-    public class AccessControlWebAuthActivity 
+    public class AccessControlWebAuthActivity
+#if __APPCOMPAT__
+        : MvxActionBarCompatAcitivity
+#else
         : MvxKillableActivity
+#endif
     {
         private IMvxMessenger _messageHub;
         private WebView _webView;
@@ -42,6 +51,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
             var url = Intent.GetStringExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.Url");
 
+#if __APPCOMPAT__
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+#elif _ANDROID_14__
+            Window.RequestFeature(WindowFeatures.ActionBar | WindowFeatures.Progress);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+#endif
             Window.RequestFeature(WindowFeatures.Progress);
 
             _webView = new WebView(this)
@@ -124,6 +139,34 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
                 if (GotSecurityTokenResponse != null)
                     GotSecurityTokenResponse(this, new RequestSecurityTokenResponseEventArgs(securityTokenResponse, ex));
             }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+#if __APPCOMPAT__
+            if(item.ItemId == Resource.Id.home)
+            {
+                OnBackPressed();
+                return true;
+            }
+#elif __ANDROID_14__
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                OnBackPressed();
+                return true;
+            }
+#endif
+
+ 	        return base.OnOptionsItemSelected(item);
+        }
+
+        public override void OnBackPressed()
+        {
+            if (Parent == null)
+                SetResult(Result.Canceled);
+            else
+                Parent.SetResult(Result.Canceled);
+            Finish();
         }
 
         private class AuthWebViewClient : WebViewClient { }

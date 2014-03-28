@@ -72,12 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AzureAccessControl.Droid.AppCompat\LoginIdentityProviderTask.cs">
-      <Link>LoginIdentityProviderTask.cs</Link>
-    </Compile>
-    <Compile Include="..\AzureAccessControl.Droid.AppCompat\Plugin.cs">
-      <Link>Plugin.cs</Link>
-    </Compile>
+    <Compile Include="LoginIdentityProviderTask.cs" />
+    <Compile Include="Plugin.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AccessControlWebAuthActivity.cs" />

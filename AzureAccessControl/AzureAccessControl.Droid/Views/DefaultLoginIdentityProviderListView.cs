@@ -15,21 +15,37 @@
 //---------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
+
 using Android.App;
 using Android.OS;
 using Android.Views;
-using AppCompatExtensions.Droid.v4;
+
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
+using CheeseyDroidExtensions;
+
 using Cirrious.CrossCore.WeakSubscription;
+
+#if __APPCOMPAT__
+using AppCompatExtensions.Droid.v7;
+#else
+using AppCompatExtensions.Droid.v4;
+#endif
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
     [Activity(Label = "Log In")]
     public class DefaultLoginIdentityProviderListView
+#if __APPCOMPAT__
+        : MvxActionBarCompatAcitivity
+#else
         : MvxKillableActivity
+#endif
     {
         private IDisposable _loadingToken;
         private IDisposable _loadingAfterLoginToken;
+        private ProgressDialog _loadingDialog;
+        private bool _manualRefresh;
 
         public new DefaultIdentityProviderCollectionViewModel ViewModel
         {
@@ -37,7 +53,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
             set { base.ViewModel = value; }
         }
 
-        private ProgressDialog _loadingDialog;
         private ProgressDialog LoadingDialog
         {
             get
@@ -56,7 +71,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         {
             base.OnCreate(bundle);
 
-#if __ANDROID_14__
+#if __APPCOMPAT__
+            ActionBar.SetDisplayHomeAsUpEnabled(ViewModel.CanGoBack);
+#elif __ANDROID_14__
             Window.RequestFeature(WindowFeatures.ActionBar);
             ActionBar.SetDisplayHomeAsUpEnabled(ViewModel.CanGoBack);
 #endif
@@ -65,10 +82,16 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 
             _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) =>
             {
-                if (ViewModel.LoadingIdentityProviders)
+                if(ViewModel.LoadingIdentityProviders)
                     LoadingDialog.Show();
                 else
+                {
                     LoadingDialog.Dismiss();
+                    if (!_manualRefresh)
+                        LoginDefaultProvider();
+
+                    _manualRefresh = false;
+                }
 
                 InvalidateOptionsMenu();
             });
@@ -95,6 +118,19 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
                 LoadingDialog.Show();
         }
 
+        private void LoginDefaultProvider()
+        {
+            if(string.IsNullOrEmpty(ViewModel.DefaultProvider)) return;
+            if(ViewModel.IdentityProviders == null) return;
+
+            var provider =
+                ViewModel.IdentityProviders.Single(p => p.Name == ViewModel.DefaultProvider);
+
+            if(provider == null) return;
+
+            ViewModel.LoginSelectedIdentityProviderCommand.Execute(provider);
+        }
+
         protected override void OnDestroy()
         {
             _loadingToken.Dispose();
@@ -112,7 +148,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
             var refresh = menu.FindItem(Resource.Id.mvxplugins_action_relogin);
-            refresh.SetVisible(!ViewModel.LoadingIdentityProviders);
+            refresh.SetEnabled(!ViewModel.LoadingIdentityProviders, this,
+                Resource.Drawable.mvxplugins_ic_action_refresh);
 
             return base.OnPrepareOptionsMenu(menu);
         }
@@ -128,6 +165,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 #endif
             if (item.ItemId == Resource.Id.mvxplugins_action_relogin)
             {
+                _manualRefresh = true;
                 ViewModel.RefreshIdentityProvidersCommand.Execute(null);
                 return true;
             }

@@ -114,11 +114,23 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 RaisePropertyChanged(() => BackgroundColor);
             }
         }
+
+        private string _defaultProvider;
+        public string DefaultProvider
+        {
+            get { return _defaultProvider; }
+            set
+            {
+                _defaultProvider = value;
+                RaisePropertyChanged(() => DefaultProvider);
+            }
+        }
         
         public class NavigationParameters
         {
             public string Realm { get; set; }
             public string ServiceNamespace { get; set; }
+            public string DefaultProvider { get; set; }
             public bool Logout { get; set; }
             public bool CanGoBack { get; set; }
             public int ForegroundColor { get; set; }
@@ -137,6 +149,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
                 ForegroundColor = parameters.ForegroundColor;
                 BackgroundColor = parameters.BackgroundColor;
+
+                DefaultProvider = parameters.DefaultProvider;
 
                 if (!string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
                     _serviceListEndpoint =

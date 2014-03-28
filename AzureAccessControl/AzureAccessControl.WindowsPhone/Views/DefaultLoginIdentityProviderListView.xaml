@@ -25,7 +25,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <Grid Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="HeaderText" HorizontalAlignment="Left" Text="log in" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-            <Button x:Name="RefreshButton" HorizontalAlignment="Right" Content="Refresh" Command="{Binding RefreshIdentityProvidersCommand}"/>
+            <Button x:Name="RefreshButton" HorizontalAlignment="Right" Content="Refresh" Tap="RefreshButtonTap"/>
         </Grid>
 
         <!--ContentPanel - place additional content here-->

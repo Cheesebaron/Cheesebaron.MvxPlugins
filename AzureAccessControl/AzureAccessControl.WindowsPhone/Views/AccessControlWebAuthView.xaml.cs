@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Navigation;
+using System.Windows.Threading;
+
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Microsoft.Phone.Controls;
@@ -11,12 +13,18 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
     {
         private readonly IMvxMessenger _messageHub;
         private string _url;
+        private readonly DispatcherTimer _timeoutTimer;
 
         public AccessControlWebAuthView()
         {
             InitializeComponent();
 
             _messageHub = Mvx.Resolve<IMvxMessenger>();
+            _timeoutTimer = new DispatcherTimer {Interval = new TimeSpan(0, 0, 20)};
+            _timeoutTimer.Tick += (s, e) =>
+            {
+                GdProgress.Visibility = Visibility.Collapsed;
+            };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -45,6 +53,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
             }
             catch(Exception)
             {
+                _timeoutTimer.Stop();
                 _messageHub.Publish(new RequestTokenMessage(this) { TokenResponse = null });
             }
         }
@@ -52,10 +61,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
         private void SignInWebBrowserControlNavigating(object sender, NavigatingEventArgs e)
         {
             GdProgress.Visibility = Visibility.Visible;
+            _timeoutTimer.Stop();
+            _timeoutTimer.Start();
         }
 
         private void SignInWebBrowserControlNavigated(object sender, NavigationEventArgs e)
         {
+            _timeoutTimer.Stop();
             GdProgress.Visibility = Visibility.Collapsed;
             if (e.Uri == null && !string.IsNullOrEmpty(_url))
             {

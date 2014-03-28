@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using BigTed;
@@ -39,6 +40,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
         : MvxDialogViewController
     {
         private IDisposable _loggedInToken, _loadingToken;
+        private Section _loginDetailSection;
+        private bool _manualRefresh;
 
         public DefaultLoginIdentityProviderTableViewController() 
             : base(UITableViewStyle.Grouped, null, true) { }
@@ -48,8 +51,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             get { return (DefaultIdentityProviderCollectionViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
-
-        private Section _loginDetailSection;
+        
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -112,6 +114,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                     UIApplication.SharedApplication.NetworkActivityIndicatorVisible = false;
                     if (BTProgressHUD.IsVisible)
                         BTProgressHUD.Dismiss();
+
+                    if (!_manualRefresh)
+                        LoginDefaultProvider();
+
+                    _manualRefresh = false;
                 }    
             }));
 
@@ -123,7 +130,24 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             };
 
             NavigationItem.RightBarButtonItem = new UIBarButtonItem("Refresh", UIBarButtonItemStyle.Plain,
-                (s, e) => ViewModel.RefreshIdentityProvidersCommand.Execute(null));
+                (s, e) =>
+                {
+                    ViewModel.RefreshIdentityProvidersCommand.Execute(null);
+                    _manualRefresh = true;
+                });
+        }
+
+        private void LoginDefaultProvider()
+        {
+            if (string.IsNullOrEmpty(ViewModel.DefaultProvider)) return;
+            if (ViewModel.IdentityProviders == null) return;
+
+            var provider =
+                ViewModel.IdentityProviders.Single(p => p.Name == ViewModel.DefaultProvider);
+
+            if (provider == null) return;
+
+            ViewModel.LoginSelectedIdentityProviderCommand.Execute(provider);
         }
 
         public Task<int> ShowAlert(string title, string message, params string[] buttons)
