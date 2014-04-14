@@ -18,6 +18,8 @@ using System;
 using Android.Content;
 using Android.Webkit;
 using Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views;
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
+
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
@@ -79,12 +81,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
                     if (_response != null)
                     {
                         _onLoggedIn(_response);
+                        return;
                     }
-                    else
-                    {
-                        _assumeCancelled();
-                    }
-                    break;
+
+                    _assumeCancelled();
+                    return;
                 default:
                     // ignore this result - it's not for us
                     Mvx.Trace("Unexpected request received from MvxIntentResult - request was {0}",
