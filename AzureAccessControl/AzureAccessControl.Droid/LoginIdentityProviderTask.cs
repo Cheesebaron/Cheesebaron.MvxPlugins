@@ -37,7 +37,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
         private MvxSubscriptionToken _subscriptionToken;
         private RequestSecurityTokenResponse _response;
 
-        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null, bool goBack = true)
+        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
             var appContext = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
             CookieSyncManager.CreateInstance(appContext);

@@ -32,15 +32,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch
         private IMvxMessenger _messageHub;
         private MvxSubscriptionToken _subscriptionToken;
 
-        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null, bool goBack = true)
+        public void LogIn(string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled, string identityProviderName = null)
         {
             var webAuthController = new AccessControlWebAuthController { RawUrl = url, IdentityProviderName = identityProviderName };
 
             _messageHub = Mvx.Resolve<IMvxMessenger>();
             _subscriptionToken = _messageHub.Subscribe<RequestTokenMessage>(message =>
             {
-                if (goBack)
-                    webAuthController.OnCancel();
+                webAuthController.OnCancel();
 
                 if (message.TokenResponse != null)
                     onLoggedIn(message.TokenResponse);

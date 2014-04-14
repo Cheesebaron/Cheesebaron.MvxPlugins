@@ -18,7 +18,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
 
         public void LogIn(
             string url, Action<RequestSecurityTokenResponse> onLoggedIn, Action assumeCancelled,
-            string identityProviderName = null, bool goBack = true)
+            string identityProviderName = null)
         {
             var root = Application.Current.RootVisual as Frame;
 
@@ -37,7 +37,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone
                 }
 
                 if (root == null) return;
-                if (root.CanGoBack && goBack)
+                if (root.CanGoBack)
                     root.GoBack();
             });
 
