@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
 using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
@@ -28,23 +30,17 @@ using Cirrious.MvvmCross.ViewModels;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 {
-    public delegate void LoginErrorEventHandler(object sender, DefaultIdentityProviderCollectionViewModel.LoginErrorEventArgs args);
-
     public class DefaultIdentityProviderCollectionViewModel 
         : MvxViewModel
     {
-        public class LoginErrorEventArgs : EventArgs
-        {
-            public Exception Exception { get; set; }
-            public String Message { get; set; }
-        }
-
         public LoginErrorEventHandler LoginError;
 
         private readonly IIdentityProviderClient _identityProviderClient;
         private readonly ISimpleWebTokenStore _simpleWebTokenStore;
         private readonly ILoginIdentityProviderTask _loginIdentityProviderTask;
         private readonly IMvxMessenger _messenger;
+
+        private IDisposable _closeSelfToken;
 
         private bool _loadingIdentityProviders;
 
@@ -206,6 +202,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
+
+            _closeSelfToken = messenger.Subscribe<CloseSelfMessage>(message =>
+            {
+                if(message.Close)
+                    NavigateBackCommand.Execute(null);
+            });
         }
 
         public ICommand LoginSelectedIdentityProviderCommand
@@ -221,7 +223,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             try
             {
                 LogOutCommand.Execute(null);
-                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name, CanGoBack);
+                _loginIdentityProviderTask.LogIn(provider.LoginUrl, OnLoggedIn, AssumeCancelled, provider.Name);
             }
             catch(Exception e)
             {
@@ -269,8 +271,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
-
-            NavigateBackCommand.Execute(null);
         }
 
         private bool _showProgressAfterLogin;
@@ -306,8 +306,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
 
-            if (tokenStore.IsValid() && CanGoBack)
-                NavigateBackCommand.Execute(null);
+            //if (tokenStore.IsValid() && CanGoBack)
+            //    NavigateBackCommand.Execute(null);
+
+            _messenger.Publish(new LoggedInMessage(this));
         }
 
         public ICommand NavigateBackCommand
