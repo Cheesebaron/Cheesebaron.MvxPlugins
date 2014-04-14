@@ -15,9 +15,12 @@
 //---------------------------------------------------------------------------------
 
 using System;
+
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cheesebaron.MvxPlugins.SimpleWebToken.Interfaces;
 using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Plugins.Messenger;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl
 {
@@ -59,6 +62,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
                 }
 
                 _token = value;
+                Mvx.Resolve<IMvxMessenger>().Publish(
+                    new TokenChangedMessage(this)
+                    {
+                        NewToken = _token
+                    });
             }
         }
 
