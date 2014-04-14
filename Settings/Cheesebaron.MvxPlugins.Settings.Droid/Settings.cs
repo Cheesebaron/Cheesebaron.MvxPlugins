@@ -17,6 +17,8 @@
 
 using System;
 using Android.Content;
+using Android.Preferences;
+
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
@@ -25,17 +27,35 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
 {
     public class Settings : ISettings
     {
-        private const string SettingFileName = "Cheesebaron.MvxPlugins.Settings.xml";
+        private static string _settingsFileName;
 
         private static ISharedPreferences _sharedPreferences;
         private static ISharedPreferences SharedPreferences
         {
             get
             {
-                return _sharedPreferences ?? (_sharedPreferences = Mvx.Resolve<IMvxAndroidGlobals>()
-                    .ApplicationContext.GetSharedPreferences(SettingFileName, FileCreationMode.Append));
+                if(_sharedPreferences != null) return _sharedPreferences;
+
+                var context = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
+
+                //If file name is empty use defaults
+                if(string.IsNullOrEmpty(_settingsFileName))
+                {
+                    _sharedPreferences =
+                        PreferenceManager.GetDefaultSharedPreferences(context);
+                }
+                else
+                {
+                    _sharedPreferences =
+                        context.ApplicationContext.GetSharedPreferences(_settingsFileName,
+                            FileCreationMode.Append);
+                }
+
+                return _sharedPreferences;
             }
         }
+
+        public Settings(string settingsesFileName) { _settingsFileName = settingsesFileName; }
 
         public T GetValue<T>(string key, T defaultValue = default(T))
         {
