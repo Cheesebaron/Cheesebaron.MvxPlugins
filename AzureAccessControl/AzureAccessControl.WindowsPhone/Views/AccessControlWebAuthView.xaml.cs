@@ -26,6 +26,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.WindowsPhone.Views
             _timeoutTimer.Tick += (s, e) =>
             {
                 GdProgress.Visibility = Visibility.Collapsed;
+                _timeoutTimer.Stop();
             };
         }
 
