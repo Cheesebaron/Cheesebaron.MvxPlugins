@@ -24,6 +24,8 @@ namespace AzureAccessControl.Sample.Touch
 
         protected override void InitializeViewLookup()
         {
+            base.InitializeViewLookup();
+
             var viewModelLookup = new Dictionary<Type, Type>
                 {
                     {typeof(DefaultIdentityProviderCollectionViewModel), typeof(DefaultLoginIdentityProviderTableViewController)}

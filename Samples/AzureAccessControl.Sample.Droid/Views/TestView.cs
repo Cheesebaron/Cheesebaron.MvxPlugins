@@ -1,5 +1,6 @@
-﻿//---------------------------------------------------------------------------------
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+//---------------------------------------------------------------------------------
+// Copyright 2014 Tomasz Cielecki (tomasz@ostebaronen.dk)
+//
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -14,20 +15,29 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
+using Android.App;
+using Android.OS;
+
 using AzureAccessControl.Sample.ViewModels;
 
-using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Droid.Views;
 
-namespace AzureAccessControl.Sample
+namespace AzureAccessControl.Sample.Droid.Views
 {
-    public class App
-        : MvxApplication
+    [Activity(Label = "Test")]
+    public class TestView : MvxActivity
     {
-        public override void Initialize()
+        protected override void OnCreate(Bundle bundle)
         {
-            Cheesebaron.MvxPlugins.AzureAccessControl.PluginLoader.Instance.EnsureLoaded();
+            base.OnCreate(bundle);
+            
+            SetContentView(Resource.Layout.Main);
+        }
 
-            RegisterAppStart<TestViewModel>();
+        public new TestViewModel ViewModel
+        {
+            get { return (TestViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
         }
     }
 }

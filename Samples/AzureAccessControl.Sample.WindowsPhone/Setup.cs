@@ -26,6 +26,8 @@ namespace AzureAccessControl.Sample.WindowsPhone
 
         protected override void InitializeViewLookup()
         {
+            base.InitializeViewLookup();
+
             var viewModelLookup = new Dictionary<Type, Type>
                 {
                     {typeof(DefaultIdentityProviderCollectionViewModel), typeof(DefaultLoginIdentityProviderListView)}

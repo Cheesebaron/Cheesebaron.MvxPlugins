@@ -13,7 +13,8 @@ using Cirrious.MvvmCross.Views;
 
 namespace AzureAccessControl.Sample.Droid
 {
-    public class Setup : MvxAndroidSetup
+    public class Setup 
+        : MvxAndroidSetup
     {
         public Setup(Context applicationContext) 
             : base(applicationContext) { }
@@ -25,6 +26,8 @@ namespace AzureAccessControl.Sample.Droid
 
         protected override void InitializeViewLookup()
         {
+            base.InitializeViewLookup();
+
             var viewModelLookup = new Dictionary<Type, Type>
                 {
                     {typeof(DefaultIdentityProviderCollectionViewModel), typeof(DefaultLoginIdentityProviderListView)}

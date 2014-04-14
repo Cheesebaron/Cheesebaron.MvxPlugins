@@ -96,6 +96,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Views\TestView.cs" />
+    <Compile Include="Views\UIKitExtensions.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +148,9 @@
     <Reference Include="Cirrious.CrossCore.Touch">
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.FluentLayouts.Touch">
+      <HintPath>..\..\submodules\Cirrious.FluentLayout\Cirrious.FluentLayout\bin\iPhoneSimulator\Debug\Cirrious.FluentLayouts.Touch.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
@@ -188,6 +193,7 @@
     <!-- Hack to get PCL compiling -->
     <!-- End of hack -->
     <Reference Include="monotouch" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
