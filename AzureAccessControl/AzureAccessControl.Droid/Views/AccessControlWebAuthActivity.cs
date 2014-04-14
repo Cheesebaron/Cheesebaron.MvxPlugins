@@ -47,17 +47,18 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
         {
             base.OnCreate(bundle);
 
+#if __APPCOMPAT__
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+#elif __ANDROID_14__
+            Window.RequestFeature(WindowFeatures.ActionBar | WindowFeatures.Progress);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+#else
+            Window.RequestFeature(WindowFeatures.Progress);
+#endif
+
             _messageHub = Mvx.Resolve<IMvxMessenger>();
 
             var url = Intent.GetStringExtra("cheesebaron.mvxplugins.azureaccesscontrol.droid.Url");
-
-#if __APPCOMPAT__
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
-#elif _ANDROID_14__
-            Window.RequestFeature(WindowFeatures.ActionBar | WindowFeatures.Progress);
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
-#endif
-            Window.RequestFeature(WindowFeatures.Progress);
 
             _webView = new WebView(this)
             {
