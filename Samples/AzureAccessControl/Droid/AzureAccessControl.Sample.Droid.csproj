@@ -120,47 +120,47 @@
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AppCompatExtensions\CheeseyDroidExtensions\CheeseyDroidExtensions.csproj">
+    <ProjectReference Include="..\..\..\AppCompatExtensions\CheeseyDroidExtensions\CheeseyDroidExtensions.csproj">
       <Project>{3a01b788-e1a6-4fd9-b1fb-17ecdbbbe007}</Project>
       <Name>CheeseyDroidExtensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AppCompatExtensions\Droid.v4\AppCompatExtensions.Droid.v4.csproj">
+    <ProjectReference Include="..\..\..\AppCompatExtensions\Droid.v4\AppCompatExtensions.Droid.v4.csproj">
       <Project>{ad0c8f18-0648-4acb-8830-fdf8790840bc}</Project>
       <Name>AppCompatExtensions.Droid.v4</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
+    <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>AzureAccessControl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Droid\AzureAccessControl.Droid.csproj">
+    <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.Droid\AzureAccessControl.Droid.csproj">
       <Project>{3ef16344-217d-4a0e-bdfc-9e11c13fb224}</Project>
       <Name>AzureAccessControl.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
       <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
       <Name>ModernHttpClient.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ModernHttpClient\Droid\ModernHttpClient.Droid.csproj">
+    <ProjectReference Include="..\..\..\ModernHttpClient\Droid\ModernHttpClient.Droid.csproj">
       <Project>{b230cacb-2002-469c-900c-ec383eb23182}</Project>
       <Name>ModernHttpClient.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
       <Project>{4456f80a-718a-479a-a2d9-f3f986fd82ac}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.Droid\Cheesebaron.MvxPlugins.SimpleWebToken.Droid.csproj">
+    <ProjectReference Include="..\..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.Droid\Cheesebaron.MvxPlugins.SimpleWebToken.Droid.csproj">
       <Project>{5759c9b6-01c5-49a9-844f-ec1b586e6a12}</Project>
       <Name>Cheesebaron.MvxPlugins.SimpleWebToken.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+    <ProjectReference Include="..\..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
       <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
       <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
+    <ProjectReference Include="..\Core\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
       <Name>AzureAccessControl.Sample.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>

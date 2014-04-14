@@ -18,13 +18,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Touch", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FC5A91C0-A918-4995-8AB6-48B392001CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Core", "Samples\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj", "{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Core", "Samples\AzureAccessControl\Core\AzureAccessControl.Sample.Core.csproj", "{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Droid", "Samples\AzureAccessControl.Sample.Droid\AzureAccessControl.Sample.Droid.csproj", "{B37D798A-0D76-4DB5-BE06-4B2C938D3488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Droid", "Samples\AzureAccessControl\Droid\AzureAccessControl.Sample.Droid.csproj", "{B37D798A-0D76-4DB5-BE06-4B2C938D3488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Touch", "Samples\AzureAccessControl.Sample.Touch\AzureAccessControl.Sample.Touch.csproj", "{D6ED04AA-97EE-44B4-9420-F37453E8D14D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.Touch", "Samples\AzureAccessControl\Touch\AzureAccessControl.Sample.Touch.csproj", "{D6ED04AA-97EE-44B4-9420-F37453E8D14D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.WindowsPhone", "Samples\AzureAccessControl.Sample.WindowsPhone\AzureAccessControl.Sample.WindowsPhone.csproj", "{DD044482-24D1-4D37-9908-22673764A696}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAccessControl.Sample.WindowsPhone", "Samples\AzureAccessControl\WindowsPhone\AzureAccessControl.Sample.WindowsPhone.csproj", "{DD044482-24D1-4D37-9908-22673764A696}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{5CBDA1DE-E824-4F8D-8E27-4474FC4F3D77}"
 EndProject

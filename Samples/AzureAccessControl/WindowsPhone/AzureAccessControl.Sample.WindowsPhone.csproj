@@ -179,39 +179,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
+    <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
       <Project>{70B42C5A-7F65-45AC-AB9A-0A4225F8F337}</Project>
       <Name>AzureAccessControl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj">
+    <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj">
       <Project>{B6778EAD-258E-475D-8D41-89216E9C3E77}</Project>
       <Name>AzureAccessControl.WindowsPhone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
       <Project>{FA15C468-BF0B-4197-9602-3B49DCB53699}</Project>
       <Name>ModernHttpClient.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ModernHttpClient\WindowsPhone\ModernHttpClient.WindowsPhone.csproj">
+    <ProjectReference Include="..\..\..\ModernHttpClient\WindowsPhone\ModernHttpClient.WindowsPhone.csproj">
       <Project>{193918F9-3880-4BA2-A98A-4D0DF7FDE2F7}</Project>
       <Name>ModernHttpClient.WindowsPhone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
       <Project>{51E76B2B-7276-48CF-AF3F-30D417110B2C}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings.WindowsPhone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{BACA1F45-5FB7-4BFB-B63A-C3ABEBE70A08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone.csproj">
+    <ProjectReference Include="..\..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone.csproj">
       <Project>{876A3847-817E-4B84-B83B-54D793CACBE4}</Project>
       <Name>Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+    <ProjectReference Include="..\..\..\SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
       <Project>{8BD5A2EA-BEF2-4237-B7BD-F07742C5171C}</Project>
       <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AzureAccessControl.Sample\AzureAccessControl.Sample.Core.csproj">
+    <ProjectReference Include="..\Core\AzureAccessControl.Sample.Core.csproj">
       <Project>{0E2CFED2-C94C-455B-AE17-0AEEFAE2A1C5}</Project>
       <Name>AzureAccessControl.Sample.Core</Name>
     </ProjectReference>
