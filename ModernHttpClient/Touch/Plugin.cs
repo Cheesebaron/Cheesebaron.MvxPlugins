@@ -21,7 +21,7 @@ using Cirrious.CrossCore.Plugins;
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Touch
 {
     public class Plugin
-        : IMvxPlugin
+        : IMvxConfigurablePlugin
     {
         private TouchModernHttpClientConfiguration _config;
         private bool _loaded;

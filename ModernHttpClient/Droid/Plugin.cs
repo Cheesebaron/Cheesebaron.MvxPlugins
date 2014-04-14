@@ -21,7 +21,7 @@ using Cirrious.CrossCore.Plugins;
 namespace Cheesebaron.MvxPlugins.ModernHttpClient.Droid
 {
     public class Plugin
-        : IMvxPlugin
+        : IMvxConfigurablePlugin
     {
         private DroidModernHttpClientConfiguration _config;
         private bool _loaded;
