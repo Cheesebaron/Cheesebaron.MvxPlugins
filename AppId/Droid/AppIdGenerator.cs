@@ -18,6 +18,9 @@ using System;
 using Android.OS;
 using Android.Provider;
 
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Droid;
+
 namespace Cheesebaron.MvxPlugins.AppId
 {
     public class AppIdGenerator: IAppIdGenerator
@@ -56,7 +59,8 @@ namespace Cheesebaron.MvxPlugins.AppId
                 try
                 {
                     // Not 100% reliable on 2.2 (API 8)
-                    androidId = Settings.Secure.AndroidId;
+                    var globals = Mvx.Resolve<IMvxAndroidGlobals>();
+                    androidId = Settings.Secure.GetString(globals.ApplicationContext.ContentResolver, Settings.Secure.AndroidId);
                 }
                 catch(Exception) {}
 
