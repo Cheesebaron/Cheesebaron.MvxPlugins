@@ -19,6 +19,9 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Webkit;
+
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
+
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Java.Interop;

@@ -17,6 +17,9 @@
 using System;
 using System.Drawing;
 using System.Text;
+
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
+
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using MonoTouch.Foundation;

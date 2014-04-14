@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
+
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Microsoft.Phone.Controls;

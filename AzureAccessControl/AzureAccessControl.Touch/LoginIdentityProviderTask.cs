@@ -15,6 +15,8 @@
 //---------------------------------------------------------------------------------
 
 using System;
+
+using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
 using Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
