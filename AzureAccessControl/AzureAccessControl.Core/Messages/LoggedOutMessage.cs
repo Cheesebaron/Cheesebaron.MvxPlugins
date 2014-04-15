@@ -1,6 +1,6 @@
 ﻿using Cirrious.MvvmCross.Plugins.Messenger;
 
-namespace Cheesebaron.MvxPlugins.AzureAccessControl
+namespace Cheesebaron.MvxPlugins.AzureAccessControl.Messages
 {
     public class LoggedOutMessage : MvxMessage
     {

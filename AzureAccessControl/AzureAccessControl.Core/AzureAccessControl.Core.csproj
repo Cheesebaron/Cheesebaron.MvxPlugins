@@ -41,7 +41,7 @@
     <Compile Include="Interfaces\ILoginIdentityProviderTask.cs" />
     <Compile Include="Interfaces\ISimpleWebTokenStore.cs" />
     <Compile Include="EventArguments\RequestSecurityTokenResponseEventArgs.cs" />
-    <Compile Include="LoggedOutMessage.cs" />
+    <Compile Include="Messages\LoggedOutMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />
     <Compile Include="Messages\TokenChangedMessage.cs" />
     <Compile Include="Messages\CloseSelfMessage.cs" />
