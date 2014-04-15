@@ -51,7 +51,15 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             get { return (DefaultIdentityProviderCollectionViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
-        
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            
+            if (BTProgressHUD.IsVisible)
+                BTProgressHUD.Dismiss();
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

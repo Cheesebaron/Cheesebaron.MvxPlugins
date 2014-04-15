@@ -91,7 +91,7 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ModernHttpClientPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
-    <BundleResource Include="Bootstrap\SimpleWebTokenPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SimpleWebTokenPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
