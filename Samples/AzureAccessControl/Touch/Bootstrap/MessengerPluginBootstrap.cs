@@ -1,4 +1,4 @@
-﻿using Cirrious.CrossCore.Plugins;
+using Cirrious.CrossCore.Plugins;
 
 namespace AzureAccessControl.Sample.Touch.Bootstrap
 {

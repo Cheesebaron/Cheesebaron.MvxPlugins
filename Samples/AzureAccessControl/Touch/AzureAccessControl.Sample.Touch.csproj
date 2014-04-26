@@ -11,6 +11,8 @@
     <RootNamespace>AzureAccessControl.Sample.Touch</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>AzureAccessControlSampleTouch</AssemblyName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +88,39 @@
   <PropertyGroup>
     <StartupObject>AzureAccessControl.Sample.Touch.Application</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|x64'">
+    <OutputPath>bin\x64\Ad-Hoc\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AppStore|x64'">
+    <OutputPath>bin\x64\AppStore\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\AzureAcsPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
@@ -98,8 +133,10 @@
     <Compile Include="Setup.cs" />
     <Compile Include="Views\TestView.cs" />
     <Compile Include="Views\UIKitExtensions.cs" />
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.Core\AzureAccessControl.Core.csproj">
@@ -143,51 +180,49 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.FluentLayouts.Touch">
-      <HintPath>..\..\submodules\Cirrious.FluentLayout\Cirrious.FluentLayout\bin\iPhoneSimulator\Debug\Cirrious.FluentLayouts.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Localization.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
     <Reference Include="CrossUI.Core">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\CrossUI.Core.dll</HintPath>
     </Reference>
     <Reference Include="CrossUI.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Touch.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\CrossUI.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="ModernHttpClient.iOS">
+      <HintPath>..\..\..\packages\modernhttpclient.1.2.2\lib\MonoTouch\ModernHttpClient.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.2\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <!-- Hack to get PCL compiling -->
@@ -198,4 +233,11 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

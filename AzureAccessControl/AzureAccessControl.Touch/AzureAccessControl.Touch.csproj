@@ -11,6 +11,8 @@
     <RootNamespace>Cheesebaron.MvxPlugins.AzureAccessControl.Touch</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>Cheesebaron.MvxPlugins.AzureAccessControl.Touch</AssemblyName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +35,26 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="LoginIdentityProviderTask.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -42,45 +63,46 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BTProgressHUD">
-      <HintPath>..\..\Components\btprogresshud-1.8\lib\ios\BTProgressHUD.dll</HintPath>
+      <HintPath>..\..\Components\btprogresshud-1.9\lib\ios\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Plugin.Visibility.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Plugins.Visibility.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Touch">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
+      <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="CrossUI.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Core.dll</HintPath>
+    <Reference Include="CrossUI.Core">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\CrossUI.Core.dll</HintPath>
     </Reference>
-    <Reference Include="CrossUI.Touch, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\CrossUI.Touch.dll</HintPath>
+    <Reference Include="CrossUI.Touch">
+      <HintPath>..\..\packages\MvvmCross.HotTuna.Touch.Dialog.3.1.1\lib\MonoTouch\CrossUI.Touch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows" />
@@ -105,8 +127,18 @@
   <ItemGroup>
     <XamarinComponentReference Include="btprogresshud">
       <Visible>False</Visible>
-      <Version>1.8</Version>
+      <Version>1.9</Version>
     </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>
