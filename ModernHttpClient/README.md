@@ -11,4 +11,4 @@ Instructions
 3. ???
 4. Profit
 
-
+All necessary dll's will be output in the `bin` folder in the root of this repository. So for Android, remember to reference OkHttp from you UI project, otherwise you will get an Exception saying that OkHttp is not found.
