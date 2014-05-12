@@ -70,6 +70,6 @@ namespace Cheesebaron.MvxPlugins.AppId
             }
         }
 
-        public string Platform { get { return "WP"; } }
+        public string Platform { get { return Constants.DeviceType.WindowsPhone; } }
     }
 }
