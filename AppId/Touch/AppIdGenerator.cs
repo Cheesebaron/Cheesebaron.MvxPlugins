@@ -60,10 +60,10 @@ namespace Cheesebaron.MvxPlugins.AppId
         {
             get
             {
-                return "iOS " + UIDevice.CurrentDevice.SystemVersion;
+                return Constants.DeviceType.iOS + " " + UIDevice.CurrentDevice.SystemVersion;
             }
         }
 
-        public string Platform { get { return "iOS"; } }
+        public string Platform { get { return Constants.DeviceType.iOS; } }
     }
 }

@@ -80,10 +80,10 @@ namespace Cheesebaron.MvxPlugins.AppId
         {
             get
             {
-                return "Android " + Build.VERSION.Release;
+                return Constants.DeviceType.Android + " " + Build.VERSION.Release;
             }
         }
 
-        public string Platform { get { return "Android"; } }
+        public string Platform { get { return Constants.DeviceType.Android; } }
     }
 }

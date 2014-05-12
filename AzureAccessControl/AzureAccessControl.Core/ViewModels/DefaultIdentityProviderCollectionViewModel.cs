@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------------
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2013-2014 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -42,9 +42,18 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
 
         private IDisposable _closeSelfToken;
 
-        private bool _loadingIdentityProviders;
+        private bool _loadingIdentityProviders,
+            _forceShowProgressAfterLogin,
+            _canGoBack,
+            _showProgressAfterLogin;
 
+        private int _foregroundColor, _backgroundColor;
+        private string _defaultProvider;
+        private Uri _serviceListEndpoint;
+        private MvxCommand _logOutCommand;
+        private MvxCommand _refreshingIdentityProvidersCommand;
         private IEnumerable<DefaultIdentityProviderViewModel> _identityProviders;
+
         public IEnumerable<DefaultIdentityProviderViewModel> IdentityProviders
         {
             get { return _identityProviders; }
@@ -78,7 +87,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
-        private bool _canGoBack;
         public bool CanGoBack
         {
             get { return _canGoBack; }
@@ -88,8 +96,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 RaisePropertyChanged(() => CanGoBack);
             }
         }
-
-        private int _foregroundColor;
+        
         public int ForegroundColor
         {
             get { return _foregroundColor; }
@@ -100,7 +107,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
-        private int _backgroundColor;
         public int BackgroundColor
         {
             get { return _backgroundColor; }
@@ -111,7 +117,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
-        private string _defaultProvider;
         public string DefaultProvider
         {
             get { return _defaultProvider; }
@@ -119,6 +124,16 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             {
                 _defaultProvider = value;
                 RaisePropertyChanged(() => DefaultProvider);
+            }
+        }
+
+        public bool ShowProgressAfterLogin
+        {
+            get { return _showProgressAfterLogin; }
+            set
+            {
+                _showProgressAfterLogin = value;
+                RaisePropertyChanged(() => ShowProgressAfterLogin);
             }
         }
         
@@ -129,11 +144,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             public string DefaultProvider { get; set; }
             public bool Logout { get; set; }
             public bool CanGoBack { get; set; }
+            public bool ForceShowProgressAfterLogin { get; set; }
             public int ForegroundColor { get; set; }
             public int BackgroundColor { get; set; }
         }
-
-        private Uri _serviceListEndpoint;
 
         public async void Init(NavigationParameters parameters)
         {
@@ -147,6 +161,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
                 BackgroundColor = parameters.BackgroundColor;
 
                 DefaultProvider = parameters.DefaultProvider;
+
+                _forceShowProgressAfterLogin = parameters.ForceShowProgressAfterLogin;
 
                 if (!string.IsNullOrEmpty(parameters.Realm) && !string.IsNullOrEmpty(parameters.ServiceNamespace))
                     _serviceListEndpoint =
@@ -237,7 +253,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
-        private MvxCommand _logOutCommand;
         public ICommand LogOutCommand
         {
             get { 
@@ -256,7 +271,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             }
         }
 
-        private MvxCommand _refreshingIdentityProvidersCommand;
         public ICommand RefreshIdentityProvidersCommand
         {
             get
@@ -271,17 +285,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
         {
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
-        }
-
-        private bool _showProgressAfterLogin;
-        public bool ShowProgressAfterLogin
-        {
-            get { return _showProgressAfterLogin; }
-            set
-            {
-                _showProgressAfterLogin = value;
-                RaisePropertyChanged(() => ShowProgressAfterLogin);
-            }
         }
 
         protected virtual void OnLoggedIn(RequestSecurityTokenResponse requestSecurityTokenResponse)
@@ -300,14 +303,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels
             var token = tokenFactory.CreateTokenFromRaw(requestSecurityTokenResponse.SecurityToken);
             tokenStore.SimpleWebToken = token;
 
-            if (!CanGoBack)
+            if (!CanGoBack || _forceShowProgressAfterLogin)
                 ShowProgressAfterLogin = true;
 
             RaisePropertyChanged(() => IsLoggedIn);
             RaisePropertyChanged(() => LoggedInProvider);
-
-            //if (tokenStore.IsValid() && CanGoBack)
-            //    NavigateBackCommand.Execute(null);
 
             _messenger.Publish(new LoggedInMessage(this));
         }
