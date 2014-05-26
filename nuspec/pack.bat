@@ -1,2 +1,3 @@
 del *.nupkg
-nuget pack CheeseBaron.Sms.nuspec
+nuget pack Cheesebaron.MvxPlugins.Sms.nuspec
+nuget pack Cheesebaron.MvxPlugins.Settings.nuspec

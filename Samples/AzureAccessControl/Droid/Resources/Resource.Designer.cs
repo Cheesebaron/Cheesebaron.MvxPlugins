@@ -26,7 +26,6 @@ namespace AzureAccessControl.Sample.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::ModernHttpClient.Resource.String.library_name = global::AzureAccessControl.Sample.Droid.Resource.String.library_name;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxBind;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxItemTemplate;
@@ -223,9 +222,6 @@ namespace AzureAccessControl.Sample.Droid
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
-			
-			// aapt resource value: 0x7f040004
-			public const int library_name = 2130968580;
 			
 			// aapt resource value: 0x7f040002
 			public const int mvxplugins_action_relogin = 2130968578;
