@@ -2,7 +2,7 @@ using Cirrious.CrossCore.Plugins;
 
 namespace Settings.Sample.WindowsPhone.Bootstrap
 {
-    public class ModernHttpClientPluginBootstrap
+    public class SettingsPluginBootstrap
         : MvxPluginBootstrapAction<Cheesebaron.MvxPlugins.Settings.PluginLoader>
     {
     }
