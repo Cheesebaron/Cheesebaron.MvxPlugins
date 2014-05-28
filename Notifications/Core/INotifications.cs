@@ -10,7 +10,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         Task<bool> RegisterForNotifications();
         Task<bool> UnregisterForNotifications();
 
-        Action DidRegisterForNotifications { get; set; }
-        Action DidUnregisterForNotifications { get; set; }
+        Func<Task> DidRegisterForNotifications { get; set; }
+        Func<Task> DidUnregisterForNotifications { get; set; }
     }
 }

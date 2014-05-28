@@ -19,7 +19,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public TouchNotifications()
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
-            _token = messenger.Subscribe<NotificationRegisterMessage>(message =>
+            _token = messenger.Subscribe<NotificationRegisterMessage>(async message =>
             {
                 if(message.Registered)
                 {
@@ -27,14 +27,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     IsRegistered = true;
 
                     if(DidRegisterForNotifications != null)
-                        DidRegisterForNotifications.Invoke();
+                        await DidRegisterForNotifications().ConfigureAwait(false);
                 }
                 else
                 {
                     IsRegistered = false;
 
                     if (DidUnregisterForNotifications != null)
-                        DidUnregisterForNotifications.Invoke();
+                        await DidUnregisterForNotifications().ConfigureAwait(false);
                 }
             });
         }
@@ -46,20 +46,22 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
         public async Task<bool> RegisterForNotifications()
         {
-            await Task.Run(() => UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(NotificationType));
+            await Task.Run(() => UIApplication.SharedApplication
+                .RegisterForRemoteNotificationTypes(NotificationType)).ConfigureAwait(false);
             
             return true;
         }
 
         public async Task<bool> UnregisterForNotifications()
         {
-            await Task.Run(() => UIApplication.SharedApplication.UnregisterForRemoteNotifications());
+            await Task.Run(() => UIApplication.SharedApplication
+                .UnregisterForRemoteNotifications()).ConfigureAwait(false);
 
             return true;
         }
 
-        public Action DidRegisterForNotifications { get; set; }
-        public Action DidUnregisterForNotifications { get; set; }
+        public Func<Task> DidRegisterForNotifications { get; set; }
+        public Func<Task> DidUnregisterForNotifications { get; set; }
 
         public void Dispose()
         {
