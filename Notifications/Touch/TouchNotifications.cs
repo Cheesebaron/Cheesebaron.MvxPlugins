@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-
 using Cheesebaron.MvxPlugins.Notifications.Messages;
 
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
-
 using MonoTouch.UIKit;
 
 namespace Cheesebaron.MvxPlugins.Notifications
@@ -14,37 +12,50 @@ namespace Cheesebaron.MvxPlugins.Notifications
         : INotifications
         , IDisposable
     {
-        private readonly MvxSubscriptionToken _token;
-
-        public TouchNotifications()
-        {
-            var messenger = Mvx.Resolve<IMvxMessenger>();
-            _token = messenger.Subscribe<NotificationRegisterMessage>(async message =>
-            {
-                if(message.Registered)
-                {
-                    RegistrationId = message.RegistrationId;
-                    IsRegistered = true;
-
-                    if(DidRegisterForNotifications != null)
-                        await DidRegisterForNotifications().ConfigureAwait(false);
-                }
-                else
-                {
-                    IsRegistered = false;
-
-                    if (DidUnregisterForNotifications != null)
-                        await DidUnregisterForNotifications().ConfigureAwait(false);
-                }
-            });
-        }
+        private readonly MvxSubscriptionToken _notificationRegisterMessageToken;
+        private readonly MvxSubscriptionToken _errorMessageToken;
 
         public UIRemoteNotificationType NotificationType { get; set; }
 
         public string RegistrationId { get; private set; }
         public bool IsRegistered { get; private set; }
 
-        public async Task<bool> RegisterForNotifications()
+        public event DidRegisterForNotificationsEventHandler Registered;
+        public event EventHandler Unregistered;
+        public event NotificationErrorEventHandler Error;
+
+        public TouchNotifications()
+        {
+            var messenger = Mvx.Resolve<IMvxMessenger>();
+            _notificationRegisterMessageToken = messenger.Subscribe<NotificationRegisterMessage>(message =>
+            {
+                if(message.Registered)
+                {
+                    RegistrationId = message.RegistrationId;
+                    IsRegistered = true;
+
+                    if(Registered != null)
+                        Registered(
+                            this, new DidRegisterForNotificationsEventArgs {
+                                RegistrationId = RegistrationId
+                            });
+                }
+                else
+                {
+                    IsRegistered = false;
+
+                    if(Unregistered != null)
+                        Unregistered(this, EventArgs.Empty);
+                }
+            });
+            _errorMessageToken = messenger.Subscribe<NotificationErrorMessage>(message => {
+                if(Error != null)
+                    Error(
+                        this, new NotificationErrorEventArgs {Message = message.Message});
+            });
+        }
+
+        public async Task<bool> Register()
         {
             await Task.Run(() => UIApplication.SharedApplication
                 .RegisterForRemoteNotificationTypes(NotificationType)).ConfigureAwait(false);
@@ -52,7 +63,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
             return true;
         }
 
-        public async Task<bool> UnregisterForNotifications()
+        public async Task<bool> Unregister()
         {
             await Task.Run(() => UIApplication.SharedApplication
                 .UnregisterForRemoteNotifications()).ConfigureAwait(false);
@@ -60,12 +71,10 @@ namespace Cheesebaron.MvxPlugins.Notifications
             return true;
         }
 
-        public Func<Task> DidRegisterForNotifications { get; set; }
-        public Func<Task> DidUnregisterForNotifications { get; set; }
-
         public void Dispose()
         {
-            _token.Dispose();
+            _notificationRegisterMessageToken.Dispose();
+            _errorMessageToken.Dispose();
         }
     }
 }
