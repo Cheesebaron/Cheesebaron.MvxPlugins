@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WPNotificationConfiguration.cs" />
     <Compile Include="WPNotifications.cs" />
   </ItemGroup>
   <ItemGroup>

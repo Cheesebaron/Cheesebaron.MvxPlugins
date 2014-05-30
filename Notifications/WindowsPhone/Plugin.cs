@@ -14,14 +14,12 @@ namespace Cheesebaron.MvxPlugins.Notifications
         {
             if (_loaded) return;
 
-            var instance = new WPNotifications();
+            if (_config == null)
+                _config = new WPNotificationConfiguration();
 
-            if (_config != null)
-            {
-                if(string.IsNullOrEmpty(_config.ChannelName))
-                    instance.ChannelName =
-                        "Cheesebaron.MvxPlugins.NotificationChannel.Tile";
-            }
+            var instance = new WPNotifications {
+                Configuration = _config
+            };
 
             Mvx.RegisterSingleton<INotifications>(instance);
 
@@ -37,11 +35,5 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
             _config = (WPNotificationConfiguration)configuration;
         }
-    }
-
-    public class WPNotificationConfiguration
-        : IMvxPluginConfiguration
-    {
-        public string ChannelName { get; set; }
     }
 }

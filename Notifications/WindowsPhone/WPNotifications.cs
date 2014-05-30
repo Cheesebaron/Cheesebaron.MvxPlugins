@@ -1,58 +1,162 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Platform;
 using Microsoft.Phone.Notification;
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
     public class WPNotifications 
         : INotifications
+        , IDisposable
     {
         private HttpNotificationChannel _notificationChannel;
+        
+        private HttpNotificationChannel NotificationChannel
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Configuration.ChannelName))
+                    throw new InvalidOperationException(
+                        "ChannelName may not be null or empty");
+
+                if(_notificationChannel != null) return _notificationChannel;
+
+                _notificationChannel = HttpNotificationChannel.Find(Configuration.ChannelName);
+
+                if(_notificationChannel == null)
+                {
+                    _notificationChannel = new HttpNotificationChannel(Configuration.ChannelName);
+                    _notificationChannel.Open();
+                }
+
+                //raw
+                _notificationChannel.HttpNotificationReceived += RawNotificationReceived;
+                //toast
+                _notificationChannel.ShellToastNotificationReceived += ToastNotificationReceived;
+
+                _notificationChannel.ErrorOccurred += ErrorOccurred;
+                _notificationChannel.ChannelUriUpdated += ChannelUriUpdated;
+
+                return _notificationChannel;
+            }
+        }
+
+        public WPNotificationConfiguration Configuration { get; set; }
 
         public string RegistrationId { get; private set; }
         public bool IsRegistered { get; private set; }
 
-        public async Task<bool> RegisterForNotifications()
+        public event DidRegisterForNotificationsEventHandler Registered;
+        public event EventHandler Unregistered;
+        public event NotificationErrorEventHandler Error;
+
+        public async Task<bool> Register()
         {
-            if(string.IsNullOrEmpty(ChannelName))
-                throw new InvalidOperationException(
-                    "ChannelName may not be null or empty prior to calling RegisterForNotifications()");
-
-            if(_notificationChannel == null)
+            if(!NotificationChannel.IsShellTileBound &&
+               Configuration.NotificationTypeContains(WPNotificationType.Tile))
             {
-                // lets see if we have a push channel already.
-                _notificationChannel = HttpNotificationChannel.Find(ChannelName);
-
-                // still nothing, lets create a new then!
-                if(_notificationChannel == null)
-                {
-                    _notificationChannel = new HttpNotificationChannel(ChannelName);
-
-                    _notificationChannel.Open();
-                }
-
-
+                if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
+                    NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
+                else
+                    NotificationChannel.BindToShellTile();
             }
 
+            if(!NotificationChannel.IsShellToastBound &&
+               Configuration.NotificationTypeContains(WPNotificationType.Toast))
+                NotificationChannel.BindToShellToast();
 
+            if(string.IsNullOrEmpty(NotificationChannel.ChannelUri.ToString()))
+                return false;
 
-            await Task.Delay(100);
+            RegistrationId = NotificationChannel.ChannelUri.ToString();
+            IsRegistered = true;
+            if(Registered != null)
+                Registered(this, new DidRegisterForNotificationsEventArgs {
+                    RegistrationId = RegistrationId
+                });
+
             return true;
         }
 
-        public async Task<bool> UnregisterForNotifications()
+        public async Task<bool> Unregister()
         {
-            await Task.Delay(100);
+            if (NotificationChannel.IsShellTileBound)
+                NotificationChannel.UnbindToShellTile();
+
+            if (NotificationChannel.IsShellToastBound)
+                NotificationChannel.UnbindToShellToast();
+
+            NotificationChannel.Close();
+
+            if(Unregistered != null)
+                Unregistered(this, EventArgs.Empty);
+
             return true;
         }
 
-        public Func<Task> DidRegisterForNotifications { get; set; }
-        public Func<Task> DidUnregisterForNotifications { get; set; }
+        private void ChannelUriUpdated(
+            object sender, NotificationChannelUriEventArgs args)
+        {
+            RegistrationId = args.ChannelUri.ToString();
+            IsRegistered = true;
 
-        public string ChannelName { get; set; }
+            if(Registered != null)
+                Registered(this, new DidRegisterForNotificationsEventArgs {
+                    RegistrationId = RegistrationId
+                });
+        }
+
+        private void ErrorOccurred(
+            object sender,
+            NotificationChannelErrorEventArgs args)
+        {
+            if(Error != null)
+                Error(this, new NotificationErrorEventArgs {
+                    Message = string.Format("{0}: {1}", args.ErrorType, args.Message)
+                });
+        }
+
+        // In-app toast
+        private async void ToastNotificationReceived(
+            object sender, NotificationEventArgs args)
+        {
+            if(Configuration == null) return;
+
+            if(Configuration.ToastNotification != null)
+                await Configuration.ToastNotification(args);
+            else {
+                Mvx.TaggedTrace(MvxTraceLevel.Warning, "WindowsPhone Notifications",
+                    "No ToastNotification method was provided, using default MessageBox");
+                await Configuration.DefaultToastNotification(args);
+            }
+        }
+
+        private async void RawNotificationReceived(
+            object sender, HttpNotificationEventArgs args)
+        {
+            if(Configuration == null) return;
+
+            if(Configuration.RawNotification != null)
+                await Configuration.RawNotification(args);
+            else {
+                Mvx.TaggedTrace(MvxTraceLevel.Warning, "WindowsPhone Notifications",
+                    "No RawNotification method was provided, using default");
+                await Configuration.DefaultRawNotification(args);
+            }
+        }
+
+        public void Dispose()
+        {
+            if(_notificationChannel == null) return;
+
+            _notificationChannel.HttpNotificationReceived -= RawNotificationReceived;
+            _notificationChannel.ShellToastNotificationReceived -= ToastNotificationReceived;
+            _notificationChannel.ErrorOccurred -= ErrorOccurred;
+            _notificationChannel.ChannelUriUpdated -= ChannelUriUpdated;
+
+            _notificationChannel.Dispose();
+        }
     }
 }
