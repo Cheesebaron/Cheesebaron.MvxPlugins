@@ -7,10 +7,11 @@ namespace Cheesebaron.MvxPlugins.Notifications
     {
         string RegistrationId { get; }
         bool IsRegistered { get; }
-        Task<bool> RegisterForNotifications();
-        Task<bool> UnregisterForNotifications();
+        Task<bool> Register();
+        Task<bool> Unregister();
 
-        Func<Task> DidRegisterForNotifications { get; set; }
-        Func<Task> DidUnregisterForNotifications { get; set; }
+        event DidRegisterForNotificationsEventHandler Registered;
+        event NotificationErrorEventHandler Error;
+        event EventHandler Unregistered;
     }
 }
