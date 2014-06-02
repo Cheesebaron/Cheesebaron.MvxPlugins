@@ -43,5 +43,12 @@ namespace Touch
             base.FailedToRegisterForRemoteNotifications(application, error);
             
         }
+
+        public override void ReceivedRemoteNotification(
+            UIApplication application, NSDictionary userInfo)
+        {
+            base.ReceivedRemoteNotification(application, userInfo);
+            
+        }
     }
 }

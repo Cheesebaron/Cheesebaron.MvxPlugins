@@ -2,8 +2,6 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
 
-using MonoTouch.UIKit;
-
 namespace Cheesebaron.MvxPlugins.Notifications
 {
     public class Plugin 
@@ -16,17 +14,9 @@ namespace Cheesebaron.MvxPlugins.Notifications
         {
             if (_loaded) return;
 
-            var instance = new TouchNotifications();
-
-            if(_config != null)
-            {
-                if(_config.NotificationTypes.HasValue)
-                    instance.NotificationType = _config.NotificationTypes.Value;
-                else
-                    instance.NotificationType = UIRemoteNotificationType.Alert |
-                                                UIRemoteNotificationType.Badge |
-                                                UIRemoteNotificationType.Sound;
-            }
+            var instance = new TouchNotifications {
+                Configuration = _config ?? new TouchNotificationConfiguration()
+            };
 
             Mvx.RegisterSingleton<INotifications>(instance);
 
@@ -42,11 +32,5 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
             _config = (TouchNotificationConfiguration)configuration;
         }
-    }
-
-    public class TouchNotificationConfiguration
-        : IMvxPluginConfiguration
-    {
-        public UIRemoteNotificationType? NotificationTypes { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
             return (NotificationType & type) == type;
         }
 
-        public Func<HttpNotificationEventArgs, Task> DefaultRawNotification =
+        internal readonly Func<HttpNotificationEventArgs, Task> DefaultRawNotification =
             async args => await Task.Run(async () => {
                 string message;
 
@@ -46,7 +46,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                             DateTime.Now.ToShortTimeString(), message)));
             }).ConfigureAwait(false);
 
-        public Func<NotificationEventArgs, Task> DefaultToastNotification =
+        internal readonly Func<NotificationEventArgs, Task> DefaultToastNotification =
             async args => await Task.Run(() => {
                 var sb = new StringBuilder();
 
