@@ -5,7 +5,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 
 - **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
 - **Azure Access Control** This plugin provides Authentication against Windows Azure ACS (don't confuse it with Windows Azure Mobile Services).
-- **Connectivity** A plugin for getting network information and status.
+- **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
 - **ModernHttpClient** A wrapper around [Paul Betts'][paulb] [ModernHttpClient][modern].
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
