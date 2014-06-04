@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
+using Android.Support.V4.App;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
@@ -47,13 +48,23 @@ namespace Cheesebaron.MvxPlugins.Notifications
         /// </summary>
         public string[] SenderIds { get; set; }
 
+        public Func<string, Context, Task> Notification { get; set; }
+        public Func<string, Context, Task> NotificationError { get; set; }
+        public Func<string, Context, Task> NotificationDelete { get; set; } 
+
         internal readonly Func<string, Context, Task> DefaultNotification = async (notification, context) =>
         {
             await Task.Run(() => {
                 var manager =
                     (NotificationManager) context.GetSystemService(Context.NotificationService);
 
-                var contentIntent = PendingIntent.
+                var builder = new NotificationCompat.Builder(context)
+                    .SetSmallIcon(Android.Resource.Drawable.StarBigOn)
+                    .SetContentTitle("Cheesebaron.MvxPlugins.Notifications Notification")
+                    .SetStyle(new NotificationCompat.BigTextStyle().BigText(notification))
+                    .SetContentText(notification);
+
+                manager.Notify(1, builder.Build());
             });
         };
     }

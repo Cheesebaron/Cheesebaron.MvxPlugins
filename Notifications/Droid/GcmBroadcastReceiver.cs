@@ -27,9 +27,9 @@ namespace Cheesebaron.MvxPlugins.Notifications
         : IntentService
     {
         // yeah...
-        internal static Action<string> OnNotification { get; set; }
-        internal static Action<string> OnNotificationDeleted { get; set; }
-        internal static Action<string> OnNotificationSendError { get; set; }
+        internal static Action<string, Context> OnNotification { get; set; }
+        internal static Action<string, Context> OnNotificationDeleted { get; set; }
+        internal static Action<string, Context> OnNotificationSendError { get; set; }
 
         public GcmIntentService() 
             : base("GcmIntentService") { }
@@ -51,15 +51,15 @@ namespace Cheesebaron.MvxPlugins.Notifications
                 switch(messageType) {
                     case GoogleCloudMessaging.MessageTypeSendError:
                         if (OnNotificationSendError != null)
-                            OnNotificationSendError(extras.ToString());
+                            OnNotificationSendError(extras.ToString(), this);
                         break;
                     case GoogleCloudMessaging.MessageTypeDeleted:
                         if (OnNotificationDeleted != null)
-                            OnNotificationDeleted(extras.ToString());
+                            OnNotificationDeleted(extras.ToString(), this);
                         break;
                     case GoogleCloudMessaging.MessageTypeMessage:
                         if(OnNotification != null)
-                            OnNotification(extras.ToString());
+                            OnNotification(extras.ToString(), this);
                         break;
                 }
             }

@@ -32,9 +32,15 @@ namespace Cheesebaron.MvxPlugins.Notifications
         private ISettings _settings;
         private GoogleCloudMessaging _gcm;
 
-        public DroidNotifications() 
+        public DroidNotifications()
         {
-                
+            GcmIntentService.OnNotification = async (s, c) =>
+            {
+                if (Configuration.Notification != null)
+                    await Configuration.Notification(s, c);
+                else
+                    await Configuration.DefaultNotification(s, c);
+            };
         }
 
         public string RegistrationId
