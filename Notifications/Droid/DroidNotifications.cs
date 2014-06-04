@@ -23,13 +23,19 @@ using Java.IO;
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
-    public class DroidNotifications : INotifications
+    public class DroidNotifications
+        : INotifications
     {
         private const string Tag = "DroidNotifications";
         private const string PropertyRegId = "gcm_registration_id";
         private const string PropertyAppVersion = "gcm_app_version";
         private ISettings _settings;
         private GoogleCloudMessaging _gcm;
+
+        public DroidNotifications() 
+        {
+                
+        }
 
         public string RegistrationId
         {

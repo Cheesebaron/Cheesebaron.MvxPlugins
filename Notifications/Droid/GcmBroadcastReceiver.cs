@@ -1,16 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.Gms.Gcm;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.Content;
-using Android.Views;
-using Android.Widget;
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
@@ -18,7 +10,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
         Permission = "com.google.android.c2dm.permission.SEND")]
     [IntentFilter(new[] { "com.google.android.c2dm.intent.RECEIVE" }, 
         Categories = new []{ "@PACKAGE_NAME@" })]
-    public class GcmBroadcastReceiver : WakefulBroadcastReceiver
+    public class GcmBroadcastReceiver 
+        : WakefulBroadcastReceiver
     {
         public override void OnReceive(Context context, Intent intent)
         {
@@ -29,8 +22,15 @@ namespace Cheesebaron.MvxPlugins.Notifications
         }
     }
 
-    public class GcmIntentService : IntentService
+    [Service]
+    public class GcmIntentService 
+        : IntentService
     {
+        // yeah...
+        internal static Action<string> OnNotification { get; set; }
+        internal static Action<string> OnNotificationDeleted { get; set; }
+        internal static Action<string> OnNotificationSendError { get; set; }
+
         public GcmIntentService() 
             : base("GcmIntentService") { }
 
@@ -50,10 +50,16 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
                 switch(messageType) {
                     case GoogleCloudMessaging.MessageTypeSendError:
+                        if (OnNotificationSendError != null)
+                            OnNotificationSendError(extras.ToString());
                         break;
                     case GoogleCloudMessaging.MessageTypeDeleted:
+                        if (OnNotificationDeleted != null)
+                            OnNotificationDeleted(extras.ToString());
                         break;
                     case GoogleCloudMessaging.MessageTypeMessage:
+                        if(OnNotification != null)
+                            OnNotification(extras.ToString());
                         break;
                 }
             }

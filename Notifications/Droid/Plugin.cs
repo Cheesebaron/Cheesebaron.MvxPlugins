@@ -1,3 +1,7 @@
+using System;
+using System.Threading.Tasks;
+using Android.App;
+using Android.Content;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
@@ -43,6 +47,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
         /// </summary>
         public string[] SenderIds { get; set; }
 
+        internal readonly Func<string, Context, Task> DefaultNotification = async (notification, context) =>
+        {
+            await Task.Run(() => {
+                var manager =
+                    (NotificationManager) context.GetSystemService(Context.NotificationService);
 
+                var contentIntent = PendingIntent.
+            });
+        };
     }
 }

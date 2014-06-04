@@ -37,6 +37,7 @@
     <Compile Include="Args\NotificationErrorEventArgs.cs" />
     <Compile Include="INotifications.cs" />
     <Compile Include="Messages\NotificationErrorMessage.cs" />
+    <Compile Include="Messages\NotificationReceivedMessage.cs" />
     <Compile Include="Messages\NotificationRegisterMessage.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
