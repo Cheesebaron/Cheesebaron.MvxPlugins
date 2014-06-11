@@ -1,8 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.Support.V4.App;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
@@ -38,34 +33,5 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
             _config = (DroidNotificationConfiguration)configuration;
         }
-    }
-
-    public class DroidNotificationConfiguration 
-        : IMvxPluginConfiguration
-    {
-        /// <summary>
-        /// GCM sender ids obtained from the Play Services control panel
-        /// </summary>
-        public string[] SenderIds { get; set; }
-
-        public Func<string, Context, Task> Notification { get; set; }
-        public Func<string, Context, Task> NotificationError { get; set; }
-        public Func<string, Context, Task> NotificationDelete { get; set; } 
-
-        internal readonly Func<string, Context, Task> DefaultNotification = async (notification, context) =>
-        {
-            await Task.Run(() => {
-                var manager =
-                    (NotificationManager) context.GetSystemService(Context.NotificationService);
-
-                var builder = new NotificationCompat.Builder(context)
-                    .SetSmallIcon(Android.Resource.Drawable.StarBigOn)
-                    .SetContentTitle("Cheesebaron.MvxPlugins.Notifications Notification")
-                    .SetStyle(new NotificationCompat.BigTextStyle().BigText(notification))
-                    .SetContentText(notification);
-
-                manager.Notify(1, builder.Build());
-            });
-        };
     }
 }

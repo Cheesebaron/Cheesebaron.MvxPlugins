@@ -5,21 +5,22 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5858DDBC-9C92-4886-9451-06D83DE4AF19}</ProjectGuid>
+    <ProjectGuid>{53C7BBF1-62DB-45D1-B185-4634B10DFA17}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Connectivity.Sample.Droid</RootNamespace>
-    <AssemblyName>Connectivity.Sample.Droid</AssemblyName>
+    <RootNamespace>Notifications.Sample.Droid</RootNamespace>
+    <AssemblyName>Notifications.Sample.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
-    <JavaMaximumHeapSize />
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <JavaOptions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,29 +45,35 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.CrossCore">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.CrossCore.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.CrossCore.Droid">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.CrossCore.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.MvvmCross.Binding">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.MvvmCross.Binding.Droid">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Cirrious.MvvmCross.Droid">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.MethodBinding">
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.MethodBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Visibility.Droid">
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Plugins.Visibility.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="GooglePlayServicesLib">
+      <HintPath>..\..\..\Components\googleplayservices-16.0\lib\android\GooglePlayServicesLib.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -74,48 +81,69 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\..\..\Components\googleplayservices-16.0\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\..\..\Components\googleplayservices-16.0\lib\android\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <HintPath>..\..\..\Components\googleplayservices-16.0\lib\android\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\ConnectivityPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\MethodBindingPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\NotificationsPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\FirstView.cs" />
+    <Compile Include="SplashScreenActivity.cs" />
+    <Compile Include="Views\TestView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Layout\first.axml">
+    <AndroidResource Include="Resources\layout\splashscreen.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\test.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Connectivity\Core\Connectivity.Core.csproj">
-      <Project>{FD5C4102-936B-4F6A-B7AF-BE5D53B40C90}</Project>
-      <Name>Connectivity.Core</Name>
+    <ProjectReference Include="..\..\..\Notifications\Core\Notifications.Core.csproj">
+      <Project>{93746045-7e0e-4ef9-a706-de84f2f54e7c}</Project>
+      <Name>Notifications.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Connectivity\Droid\Connectivity.Droid.csproj">
-      <Project>{7e6fbc2d-a9b0-42a6-8f84-15dce5a8af7d}</Project>
-      <Name>Connectivity.Droid</Name>
+    <ProjectReference Include="..\..\..\Notifications\Droid\Notifications.Droid.csproj">
+      <Project>{096800f7-3554-4310-b8cb-ac21c1670b76}</Project>
+      <Name>Notifications.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Connectivity.Sample.Core.csproj">
-      <Project>{2F974916-A087-42DB-8E94-11F04040F7FE}</Project>
-      <Name>Connectivity.Sample.Core</Name>
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
+      <Project>{4456f80a-718a-479a-a2d9-f3f986fd82ac}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings.Droid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Notifications.Sample.Core.csproj">
+      <Project>{0845a91c-b5b4-4b5f-a668-a37d914af167}</Project>
+      <Name>Notifications.Sample.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="googleplayservices">
+      <Visible>False</Visible>
+      <Version>16.0</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

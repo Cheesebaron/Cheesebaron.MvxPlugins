@@ -52,48 +52,55 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public event EventHandler Unregistered;
         public event NotificationErrorEventHandler Error;
 
-        public async Task<bool> Register()
+        public async Task<bool> RegisterAsync()
         {
-            if(!NotificationChannel.IsShellTileBound &&
+            var result = await Task.Run(() => {
+                if (!NotificationChannel.IsShellTileBound &&
                Configuration.NotificationTypeContains(WPNotificationType.Tile))
-            {
-                if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
-                    NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
-                else
-                    NotificationChannel.BindToShellTile();
-            }
+                {
+                    if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
+                        NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
+                    else
+                        NotificationChannel.BindToShellTile();
+                }
 
-            if(!NotificationChannel.IsShellToastBound &&
-               Configuration.NotificationTypeContains(WPNotificationType.Toast))
-                NotificationChannel.BindToShellToast();
+                if (!NotificationChannel.IsShellToastBound &&
+                   Configuration.NotificationTypeContains(WPNotificationType.Toast))
+                    NotificationChannel.BindToShellToast();
 
-            if(string.IsNullOrEmpty(NotificationChannel.ChannelUri.ToString()))
-                return false;
+                if (string.IsNullOrEmpty(NotificationChannel.ChannelUri.ToString()))
+                    return false;
 
-            RegistrationId = NotificationChannel.ChannelUri.ToString();
-            IsRegistered = true;
-            if(Registered != null)
-                Registered(this, new DidRegisterForNotificationsEventArgs {
-                    RegistrationId = RegistrationId
-                });
+                RegistrationId = NotificationChannel.ChannelUri.ToString();
+                IsRegistered = true;
+                if (Registered != null)
+                    Registered(this, new DidRegisterForNotificationsEventArgs
+                    {
+                        RegistrationId = RegistrationId
+                    });
 
-            return true;
+                return true;
+            });
+
+            return result;
         }
 
-        public async Task<bool> Unregister()
+        public async Task<bool> UnregisterAsync()
         {
-            if (NotificationChannel.IsShellTileBound)
-                NotificationChannel.UnbindToShellTile();
+            return await Task.Run(() => {
+                if (NotificationChannel.IsShellTileBound)
+                    NotificationChannel.UnbindToShellTile();
 
-            if (NotificationChannel.IsShellToastBound)
-                NotificationChannel.UnbindToShellToast();
+                if (NotificationChannel.IsShellToastBound)
+                    NotificationChannel.UnbindToShellToast();
 
-            NotificationChannel.Close();
+                NotificationChannel.Close();
 
-            if(Unregistered != null)
-                Unregistered(this, EventArgs.Empty);
+                if (Unregistered != null)
+                    Unregistered(this, EventArgs.Empty);
 
-            return true;
+                return true;
+            });
         }
 
         private void ChannelUriUpdated(

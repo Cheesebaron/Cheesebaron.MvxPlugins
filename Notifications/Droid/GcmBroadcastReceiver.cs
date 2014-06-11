@@ -6,7 +6,7 @@ using Android.Support.V4.Content;
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
-    [BroadcastReceiver(Enabled = true, Name = "GCM Receiver for some app", 
+    [BroadcastReceiver(Enabled = true, 
         Permission = "com.google.android.c2dm.permission.SEND")]
     [IntentFilter(new[] { "com.google.android.c2dm.intent.RECEIVE" }, 
         Categories = new []{ "@PACKAGE_NAME@" })]
@@ -15,9 +15,9 @@ namespace Cheesebaron.MvxPlugins.Notifications
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            var comp = new ComponentName(context.PackageName, typeof(GcmIntentService).Name);
+            intent.SetClass(context, typeof (GcmIntentService));
 
-            StartWakefulService(context, (intent.SetComponent(comp)));
+            StartWakefulService(context, intent);
             SetResult(Result.Ok, null, null);
         }
     }
@@ -43,11 +43,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
             var messageType = gcm.GetMessageType(intent);
 
             if(!extras.IsEmpty) {
-                /*
-                 * Filter messages based on type here. GCM will likely be 
-                 * extended in the future with new message types.
-                 */
-
+                // Filter messages based on type here. GCM will likely be 
+                // extended in the future with new message types.
                 switch(messageType) {
                     case GoogleCloudMessaging.MessageTypeSendError:
                         if (OnNotificationSendError != null)

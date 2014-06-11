@@ -7,8 +7,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
     {
         string RegistrationId { get; }
         bool IsRegistered { get; }
-        Task<bool> Register();
-        Task<bool> Unregister();
+        Task<bool> RegisterAsync();
+        Task<bool> UnregisterAsync();
 
         event DidRegisterForNotificationsEventHandler Registered;
         event NotificationErrorEventHandler Error;

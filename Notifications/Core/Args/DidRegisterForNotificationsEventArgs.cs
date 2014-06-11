@@ -2,7 +2,7 @@
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
-    public delegate EventHandler<DidRegisterForNotificationsEventArgs>
+    public delegate void
         DidRegisterForNotificationsEventHandler(
         object sender, DidRegisterForNotificationsEventArgs args);
     

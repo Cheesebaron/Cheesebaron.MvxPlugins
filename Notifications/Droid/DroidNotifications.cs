@@ -10,7 +10,6 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.CrossCore.Platform;
-using Java.IO;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE", ProtectionLevel = Protection.Signature)]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -80,13 +79,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public event NotificationErrorEventHandler Error;
         public event EventHandler Unregistered;
 
-        public async Task<bool> Register()
+        public async Task<bool> RegisterAsync()
         {
             if(!CheckPlayServices())
                 return false;
 
-            await Task.Run(() => {
-                try {
+            var result = await Task.Run(() => {
+                try 
+                {
                     if (Configuration.SenderIds == null || !Configuration.SenderIds.Any())
                         throw new InvalidOperationException("Cannot register without any SenderId's");
 
@@ -99,22 +99,26 @@ namespace Cheesebaron.MvxPlugins.Notifications
                             RegistrationId = RegistrationId
                         });
                 }
-                catch(IOException e) {
+                catch(Java.IO.IOException e) 
+                {
                     if(Error != null) {
                         Error(this, new NotificationErrorEventArgs {
                             Message = e.Message
                         });
                     }
+                    return false;
                 }
+                return true;
             });
 
-            return true;
+            return result;
         }
 
-        public async Task<bool> Unregister()
+        public async Task<bool> UnregisterAsync()
         {
-            await Task.Run(() => {
-                try {
+            var result = await Task.Run(() => {
+                try 
+                {
                     Gcm.Unregister();
 
                     IsRegistered = false;
@@ -124,7 +128,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     if(Unregistered != null)
                         Unregistered(this, EventArgs.Empty);
                 }
-                catch(IOException e) {
+                catch (Java.IO.IOException e)
+                {
                     if (Error != null)
                     {
                         Error(this, new NotificationErrorEventArgs
@@ -132,10 +137,12 @@ namespace Cheesebaron.MvxPlugins.Notifications
                             Message = e.Message
                         });
                     }
+                    return false;
                 }
+                return true;
             });
 
-            return true;
+            return result;
         }
 
         private ISettings Settings
@@ -182,12 +189,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
         {
             get
             {
-                try {
+                try 
+                {
                     var context = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
                     var packageInfo = context.PackageManager.GetPackageInfo(context.PackageName, 0);
                     return packageInfo.VersionCode;
                 }
-                catch(PackageManager.NameNotFoundException e) {
+                catch(PackageManager.NameNotFoundException e) 
+                {
                     // should never happen, if it does, someone set up us the bomb!
                     throw new InvalidOperationException("Could not get package name: " + e.Message);
                 }

@@ -166,7 +166,7 @@
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
