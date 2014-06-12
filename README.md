@@ -39,7 +39,7 @@ Other people are doing MvvmCross plugins as well and I think it is great to ment
 | [Geoffrey Huntley][ghuntley]        | [Ghuntley.MvxPlugins.FaceTime][facetime]    |
 | [Artur Rybak][wedkarz]              | [IHS.MvvmCross.Plugins.Keychain][keychain]  |
 | [Allan Ritchie][aritchie]           | [acrmvvmcross][acrmvvmcross]                |
-
+| [SeeD-Seifer][SeeD-Seifer]          | [Mvx.Geocoder][geocoder]                    |
 
 License
 =======
@@ -71,3 +71,5 @@ License
 [modern]: https://github.com/paulcbetts/ModernHttpClient
 [paulb]: https://github.com/paulcbetts
 [reach]: https://github.com/xamarin/monotouch-samples/blob/master/ReachabilitySample/reachability.cs
+[SeeD-Seifer]: https://github.com/SeeD-Seifer
+[geocoder]: https://github.com/SeeD-Seifer/Mvx.Geocoder
