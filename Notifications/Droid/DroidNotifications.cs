@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Android.App;
 using Android.Content.PM;
 using Android.Gms.Common;
 using Android.Gms.Gcm;
@@ -10,15 +9,6 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.CrossCore.Platform;
-
-[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE", ProtectionLevel = Protection.Signature)]
-[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-[assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-
-//GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-[assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-[assembly: UsesPermission(Name = "android.permission.INTERNET")]
-[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
@@ -30,17 +20,6 @@ namespace Cheesebaron.MvxPlugins.Notifications
         private const string PropertyAppVersion = "gcm_app_version";
         private ISettings _settings;
         private GoogleCloudMessaging _gcm;
-
-        public DroidNotifications()
-        {
-            GcmIntentService.OnNotification = async (s, c) =>
-            {
-                if (Configuration.Notification != null)
-                    await Configuration.Notification(s, c);
-                else
-                    await Configuration.DefaultNotification(s, c);
-            };
-        }
 
         public string RegistrationId
         {
@@ -90,6 +69,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     if (Configuration.SenderIds == null || !Configuration.SenderIds.Any())
                         throw new InvalidOperationException("Cannot register without any SenderId's");
 
+                    // Register method is blocking, never call it on main thread
                     RegistrationId = Gcm.Register(Configuration.SenderIds);
 
                     IsRegistered = true;
@@ -119,6 +99,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
             var result = await Task.Run(() => {
                 try 
                 {
+                    // Unregister method is blocking, never call it on main thread
                     Gcm.Unregister();
 
                     IsRegistered = false;
