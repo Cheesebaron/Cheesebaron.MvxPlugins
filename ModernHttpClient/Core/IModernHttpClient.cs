@@ -14,27 +14,14 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Plugins;
+using System.Net.Http;
 
-namespace Cheesebaron.MvxPlugins.ModernHttpClient.WindowsPhone
+namespace Cheesebaron.MvxPlugins.ModernHttpClient
 {
-    public class Plugin
-        : IMvxPlugin
+    public interface IModernHttpClient
     {
-        private bool _loaded;
-
-        public void Load()
-        {
-            if (_loaded) return;
-
-            var instance = new HttpClientFactory
-            {
-                DefaultHandler = HttpClientHandlerType.HttpClientHandler
-            };
-            Mvx.RegisterSingleton<IHttpClientFactory>(instance);
-
-            _loaded = true;
-        }
+        HttpClient Get();
+        HttpClient Get(HttpMessageHandler handler);
+        HttpMessageHandler GetNativeHandler(bool throwOnCaptiveNetwork = false);
     }
 }
