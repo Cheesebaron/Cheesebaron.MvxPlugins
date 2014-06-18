@@ -13,5 +13,12 @@ namespace Droid
         {
             return new Core.App();
         }
+
+        protected override void InitializeLastChance()
+        {
+            //Mvx.RegisterSingleton<IMvxHttpFileDownloader>(() => new ModernHttpFileDownloader());
+
+            base.InitializeLastChance();
+        }
     }
 }

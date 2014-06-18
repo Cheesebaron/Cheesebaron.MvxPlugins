@@ -57,16 +57,8 @@
     <Reference Include="Cirrious.MvvmCross.Droid">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Droid\Cirrious.MvvmCross.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient.Android, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\Debug\Droid\ModernHttpClient.Android.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="OkHttp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\bin\Debug\Droid\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -104,10 +96,6 @@
     <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
       <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
       <Name>ModernHttpClient.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ModernHttpClient\Droid\ModernHttpClient.Droid.csproj">
-      <Project>{b230cacb-2002-469c-900c-ec383eb23182}</Project>
-      <Name>ModernHttpClient.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core\ModernHttpClient.Sample.Core.csproj">
       <Project>{b4f402f0-6cb0-411d-9f1d-b5de4b42b3eb}</Project>
