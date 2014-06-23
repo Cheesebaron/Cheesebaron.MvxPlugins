@@ -28,7 +28,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public Func<NotificationEventArgs, Task> ToastNotification { get; set; }
         public Func<HttpNotificationEventArgs, Task> RawNotification { get; set; }
 
-        public bool NotificationTypeContains(WPNotificationType type)
+        internal bool NotificationTypeContains(WPNotificationType type)
         {
             return (NotificationType & type) == type;
         }

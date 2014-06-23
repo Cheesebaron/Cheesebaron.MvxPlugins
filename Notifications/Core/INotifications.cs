@@ -13,5 +13,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         event DidRegisterForNotificationsEventHandler Registered;
         event NotificationErrorEventHandler Error;
         event EventHandler Unregistered;
+
+        //TODO add methods for scheduling local notifications
     }
 }
