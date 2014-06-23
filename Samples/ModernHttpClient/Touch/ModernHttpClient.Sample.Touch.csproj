@@ -83,6 +83,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+      <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
+      <Name>ModernHttpClient.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\submodules\Cirrious.FluentLayout\Cirrious.FluentLayout\Cirrious.FluentLayouts.Touch.csproj">
       <Project>{75d2da9d-dfd4-49a1-98fb-fe0f0677ef0f}</Project>
       <Name>Cirrious.FluentLayouts.Touch</Name>

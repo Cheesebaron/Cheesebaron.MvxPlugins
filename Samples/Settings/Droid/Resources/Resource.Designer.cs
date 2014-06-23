@@ -26,8 +26,6 @@ namespace Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.ApplicationName = global::Droid.Resource.String.ApplicationName;
-			global::Cheesebaron.MvxPlugins.Settings.Droid.Resource.String.Hello = global::Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -80,8 +78,8 @@ namespace Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MvxBindingTagUnique = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int MvxBindingTagUnique = 2130968576;
 			
 			static Id()
 			{
@@ -108,25 +106,6 @@ namespace Droid
 			}
 			
 			private Layout()
-			{
-			}
-		}
-		
-		public partial class String
-		{
-			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
-			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
-			
-			static String()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private String()
 			{
 			}
 		}

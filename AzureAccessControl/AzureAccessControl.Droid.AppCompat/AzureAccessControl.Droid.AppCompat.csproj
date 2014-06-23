@@ -121,12 +121,6 @@
     <AndroidResource Include="Resources\values\mvxattrs.xml" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
-      <Visible>False</Visible>
-      <Version>7.18.0</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\menu\login.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -158,6 +152,12 @@
     <AndroidResource Include="..\AzureAccessControl.Droid\Resources\layout\listitem_identityprovider.axml">
       <Link>Resources\layout\listitem_identityprovider.axml</Link>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
+      <Visible>False</Visible>
+      <Version>19.1.0</Version>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

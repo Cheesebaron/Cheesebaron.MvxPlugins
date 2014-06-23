@@ -41,8 +41,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl
 
         public async Task<IEnumerable<IdentityProviderInformation>> GetIdentityProviderListAsync(Uri identityProviderListServiceEndpoint)
         {
-            var clientFactory = Mvx.Resolve<IHttpClientFactory>();
-            var handler = clientFactory.GetHandler();
+            var clientFactory = Mvx.Resolve<IModernHttpClient>();
+            var handler = clientFactory.GetNativeHandler();
             var outerHandler = new RetryHandler(handler);
             var client = clientFactory.Get(outerHandler);
             var json = await client.GetStringAsync(identityProviderListServiceEndpoint);
