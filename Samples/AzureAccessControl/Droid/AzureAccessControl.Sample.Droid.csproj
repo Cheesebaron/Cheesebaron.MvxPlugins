@@ -137,14 +137,6 @@
       <Project>{3ef16344-217d-4a0e-bdfc-9e11c13fb224}</Project>
       <Name>AzureAccessControl.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
-      <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
-      <Name>ModernHttpClient.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ModernHttpClient\Droid\ModernHttpClient.Droid.csproj">
-      <Project>{b230cacb-2002-469c-900c-ec383eb23182}</Project>
-      <Name>ModernHttpClient.Droid</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings.Droid\Cheesebaron.MvxPlugins.Settings.Droid.csproj">
       <Project>{4456f80a-718a-479a-a2d9-f3f986fd82ac}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings.Droid</Name>

@@ -22,10 +22,15 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient
     public class PluginLoader : IMvxPluginLoader
     {
         public static readonly PluginLoader Instance = new PluginLoader();
+        private bool _loaded;
+
         public void EnsureLoaded()
         {
-            var manager = Mvx.Resolve<IMvxPluginManager>();
-            manager.EnsurePlatformAdaptionLoaded<PluginLoader>();
+            if (_loaded)
+                return;
+
+            Mvx.RegisterSingleton<IModernHttpClient>(() => new ModernHttpClient());
+            _loaded = true;
         }
     }
 }

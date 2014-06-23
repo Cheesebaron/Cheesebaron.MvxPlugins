@@ -79,10 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
-      <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
-      <Name>ModernHttpClient.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
       <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
       <Name>Cheesebaron.MvxPlugins.Settings</Name>
