@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
 using Microsoft.Phone.Notification;
 
@@ -11,6 +12,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         : INotifications
         , IDisposable
     {
+        private bool _attemptedRegistration;
         private HttpNotificationChannel _notificationChannel;
         
         private HttpNotificationChannel NotificationChannel
@@ -28,7 +30,20 @@ namespace Cheesebaron.MvxPlugins.Notifications
                 if(_notificationChannel == null)
                 {
                     _notificationChannel = new HttpNotificationChannel(Configuration.ChannelName);
-                    _notificationChannel.Open();
+                    try
+                    {
+                        _notificationChannel.Open();
+                    }
+                    catch (UnauthorizedAccessException ux)
+                    {
+                        Mvx.TaggedTrace(typeof(WPNotifications).Name, "Failed to Open notification channel, exception: {0}", ux.Message);
+                        throw new MvxException(ux, "Remember to add the appropriate permissions to your application");
+                    }
+                    catch (Exception ex)
+                    {
+                        Mvx.TaggedTrace(typeof(WPNotifications).Name, "Failed to Open notification channel, exception: {0}", ex.Message);
+                        throw;
+                    }
                 }
 
                 //raw
@@ -52,42 +67,25 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public event EventHandler Unregistered;
         public event NotificationErrorEventHandler Error;
 
-        public async Task<bool> RegisterAsync()
+        public async Task RegisterAsync()
         {
-            var result = await Task.Run(() => {
-                if (!NotificationChannel.IsShellTileBound &&
-               Configuration.NotificationTypeContains(WPNotificationType.Tile))
-                {
-                    if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
-                        NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
-                    else
-                        NotificationChannel.BindToShellTile();
-                }
+            if (NotificationChannel == null) return;
 
-                if (!NotificationChannel.IsShellToastBound &&
-                   Configuration.NotificationTypeContains(WPNotificationType.Toast))
-                    NotificationChannel.BindToShellToast();
+            _attemptedRegistration = true;
 
-                if (string.IsNullOrEmpty(NotificationChannel.ChannelUri.ToString()))
-                    return false;
-
-                RegistrationId = NotificationChannel.ChannelUri.ToString();
-                IsRegistered = true;
-                if (Registered != null)
-                    Registered(this, new DidRegisterForNotificationsEventArgs
-                    {
-                        RegistrationId = RegistrationId
-                    });
-
-                return true;
-            });
-
-            return result;
+            // not ready yet
+            if (NotificationChannel.ChannelUri == null) return;
+            
+            await SetUpInAppNotificationsAsync();
         }
 
-        public async Task<bool> UnregisterAsync()
+        public async Task UnregisterAsync()
         {
-            return await Task.Run(() => {
+            if (NotificationChannel == null) return;
+
+            _attemptedRegistration = false;
+
+            await Task.Run(() => {
                 if (NotificationChannel.IsShellTileBound)
                     NotificationChannel.UnbindToShellTile();
 
@@ -98,21 +96,43 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
                 if (Unregistered != null)
                     Unregistered(this, EventArgs.Empty);
-
-                return true;
             });
         }
 
-        private void ChannelUriUpdated(
+        private async Task SetUpInAppNotificationsAsync()
+        {
+            await Task.Run(() => {
+                if (!NotificationChannel.IsShellTileBound &&
+                    Configuration.NotificationTypeContains(WPNotificationType.Tile))
+                {
+                    if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
+                        NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
+                    else
+                        NotificationChannel.BindToShellTile();
+                }
+
+                if (!NotificationChannel.IsShellToastBound &&
+                    Configuration.NotificationTypeContains(WPNotificationType.Toast))
+                    NotificationChannel.BindToShellToast();
+
+                RegistrationId = NotificationChannel.ChannelUri.ToString();
+                IsRegistered = true;
+                if (Registered != null)
+                    Registered(this, new DidRegisterForNotificationsEventArgs
+                    {
+                        RegistrationId = RegistrationId
+                    });
+            });
+        }
+
+        private async void ChannelUriUpdated(
             object sender, NotificationChannelUriEventArgs args)
         {
             RegistrationId = args.ChannelUri.ToString();
-            IsRegistered = true;
+            
+            if (!_attemptedRegistration) return;
 
-            if(Registered != null)
-                Registered(this, new DidRegisterForNotificationsEventArgs {
-                    RegistrationId = RegistrationId
-                });
+            await SetUpInAppNotificationsAsync();
         }
 
         private void ErrorOccurred(

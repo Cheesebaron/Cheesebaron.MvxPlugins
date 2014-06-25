@@ -58,12 +58,12 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public event NotificationErrorEventHandler Error;
         public event EventHandler Unregistered;
 
-        public async Task<bool> RegisterAsync()
+        public async Task RegisterAsync()
         {
             if(!CheckPlayServices())
-                return false;
+                return;
 
-            var result = await Task.Run(() => {
+            await Task.Run(() => {
                 try 
                 {
                     if (Configuration.SenderIds == null || !Configuration.SenderIds.Any())
@@ -86,17 +86,13 @@ namespace Cheesebaron.MvxPlugins.Notifications
                             Message = e.Message
                         });
                     }
-                    return false;
                 }
-                return true;
             });
-
-            return result;
         }
 
-        public async Task<bool> UnregisterAsync()
+        public async Task UnregisterAsync()
         {
-            var result = await Task.Run(() => {
+            await Task.Run(() => {
                 try 
                 {
                     // Unregister method is blocking, never call it on main thread
@@ -118,12 +114,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
                             Message = e.Message
                         });
                     }
-                    return false;
                 }
-                return true;
             });
-
-            return result;
         }
 
         private ISettings Settings

@@ -55,6 +55,8 @@ namespace Notifications.Sample.WindowsPhone
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            var setup = new Setup(RootFrame);
+            setup.Initialize();
         }
 
         // Code to execute when a contract activation such as a file open or save picker returns 
@@ -67,7 +69,16 @@ namespace Notifications.Sample.WindowsPhone
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            RootFrame.Navigating += RootFrameOnNavigating;
         }
+
+        private void RootFrameOnNavigating(object sender, NavigatingCancelEventArgs args)
+        {
+            args.Cancel = true;
+            RootFrame.Navigating -= RootFrameOnNavigating;
+            RootFrame.Dispatcher.BeginInvoke(() => Cirrious.CrossCore.Mvx.Resolve<Cirrious.MvvmCross.ViewModels.IMvxAppStart>().Start());
+        }
+
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched

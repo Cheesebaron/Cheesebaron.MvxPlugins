@@ -70,20 +70,16 @@ namespace Cheesebaron.MvxPlugins.Notifications
             });
         }
 
-        public async Task<bool> RegisterAsync()
+        public async Task RegisterAsync()
         {
             await Task.Run(() => UIApplication.SharedApplication
                 .RegisterForRemoteNotificationTypes(Configuration.NotificationTypes)).ConfigureAwait(false);
-            
-            return true;
         }
 
-        public async Task<bool> UnregisterAsync()
+        public async Task UnregisterAsync()
         {
             await Task.Run(() => UIApplication.SharedApplication
                 .UnregisterForRemoteNotifications()).ConfigureAwait(false);
-
-            return true;
         }
 
         public void Dispose()
