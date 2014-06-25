@@ -8,7 +8,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
         string RegistrationId { get; }
         bool IsRegistered { get; }
 
+        /// <summary>
+        /// Register for notifications. (Will run Sync on iOS!)
+        /// </summary>
         Task RegisterAsync();
+
+        /// <summary>
+        /// Unregister for notifications. (Will run Sync on iOS!)
+        /// </summary>
         Task UnregisterAsync();
 
         /// <summary>
