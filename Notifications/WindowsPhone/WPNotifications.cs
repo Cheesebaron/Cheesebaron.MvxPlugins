@@ -95,7 +95,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
                 if (Unregistered != null)
                     Unregistered(this, EventArgs.Empty);
-            });
+            }).ConfigureAwait(false);
         }
 
         private async Task SetUpInAppNotificationsAsync()
@@ -121,7 +121,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     {
                         RegistrationId = RegistrationId
                     });
-            });
+            }).ConfigureAwait(false);
         }
 
         private async void ChannelUriUpdated(
