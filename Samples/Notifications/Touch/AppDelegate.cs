@@ -1,54 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using Cheesebaron.MvxPlugins.Notifications;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Touch.Views.Presenters;
+using Cirrious.MvvmCross.ViewModels;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 namespace Touch
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the 
-    // User Interface of the application, as well as listening (and optionally responding) to 
-    // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : UIApplicationDelegate
+    public partial class AppDelegate : NotificationsAppDelegate // note the usage of NotificationsAppDelegate!
     {
-        // class-level declarations
-        UIWindow window;
+        UIWindow _window;
 
-        //
-        // This method is invoked when the application has loaded and is ready to run. In this 
-        // method you should instantiate the window, load the UI into it and then make the window
-        // visible.
-        //
-        // You have 17 seconds to return from this method, or iOS will terminate your application.
-        //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            // create a new window instance based on the screen size
-            window = new UIWindow(UIScreen.MainScreen.Bounds);
+            _window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            // If you have defined a view, add it here:
-            // window.RootViewController  = navigationController;
+            var presenter = new MvxTouchViewPresenter(this, _window);
+            var setup = new Setup(this, presenter);
+            setup.Initialize();
 
-            // make the window visible
-            window.MakeKeyAndVisible();
+            var start = Mvx.Resolve<IMvxAppStart>();
+            start.Start();
+
+            _window.MakeKeyAndVisible();
 
             return true;
-        }
-
-        public override void FailedToRegisterForRemoteNotifications(
-            UIApplication application, NSError error)
-        {
-            base.FailedToRegisterForRemoteNotifications(application, error);
-            
-        }
-
-        public override void ReceivedRemoteNotification(
-            UIApplication application, NSDictionary userInfo)
-        {
-            base.ReceivedRemoteNotification(application, userInfo);
-            
         }
     }
 }
