@@ -38,11 +38,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
             });
         };
 
-        internal readonly Func<string, string, Task> DefaultLocalNotification = async (action, body) =>
-        {
-            await Task.Run(() => {
-                new UIAlertView(action, body, null, "OK", null).Show();
-            });
-        };
+        internal readonly Func<string, string, Task> DefaultLocalNotification = async (action, body) => 
+            new UIAlertView(action, body, null, "OK", null).Show();
     }
 }

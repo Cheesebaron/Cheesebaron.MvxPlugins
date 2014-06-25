@@ -39,21 +39,20 @@ namespace Cheesebaron.MvxPlugins.Notifications
             var jsonData = NSJsonSerialization.Serialize(dict,
                 NSJsonWritingOptions.PrettyPrinted, out error);
 
-            if (error != null)
-            {
-                var json = new NSString(jsonData, NSStringEncoding.UTF8).ToString();
+            if (error != null) return;
 
-                Mvx.Resolve<MvxMessengerHub>().Publish(new NotificationReceivedMessage(this)
-                {
-                    Body = json,
-                    Local = false
-                });
-            }
+            var json = jsonData.ToString();
+
+            Mvx.Resolve<IMvxMessenger>().Publish(new NotificationReceivedMessage(this)
+            {
+                Body = json,
+                Local = false
+            });
         }
 
         private void ReceivedLocalNotification(UILocalNotification notification)
         {
-            Mvx.Resolve<MvxMessengerHub>().Publish(new NotificationReceivedMessage(this)
+            Mvx.Resolve<IMvxMessenger>().Publish(new NotificationReceivedMessage(this)
             {
                 Body = notification.AlertBody,
                 Local = true,
@@ -64,8 +63,6 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public override void ReceivedRemoteNotification(
             UIApplication application, NSDictionary userInfo)
         {
-            base.ReceivedRemoteNotification(application, userInfo);
-            
             if (userInfo != null)
                 ReceivedRemoteNotification(userInfo);
         }
@@ -73,10 +70,16 @@ namespace Cheesebaron.MvxPlugins.Notifications
         public override void ReceivedLocalNotification(UIApplication application, 
             UILocalNotification notification)
         {
-            base.ReceivedLocalNotification(application, notification);
-
             if (notification != null)
                 ReceivedLocalNotification(notification);
+        }
+
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            Mvx.Resolve<IMvxMessenger>()
+                .Publish(new NotificationRegisterMessage(this) { Registered = true,
+                    RegistrationId = deviceToken.ToString().Replace("<", "").Replace(">", "").Replace(" ", "")
+                });
         }
     }
 }

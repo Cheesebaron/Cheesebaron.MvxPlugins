@@ -22,7 +22,7 @@ namespace Touch
             {
                 return new TouchNotificationConfiguration
                 {
-
+                    
                 };
             }
 
