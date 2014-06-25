@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="Args\DidRegisterForNotificationsEventArgs.cs" />
     <Compile Include="Args\NotificationErrorEventArgs.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="INotifications.cs" />
     <Compile Include="Messages\NotificationErrorMessage.cs" />
     <Compile Include="Messages\NotificationReceivedMessage.cs" />
