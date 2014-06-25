@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Cheesebaron.MvxPlugins.Notifications.Messages;
 
 using Cirrious.CrossCore;
+using Cirrious.CrossCore.Core;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using MonoTouch.UIKit;
 
@@ -72,14 +73,19 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
         public async Task RegisterAsync()
         {
-            await Task.Run(() => UIApplication.SharedApplication
-                .RegisterForRemoteNotificationTypes(Configuration.NotificationTypes)).ConfigureAwait(false);
+            var dispatcher = Mvx.Resolve<IMvxMainThreadDispatcher>();
+
+            dispatcher.RequestMainThreadAction(() =>
+                UIApplication.SharedApplication
+                .RegisterForRemoteNotificationTypes(Configuration.NotificationTypes));
         }
 
         public async Task UnregisterAsync()
         {
-            await Task.Run(() => UIApplication.SharedApplication
-                .UnregisterForRemoteNotifications()).ConfigureAwait(false);
+            var dispatcher = Mvx.Resolve<IMvxMainThreadDispatcher>();
+
+            dispatcher.RequestMainThreadAction(() => 
+                UIApplication.SharedApplication.UnregisterForRemoteNotifications());
         }
 
         public void Dispose()
