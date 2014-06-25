@@ -26,6 +26,10 @@ namespace Notifications.Sample.WindowsPhone
             {
                 return new WPNotificationConfiguration
                 {
+                    AllowedTileImageUris = new[]
+                    {
+                        new Uri("http://ostebaronen.dk")
+                    } 
                 };
             }
 

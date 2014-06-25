@@ -12,8 +12,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
         Task UnregisterAsync();
 
         /// <summary>
-        /// Registered event, fires when a registration went well. Use this to notify web service
-        /// or similar about the registration.
+        /// Registered event, fires when a registration went well and on WP it also fires when Channel URI was updated. 
+        /// Use this to notify web service or similar about the registration.
         /// </summary>
         event DidRegisterForNotificationsEventHandler Registered;
         event NotificationErrorEventHandler Error;

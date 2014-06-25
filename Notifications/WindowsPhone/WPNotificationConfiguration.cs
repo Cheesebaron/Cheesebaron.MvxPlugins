@@ -1,5 +1,5 @@
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -17,14 +17,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
     {
         public WPNotificationConfiguration()
         {
-            ChannelName = "Cheesebaron.MvxPlugins.Notifications.Tile";
+            ChannelName = Constants.ChannelName;
             NotificationType = WPNotificationType.Raw | WPNotificationType.Tile |
                                WPNotificationType.Toast;
         }
 
         public string ChannelName { get; set; }
         public WPNotificationType NotificationType { get; set; }
-        public Collection<Uri> AllowedTileImageUris { get; set; }
+        public IList<Uri> AllowedTileImageUris { get; set; }
         public Func<NotificationEventArgs, Task> ToastNotification { get; set; }
         public Func<HttpNotificationEventArgs, Task> RawNotification { get; set; }
 

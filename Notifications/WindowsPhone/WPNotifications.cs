@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Cirrious.CrossCore;
@@ -36,13 +37,11 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     }
                     catch (UnauthorizedAccessException ux)
                     {
-                        Mvx.TaggedTrace(typeof(WPNotifications).Name, "Failed to Open notification channel, exception: {0}", ux.Message);
                         throw new MvxException(ux, "Remember to add the appropriate permissions to your application");
                     }
                     catch (Exception ex)
                     {
-                        Mvx.TaggedTrace(typeof(WPNotifications).Name, "Failed to Open notification channel, exception: {0}", ex.Message);
-                        throw;
+                        throw new MvxException(ex, "Exception occured when attempting to open notification channel");
                     }
                 }
 
@@ -106,7 +105,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     Configuration.NotificationTypeContains(WPNotificationType.Tile))
                 {
                     if (Configuration.AllowedTileImageUris != null && Configuration.AllowedTileImageUris.Any())
-                        NotificationChannel.BindToShellTile(Configuration.AllowedTileImageUris);
+                        NotificationChannel.BindToShellTile(new Collection<Uri>(Configuration.AllowedTileImageUris));
                     else
                         NotificationChannel.BindToShellTile();
                 }

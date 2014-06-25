@@ -5,24 +5,23 @@ using Android.Content.PM;
 using Android.Gms.Gcm;
 using Android.Support.V4.Content;
 using Android.Util;
+using Cheesebaron.MvxPlugins.Notifications;
 using Newtonsoft.Json.Linq;
 
-[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE", ProtectionLevel = Protection.Signature)]
-[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-[assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
+[assembly: Permission(Name = Constants.C2DMessagePermission, ProtectionLevel = Protection.Signature)]
+[assembly: UsesPermission(Name = Constants.C2DMessagePermission)]
+[assembly: UsesPermission(Name = Constants.C2DmReceivePermission)]
 
 //GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-[assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-[assembly: UsesPermission(Name = "android.permission.INTERNET")]
-[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
+[assembly: UsesPermission(Name = Android.Manifest.Permission.GetAccounts)]
+[assembly: UsesPermission(Name = Android.Manifest.Permission.Internet)]
+[assembly: UsesPermission(Name = Android.Manifest.Permission.WakeLock)]
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {
-    [BroadcastReceiver(Enabled = true, 
-        Permission = "com.google.android.c2dm.permission.SEND")]
-    [IntentFilter(new[] { "com.google.android.c2dm.intent.RECEIVE", 
-        "com.google.android.gcm.intent.RETRY" }, 
-        Categories = new []{ "@PACKAGE_NAME@" })]
+    [BroadcastReceiver(Enabled = true, Permission = Constants.C2DmSendPermission)]
+    [IntentFilter(new[] { Constants.C2DReceiveIntent, Constants.GCMRetryIntent }, 
+        Categories = new []{ Constants.Category })]
     public class GcmBroadcastReceiver 
         : WakefulBroadcastReceiver
     {
@@ -53,7 +52,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
             if(!extras.IsEmpty)
             {
-                var notificationBroadcast = new Intent("cheesebaron.mvxplugins.notifications.NOTIFICATION");
+                var notificationBroadcast = new Intent(Constants.IntentFilter);
                 notificationBroadcast.PutExtra("notificationType", messageType);
 
                 try

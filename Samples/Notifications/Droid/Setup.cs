@@ -36,9 +36,13 @@ namespace Notifications.Sample.Droid
         }
     }
 
+    /// <summary>
+    /// This is where you handle your notifications, you cannot use any MvvmCross specific things in here.
+    /// You can call Android services, content providers etc. but you cannot be sure that your application
+    /// is alive when this is being called.
+    /// </summary>
     [BroadcastReceiver(Enabled = true)]
-    [IntentFilter(new[] { "cheesebaron.mvxplugins.notifications.NOTIFICATION" },
-        Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Constants.IntentFilter }, Categories = new[] { Constants.Category })]
     public class MyNotificationBroadcastReceiver 
         : BaseNotificationBroadcastReceiver
     {
