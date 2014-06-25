@@ -87,7 +87,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                         });
                     }
                 }
-            });
+            }).ConfigureAwait(false);
         }
 
         public async Task UnregisterAsync()
@@ -115,7 +115,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
                         });
                     }
                 }
-            });
+            }).ConfigureAwait(false);
         }
 
         private ISettings Settings
