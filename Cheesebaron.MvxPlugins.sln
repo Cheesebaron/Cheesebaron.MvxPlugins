@@ -2125,6 +2125,7 @@ Global
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|Any CPU.Build.0 = Debug|iPhone
+		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|Any CPU.Deploy.0 = Debug|iPhone
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{ECC7FD46-6722-49CD-8C53-CE2980EED2F0}.Debug|iPhone.Build.0 = Debug|iPhone
