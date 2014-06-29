@@ -40,6 +40,8 @@ Other people are doing MvvmCross plugins as well and I think it is great to ment
 | [Artur Rybak][wedkarz]              | [IHS.MvvmCross.Plugins.Keychain][keychain]  |
 | [Allan Ritchie][aritchie]           | [acrmvvmcross][acrmvvmcross]                |
 | [SeeD-Seifer][SeeD-Seifer]          | [Mvx.Geocoder][geocoder]                    |
+| [ChristianRuiz][ChristianRuiz]      | [MvvmCross-SecureStorage][secure-storage]   |
+
 
 License
 =======
@@ -73,3 +75,5 @@ License
 [reach]: https://github.com/xamarin/monotouch-samples/blob/master/ReachabilitySample/reachability.cs
 [SeeD-Seifer]: https://github.com/SeeD-Seifer
 [geocoder]: https://github.com/SeeD-Seifer/Mvx.Geocoder
+[secure-storage]: https://github.com/ChristianRuiz/MvvmCross-SecureStorage
+[ChristianRuiz]: https://github.com/ChristianRuiz
