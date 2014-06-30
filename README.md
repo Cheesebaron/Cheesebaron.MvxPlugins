@@ -7,6 +7,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 - **Azure Access Control** This plugin provides Authentication against Windows Azure ACS (don't confuse it with Windows Azure Mobile Services).
 - **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
 - **ModernHttpClient** A wrapper around [Paul Betts'][paulb] [ModernHttpClient][modern].
+- **Notifications** A plugin which provides simple clients for registering and receiving notifications.
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
 - **SMS** A simple task to send SMS using default/install SMS applications on device.
@@ -49,7 +50,8 @@ License
 - **AppId** plugin is licensed under [Apache 2.0][apache]
 - **Azure Access Control** plugin is licensed under [Apache 2.0][apache]
 - **Connectivity** plugin is licensed under [Apache 2.0][apache]
-- **ModernHttpClient** plugin is licensed under [Apache 2.0][apache] the assemblies used inside of it are [AFNetworking](http://afnetworking.com/), which is under the [MIT License][mit] and [OkHttp](http://square.github.io/okhttp/) which is licensed under [Apache 2.0][apache]. [ModernHttpClient][modern] which this plugin wraps is under the [following license](https://github.com/paulcbetts/ModernHttpClient/blob/master/COPYING).
+- **ModernHttpClient** plugin is licensed under [Apache 2.0][apache]
+- **Notifications** plugin is licensed under [Apache 2.0][apache]
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
 - **SMS** plugin is licensed under [Apache 2.0][apache]
