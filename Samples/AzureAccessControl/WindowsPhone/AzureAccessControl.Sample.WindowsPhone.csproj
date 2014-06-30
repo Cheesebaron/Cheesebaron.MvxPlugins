@@ -166,7 +166,7 @@
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
-      <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+      <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Visibility">
       <HintPath>..\..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Plugins.Visibility.dll</HintPath>
@@ -186,6 +186,10 @@
     <ProjectReference Include="..\..\..\AzureAccessControl\AzureAccessControl.WindowsPhone\AzureAccessControl.WindowsPhone.csproj">
       <Project>{B6778EAD-258E-475D-8D41-89216E9C3E77}</Project>
       <Name>AzureAccessControl.WindowsPhone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
+      <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
+      <Name>ModernHttpClient.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Settings\Cheesebaron.MvxPlugins.Settings.WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.csproj">
       <Project>{51E76B2B-7276-48CF-AF3F-30D417110B2C}</Project>

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Threading.Tasks;
+
+namespace Cheesebaron.MvxPlugins.Notifications
+{
+    public interface INotifications
+    {
+        string RegistrationId { get; }
+        bool IsRegistered { get; }
+
+        /// <summary>
+        /// Register for notifications. (Will run Sync on iOS!)
+        /// </summary>
+        Task RegisterAsync();
+
+        /// <summary>
+        /// Unregister for notifications. (Will run Sync on iOS!)
+        /// </summary>
+        Task UnregisterAsync();
+
+        /// <summary>
+        /// Registered event, fires when a registration went well and on WP it also fires when Channel URI was updated. 
+        /// Use this to notify web service or similar about the registration.
+        /// </summary>
+        event DidRegisterForNotificationsEventHandler Registered;
+        event NotificationErrorEventHandler Error;
+        event EventHandler Unregistered;
+
+        //TODO add methods for scheduling local notifications
+    }
+}
