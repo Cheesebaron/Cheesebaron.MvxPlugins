@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Touch")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cheesebaron.MvxPlugins Notifications for iOS")]
+[assembly: AssemblyDescription("A plugin which provides Notifications for MvvmCross on the Xamarin.iOS platform")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Touch")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("Cheesbaron.MvxPlugins.Notifications.Touch")]
+[assembly: AssemblyCopyright("Copyright © Tomasz Cielecki 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

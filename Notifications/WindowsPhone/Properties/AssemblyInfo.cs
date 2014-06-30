@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsPhone")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cheesebaron.MvxPlugins Notifications for Windows Phone")]
+[assembly: AssemblyDescription("A plugin which provides Notifications for MvvmCross on the Windows Phone platform")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsPhone")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("Cheesbaron.MvxPlugins.Notifications.WindowsPhone")]
+[assembly: AssemblyCopyright("Copyright © Tomasz Cielecki 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
