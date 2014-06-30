@@ -42,6 +42,7 @@ Other people are doing MvvmCross plugins as well and I think it is great to ment
 | [Allan Ritchie][aritchie]           | [acrmvvmcross][acrmvvmcross]                |
 | [SeeD-Seifer][SeeD-Seifer]          | [Mvx.Geocoder][geocoder]                    |
 | [ChristianRuiz][ChristianRuiz]      | [MvvmCross-SecureStorage][secure-storage]   |
+| [ChristianRuiz][ChristianRuiz]      | [MvvmCross-ControlsNavigation][controlsnav]   |
 
 
 License
@@ -78,4 +79,5 @@ License
 [SeeD-Seifer]: https://github.com/SeeD-Seifer
 [geocoder]: https://github.com/SeeD-Seifer/Mvx.Geocoder
 [secure-storage]: https://github.com/ChristianRuiz/MvvmCross-SecureStorage
+[controlsnav]: https://github.com/ChristianRuiz/MvvmCross-ControlsNavigation
 [ChristianRuiz]: https://github.com/ChristianRuiz
