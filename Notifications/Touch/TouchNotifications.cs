@@ -17,7 +17,7 @@
 using System;
 using System.Threading.Tasks;
 using Cheesebaron.MvxPlugins.Notifications.Messages;
-
+using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Core;
 using Cirrious.MvvmCross.Plugins.Messenger;
@@ -32,8 +32,14 @@ namespace Cheesebaron.MvxPlugins.Notifications
         private readonly MvxSubscriptionToken _notificationRegisterMessageToken;
         private readonly MvxSubscriptionToken _errorMessageToken;
         private readonly MvxSubscriptionToken _notificationsToken;
+        private ISettings _settings;
 
-        public string RegistrationId { get; private set; }
+        public string RegistrationId
+        {
+            get { return Settings.GetValue(Constants.SettingsKey, ""); }
+            private set { Settings.AddOrUpdateValue(Constants.SettingsKey, value); }
+        }
+
         public bool IsRegistered { get; private set; }
         public TouchNotificationConfiguration Configuration { get; set; }
 
@@ -102,6 +108,11 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
             dispatcher.RequestMainThreadAction(() => 
                 UIApplication.SharedApplication.UnregisterForRemoteNotifications());
+        }
+
+        private ISettings Settings
+        {
+            get { return _settings ?? (_settings = Mvx.Resolve<ISettings>()); }
         }
 
         public void Dispose()

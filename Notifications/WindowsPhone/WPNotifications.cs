@@ -18,6 +18,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Platform;
@@ -31,6 +32,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
     {
         private bool _attemptedRegistration;
         private HttpNotificationChannel _notificationChannel;
+        private ISettings _settings;
         
         private HttpNotificationChannel NotificationChannel
         {
@@ -75,7 +77,12 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
         public WPNotificationConfiguration Configuration { get; set; }
 
-        public string RegistrationId { get; private set; }
+        public string RegistrationId
+        {
+            get { return Settings.GetValue(Constants.SettingsKey, ""); }
+            private set { Settings.AddOrUpdateValue(Constants.SettingsKey, value); }
+        }
+
         public bool IsRegistered { get; private set; }
 
         public event DidRegisterForNotificationsEventHandler Registered;
@@ -187,6 +194,11 @@ namespace Cheesebaron.MvxPlugins.Notifications
                     "No RawNotification method was provided, using default");
                 await Configuration.DefaultRawNotification(args);
             }
+        }
+
+        private ISettings Settings
+        {
+            get { return _settings ?? (_settings = Mvx.Resolve<ISettings>()); }
         }
 
         public void Dispose()

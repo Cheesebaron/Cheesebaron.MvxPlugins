@@ -41,6 +41,14 @@
     <Compile Include="TouchNotifications.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings.Touch\Cheesebaron.MvxPlugins.Settings.Touch.csproj">
+      <Project>{24ee3829-6818-477a-9750-9d3f3d0013d8}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings.Touch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Settings\Cheesebaron.MvxPlugins.Settings\Cheesebaron.MvxPlugins.Settings.csproj">
+      <Project>{baca1f45-5fb7-4bfb-b63a-c3abebe70a08}</Project>
+      <Name>Cheesebaron.MvxPlugins.Settings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Notifications.Core.csproj">
       <Project>{93746045-7e0e-4ef9-a706-de84f2f54e7c}</Project>
       <Name>Notifications.Core</Name>

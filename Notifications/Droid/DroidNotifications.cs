@@ -32,8 +32,6 @@ namespace Cheesebaron.MvxPlugins.Notifications
         : INotifications
     {
         private const string Tag = "DroidNotifications";
-        private const string PropertyRegId = "gcm_registration_id";
-        private const string PropertyAppVersion = "gcm_app_version";
         private ISettings _settings;
         private GoogleCloudMessaging _gcm;
 
@@ -41,7 +39,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
         {
             get
             {
-                var registrationId = Settings.GetValue(PropertyRegId, "");
+                var registrationId = Settings.GetValue(Constants.SettingsKey, "");
                 if (string.IsNullOrEmpty(registrationId))
                 {
                     Mvx.TaggedTrace(MvxTraceLevel.Diagnostic, Tag, "GCM Registration Id not found");
@@ -50,7 +48,7 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
                 // Check if app was updated; if so registration ID must becleared, because
                 // the registration ID may not work with the new version of the app.
-                var registeredVersion = Settings.GetValue(PropertyAppVersion, int.MinValue);
+                var registeredVersion = Settings.GetValue(Constants.SettingsAppVersionKey, int.MinValue);
                 if (registeredVersion != AppVersion)
                 {
                     Mvx.TaggedTrace(MvxTraceLevel.Diagnostic, Tag, "App version changed");
@@ -63,8 +61,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
                 var appVersion = AppVersion;
                 Mvx.TaggedTrace(MvxTraceLevel.Diagnostic, Tag, "Saving GCM registration ID for app version {0}" + appVersion);
 
-                Settings.AddOrUpdateValue(PropertyRegId, value);
-                Settings.AddOrUpdateValue(PropertyAppVersion, appVersion);
+                Settings.AddOrUpdateValue(Constants.SettingsKey, value);
+                Settings.AddOrUpdateValue(Constants.SettingsAppVersionKey, appVersion);
             }
         }
         public bool IsRegistered { get; private set; }

@@ -31,5 +31,8 @@ namespace Cheesebaron.MvxPlugins.Notifications
 
         // WP Constants
         public const string ChannelName = "Cheesebaron.MvxPlugins.Notifications.Tile";
+
+        public const string SettingsKey = "Cheesebaron.MvxPlugins.Notifications.RegId";
+        public const string SettingsAppVersionKey = "Cheesebaron.MvxPlugins.Notifications.AppVer";
     }
 }
