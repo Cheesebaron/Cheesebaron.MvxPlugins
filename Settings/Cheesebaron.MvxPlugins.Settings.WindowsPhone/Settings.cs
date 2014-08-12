@@ -29,7 +29,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
             get { return IsolatedStorageSettings.ApplicationSettings; }
         }
 
-        public T GetValue<T>(string key, T defaultValue = default(T))
+        public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
             if (IsolatedStorageSettings.Contains(key))
                 return (T)IsolatedStorageSettings[key];
@@ -38,7 +38,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
             return defaultValue;
         }
 
-        public bool AddOrUpdateValue<T>(string key, T value = default(T))
+        public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
         {
             if (IsolatedStorageSettings.Contains(key))
             {
@@ -53,7 +53,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
             return true;
         }
 
-        public bool DeleteValue(string key)
+        public bool DeleteValue(string key, bool roaming = false)
         {
             if (!IsolatedStorageSettings.Contains(key)) return false;
 
@@ -62,12 +62,12 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
             return true;
         }
 
-        public bool Contains(string key)
+        public bool Contains(string key, bool roaming = false)
         {
             return IsolatedStorageSettings.Contains(key);
         }
 
-        public bool ClearAllValues()
+        public bool ClearAllValues(bool roaming = false)
         {
             IsolatedStorageSettings.Clear();
             IsolatedStorageSettings.Save();

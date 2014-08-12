@@ -58,338 +58,350 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f01006a
-			public static int MvxBind = 2130772074;
-			
 			// aapt resource value: 0x7f01006e
-			public static int MvxDropDownItemTemplate = 2130772078;
+			public static int MvxBind = 2130772078;
 			
-			// aapt resource value: 0x7f01006d
-			public static int MvxItemTemplate = 2130772077;
+			// aapt resource value: 0x7f010072
+			public static int MvxDropDownItemTemplate = 2130772082;
 			
-			// aapt resource value: 0x7f01006b
-			public static int MvxLang = 2130772075;
+			// aapt resource value: 0x7f010071
+			public static int MvxItemTemplate = 2130772081;
 			
 			// aapt resource value: 0x7f01006f
-			public static int MvxSource = 2130772079;
+			public static int MvxLang = 2130772079;
 			
-			// aapt resource value: 0x7f01006c
-			public static int MvxTemplate = 2130772076;
+			// aapt resource value: 0x7f010073
+			public static int MvxSource = 2130772083;
 			
-			// aapt resource value: 0x7f01000b
-			public static int actionBarDivider = 2130771979;
-			
-			// aapt resource value: 0x7f01000c
-			public static int actionBarItemBackground = 2130771980;
-			
-			// aapt resource value: 0x7f01000a
-			public static int actionBarSize = 2130771978;
-			
-			// aapt resource value: 0x7f010008
-			public static int actionBarSplitStyle = 2130771976;
-			
-			// aapt resource value: 0x7f010007
-			public static int actionBarStyle = 2130771975;
-			
-			// aapt resource value: 0x7f010004
-			public static int actionBarTabBarStyle = 2130771972;
-			
-			// aapt resource value: 0x7f010003
-			public static int actionBarTabStyle = 2130771971;
-			
-			// aapt resource value: 0x7f010005
-			public static int actionBarTabTextStyle = 2130771973;
-			
-			// aapt resource value: 0x7f010009
-			public static int actionBarWidgetTheme = 2130771977;
-			
-			// aapt resource value: 0x7f010012
-			public static int actionButtonStyle = 2130771986;
-			
-			// aapt resource value: 0x7f010043
-			public static int actionDropDownStyle = 2130772035;
-			
-			// aapt resource value: 0x7f01004a
-			public static int actionLayout = 2130772042;
-			
-			// aapt resource value: 0x7f01000d
-			public static int actionMenuTextAppearance = 2130771981;
-			
-			// aapt resource value: 0x7f01000e
-			public static int actionMenuTextColor = 2130771982;
-			
-			// aapt resource value: 0x7f010038
-			public static int actionModeBackground = 2130772024;
-			
-			// aapt resource value: 0x7f010037
-			public static int actionModeCloseButtonStyle = 2130772023;
-			
-			// aapt resource value: 0x7f01003a
-			public static int actionModeCloseDrawable = 2130772026;
-			
-			// aapt resource value: 0x7f01003c
-			public static int actionModeCopyDrawable = 2130772028;
-			
-			// aapt resource value: 0x7f01003b
-			public static int actionModeCutDrawable = 2130772027;
-			
-			// aapt resource value: 0x7f010040
-			public static int actionModeFindDrawable = 2130772032;
-			
-			// aapt resource value: 0x7f01003d
-			public static int actionModePasteDrawable = 2130772029;
-			
-			// aapt resource value: 0x7f010042
-			public static int actionModePopupWindowStyle = 2130772034;
-			
-			// aapt resource value: 0x7f01003e
-			public static int actionModeSelectAllDrawable = 2130772030;
-			
-			// aapt resource value: 0x7f01003f
-			public static int actionModeShareDrawable = 2130772031;
-			
-			// aapt resource value: 0x7f010039
-			public static int actionModeSplitBackground = 2130772025;
-			
-			// aapt resource value: 0x7f010036
-			public static int actionModeStyle = 2130772022;
-			
-			// aapt resource value: 0x7f010041
-			public static int actionModeWebSearchDrawable = 2130772033;
-			
-			// aapt resource value: 0x7f010006
-			public static int actionOverflowButtonStyle = 2130771974;
-			
-			// aapt resource value: 0x7f01004c
-			public static int actionProviderClass = 2130772044;
-			
-			// aapt resource value: 0x7f01004b
-			public static int actionViewClass = 2130772043;
-			
-			// aapt resource value: 0x7f010068
-			public static int activityChooserViewStyle = 2130772072;
-			
-			// aapt resource value: 0x7f01002b
-			public static int background = 2130772011;
-			
-			// aapt resource value: 0x7f01002d
-			public static int backgroundSplit = 2130772013;
-			
-			// aapt resource value: 0x7f01002c
-			public static int backgroundStacked = 2130772012;
-			
-			// aapt resource value: 0x7f010014
-			public static int buttonBarButtonStyle = 2130771988;
-			
-			// aapt resource value: 0x7f010013
-			public static int buttonBarStyle = 2130771987;
-			
-			// aapt resource value: 0x7f01002e
-			public static int customNavigationLayout = 2130772014;
-			
-			// aapt resource value: 0x7f010050
-			public static int disableChildrenWhenDisabled = 2130772048;
-			
-			// aapt resource value: 0x7f010024
-			public static int displayOptions = 2130772004;
-			
-			// aapt resource value: 0x7f01002a
-			public static int divider = 2130772010;
-			
-			// aapt resource value: 0x7f010017
-			public static int dividerHorizontal = 2130771991;
-			
-			// aapt resource value: 0x7f010052
-			public static int dividerPadding = 2130772050;
-			
-			// aapt resource value: 0x7f010016
-			public static int dividerVertical = 2130771990;
-			
-			// aapt resource value: 0x7f01001d
-			public static int dropDownListViewStyle = 2130771997;
-			
-			// aapt resource value: 0x7f010044
-			public static int dropdownListPreferredItemHeight = 2130772036;
-			
-			// aapt resource value: 0x7f010067
-			public static int expandActivityOverflowButtonDrawable = 2130772071;
-			
-			// aapt resource value: 0x7f010022
-			public static int height = 2130772002;
+			// aapt resource value: 0x7f010070
+			public static int MvxTemplate = 2130772080;
 			
 			// aapt resource value: 0x7f01000f
-			public static int homeAsUpIndicator = 2130771983;
-			
-			// aapt resource value: 0x7f01002f
-			public static int homeLayout = 2130772015;
-			
-			// aapt resource value: 0x7f010028
-			public static int icon = 2130772008;
-			
-			// aapt resource value: 0x7f010056
-			public static int iconifiedByDefault = 2130772054;
-			
-			// aapt resource value: 0x7f010031
-			public static int indeterminateProgressStyle = 2130772017;
-			
-			// aapt resource value: 0x7f010066
-			public static int initialActivityCount = 2130772070;
-			
-			// aapt resource value: 0x7f010055
-			public static int isLightTheme = 2130772053;
-			
-			// aapt resource value: 0x7f010033
-			public static int itemPadding = 2130772019;
-			
-			// aapt resource value: 0x7f010048
-			public static int listChoiceBackgroundIndicator = 2130772040;
-			
-			// aapt resource value: 0x7f01001e
-			public static int listPopupWindowStyle = 2130771998;
-			
-			// aapt resource value: 0x7f010018
-			public static int listPreferredItemHeight = 2130771992;
-			
-			// aapt resource value: 0x7f01001a
-			public static int listPreferredItemHeightLarge = 2130771994;
-			
-			// aapt resource value: 0x7f010019
-			public static int listPreferredItemHeightSmall = 2130771993;
-			
-			// aapt resource value: 0x7f01001b
-			public static int listPreferredItemPaddingLeft = 2130771995;
-			
-			// aapt resource value: 0x7f01001c
-			public static int listPreferredItemPaddingRight = 2130771996;
-			
-			// aapt resource value: 0x7f010029
-			public static int logo = 2130772009;
-			
-			// aapt resource value: 0x7f010023
-			public static int navigationMode = 2130772003;
-			
-			// aapt resource value: 0x7f010035
-			public static int paddingEnd = 2130772021;
-			
-			// aapt resource value: 0x7f010034
-			public static int paddingStart = 2130772020;
-			
-			// aapt resource value: 0x7f010047
-			public static int panelMenuListTheme = 2130772039;
-			
-			// aapt resource value: 0x7f010046
-			public static int panelMenuListWidth = 2130772038;
-			
-			// aapt resource value: 0x7f010045
-			public static int popupMenuStyle = 2130772037;
-			
-			// aapt resource value: 0x7f01004f
-			public static int popupPromptView = 2130772047;
-			
-			// aapt resource value: 0x7f010032
-			public static int progressBarPadding = 2130772018;
-			
-			// aapt resource value: 0x7f010030
-			public static int progressBarStyle = 2130772016;
-			
-			// aapt resource value: 0x7f01004d
-			public static int prompt = 2130772045;
-			
-			// aapt resource value: 0x7f010057
-			public static int queryHint = 2130772055;
-			
-			// aapt resource value: 0x7f010058
-			public static int searchDropdownBackground = 2130772056;
-			
-			// aapt resource value: 0x7f010061
-			public static int searchResultListItemHeight = 2130772065;
-			
-			// aapt resource value: 0x7f010065
-			public static int searchViewAutoCompleteTextView = 2130772069;
-			
-			// aapt resource value: 0x7f010059
-			public static int searchViewCloseIcon = 2130772057;
-			
-			// aapt resource value: 0x7f01005d
-			public static int searchViewEditQuery = 2130772061;
-			
-			// aapt resource value: 0x7f01005e
-			public static int searchViewEditQueryBackground = 2130772062;
-			
-			// aapt resource value: 0x7f01005a
-			public static int searchViewGoIcon = 2130772058;
-			
-			// aapt resource value: 0x7f01005b
-			public static int searchViewSearchIcon = 2130772059;
-			
-			// aapt resource value: 0x7f01005f
-			public static int searchViewTextField = 2130772063;
-			
-			// aapt resource value: 0x7f010060
-			public static int searchViewTextFieldRight = 2130772064;
-			
-			// aapt resource value: 0x7f01005c
-			public static int searchViewVoiceIcon = 2130772060;
-			
-			// aapt resource value: 0x7f010015
-			public static int selectableItemBackground = 2130771989;
-			
-			// aapt resource value: 0x7f010049
-			public static int showAsAction = 2130772041;
-			
-			// aapt resource value: 0x7f010051
-			public static int showDividers = 2130772049;
-			
-			// aapt resource value: 0x7f010054
-			public static int spinnerDropDownItemStyle = 2130772052;
-			
-			// aapt resource value: 0x7f01004e
-			public static int spinnerMode = 2130772046;
-			
-			// aapt resource value: 0x7f010053
-			public static int spinnerStyle = 2130772051;
-			
-			// aapt resource value: 0x7f010025
-			public static int subtitle = 2130772005;
-			
-			// aapt resource value: 0x7f010027
-			public static int subtitleTextStyle = 2130772007;
-			
-			// aapt resource value: 0x7f010069
-			public static int textAllCaps = 2130772073;
+			public static int actionBarDivider = 2130771983;
 			
 			// aapt resource value: 0x7f010010
-			public static int textAppearanceLargePopupMenu = 2130771984;
+			public static int actionBarItemBackground = 2130771984;
 			
-			// aapt resource value: 0x7f01001f
-			public static int textAppearanceListItem = 2130771999;
+			// aapt resource value: 0x7f01000e
+			public static int actionBarSize = 2130771982;
 			
-			// aapt resource value: 0x7f010020
-			public static int textAppearanceListItemSmall = 2130772000;
+			// aapt resource value: 0x7f01000c
+			public static int actionBarSplitStyle = 2130771980;
 			
-			// aapt resource value: 0x7f010063
-			public static int textAppearanceSearchResultSubtitle = 2130772067;
+			// aapt resource value: 0x7f01000b
+			public static int actionBarStyle = 2130771979;
 			
-			// aapt resource value: 0x7f010062
-			public static int textAppearanceSearchResultTitle = 2130772066;
+			// aapt resource value: 0x7f010008
+			public static int actionBarTabBarStyle = 2130771976;
+			
+			// aapt resource value: 0x7f010007
+			public static int actionBarTabStyle = 2130771975;
+			
+			// aapt resource value: 0x7f010009
+			public static int actionBarTabTextStyle = 2130771977;
+			
+			// aapt resource value: 0x7f01000d
+			public static int actionBarWidgetTheme = 2130771981;
+			
+			// aapt resource value: 0x7f010016
+			public static int actionButtonStyle = 2130771990;
+			
+			// aapt resource value: 0x7f010047
+			public static int actionDropDownStyle = 2130772039;
+			
+			// aapt resource value: 0x7f01004e
+			public static int actionLayout = 2130772046;
 			
 			// aapt resource value: 0x7f010011
-			public static int textAppearanceSmallPopupMenu = 2130771985;
+			public static int actionMenuTextAppearance = 2130771985;
 			
-			// aapt resource value: 0x7f010064
-			public static int textColorSearchUrl = 2130772068;
+			// aapt resource value: 0x7f010012
+			public static int actionMenuTextColor = 2130771986;
+			
+			// aapt resource value: 0x7f01003c
+			public static int actionModeBackground = 2130772028;
+			
+			// aapt resource value: 0x7f01003b
+			public static int actionModeCloseButtonStyle = 2130772027;
+			
+			// aapt resource value: 0x7f01003e
+			public static int actionModeCloseDrawable = 2130772030;
+			
+			// aapt resource value: 0x7f010040
+			public static int actionModeCopyDrawable = 2130772032;
+			
+			// aapt resource value: 0x7f01003f
+			public static int actionModeCutDrawable = 2130772031;
+			
+			// aapt resource value: 0x7f010044
+			public static int actionModeFindDrawable = 2130772036;
+			
+			// aapt resource value: 0x7f010041
+			public static int actionModePasteDrawable = 2130772033;
+			
+			// aapt resource value: 0x7f010046
+			public static int actionModePopupWindowStyle = 2130772038;
+			
+			// aapt resource value: 0x7f010042
+			public static int actionModeSelectAllDrawable = 2130772034;
+			
+			// aapt resource value: 0x7f010043
+			public static int actionModeShareDrawable = 2130772035;
+			
+			// aapt resource value: 0x7f01003d
+			public static int actionModeSplitBackground = 2130772029;
+			
+			// aapt resource value: 0x7f01003a
+			public static int actionModeStyle = 2130772026;
+			
+			// aapt resource value: 0x7f010045
+			public static int actionModeWebSearchDrawable = 2130772037;
+			
+			// aapt resource value: 0x7f01000a
+			public static int actionOverflowButtonStyle = 2130771978;
+			
+			// aapt resource value: 0x7f010050
+			public static int actionProviderClass = 2130772048;
+			
+			// aapt resource value: 0x7f01004f
+			public static int actionViewClass = 2130772047;
+			
+			// aapt resource value: 0x7f01006c
+			public static int activityChooserViewStyle = 2130772076;
+			
+			// aapt resource value: 0x7f01002f
+			public static int background = 2130772015;
+			
+			// aapt resource value: 0x7f010031
+			public static int backgroundSplit = 2130772017;
+			
+			// aapt resource value: 0x7f010030
+			public static int backgroundStacked = 2130772016;
+			
+			// aapt resource value: 0x7f010018
+			public static int buttonBarButtonStyle = 2130771992;
+			
+			// aapt resource value: 0x7f010017
+			public static int buttonBarStyle = 2130771991;
+			
+			// aapt resource value: 0x7f010032
+			public static int customNavigationLayout = 2130772018;
+			
+			// aapt resource value: 0x7f010054
+			public static int disableChildrenWhenDisabled = 2130772052;
+			
+			// aapt resource value: 0x7f010028
+			public static int displayOptions = 2130772008;
+			
+			// aapt resource value: 0x7f01002e
+			public static int divider = 2130772014;
+			
+			// aapt resource value: 0x7f01001b
+			public static int dividerHorizontal = 2130771995;
+			
+			// aapt resource value: 0x7f010056
+			public static int dividerPadding = 2130772054;
+			
+			// aapt resource value: 0x7f01001a
+			public static int dividerVertical = 2130771994;
 			
 			// aapt resource value: 0x7f010021
-			public static int title = 2130772001;
+			public static int dropDownListViewStyle = 2130772001;
+			
+			// aapt resource value: 0x7f010048
+			public static int dropdownListPreferredItemHeight = 2130772040;
+			
+			// aapt resource value: 0x7f01006b
+			public static int expandActivityOverflowButtonDrawable = 2130772075;
 			
 			// aapt resource value: 0x7f010026
-			public static int titleTextStyle = 2130772006;
+			public static int height = 2130772006;
+			
+			// aapt resource value: 0x7f010013
+			public static int homeAsUpIndicator = 2130771987;
+			
+			// aapt resource value: 0x7f010033
+			public static int homeLayout = 2130772019;
+			
+			// aapt resource value: 0x7f01002c
+			public static int icon = 2130772012;
+			
+			// aapt resource value: 0x7f01005a
+			public static int iconifiedByDefault = 2130772058;
+			
+			// aapt resource value: 0x7f010035
+			public static int indeterminateProgressStyle = 2130772021;
+			
+			// aapt resource value: 0x7f01006a
+			public static int initialActivityCount = 2130772074;
+			
+			// aapt resource value: 0x7f010059
+			public static int isLightTheme = 2130772057;
+			
+			// aapt resource value: 0x7f010037
+			public static int itemPadding = 2130772023;
+			
+			// aapt resource value: 0x7f01004c
+			public static int listChoiceBackgroundIndicator = 2130772044;
+			
+			// aapt resource value: 0x7f010022
+			public static int listPopupWindowStyle = 2130772002;
+			
+			// aapt resource value: 0x7f01001c
+			public static int listPreferredItemHeight = 2130771996;
+			
+			// aapt resource value: 0x7f01001e
+			public static int listPreferredItemHeightLarge = 2130771998;
+			
+			// aapt resource value: 0x7f01001d
+			public static int listPreferredItemHeightSmall = 2130771997;
+			
+			// aapt resource value: 0x7f01001f
+			public static int listPreferredItemPaddingLeft = 2130771999;
+			
+			// aapt resource value: 0x7f010020
+			public static int listPreferredItemPaddingRight = 2130772000;
+			
+			// aapt resource value: 0x7f01002d
+			public static int logo = 2130772013;
+			
+			// aapt resource value: 0x7f010027
+			public static int navigationMode = 2130772007;
+			
+			// aapt resource value: 0x7f010039
+			public static int paddingEnd = 2130772025;
+			
+			// aapt resource value: 0x7f010038
+			public static int paddingStart = 2130772024;
+			
+			// aapt resource value: 0x7f01004b
+			public static int panelMenuListTheme = 2130772043;
+			
+			// aapt resource value: 0x7f01004a
+			public static int panelMenuListWidth = 2130772042;
+			
+			// aapt resource value: 0x7f010049
+			public static int popupMenuStyle = 2130772041;
+			
+			// aapt resource value: 0x7f010053
+			public static int popupPromptView = 2130772051;
+			
+			// aapt resource value: 0x7f010036
+			public static int progressBarPadding = 2130772022;
+			
+			// aapt resource value: 0x7f010034
+			public static int progressBarStyle = 2130772020;
+			
+			// aapt resource value: 0x7f010051
+			public static int prompt = 2130772049;
+			
+			// aapt resource value: 0x7f01005b
+			public static int queryHint = 2130772059;
+			
+			// aapt resource value: 0x7f01005c
+			public static int searchDropdownBackground = 2130772060;
+			
+			// aapt resource value: 0x7f010065
+			public static int searchResultListItemHeight = 2130772069;
+			
+			// aapt resource value: 0x7f010069
+			public static int searchViewAutoCompleteTextView = 2130772073;
+			
+			// aapt resource value: 0x7f01005d
+			public static int searchViewCloseIcon = 2130772061;
+			
+			// aapt resource value: 0x7f010061
+			public static int searchViewEditQuery = 2130772065;
+			
+			// aapt resource value: 0x7f010062
+			public static int searchViewEditQueryBackground = 2130772066;
+			
+			// aapt resource value: 0x7f01005e
+			public static int searchViewGoIcon = 2130772062;
+			
+			// aapt resource value: 0x7f01005f
+			public static int searchViewSearchIcon = 2130772063;
+			
+			// aapt resource value: 0x7f010063
+			public static int searchViewTextField = 2130772067;
+			
+			// aapt resource value: 0x7f010064
+			public static int searchViewTextFieldRight = 2130772068;
+			
+			// aapt resource value: 0x7f010060
+			public static int searchViewVoiceIcon = 2130772064;
+			
+			// aapt resource value: 0x7f010019
+			public static int selectableItemBackground = 2130771993;
+			
+			// aapt resource value: 0x7f01004d
+			public static int showAsAction = 2130772045;
+			
+			// aapt resource value: 0x7f010055
+			public static int showDividers = 2130772053;
+			
+			// aapt resource value: 0x7f010058
+			public static int spinnerDropDownItemStyle = 2130772056;
+			
+			// aapt resource value: 0x7f010052
+			public static int spinnerMode = 2130772050;
+			
+			// aapt resource value: 0x7f010057
+			public static int spinnerStyle = 2130772055;
+			
+			// aapt resource value: 0x7f010029
+			public static int subtitle = 2130772009;
+			
+			// aapt resource value: 0x7f01002b
+			public static int subtitleTextStyle = 2130772011;
+			
+			// aapt resource value: 0x7f01006d
+			public static int textAllCaps = 2130772077;
+			
+			// aapt resource value: 0x7f010014
+			public static int textAppearanceLargePopupMenu = 2130771988;
+			
+			// aapt resource value: 0x7f010023
+			public static int textAppearanceListItem = 2130772003;
+			
+			// aapt resource value: 0x7f010024
+			public static int textAppearanceListItemSmall = 2130772004;
+			
+			// aapt resource value: 0x7f010067
+			public static int textAppearanceSearchResultSubtitle = 2130772071;
+			
+			// aapt resource value: 0x7f010066
+			public static int textAppearanceSearchResultTitle = 2130772070;
+			
+			// aapt resource value: 0x7f010015
+			public static int textAppearanceSmallPopupMenu = 2130771989;
+			
+			// aapt resource value: 0x7f010068
+			public static int textColorSearchUrl = 2130772072;
+			
+			// aapt resource value: 0x7f010025
+			public static int title = 2130772005;
+			
+			// aapt resource value: 0x7f01002a
+			public static int titleTextStyle = 2130772010;
 			
 			// aapt resource value: 0x7f010000
 			public static int windowActionBar = 2130771968;
 			
 			// aapt resource value: 0x7f010001
 			public static int windowActionBarOverlay = 2130771969;
+			
+			// aapt resource value: 0x7f010006
+			public static int windowFixedHeightMajor = 2130771974;
+			
+			// aapt resource value: 0x7f010004
+			public static int windowFixedHeightMinor = 2130771972;
+			
+			// aapt resource value: 0x7f010003
+			public static int windowFixedWidthMajor = 2130771971;
+			
+			// aapt resource value: 0x7f010005
+			public static int windowFixedWidthMinor = 2130771973;
 			
 			// aapt resource value: 0x7f010002
 			public static int windowSplitActionBar = 2130771970;
@@ -469,6 +481,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f080003
 			public static int abc_action_bar_icon_vertical_padding = 2131230723;
 			
+			// aapt resource value: 0x7f08000a
+			public static int abc_action_bar_progress_bar_size = 2131230730;
+			
 			// aapt resource value: 0x7f080009
 			public static int abc_action_bar_stacked_max_height = 2131230729;
 			
@@ -493,23 +508,35 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f080000
 			public static int abc_config_prefDialogWidth = 2131230720;
 			
-			// aapt resource value: 0x7f08000f
-			public static int abc_dropdownitem_icon_width = 2131230735;
-			
-			// aapt resource value: 0x7f08000d
-			public static int abc_dropdownitem_text_padding_left = 2131230733;
+			// aapt resource value: 0x7f080010
+			public static int abc_dropdownitem_icon_width = 2131230736;
 			
 			// aapt resource value: 0x7f08000e
-			public static int abc_dropdownitem_text_padding_right = 2131230734;
+			public static int abc_dropdownitem_text_padding_left = 2131230734;
 			
-			// aapt resource value: 0x7f08000a
-			public static int abc_panel_menu_list_width = 2131230730;
-			
-			// aapt resource value: 0x7f08000c
-			public static int abc_search_view_preferred_width = 2131230732;
+			// aapt resource value: 0x7f08000f
+			public static int abc_dropdownitem_text_padding_right = 2131230735;
 			
 			// aapt resource value: 0x7f08000b
-			public static int abc_search_view_text_min_width = 2131230731;
+			public static int abc_panel_menu_list_width = 2131230731;
+			
+			// aapt resource value: 0x7f08000d
+			public static int abc_search_view_preferred_width = 2131230733;
+			
+			// aapt resource value: 0x7f08000c
+			public static int abc_search_view_text_min_width = 2131230732;
+			
+			// aapt resource value: 0x7f080013
+			public static int dialog_fixed_height_major = 2131230739;
+			
+			// aapt resource value: 0x7f080014
+			public static int dialog_fixed_height_minor = 2131230740;
+			
+			// aapt resource value: 0x7f080011
+			public static int dialog_fixed_width_major = 2131230737;
+			
+			// aapt resource value: 0x7f080012
+			public static int dialog_fixed_width_minor = 2131230738;
 			
 			static Dimension()
 			{
@@ -801,32 +828,32 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050018
-			public static int MvxBindingTagUnique = 2131034136;
+			// aapt resource value: 0x7f05001a
+			public static int MvxBindingTagUnique = 2131034138;
 			
-			// aapt resource value: 0x7f05001b
-			public static int action_bar = 2131034139;
+			// aapt resource value: 0x7f05001d
+			public static int action_bar = 2131034141;
 			
 			// aapt resource value: 0x7f050015
 			public static int action_bar_activity_content = 2131034133;
 			
-			// aapt resource value: 0x7f05001a
-			public static int action_bar_container = 2131034138;
+			// aapt resource value: 0x7f05001c
+			public static int action_bar_container = 2131034140;
+			
+			// aapt resource value: 0x7f050020
+			public static int action_bar_overlay_layout = 2131034144;
+			
+			// aapt resource value: 0x7f05001b
+			public static int action_bar_root = 2131034139;
+			
+			// aapt resource value: 0x7f050024
+			public static int action_bar_subtitle = 2131034148;
+			
+			// aapt resource value: 0x7f050023
+			public static int action_bar_title = 2131034147;
 			
 			// aapt resource value: 0x7f05001e
-			public static int action_bar_overlay_layout = 2131034142;
-			
-			// aapt resource value: 0x7f050019
-			public static int action_bar_root = 2131034137;
-			
-			// aapt resource value: 0x7f050022
-			public static int action_bar_subtitle = 2131034146;
-			
-			// aapt resource value: 0x7f050021
-			public static int action_bar_title = 2131034145;
-			
-			// aapt resource value: 0x7f05001c
-			public static int action_context_bar = 2131034140;
+			public static int action_context_bar = 2131034142;
 			
 			// aapt resource value: 0x7f050016
 			public static int action_menu_divider = 2131034134;
@@ -834,17 +861,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f050017
 			public static int action_menu_presenter = 2131034135;
 			
-			// aapt resource value: 0x7f050030
-			public static int action_mode_bar = 2131034160;
+			// aapt resource value: 0x7f050025
+			public static int action_mode_close_button = 2131034149;
 			
-			// aapt resource value: 0x7f05002f
-			public static int action_mode_bar_stub = 2131034159;
-			
-			// aapt resource value: 0x7f050023
-			public static int action_mode_close_button = 2131034147;
-			
-			// aapt resource value: 0x7f050024
-			public static int activity_chooser_view_content = 2131034148;
+			// aapt resource value: 0x7f050026
+			public static int activity_chooser_view_content = 2131034150;
 			
 			// aapt resource value: 0x7f05000b
 			public static int always = 2131034123;
@@ -852,14 +873,14 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f050011
 			public static int beginning = 2131034129;
 			
-			// aapt resource value: 0x7f05002c
-			public static int checkbox = 2131034156;
+			// aapt resource value: 0x7f05002e
+			public static int checkbox = 2131034158;
 			
 			// aapt resource value: 0x7f05000d
 			public static int collapseActionView = 2131034125;
 			
-			// aapt resource value: 0x7f050027
-			public static int default_activity_button = 2131034151;
+			// aapt resource value: 0x7f050029
+			public static int default_activity_button = 2131034153;
 			
 			// aapt resource value: 0x7f05000e
 			public static int dialog = 2131034126;
@@ -870,17 +891,17 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f05000f
 			public static int dropdown = 2131034127;
 			
-			// aapt resource value: 0x7f050037
-			public static int edit_query = 2131034167;
+			// aapt resource value: 0x7f050031
+			public static int edit_query = 2131034161;
 			
 			// aapt resource value: 0x7f050013
 			public static int end = 2131034131;
 			
-			// aapt resource value: 0x7f050025
-			public static int expand_activities_button = 2131034149;
+			// aapt resource value: 0x7f050027
+			public static int expand_activities_button = 2131034151;
 			
-			// aapt resource value: 0x7f05002b
-			public static int expanded_menu = 2131034155;
+			// aapt resource value: 0x7f05002d
+			public static int expanded_menu = 2131034157;
 			
 			// aapt resource value: 0x7f050014
 			public static int home = 2131034132;
@@ -888,38 +909,35 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f050005
 			public static int homeAsUp = 2131034117;
 			
-			// aapt resource value: 0x7f050029
-			public static int icon = 2131034153;
+			// aapt resource value: 0x7f05002b
+			public static int icon = 2131034155;
 			
-			// aapt resource value: 0x7f050044
-			public static int identity_provider_header = 2131034180;
+			// aapt resource value: 0x7f05003e
+			public static int identity_provider_header = 2131034174;
 			
-			// aapt resource value: 0x7f050045
-			public static int identity_provider_listview = 2131034181;
+			// aapt resource value: 0x7f05003f
+			public static int identity_provider_listview = 2131034175;
 			
-			// aapt resource value: 0x7f050043
-			public static int identity_provider_loggedin = 2131034179;
+			// aapt resource value: 0x7f05003d
+			public static int identity_provider_loggedin = 2131034173;
 			
 			// aapt resource value: 0x7f05000a
 			public static int ifRoom = 2131034122;
 			
-			// aapt resource value: 0x7f050026
-			public static int image = 2131034150;
-			
-			// aapt resource value: 0x7f050032
-			public static int left_icon = 2131034162;
+			// aapt resource value: 0x7f050028
+			public static int image = 2131034152;
 			
 			// aapt resource value: 0x7f050001
 			public static int listMode = 2131034113;
 			
-			// aapt resource value: 0x7f050028
-			public static int list_item = 2131034152;
+			// aapt resource value: 0x7f05002a
+			public static int list_item = 2131034154;
 			
 			// aapt resource value: 0x7f050012
 			public static int middle = 2131034130;
 			
-			// aapt resource value: 0x7f050046
-			public static int mvxplugins_action_relogin = 2131034182;
+			// aapt resource value: 0x7f050040
+			public static int mvxplugins_action_relogin = 2131034176;
 			
 			// aapt resource value: 0x7f050009
 			public static int never = 2131034121;
@@ -930,53 +948,47 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f050000
 			public static int normal = 2131034112;
 			
-			// aapt resource value: 0x7f050035
-			public static int progress_circular = 2131034165;
+			// aapt resource value: 0x7f050018
+			public static int progress_circular = 2131034136;
 			
-			// aapt resource value: 0x7f050036
-			public static int progress_horizontal = 2131034166;
+			// aapt resource value: 0x7f050019
+			public static int progress_horizontal = 2131034137;
 			
-			// aapt resource value: 0x7f05002e
-			public static int radio = 2131034158;
+			// aapt resource value: 0x7f050030
+			public static int radio = 2131034160;
 			
 			// aapt resource value: 0x7f050033
-			public static int right_container = 2131034163;
+			public static int search_badge = 2131034163;
+			
+			// aapt resource value: 0x7f050032
+			public static int search_bar = 2131034162;
 			
 			// aapt resource value: 0x7f050034
-			public static int right_icon = 2131034164;
+			public static int search_button = 2131034164;
 			
 			// aapt resource value: 0x7f050039
-			public static int search_badge = 2131034169;
+			public static int search_close_btn = 2131034169;
 			
-			// aapt resource value: 0x7f050038
-			public static int search_bar = 2131034168;
-			
-			// aapt resource value: 0x7f05003a
-			public static int search_button = 2131034170;
-			
-			// aapt resource value: 0x7f05003f
-			public static int search_close_btn = 2131034175;
+			// aapt resource value: 0x7f050035
+			public static int search_edit_frame = 2131034165;
 			
 			// aapt resource value: 0x7f05003b
-			public static int search_edit_frame = 2131034171;
+			public static int search_go_btn = 2131034171;
 			
-			// aapt resource value: 0x7f050041
-			public static int search_go_btn = 2131034177;
+			// aapt resource value: 0x7f050036
+			public static int search_mag_icon = 2131034166;
+			
+			// aapt resource value: 0x7f050037
+			public static int search_plate = 2131034167;
+			
+			// aapt resource value: 0x7f050038
+			public static int search_src_text = 2131034168;
 			
 			// aapt resource value: 0x7f05003c
-			public static int search_mag_icon = 2131034172;
+			public static int search_voice_btn = 2131034172;
 			
-			// aapt resource value: 0x7f05003d
-			public static int search_plate = 2131034173;
-			
-			// aapt resource value: 0x7f05003e
-			public static int search_src_text = 2131034174;
-			
-			// aapt resource value: 0x7f050042
-			public static int search_voice_btn = 2131034178;
-			
-			// aapt resource value: 0x7f05002d
-			public static int shortcut = 2131034157;
+			// aapt resource value: 0x7f05002f
+			public static int shortcut = 2131034159;
 			
 			// aapt resource value: 0x7f050007
 			public static int showCustom = 2131034119;
@@ -987,26 +999,23 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f050006
 			public static int showTitle = 2131034118;
 			
-			// aapt resource value: 0x7f05001d
-			public static int split_action_bar = 2131034141;
+			// aapt resource value: 0x7f05001f
+			public static int split_action_bar = 2131034143;
 			
-			// aapt resource value: 0x7f050040
-			public static int submit_area = 2131034176;
+			// aapt resource value: 0x7f05003a
+			public static int submit_area = 2131034170;
 			
 			// aapt resource value: 0x7f050002
 			public static int tabMode = 2131034114;
 			
-			// aapt resource value: 0x7f05002a
-			public static int title = 2131034154;
+			// aapt resource value: 0x7f05002c
+			public static int title = 2131034156;
 			
-			// aapt resource value: 0x7f050031
-			public static int title_container = 2131034161;
+			// aapt resource value: 0x7f050021
+			public static int top_action_bar = 2131034145;
 			
-			// aapt resource value: 0x7f05001f
-			public static int top_action_bar = 2131034143;
-			
-			// aapt resource value: 0x7f050020
-			public static int up = 2131034144;
+			// aapt resource value: 0x7f050022
+			public static int up = 2131034146;
 			
 			// aapt resource value: 0x7f050003
 			public static int useLogo = 2131034115;
@@ -1107,13 +1116,13 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int abc_popup_menu_item_layout = 2130903060;
 			
 			// aapt resource value: 0x7f030015
-			public static int abc_screen = 2130903061;
+			public static int abc_search_dropdown_item_icons_2line = 2130903061;
 			
 			// aapt resource value: 0x7f030016
-			public static int abc_search_dropdown_item_icons_2line = 2130903062;
+			public static int abc_search_view = 2130903062;
 			
 			// aapt resource value: 0x7f030017
-			public static int abc_search_view = 2130903063;
+			public static int abc_simple_decor = 2130903063;
 			
 			// aapt resource value: 0x7f030018
 			public static int identityproviderlistview = 2130903064;
@@ -1211,56 +1220,56 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f0b0061
-			public static int TextAppearance_AppCompat_Base_CompactMenu_Dialog = 2131427425;
-			
-			// aapt resource value: 0x7f0b0069
-			public static int TextAppearance_AppCompat_Base_SearchResult = 2131427433;
-			
-			// aapt resource value: 0x7f0b006b
-			public static int TextAppearance_AppCompat_Base_SearchResult_Subtitle = 2131427435;
-			
-			// aapt resource value: 0x7f0b006a
-			public static int TextAppearance_AppCompat_Base_SearchResult_Title = 2131427434;
-			
-			// aapt resource value: 0x7f0b0065
-			public static int TextAppearance_AppCompat_Base_Widget_PopupMenu_Large = 2131427429;
-			
-			// aapt resource value: 0x7f0b0066
-			public static int TextAppearance_AppCompat_Base_Widget_PopupMenu_Small = 2131427430;
-			
-			// aapt resource value: 0x7f0b006c
-			public static int TextAppearance_AppCompat_Light_Base_SearchResult = 2131427436;
-			
-			// aapt resource value: 0x7f0b006e
-			public static int TextAppearance_AppCompat_Light_Base_SearchResult_Subtitle = 2131427438;
+			// aapt resource value: 0x7f0b0063
+			public static int TextAppearance_AppCompat_Base_CompactMenu_Dialog = 2131427427;
 			
 			// aapt resource value: 0x7f0b006d
-			public static int TextAppearance_AppCompat_Light_Base_SearchResult_Title = 2131427437;
+			public static int TextAppearance_AppCompat_Base_SearchResult = 2131427437;
 			
-			// aapt resource value: 0x7f0b0067
-			public static int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Large = 2131427431;
+			// aapt resource value: 0x7f0b006f
+			public static int TextAppearance_AppCompat_Base_SearchResult_Subtitle = 2131427439;
 			
-			// aapt resource value: 0x7f0b0068
-			public static int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Small = 2131427432;
+			// aapt resource value: 0x7f0b006e
+			public static int TextAppearance_AppCompat_Base_SearchResult_Title = 2131427438;
 			
-			// aapt resource value: 0x7f0b0033
-			public static int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131427379;
+			// aapt resource value: 0x7f0b0069
+			public static int TextAppearance_AppCompat_Base_Widget_PopupMenu_Large = 2131427433;
 			
-			// aapt resource value: 0x7f0b0032
-			public static int TextAppearance_AppCompat_Light_SearchResult_Title = 2131427378;
+			// aapt resource value: 0x7f0b006a
+			public static int TextAppearance_AppCompat_Base_Widget_PopupMenu_Small = 2131427434;
 			
-			// aapt resource value: 0x7f0b002e
-			public static int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131427374;
+			// aapt resource value: 0x7f0b0070
+			public static int TextAppearance_AppCompat_Light_Base_SearchResult = 2131427440;
 			
-			// aapt resource value: 0x7f0b002f
-			public static int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131427375;
+			// aapt resource value: 0x7f0b0072
+			public static int TextAppearance_AppCompat_Light_Base_SearchResult_Subtitle = 2131427442;
 			
-			// aapt resource value: 0x7f0b0031
-			public static int TextAppearance_AppCompat_SearchResult_Subtitle = 2131427377;
+			// aapt resource value: 0x7f0b0071
+			public static int TextAppearance_AppCompat_Light_Base_SearchResult_Title = 2131427441;
+			
+			// aapt resource value: 0x7f0b006b
+			public static int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Large = 2131427435;
+			
+			// aapt resource value: 0x7f0b006c
+			public static int TextAppearance_AppCompat_Light_Base_Widget_PopupMenu_Small = 2131427436;
+			
+			// aapt resource value: 0x7f0b0035
+			public static int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131427381;
+			
+			// aapt resource value: 0x7f0b0034
+			public static int TextAppearance_AppCompat_Light_SearchResult_Title = 2131427380;
 			
 			// aapt resource value: 0x7f0b0030
-			public static int TextAppearance_AppCompat_SearchResult_Title = 2131427376;
+			public static int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131427376;
+			
+			// aapt resource value: 0x7f0b0031
+			public static int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131427377;
+			
+			// aapt resource value: 0x7f0b0033
+			public static int TextAppearance_AppCompat_SearchResult_Subtitle = 2131427379;
+			
+			// aapt resource value: 0x7f0b0032
+			public static int TextAppearance_AppCompat_SearchResult_Title = 2131427378;
 			
 			// aapt resource value: 0x7f0b001a
 			public static int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131427354;
@@ -1289,86 +1298,110 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f0b001f
 			public static int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131427359;
 			
-			// aapt resource value: 0x7f0b0052
-			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Menu = 2131427410;
-			
 			// aapt resource value: 0x7f0b0054
-			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle = 2131427412;
+			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Menu = 2131427412;
 			
 			// aapt resource value: 0x7f0b0056
-			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle_Inverse = 2131427414;
+			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle = 2131427414;
 			
-			// aapt resource value: 0x7f0b0053
-			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Title = 2131427411;
+			// aapt resource value: 0x7f0b0058
+			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Subtitle_Inverse = 2131427416;
 			
 			// aapt resource value: 0x7f0b0055
-			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Title_Inverse = 2131427413;
+			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Title = 2131427413;
 			
-			// aapt resource value: 0x7f0b004f
-			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle = 2131427407;
+			// aapt resource value: 0x7f0b0057
+			public static int TextAppearance_AppCompat_Widget_Base_ActionBar_Title_Inverse = 2131427415;
 			
 			// aapt resource value: 0x7f0b0051
-			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle_Inverse = 2131427409;
+			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle = 2131427409;
 			
-			// aapt resource value: 0x7f0b004e
-			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Title = 2131427406;
+			// aapt resource value: 0x7f0b0053
+			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Subtitle_Inverse = 2131427411;
 			
 			// aapt resource value: 0x7f0b0050
-			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Title_Inverse = 2131427408;
+			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Title = 2131427408;
 			
-			// aapt resource value: 0x7f0b005f
-			public static int TextAppearance_AppCompat_Widget_Base_DropDownItem = 2131427423;
+			// aapt resource value: 0x7f0b0052
+			public static int TextAppearance_AppCompat_Widget_Base_ActionMode_Title_Inverse = 2131427410;
+			
+			// aapt resource value: 0x7f0b0061
+			public static int TextAppearance_AppCompat_Widget_Base_DropDownItem = 2131427425;
 			
 			// aapt resource value: 0x7f0b0021
 			public static int TextAppearance_AppCompat_Widget_DropDownItem = 2131427361;
 			
-			// aapt resource value: 0x7f0b002c
-			public static int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131427372;
+			// aapt resource value: 0x7f0b002e
+			public static int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131427374;
 			
-			// aapt resource value: 0x7f0b002d
-			public static int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131427373;
+			// aapt resource value: 0x7f0b002f
+			public static int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131427375;
 			
-			// aapt resource value: 0x7f0b0060
-			public static int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item = 2131427424;
+			// aapt resource value: 0x7f0b0062
+			public static int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item = 2131427426;
 			
 			// aapt resource value: 0x7f0b0028
 			public static int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131427368;
 			
-			// aapt resource value: 0x7f0b0073
-			public static int Theme_AppCompat = 2131427443;
-			
-			// aapt resource value: 0x7f0b007d
-			public static int Theme_AppCompat_Base_CompactMenu = 2131427453;
-			
-			// aapt resource value: 0x7f0b007e
-			public static int Theme_AppCompat_Base_CompactMenu_Dialog = 2131427454;
-			
-			// aapt resource value: 0x7f0b0076
-			public static int Theme_AppCompat_CompactMenu = 2131427446;
-			
 			// aapt resource value: 0x7f0b0077
-			public static int Theme_AppCompat_CompactMenu_Dialog = 2131427447;
+			public static int Theme_AppCompat = 2131427447;
 			
-			// aapt resource value: 0x7f0b0074
-			public static int Theme_AppCompat_Light = 2131427444;
+			// aapt resource value: 0x7f0b0083
+			public static int Theme_AppCompat_Base_CompactMenu = 2131427459;
 			
-			// aapt resource value: 0x7f0b0075
-			public static int Theme_AppCompat_Light_DarkActionBar = 2131427445;
-			
-			// aapt resource value: 0x7f0b0078
-			public static int Theme_Base = 2131427448;
-			
-			// aapt resource value: 0x7f0b007a
-			public static int Theme_Base_AppCompat = 2131427450;
-			
-			// aapt resource value: 0x7f0b007b
-			public static int Theme_Base_AppCompat_Light = 2131427451;
+			// aapt resource value: 0x7f0b0084
+			public static int Theme_AppCompat_Base_CompactMenu_Dialog = 2131427460;
 			
 			// aapt resource value: 0x7f0b007c
-			public static int Theme_Base_AppCompat_Light_DarkActionBar = 2131427452;
+			public static int Theme_AppCompat_CompactMenu = 2131427452;
+			
+			// aapt resource value: 0x7f0b007d
+			public static int Theme_AppCompat_CompactMenu_Dialog = 2131427453;
+			
+			// aapt resource value: 0x7f0b007a
+			public static int Theme_AppCompat_DialogWhenLarge = 2131427450;
+			
+			// aapt resource value: 0x7f0b0078
+			public static int Theme_AppCompat_Light = 2131427448;
 			
 			// aapt resource value: 0x7f0b0079
-			public static int Theme_Base_Light = 2131427449;
+			public static int Theme_AppCompat_Light_DarkActionBar = 2131427449;
+			
+			// aapt resource value: 0x7f0b007b
+			public static int Theme_AppCompat_Light_DialogWhenLarge = 2131427451;
+			
+			// aapt resource value: 0x7f0b007e
+			public static int Theme_Base = 2131427454;
+			
+			// aapt resource value: 0x7f0b0080
+			public static int Theme_Base_AppCompat = 2131427456;
+			
+			// aapt resource value: 0x7f0b0087
+			public static int Theme_Base_AppCompat_Dialog_FixedSize = 2131427463;
+			
+			// aapt resource value: 0x7f0b0088
+			public static int Theme_Base_AppCompat_Dialog_Light_FixedSize = 2131427464;
+			
+			// aapt resource value: 0x7f0b0085
+			public static int Theme_Base_AppCompat_DialogWhenLarge = 2131427461;
+			
+			// aapt resource value: 0x7f0b0089
+			public static int Theme_Base_AppCompat_DialogWhenLarge_Base = 2131427465;
+			
+			// aapt resource value: 0x7f0b0081
+			public static int Theme_Base_AppCompat_Light = 2131427457;
+			
+			// aapt resource value: 0x7f0b0082
+			public static int Theme_Base_AppCompat_Light_DarkActionBar = 2131427458;
+			
+			// aapt resource value: 0x7f0b0086
+			public static int Theme_Base_AppCompat_Light_DialogWhenLarge = 2131427462;
+			
+			// aapt resource value: 0x7f0b008a
+			public static int Theme_Base_AppCompat_Light_DialogWhenLarge_Base = 2131427466;
+			
+			// aapt resource value: 0x7f0b007f
+			public static int Theme_Base_Light = 2131427455;
 			
 			// aapt resource value: 0x7f0b0000
 			public static int Widget_AppCompat_ActionBar = 2131427328;
@@ -1397,65 +1430,68 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f0b001b
 			public static int Widget_AppCompat_ActionMode = 2131427355;
 			
-			// aapt resource value: 0x7f0b0036
-			public static int Widget_AppCompat_ActivityChooserView = 2131427382;
-			
-			// aapt resource value: 0x7f0b0034
-			public static int Widget_AppCompat_AutoCompleteTextView = 2131427380;
-			
 			// aapt resource value: 0x7f0b0038
-			public static int Widget_AppCompat_Base_ActionBar = 2131427384;
+			public static int Widget_AppCompat_ActivityChooserView = 2131427384;
+			
+			// aapt resource value: 0x7f0b0036
+			public static int Widget_AppCompat_AutoCompleteTextView = 2131427382;
 			
 			// aapt resource value: 0x7f0b003a
-			public static int Widget_AppCompat_Base_ActionBar_Solid = 2131427386;
+			public static int Widget_AppCompat_Base_ActionBar = 2131427386;
 			
-			// aapt resource value: 0x7f0b0043
-			public static int Widget_AppCompat_Base_ActionBar_TabBar = 2131427395;
+			// aapt resource value: 0x7f0b003c
+			public static int Widget_AppCompat_Base_ActionBar_Solid = 2131427388;
 			
-			// aapt resource value: 0x7f0b0049
-			public static int Widget_AppCompat_Base_ActionBar_TabText = 2131427401;
+			// aapt resource value: 0x7f0b0045
+			public static int Widget_AppCompat_Base_ActionBar_TabBar = 2131427397;
 			
-			// aapt resource value: 0x7f0b0046
-			public static int Widget_AppCompat_Base_ActionBar_TabView = 2131427398;
+			// aapt resource value: 0x7f0b004b
+			public static int Widget_AppCompat_Base_ActionBar_TabText = 2131427403;
 			
-			// aapt resource value: 0x7f0b003d
-			public static int Widget_AppCompat_Base_ActionButton = 2131427389;
+			// aapt resource value: 0x7f0b0048
+			public static int Widget_AppCompat_Base_ActionBar_TabView = 2131427400;
 			
 			// aapt resource value: 0x7f0b003f
-			public static int Widget_AppCompat_Base_ActionButton_CloseMode = 2131427391;
+			public static int Widget_AppCompat_Base_ActionButton = 2131427391;
 			
 			// aapt resource value: 0x7f0b0041
-			public static int Widget_AppCompat_Base_ActionButton_Overflow = 2131427393;
+			public static int Widget_AppCompat_Base_ActionButton_CloseMode = 2131427393;
 			
-			// aapt resource value: 0x7f0b004c
-			public static int Widget_AppCompat_Base_ActionMode = 2131427404;
+			// aapt resource value: 0x7f0b0043
+			public static int Widget_AppCompat_Base_ActionButton_Overflow = 2131427395;
 			
-			// aapt resource value: 0x7f0b0071
-			public static int Widget_AppCompat_Base_ActivityChooserView = 2131427441;
+			// aapt resource value: 0x7f0b004e
+			public static int Widget_AppCompat_Base_ActionMode = 2131427406;
 			
-			// aapt resource value: 0x7f0b006f
-			public static int Widget_AppCompat_Base_AutoCompleteTextView = 2131427439;
+			// aapt resource value: 0x7f0b0075
+			public static int Widget_AppCompat_Base_ActivityChooserView = 2131427445;
 			
-			// aapt resource value: 0x7f0b005b
-			public static int Widget_AppCompat_Base_DropDownItem_Spinner = 2131427419;
+			// aapt resource value: 0x7f0b0073
+			public static int Widget_AppCompat_Base_AutoCompleteTextView = 2131427443;
 			
 			// aapt resource value: 0x7f0b005d
-			public static int Widget_AppCompat_Base_ListView_DropDown = 2131427421;
+			public static int Widget_AppCompat_Base_DropDownItem_Spinner = 2131427421;
 			
-			// aapt resource value: 0x7f0b0062
-			public static int Widget_AppCompat_Base_ListView_Menu = 2131427426;
+			// aapt resource value: 0x7f0b0065
+			public static int Widget_AppCompat_Base_ListPopupWindow = 2131427429;
 			
-			// aapt resource value: 0x7f0b0063
-			public static int Widget_AppCompat_Base_PopupMenu = 2131427427;
+			// aapt resource value: 0x7f0b005f
+			public static int Widget_AppCompat_Base_ListView_DropDown = 2131427423;
 			
-			// aapt resource value: 0x7f0b0058
-			public static int Widget_AppCompat_Base_ProgressBar = 2131427416;
+			// aapt resource value: 0x7f0b0064
+			public static int Widget_AppCompat_Base_ListView_Menu = 2131427428;
 			
-			// aapt resource value: 0x7f0b0057
-			public static int Widget_AppCompat_Base_ProgressBar_Horizontal = 2131427415;
+			// aapt resource value: 0x7f0b0067
+			public static int Widget_AppCompat_Base_PopupMenu = 2131427431;
+			
+			// aapt resource value: 0x7f0b005a
+			public static int Widget_AppCompat_Base_ProgressBar = 2131427418;
 			
 			// aapt resource value: 0x7f0b0059
-			public static int Widget_AppCompat_Base_Spinner = 2131427417;
+			public static int Widget_AppCompat_Base_ProgressBar_Horizontal = 2131427417;
+			
+			// aapt resource value: 0x7f0b005b
+			public static int Widget_AppCompat_Base_Spinner = 2131427419;
 			
 			// aapt resource value: 0x7f0b0024
 			public static int Widget_AppCompat_DropDownItem_Spinner = 2131427364;
@@ -1499,89 +1535,98 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			// aapt resource value: 0x7f0b001c
 			public static int Widget_AppCompat_Light_ActionMode_Inverse = 2131427356;
 			
-			// aapt resource value: 0x7f0b0037
-			public static int Widget_AppCompat_Light_ActivityChooserView = 2131427383;
-			
-			// aapt resource value: 0x7f0b0035
-			public static int Widget_AppCompat_Light_AutoCompleteTextView = 2131427381;
-			
 			// aapt resource value: 0x7f0b0039
-			public static int Widget_AppCompat_Light_Base_ActionBar = 2131427385;
+			public static int Widget_AppCompat_Light_ActivityChooserView = 2131427385;
+			
+			// aapt resource value: 0x7f0b0037
+			public static int Widget_AppCompat_Light_AutoCompleteTextView = 2131427383;
 			
 			// aapt resource value: 0x7f0b003b
-			public static int Widget_AppCompat_Light_Base_ActionBar_Solid = 2131427387;
+			public static int Widget_AppCompat_Light_Base_ActionBar = 2131427387;
 			
-			// aapt resource value: 0x7f0b003c
-			public static int Widget_AppCompat_Light_Base_ActionBar_Solid_Inverse = 2131427388;
-			
-			// aapt resource value: 0x7f0b0044
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabBar = 2131427396;
-			
-			// aapt resource value: 0x7f0b0045
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabBar_Inverse = 2131427397;
-			
-			// aapt resource value: 0x7f0b004a
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabText = 2131427402;
-			
-			// aapt resource value: 0x7f0b004b
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabText_Inverse = 2131427403;
-			
-			// aapt resource value: 0x7f0b0047
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabView = 2131427399;
-			
-			// aapt resource value: 0x7f0b0048
-			public static int Widget_AppCompat_Light_Base_ActionBar_TabView_Inverse = 2131427400;
+			// aapt resource value: 0x7f0b003d
+			public static int Widget_AppCompat_Light_Base_ActionBar_Solid = 2131427389;
 			
 			// aapt resource value: 0x7f0b003e
-			public static int Widget_AppCompat_Light_Base_ActionButton = 2131427390;
+			public static int Widget_AppCompat_Light_Base_ActionBar_Solid_Inverse = 2131427390;
 			
-			// aapt resource value: 0x7f0b0040
-			public static int Widget_AppCompat_Light_Base_ActionButton_CloseMode = 2131427392;
+			// aapt resource value: 0x7f0b0046
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabBar = 2131427398;
 			
-			// aapt resource value: 0x7f0b0042
-			public static int Widget_AppCompat_Light_Base_ActionButton_Overflow = 2131427394;
+			// aapt resource value: 0x7f0b0047
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabBar_Inverse = 2131427399;
+			
+			// aapt resource value: 0x7f0b004c
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabText = 2131427404;
 			
 			// aapt resource value: 0x7f0b004d
-			public static int Widget_AppCompat_Light_Base_ActionMode_Inverse = 2131427405;
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabText_Inverse = 2131427405;
 			
-			// aapt resource value: 0x7f0b0072
-			public static int Widget_AppCompat_Light_Base_ActivityChooserView = 2131427442;
+			// aapt resource value: 0x7f0b0049
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabView = 2131427401;
 			
-			// aapt resource value: 0x7f0b0070
-			public static int Widget_AppCompat_Light_Base_AutoCompleteTextView = 2131427440;
+			// aapt resource value: 0x7f0b004a
+			public static int Widget_AppCompat_Light_Base_ActionBar_TabView_Inverse = 2131427402;
 			
-			// aapt resource value: 0x7f0b005c
-			public static int Widget_AppCompat_Light_Base_DropDownItem_Spinner = 2131427420;
+			// aapt resource value: 0x7f0b0040
+			public static int Widget_AppCompat_Light_Base_ActionButton = 2131427392;
+			
+			// aapt resource value: 0x7f0b0042
+			public static int Widget_AppCompat_Light_Base_ActionButton_CloseMode = 2131427394;
+			
+			// aapt resource value: 0x7f0b0044
+			public static int Widget_AppCompat_Light_Base_ActionButton_Overflow = 2131427396;
+			
+			// aapt resource value: 0x7f0b004f
+			public static int Widget_AppCompat_Light_Base_ActionMode_Inverse = 2131427407;
+			
+			// aapt resource value: 0x7f0b0076
+			public static int Widget_AppCompat_Light_Base_ActivityChooserView = 2131427446;
+			
+			// aapt resource value: 0x7f0b0074
+			public static int Widget_AppCompat_Light_Base_AutoCompleteTextView = 2131427444;
 			
 			// aapt resource value: 0x7f0b005e
-			public static int Widget_AppCompat_Light_Base_ListView_DropDown = 2131427422;
+			public static int Widget_AppCompat_Light_Base_DropDownItem_Spinner = 2131427422;
 			
-			// aapt resource value: 0x7f0b0064
-			public static int Widget_AppCompat_Light_Base_PopupMenu = 2131427428;
+			// aapt resource value: 0x7f0b0066
+			public static int Widget_AppCompat_Light_Base_ListPopupWindow = 2131427430;
 			
-			// aapt resource value: 0x7f0b005a
-			public static int Widget_AppCompat_Light_Base_Spinner = 2131427418;
+			// aapt resource value: 0x7f0b0060
+			public static int Widget_AppCompat_Light_Base_ListView_DropDown = 2131427424;
+			
+			// aapt resource value: 0x7f0b0068
+			public static int Widget_AppCompat_Light_Base_PopupMenu = 2131427432;
+			
+			// aapt resource value: 0x7f0b005c
+			public static int Widget_AppCompat_Light_Base_Spinner = 2131427420;
 			
 			// aapt resource value: 0x7f0b0025
 			public static int Widget_AppCompat_Light_DropDownItem_Spinner = 2131427365;
 			
+			// aapt resource value: 0x7f0b002a
+			public static int Widget_AppCompat_Light_ListPopupWindow = 2131427370;
+			
 			// aapt resource value: 0x7f0b0027
 			public static int Widget_AppCompat_Light_ListView_DropDown = 2131427367;
 			
-			// aapt resource value: 0x7f0b002a
-			public static int Widget_AppCompat_Light_PopupMenu = 2131427370;
+			// aapt resource value: 0x7f0b002c
+			public static int Widget_AppCompat_Light_PopupMenu = 2131427372;
 			
 			// aapt resource value: 0x7f0b0023
 			public static int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131427363;
 			
+			// aapt resource value: 0x7f0b0029
+			public static int Widget_AppCompat_ListPopupWindow = 2131427369;
+			
 			// aapt resource value: 0x7f0b0026
 			public static int Widget_AppCompat_ListView_DropDown = 2131427366;
 			
-			// aapt resource value: 0x7f0b002b
-			public static int Widget_AppCompat_ListView_Menu = 2131427371;
+			// aapt resource value: 0x7f0b002d
+			public static int Widget_AppCompat_ListView_Menu = 2131427373;
 			
-			// aapt resource value: 0x7f0b0029
-			public static int Widget_AppCompat_PopupMenu = 2131427369;
+			// aapt resource value: 0x7f0b002b
+			public static int Widget_AppCompat_PopupMenu = 2131427371;
 			
 			// aapt resource value: 0x7f0b000a
 			public static int Widget_AppCompat_ProgressBar = 2131427338;
@@ -1606,10 +1651,6 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 		{
 			
 			public static int[] ActionBar = new int[] {
-					2130772001,
-					2130772002,
-					2130772003,
-					2130772004,
 					2130772005,
 					2130772006,
 					2130772007,
@@ -1624,7 +1665,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 					2130772016,
 					2130772017,
 					2130772018,
-					2130772019};
+					2130772019,
+					2130772020,
+					2130772021,
+					2130772022,
+					2130772023};
 			
 			// aapt resource value: 10
 			public static int ActionBar_background = 10;
@@ -1692,13 +1737,29 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int[] ActionBarWindow = new int[] {
 					2130771968,
 					2130771969,
-					2130771970};
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974};
 			
 			// aapt resource value: 0
 			public static int ActionBarWindow_windowActionBar = 0;
 			
 			// aapt resource value: 1
 			public static int ActionBarWindow_windowActionBarOverlay = 1;
+			
+			// aapt resource value: 6
+			public static int ActionBarWindow_windowFixedHeightMajor = 6;
+			
+			// aapt resource value: 4
+			public static int ActionBarWindow_windowFixedHeightMinor = 4;
+			
+			// aapt resource value: 3
+			public static int ActionBarWindow_windowFixedWidthMajor = 3;
+			
+			// aapt resource value: 5
+			public static int ActionBarWindow_windowFixedWidthMinor = 5;
 			
 			// aapt resource value: 2
 			public static int ActionBarWindow_windowSplitActionBar = 2;
@@ -1712,11 +1773,11 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int[] ActionMenuView;
 			
 			public static int[] ActionMode = new int[] {
-					2130772002,
 					2130772006,
-					2130772007,
+					2130772010,
 					2130772011,
-					2130772013};
+					2130772015,
+					2130772017};
 			
 			// aapt resource value: 3
 			public static int ActionMode_background = 3;
@@ -1734,8 +1795,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int ActionMode_titleTextStyle = 1;
 			
 			public static int[] ActivityChooserView = new int[] {
-					2130772070,
-					2130772071};
+					2130772074,
+					2130772075};
 			
 			// aapt resource value: 1
 			public static int ActivityChooserView_expandActivityOverflowButtonDrawable = 1;
@@ -1744,15 +1805,15 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int ActivityChooserView_initialActivityCount = 0;
 			
 			public static int[] CompatTextView = new int[] {
-					2130772073};
+					2130772077};
 			
 			// aapt resource value: 0
 			public static int CompatTextView_textAllCaps = 0;
 			
 			public static int[] LinearLayoutICS = new int[] {
-					2130772010,
-					2130772049,
-					2130772050};
+					2130772014,
+					2130772053,
+					2130772054};
 			
 			// aapt resource value: 0
 			public static int LinearLayoutICS_divider = 0;
@@ -1803,10 +1864,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 					16843236,
 					16843237,
 					16843375,
-					2130772041,
-					2130772042,
-					2130772043,
-					2130772044};
+					2130772045,
+					2130772046,
+					2130772047,
+					2130772048};
 			
 			// aapt resource value: 14
 			public static int MenuItem_actionLayout = 14;
@@ -1894,8 +1955,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int MenuView_android_windowAnimationStyle = 0;
 			
 			public static int[] MvxBinding = new int[] {
-					2130772074,
-					2130772075};
+					2130772078,
+					2130772079};
 			
 			// aapt resource value: 0
 			public static int MvxBinding_MvxBind = 0;
@@ -1904,20 +1965,20 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int MvxBinding_MvxLang = 1;
 			
 			public static int[] MvxControl = new int[] {
-					2130772076};
+					2130772080};
 			
 			// aapt resource value: 0
 			public static int MvxControl_MvxTemplate = 0;
 			
 			public static int[] MvxImageView = new int[] {
-					2130772079};
+					2130772083};
 			
 			// aapt resource value: 0
 			public static int MvxImageView_MvxSource = 0;
 			
 			public static int[] MvxListView = new int[] {
-					2130772077,
-					2130772078};
+					2130772081,
+					2130772082};
 			
 			// aapt resource value: 1
 			public static int MvxListView_MvxDropDownItemTemplate = 1;
@@ -1929,8 +1990,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 					16843039,
 					16843296,
 					16843364,
-					2130772054,
-					2130772055};
+					2130772058,
+					2130772059};
 			
 			// aapt resource value: 2
 			public static int SearchView_android_imeOptions = 2;
@@ -1954,10 +2015,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 					16843362,
 					16843436,
 					16843437,
-					2130772045,
-					2130772046,
-					2130772047,
-					2130772048};
+					2130772049,
+					2130772050,
+					2130772051,
+					2130772052};
 			
 			// aapt resource value: 4
 			public static int Spinner_android_dropDownHorizontalOffset = 4;
@@ -1990,12 +2051,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			public static int Spinner_spinnerMode = 7;
 			
 			public static int[] Theme = new int[] {
-					2130772035,
-					2130772036,
-					2130772037,
-					2130772038,
 					2130772039,
-					2130772040};
+					2130772040,
+					2130772041,
+					2130772042,
+					2130772043,
+					2130772044};
 			
 			// aapt resource value: 0
 			public static int Theme_actionDropDownStyle = 0;
@@ -2017,8 +2078,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid
 			
 			public static int[] View = new int[] {
 					16842970,
-					2130772020,
-					2130772021};
+					2130772024,
+					2130772025};
 			
 			// aapt resource value: 0
 			public static int View_android_focusable = 0;

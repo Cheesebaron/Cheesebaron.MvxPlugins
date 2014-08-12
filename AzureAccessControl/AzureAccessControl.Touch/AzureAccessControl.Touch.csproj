@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BTProgressHUD">
-      <HintPath>..\..\Components\btprogresshud-1.8\lib\ios\BTProgressHUD.dll</HintPath>
+      <HintPath>..\..\Components\btprogresshud-1.10\lib\ios\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>

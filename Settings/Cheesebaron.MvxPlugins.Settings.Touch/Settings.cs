@@ -24,7 +24,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
     public class Settings
         : ISettings
     {
-        public T GetValue<T>(string key, T defaultValue = default(T))
+        public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -71,7 +71,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             return (T)returnVal;
         }
 
-        public bool AddOrUpdateValue<T>(string key, T value = default(T))
+        public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -108,7 +108,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             return defaults.Synchronize();
         }
 
-        public bool Contains(string key)
+        public bool Contains(string key, bool roaming = false)
         {
             var defaults = NSUserDefaults.StandardUserDefaults;
             try
@@ -122,7 +122,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             }
         }
 
-        public bool DeleteValue(string key)
+        public bool DeleteValue(string key, bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -132,7 +132,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             return defaults.Synchronize();
         }
 
-        public bool ClearAllValues()
+        public bool ClearAllValues(bool roaming = false)
         {
             var defaults = NSUserDefaults.StandardUserDefaults;
             defaults.RemovePersistentDomain(NSBundle.MainBundle.BundleIdentifier);

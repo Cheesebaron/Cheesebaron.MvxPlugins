@@ -57,7 +57,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
 
         public Settings(string settingsesFileName) { _settingsFileName = settingsesFileName; }
 
-        public T GetValue<T>(string key, T defaultValue = default(T))
+        public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -100,7 +100,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             return (T)returnVal;
         }
 
-        public bool AddOrUpdateValue<T>(string key, T value = default(T))
+        public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -137,7 +137,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             return editor.Commit();
         }
 
-        public bool DeleteValue(string key)
+        public bool DeleteValue(string key, bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
@@ -147,12 +147,12 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             return editor.Commit();
         }
 
-        public bool Contains(string key)
+        public bool Contains(string key, bool roaming = false)
         {
             return SharedPreferences.Contains(key);
         }
 
-        public bool ClearAllValues()
+        public bool ClearAllValues(bool roaming = false)
         {
             var editor = SharedPreferences.Edit();
             editor.Clear();
