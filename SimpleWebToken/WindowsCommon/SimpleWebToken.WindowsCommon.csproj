@@ -1,25 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8BD5A2EA-BEF2-4237-B7BD-F07742C5171C}</ProjectGuid>
+    <ProjectGuid>{BC5E92C6-5E69-4551-A3D0-864690E2FB48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cheesebaron.MvxPlugins.SimpleWebToken</RootNamespace>
-    <AssemblyName>Cheesebaron.MvxPlugins.SimpleWebToken</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <RootNamespace>Cheesebaron.MvxPlugins.SimpleWebToken.WindowsCommon</RootNamespace>
+    <AssemblyName>Cheesebaron.MvxPlugins.SimpleWebToken.WindowsCommon</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\Portable\</OutputPath>
+    <OutputPath>..\..\bin\Debug\WindowsCommon\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,16 +28,26 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\Portable\</OutputPath>
+    <OutputPath>..\..\bin\Release\WindowsCommon\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ClaimTypes.cs" />
-    <Compile Include="Interfaces\ISimpleWebToken.cs" />
-    <Compile Include="PluginLoader.cs" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
+      <Project>{8bd5a2ea-bef2-4237-b7bd-f07742c5171c}</Project>
+      <Name>Cheesebaron.MvxPlugins.SimpleWebToken</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleWebToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
