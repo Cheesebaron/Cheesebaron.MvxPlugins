@@ -130,6 +130,10 @@
       <Project>{3ef16344-217d-4a0e-bdfc-9e11c13fb224}</Project>
       <Name>AzureAccessControl.Droid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\AzureAccessControl\Droid.Views\AzureAccessControl.Droid.Views.csproj">
+      <Project>{676a6255-613a-4dec-a450-af5796e30321}</Project>
+      <Name>AzureAccessControl.Droid.Views</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\ModernHttpClient\Core\ModernHttpClient.Core.csproj">
       <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
       <Name>ModernHttpClient.Core</Name>

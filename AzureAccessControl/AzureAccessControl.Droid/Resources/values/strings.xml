@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="mvxplugins_action_relogin">Reload</string>
-  <string name="mvxplugins_dialog_loading">Loading...</string>
+  <string name="mvxplugins_libname">Cheesbaron.MvxPlugins.AzureAccessControl.Droid</string>
 </resources>
