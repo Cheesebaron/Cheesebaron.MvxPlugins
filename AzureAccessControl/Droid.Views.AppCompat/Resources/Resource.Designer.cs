@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("AzureAccessControl.Droid.Views.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource", IsApplication=false)]
 
-namespace AzureAccessControl.Droid.Views
+namespace Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views
 {
 	
 	
