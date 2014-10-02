@@ -22,6 +22,6 @@ namespace Cheesebaron.MvxPlugins.ModernHttpClient
     {
         HttpClient Get();
         HttpClient Get(HttpMessageHandler handler);
-        HttpMessageHandler GetNativeHandler(bool throwOnCaptiveNetwork = false);
+        HttpMessageHandler GetNativeHandler(bool throwOnCaptiveNetwork = false, bool customSSLVerification = false);
     }
 }
