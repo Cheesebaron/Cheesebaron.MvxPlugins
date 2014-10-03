@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.Settings</id>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<title>MvvmCross Settings Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
@@ -12,17 +12,17 @@
 		<description>This package contains a 'Settings' plugin for MvvmCross v3, which uses platform specific simple storage for application settings.</description>
 		<tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin</tags>
 		<dependencies>
-		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.0.12" />
+		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.1.1" />
 		</dependencies>
 	</metadata>
 	<files>		
 		<!-- PCL -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\portable-win+net45+MonoAndroid16+MonoTouch40+sl40+wp71\Cheesebaron.MvxPlugins.Settings.dll" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\portable-win+net45+MonoAndroid16+MonoTouch40+windowsphone8\Cheesebaron.MvxPlugins.Settings.dll" />
 
 		<!-- phone -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\sl4-wp71\Cheesebaron.MvxPlugins.Settings.dll" />
-		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" target="lib\sl4-wp71\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" />
-        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\sl4-wp71\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\windowsphone8\Cheesebaron.MvxPlugins.Settings.dll" />
+		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" target="lib\windowsphone8\Cheesebaron.MvxPlugins.Settings.WindowsPhone.dll" />
+        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\windowsphone8\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 	
 		<!-- droid -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\MonoAndroid16\Cheesebaron.MvxPlugins.Settings.dll" />

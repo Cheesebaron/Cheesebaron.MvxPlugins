@@ -26,33 +26,34 @@ namespace AzureAccessControl.Sample.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxBind;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxDropDownItemTemplate;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxItemTemplate;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxLang;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxSource = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxSource;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Attribute.MvxTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxTemplate;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Drawable.mvxplugins_ic_action_refresh = global::AzureAccessControl.Sample.Droid.Resource.Drawable.mvxplugins_ic_action_refresh;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.MvxBindingTagUnique = global::AzureAccessControl.Sample.Droid.Resource.Id.MvxBindingTagUnique;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_header = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_header;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_listview = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_listview;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.identity_provider_loggedin = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_loggedin;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Id.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.Id.mvxplugins_action_relogin;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.identityproviderlistview = global::AzureAccessControl.Sample.Droid.Resource.Layout.identityproviderlistview;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Layout.listitem_identityprovider = global::AzureAccessControl.Sample.Droid.Resource.Layout.listitem_identityprovider;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Menu.login = global::AzureAccessControl.Sample.Droid.Resource.Menu.login;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_action_relogin;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_dialog_loading = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_dialog_loading;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxBind;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxBinding_MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxLang;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxControl = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxControl;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxControl_MvxTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxControl_MvxTemplate;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxImageView = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxImageView;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxImageView_MvxSource = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxImageView_MvxSource;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
-			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Resource.String.mvxplugins_libname = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_libname;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxBind;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxDropDownItemTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxItemTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxLang;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxSource = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxSource;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Attribute.MvxTemplate = global::AzureAccessControl.Sample.Droid.Resource.Attribute.MvxTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Drawable.mvxplugins_ic_action_refresh = global::AzureAccessControl.Sample.Droid.Resource.Drawable.mvxplugins_ic_action_refresh;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Id.MvxBindingTagUnique = global::AzureAccessControl.Sample.Droid.Resource.Id.MvxBindingTagUnique;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Id.identity_provider_header = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_header;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Id.identity_provider_listview = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_listview;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Id.identity_provider_loggedin = global::AzureAccessControl.Sample.Droid.Resource.Id.identity_provider_loggedin;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Id.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.Id.mvxplugins_action_relogin;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Layout.identityproviderlistview = global::AzureAccessControl.Sample.Droid.Resource.Layout.identityproviderlistview;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Layout.listitem_identityprovider = global::AzureAccessControl.Sample.Droid.Resource.Layout.listitem_identityprovider;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Menu.login = global::AzureAccessControl.Sample.Droid.Resource.Menu.login;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.String.mvxplugins_action_relogin = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_action_relogin;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.String.mvxplugins_dialog_loading = global::AzureAccessControl.Sample.Droid.Resource.String.mvxplugins_dialog_loading;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxBinding = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxBinding_MvxBind = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxBind;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxBinding_MvxLang = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxBinding_MvxLang;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxControl = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxControl;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxControl_MvxTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxControl_MvxTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxImageView = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxImageView;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxImageView_MvxSource = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxImageView_MvxSource;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxListView = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
+			global::Cheesebaron.MvxPlugins.AzureAccessControl.Droid.Views.Resource.Styleable.MvxListView_MvxItemTemplate = global::AzureAccessControl.Sample.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
 		}
 		
 		public partial class Attribute
@@ -218,6 +219,9 @@ namespace AzureAccessControl.Sample.Droid
 			
 			// aapt resource value: 0x7f050001
 			public const int mvxplugins_dialog_loading = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int mvxplugins_libname = 2131034114;
 			
 			static String()
 			{

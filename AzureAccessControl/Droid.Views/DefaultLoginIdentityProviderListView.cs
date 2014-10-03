@@ -20,7 +20,6 @@ using System.Linq;
 using Android.App;
 using Android.OS;
 using Android.Views;
-
 using Cheesebaron.MvxPlugins.AzureAccessControl.ViewModels;
 using CheeseyDroidExtensions;
 
