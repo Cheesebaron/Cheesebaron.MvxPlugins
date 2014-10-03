@@ -26,6 +26,7 @@ namespace Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::ModernHttpClient.Resource.String.library_name = global::Droid.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
@@ -78,23 +79,23 @@ namespace Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int MvxBindingTagUnique = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int MvxBindingTagUnique = 2131034112;
 			
-			// aapt resource value: 0x7f040005
-			public const int cancel_button = 2130968581;
+			// aapt resource value: 0x7f050005
+			public const int cancel_button = 2131034117;
 			
-			// aapt resource value: 0x7f040004
-			public const int download_button = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int download_button = 2131034116;
 			
-			// aapt resource value: 0x7f040003
-			public const int raw_textview = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int raw_textview = 2131034115;
 			
-			// aapt resource value: 0x7f040002
-			public const int time_textview = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int time_textview = 2131034114;
 			
-			// aapt resource value: 0x7f040001
-			public const int url_edittext = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int url_edittext = 2131034113;
 			
 			static Id()
 			{
@@ -128,11 +129,14 @@ namespace Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f040002
+			public const int ApplicationName = 2130968578;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f040001
+			public const int Hello = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int library_name = 2130968576;
 			
 			static String()
 			{
