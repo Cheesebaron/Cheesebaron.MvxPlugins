@@ -17,7 +17,7 @@
 	</metadata>
 	<files>		
 		<!-- PCL -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\portable-win+net45+MonoAndroid16+MonoTouch40+windowsphone8\Cheesebaron.MvxPlugins.Settings.dll" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Cheesebaron.MvxPlugins.Settings.dll" />
 
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.dll" target="lib\windowsphone8\Cheesebaron.MvxPlugins.Settings.dll" />
