@@ -93,6 +93,11 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                     else
                         returnVal = new DateTime(ticks);
                     break;
+                case TypeCode.Object:
+                    returnVal = default(T);
+                    if (type == typeof (Guid))
+                        returnVal = Guid.Parse(SharedPreferences.GetString(key, Convert.ToString(defaultValue)));
+                    break;
                 default:
                     returnVal = defaultValue;
                     break;
@@ -130,6 +135,10 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                     break;
                 case TypeCode.DateTime:
                     editor.PutLong(key, ((DateTime)(object)value).Ticks);
+                    break;
+                case TypeCode.Object:
+                    if(type == typeof(Guid))
+                        editor.PutString(key, Convert.ToString(value));
                     break;
                 default:
                     throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
