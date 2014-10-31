@@ -5,3 +5,13 @@
 [submodule "submodules/Cirrious.FluentLayout"]
 	path = submodules/Cirrious.FluentLayout
 	url = https://github.com/slodge/Cirrious.FluentLayout.git
+	ignore = dirty
+[submodule "submodules/MvvmCross"]
+	path = submodules/MvvmCross
+	url = git@github.com:MvvmCross/MvvmCross.git
+	branch = 3.5
+	ignore = dirty
+[submodule "submodules/BTProgressHUD"]
+	path = submodules/BTProgressHUD
+	url = git@github.com:nicwise/BTProgressHUD.git
+	ignore = dirty

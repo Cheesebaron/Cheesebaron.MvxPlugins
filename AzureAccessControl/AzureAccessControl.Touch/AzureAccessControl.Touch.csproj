@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BTProgressHUD">
-      <HintPath>..\..\Components\btprogresshud-1.10\lib\ios\BTProgressHUD.dll</HintPath>
+      <HintPath>..\..\submodules\BTProgressHUD\BTProgressHUD\bin\classic\Debug\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\..\submodules\MvvmCross-Binaries\VS2012\bin\Debug\Mvx\Touch\Cirrious.CrossCore.dll</HintPath>
@@ -101,12 +101,6 @@
       <Project>{70b42c5a-7f65-45ac-ab9a-0a4225f8f337}</Project>
       <Name>AzureAccessControl.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="btprogresshud">
-      <Visible>False</Visible>
-      <Version>1.12</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>
