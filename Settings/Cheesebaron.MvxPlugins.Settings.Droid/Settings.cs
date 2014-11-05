@@ -55,7 +55,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             }
         }
 
-        public Settings(string settingsesFileName) { _settingsFileName = settingsesFileName; }
+        public Settings(string settingsFileName = null) { _settingsFileName = settingsFileName; }
 
         public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
@@ -64,9 +64,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
 
             var type = typeof(T);
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
                 type = Nullable.GetUnderlyingType(type);
-            }
 
             object returnVal;
             switch(Type.GetTypeCode(type))
@@ -87,14 +85,25 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                     returnVal = SharedPreferences.GetString(key, Convert.ToString(defaultValue));
                     break;
                 case TypeCode.DateTime:
+                {
                     var ticks = SharedPreferences.GetLong(key, -1);
                     if (ticks == -1)
                         returnVal = defaultValue;
                     else
                         returnVal = new DateTime(ticks);
                     break;
+                }
                 default:
-                    returnVal = defaultValue;
+                    if (type.Name == typeof(DateTimeOffset).Name)
+                    {
+                        var ticks = SharedPreferences.GetString(key, "");
+                        if (String.IsNullOrWhiteSpace(ticks))
+                            returnVal = defaultValue;
+                        else
+                            returnVal = DateTimeOffset.Parse(ticks);
+                    }
+                    else
+                        returnVal = defaultValue;
                     break;
             }
             return (T)returnVal;
@@ -108,9 +117,8 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             var editor = SharedPreferences.Edit();
             var type = value.GetType();
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
                 type = Nullable.GetUnderlyingType(type);
-            }
+
             switch(Type.GetTypeCode(type))
             {
                 case TypeCode.Boolean:
@@ -132,7 +140,11 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                     editor.PutLong(key, ((DateTime)(object)value).Ticks);
                     break;
                 default:
-                    throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                    if(type.Name == typeof(DateTimeOffset).Name)
+                        editor.PutString(key, ((DateTimeOffset)(object)value).ToString("o"));
+                    else
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                    break;
             }
             return editor.Commit();
         }

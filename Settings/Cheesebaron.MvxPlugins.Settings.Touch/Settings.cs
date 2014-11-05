@@ -58,8 +58,20 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                 case TypeCode.String:
                     returnVal = defaults.StringForKey(key);
                     break;
+                case TypeCode.DateTime:
+                { 
+                    var ticks = defaults.DoubleForKey(key);
+                    returnVal = new DateTime(Convert.ToInt64(ticks));
+                    break;
+                }
                 default:
-                    returnVal = defaultValue;
+                    if (type.Name == typeof (DateTimeOffset).Name)
+                    {
+                        var ticks = defaults.StringForKey(key);
+                        returnVal = DateTimeOffset.Parse(ticks);
+                    }
+                    else
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "defaultValue");
                     break;
             }
 
@@ -102,8 +114,15 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                 case TypeCode.String:
                     defaults.SetString(Convert.ToString(value), key);
                     break;
+                case TypeCode.DateTime:
+                    defaults.SetDouble(((DateTime)(object)value).Ticks, key);
+                    break;
                 default:
-                    throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                    if (type.Name == typeof(DateTimeOffset).Name)
+                        defaults.SetString(((DateTimeOffset)(object)value).ToString("o"), key);
+                    else
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                    break;
             }
             return defaults.Synchronize();
         }
