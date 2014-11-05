@@ -60,6 +60,8 @@ namespace AppCompatExtensions.Droid.v7
         {
             return base.OnMenuItemSelected(featureId, item);
         }
+
+        public LayoutInflater LayoutInflater { get; private set; }
     }
 
     public class MvxActionBarCompatEventSourceActivity
