@@ -2,7 +2,7 @@
 using Cirrious.CrossCore.Exceptions;
 using Cirrious.CrossCore.Plugins;
 
-namespace Cheesebaron.MvxPlugins.XamarinInsights.WindowsCommon
+namespace Cheesebaron.MvxPlugins.XamarinInsights.WindowsStore
 {
     public class Plugin 
         : IMvxPlugin
