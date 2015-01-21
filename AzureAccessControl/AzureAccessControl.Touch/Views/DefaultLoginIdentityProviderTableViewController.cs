@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------------
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2013-2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -31,8 +31,8 @@ using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Dialog.Touch;
 using Cirrious.MvvmCross.ViewModels;
 using CrossUI.Touch.Dialog.Elements;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
 {
@@ -108,7 +108,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                     Root.Remove(_loginDetailSection);
             });
 
-            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, (sender, args) => InvokeOnMainThread(() =>
+            _loadingToken = ViewModel.WeakSubscribe(() => ViewModel.LoadingIdentityProviders, 
+                (sender, args) => InvokeOnMainThread(() =>
             {
                 if (ViewModel.LoadingIdentityProviders)
                 {
@@ -158,9 +159,9 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             ViewModel.LoginSelectedIdentityProviderCommand.Execute(provider);
         }
 
-        public Task<int> ShowAlert(string title, string message, params string[] buttons)
+        public Task<nint> ShowAlert(string title, string message, params string[] buttons)
         {
-            var tcs = new TaskCompletionSource<int>();
+            var tcs = new TaskCompletionSource<nint>();
             var alert = new UIAlertView
             {
                 Title = title,
@@ -213,7 +214,8 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
                 _itemsSource = value;
                 if (_itemsSource != null && !(_itemsSource is IList))
                     MvxBindingTrace.Trace(MvxTraceLevel.Warning,
-                                          "Binding to IEnumerable rather than IList - this can be inefficient, especially for large lists");
+                                          @"Binding to IEnumerable rather than IList - this can be inefficient, 
+                                            especially for large lists");
                 var newObservable = _itemsSource as INotifyCollectionChanged;
                 if (newObservable != null)
                     _subscription = newObservable.WeakSubscribe(OnItemsSourceCollectionChanged);
@@ -260,7 +262,12 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             public CustomStringElement()
             {
                 this.CreateBindingContext();
-                this.DelayBind(() => this.CreateBinding().For(me => me.Caption).To<DefaultIdentityProviderViewModel>(p => p.Name).Apply());
+                this.DelayBind(
+                    () =>
+                        this.CreateBinding()
+                            .For(me => me.Caption)
+                            .To<DefaultIdentityProviderViewModel>(p => p.Name)
+                            .Apply());
             }
 
 
@@ -269,7 +276,10 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             protected override UITableViewCell GetCellImpl(UITableView tv)
             {
                 var uiTableViewCell = tv.DequeueReusableCell(Value == null ? Skey : SkeyValue) ??
-                                      new UITableViewCell(Value == null ? UITableViewCellStyle.Default : UITableViewCellStyle.Value1, Skey)
+                                      new UITableViewCell(
+                                          Value == null ? 
+                                          UITableViewCellStyle.Default : 
+                                          UITableViewCellStyle.Value1, Skey)
                 {
                     SelectionStyle = UITableViewCellSelectionStyle.Blue
                 };

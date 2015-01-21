@@ -1,11 +1,11 @@
+using System;
 using AzureAccessControl.Sample.ViewModels;
 
 using Cirrious.FluentLayouts.Touch;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Touch.Views;
-
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace AzureAccessControl.Sample.Touch.Views
 {
@@ -83,7 +83,7 @@ namespace AzureAccessControl.Sample.Touch.Views
         {
             base.ViewDidLayoutSubviews();
 
-            float y = 0;
+            nfloat y = 0;
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(7, 0))
             {

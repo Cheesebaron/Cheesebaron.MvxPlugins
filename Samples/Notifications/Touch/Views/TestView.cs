@@ -1,9 +1,10 @@
+using System;
 using Cirrious.FluentLayouts.Touch;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Touch.Views;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
 using Notifications.Sample.Core.ViewModels;
+using UIKit;
 
 namespace Touch.Views
 {
@@ -51,7 +52,7 @@ namespace Touch.Views
         {
             base.ViewDidLayoutSubviews();
 
-            float yTop = 0;
+            nfloat yTop = 0;
             if (UIDevice.CurrentDevice.CheckSystemVersion(7, 0))
             {
                 yTop = TopLayoutGuide.Length;

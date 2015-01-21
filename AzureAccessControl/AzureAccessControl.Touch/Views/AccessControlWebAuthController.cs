@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------------
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2013-2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // You may not use this file except in compliance with the License.
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -15,15 +15,15 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
 using System.Text;
 
 using Cheesebaron.MvxPlugins.AzureAccessControl.Messages;
 
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using Foundation;
+using UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
 {
@@ -76,7 +76,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             if (!string.IsNullOrEmpty(IdentityProviderName))
                 Title = IdentityProviderName;
 
-            _webView = new UIWebView(new RectangleF(0,0, View.Bounds.Width, View.Bounds.Height))
+            _webView = new UIWebView(new CGRect(0,0, View.Bounds.Width, View.Bounds.Height))
             {
                 AutoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin
             };
@@ -128,7 +128,7 @@ namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch.Views
             return false;
         }
 
-        internal class LoginConnectionDelegate : NSUrlConnectionDelegate
+        internal class LoginConnectionDelegate : NSUrlConnectionDataDelegate
         {
             private readonly AccessControlWebAuthController _controller;
             private NSMutableData _data;

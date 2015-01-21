@@ -1,5 +1,5 @@
-using MonoTouch.ObjCRuntime;
-using MonoTouch.UIKit;
+using ObjCRuntime;
+using UIKit;
 
 namespace AzureAccessControl.Sample.Touch.Views
 {
