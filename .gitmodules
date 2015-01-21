@@ -11,7 +11,3 @@
 	url = git@github.com:MvvmCross/MvvmCross.git
 	branch = 3.5
 	ignore = dirty
-[submodule "submodules/BTProgressHUD"]
-	path = submodules/BTProgressHUD
-	url = git@github.com:nicwise/BTProgressHUD.git
-	ignore = dirty
