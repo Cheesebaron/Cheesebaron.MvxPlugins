@@ -22,8 +22,8 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.CrossCore.Touch.Views;
 using Cirrious.MvvmCross.Plugins.Messenger;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace Cheesebaron.MvxPlugins.AzureAccessControl.Touch
 {

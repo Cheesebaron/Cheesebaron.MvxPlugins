@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Tomasz Cielcki (@Cheesebaron)
+ * Copyright 2014-2015 Tomasz Cielcki (@Cheesebaron)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Core;
 using Cirrious.MvvmCross.Plugins.Messenger;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace Cheesebaron.MvxPlugins.Notifications
 {

@@ -2,26 +2,35 @@
  * reachability.cs from
  * https://github.com/xamarin/monotouch-samples/blob/master/ReachabilitySample/reachability.cs
  * 
+ * Copyright 2009-2011 Novell Inc and the individuals listed
+ * on the ChangeLog entries.
+ * 
  * Copyright 2011 Xamarin Inc
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- *      
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
  * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 using System;
 using System.Net;
-using MonoTouch.SystemConfiguration;
-using MonoTouch.CoreFoundation;
+using SystemConfiguration;
+using CoreFoundation;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
@@ -55,7 +64,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         // Is the host reachable with the current network configuration
         public static bool IsHostReachable(string host)
         {
-            if (host == null || host.Length == 0)
+            if (string.IsNullOrEmpty(host))
                 return false;
 
             using (var r = new NetworkReachability(host))
@@ -90,36 +99,34 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         // out parameter
         //
         static NetworkReachability adHocWiFiNetworkReachability;
+
         public static bool IsAdHocWiFiNetworkAvailable(out NetworkReachabilityFlags flags)
         {
             if (adHocWiFiNetworkReachability == null)
             {
                 adHocWiFiNetworkReachability = new NetworkReachability(new IPAddress(new byte[] { 169, 254, 0, 0 }));
-                adHocWiFiNetworkReachability.SetCallback(OnChange);
+                adHocWiFiNetworkReachability.SetNotification(OnChange);
                 adHocWiFiNetworkReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
             }
 
-            if (!adHocWiFiNetworkReachability.TryGetFlags(out flags))
-                return false;
-
-            return IsReachableWithoutRequiringConnection(flags);
+            return adHocWiFiNetworkReachability.TryGetFlags(out flags) && IsReachableWithoutRequiringConnection(flags);
         }
 
         static NetworkReachability defaultRouteReachability;
+
         static bool IsNetworkAvailable(out NetworkReachabilityFlags flags)
         {
             if (defaultRouteReachability == null)
             {
                 defaultRouteReachability = new NetworkReachability(new IPAddress(0));
-                defaultRouteReachability.SetCallback(OnChange);
+                defaultRouteReachability.SetNotification(OnChange);
                 defaultRouteReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
             }
-            if (!defaultRouteReachability.TryGetFlags(out flags))
-                return false;
-            return IsReachableWithoutRequiringConnection(flags);
+            return defaultRouteReachability.TryGetFlags(out flags) && IsReachableWithoutRequiringConnection(flags);
         }
 
         static NetworkReachability remoteHostReachability;
+
         public static NetworkStatus RemoteHostStatus()
         {
             NetworkReachabilityFlags flags;
@@ -133,7 +140,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                 // this only happens when you create NetworkReachability from a hostname
                 reachable = remoteHostReachability.TryGetFlags(out flags);
 
-                remoteHostReachability.SetCallback(OnChange);
+                remoteHostReachability.SetNotification(OnChange);
                 remoteHostReachability.Schedule(CFRunLoop.Current, CFRunLoop.ModeDefault);
             }
             else
@@ -155,10 +162,9 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         {
             NetworkReachabilityFlags flags;
             bool defaultNetworkAvailable = IsNetworkAvailable(out flags);
-            if (defaultNetworkAvailable)
+            if (defaultNetworkAvailable && ((flags & NetworkReachabilityFlags.IsDirect) != 0))
             {
-                if ((flags & NetworkReachabilityFlags.IsDirect) != 0)
-                    return NetworkStatus.NotReachable;
+                return NetworkStatus.NotReachable;
             }
             else if ((flags & NetworkReachabilityFlags.IsWWAN) != 0)
                 return NetworkStatus.ReachableViaCarrierDataNetwork;

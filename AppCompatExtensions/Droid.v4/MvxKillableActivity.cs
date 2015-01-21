@@ -69,8 +69,12 @@ namespace AppCompatExtensions.Droid.v4
 
         protected override void OnDestroy()
         {
-            DestroyCalled.Raise(this);
-            base.OnDestroy();
+            try
+            {
+                DestroyCalled.Raise(this);
+                base.OnDestroy();
+            }
+            catch (Java.Lang.IllegalArgumentException) { }
         }
 
         protected override void OnNewIntent(Intent intent)
