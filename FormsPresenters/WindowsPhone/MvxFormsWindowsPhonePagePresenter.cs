@@ -4,16 +4,22 @@ using Cirrious.CrossCore;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 using Xamarin.Forms;
+using Microsoft.Phone.Controls;
+using System;
 
 namespace Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone
 {
     public class MvxFormsWindowsPhonePagePresenter 
         : IMvxPhoneViewPresenter
     {
-        private readonly Application _app;
-        public MvxFormsWindowsPhonePagePresenter(Application app)
+        private PhoneApplicationFrame _rootFrame;
+
+        public static Application XamarinFormsApp;
+
+        public MvxFormsWindowsPhonePagePresenter(Application xamarinFormsApp, PhoneApplicationFrame rootFrame)
         {
-            _app = app;
+            XamarinFormsApp = xamarinFormsApp;
+            _rootFrame = rootFrame;
         }
 
         public async void Show(MvxViewModelRequest request)
@@ -32,11 +38,13 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone
 
             var viewModel = MvxPresenterHelpers.LoadViewModel(request);
 
-            var mainPage = _app.MainPage as NavigationPage;
+            var mainPage = XamarinFormsApp.MainPage as NavigationPage;
 
             if (mainPage == null)
             {
-                Mvx.TaggedTrace("MvxFormsPresenter:TryShowPage()", "Shit, son! Don't know what to do");
+                XamarinFormsApp.MainPage = new NavigationPage(page);
+                mainPage = XamarinFormsApp.MainPage as NavigationPage;
+                _rootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
             else
             {
@@ -51,7 +59,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone
         {
             if (hint is MvxClosePresentationHint)
             {
-                var mainPage = _app.MainPage as NavigationPage;
+                var mainPage = XamarinFormsApp.MainPage as NavigationPage;
 
                 if (mainPage == null)
                 {
