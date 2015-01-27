@@ -41,8 +41,7 @@
     <Compile Include="Views\DefaultLoginIdentityProviderTableViewController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BTProgressHUD, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BTProgressHUD">
       <HintPath>..\..\Components\btprogresshud-1.15\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore">

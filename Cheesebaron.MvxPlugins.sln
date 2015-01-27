@@ -188,6 +188,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsPresenters.Sample.Droi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsPresenters.Sample.WinPhone", "Samples\FormsPresenters.Sample\FormsPresenters.Sample.WinPhone\FormsPresenters.Sample.WinPhone.csproj", "{6442BB6A-E7D9-43CB-8AC4-CD00D8C55B99}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{984AF95E-8F0C-484C-B7D3-4CC05C8BE625}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
