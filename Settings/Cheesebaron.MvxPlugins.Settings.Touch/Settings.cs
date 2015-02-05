@@ -50,10 +50,10 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                     returnVal = defaults.DoubleForKey(key);
                     break;
                 case TypeCode.Int32:
-                    returnVal = defaults.IntForKey(key);
+                    returnVal = (Int32)defaults.IntForKey(key);
                     break;
                 case TypeCode.Single:
-                    returnVal = defaults.FloatForKey(key);
+                    returnVal = (float)defaults.FloatForKey(key);
                     break;
                 case TypeCode.String:
                     returnVal = defaults.StringForKey(key);
