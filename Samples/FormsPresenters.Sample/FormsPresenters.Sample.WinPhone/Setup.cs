@@ -22,7 +22,7 @@ namespace FormsPresenters.Sample.WinPhone
 
         protected override IMvxApplication CreateApp()
         {
-            return new FormsPresenters.Sample.App() as IMvxApplication;
+            return new FormsPresenters.Sample.App();
         }
 
         protected override IMvxTrace CreateDebugTrace()
