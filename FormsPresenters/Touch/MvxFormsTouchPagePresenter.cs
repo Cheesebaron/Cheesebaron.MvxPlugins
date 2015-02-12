@@ -41,7 +41,9 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Touch
 
             if (mainPage == null)
             {
-                Mvx.TaggedTrace("MvxFormsPresenter:TryShowPage()", "Shit, son! Don't know what to do");
+                _app.MainPage = new NavigationPage(page);
+                mainPage = _app.MainPage as NavigationPage;
+                _window.RootViewController = mainPage.CreateViewController();
             }
             else
             {
