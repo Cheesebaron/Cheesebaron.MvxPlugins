@@ -11,6 +11,7 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
 - **SMS** A simple task to send SMS using default/install SMS applications on device.
+- **FormsPresenters** Presenters which make MvvmCross play along with Xamarin.Forms (mainly ViewModel navigation).
 - More to come! If you have a good idea, feel free to pitch it with me.
 
 Thanks to
@@ -22,11 +23,12 @@ Thanks to
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
 - [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
 - [Paul Betts][paulb] for his great work on [ModernHttpClient][modern].
+- [Marcos Cobeña Morián][marcos] for his contributions to the [FormsPresenters][fp] plugin.
 
 Documentation
 =============
 
-For the moment look at the samples. More detailed docs will come in the Wiki.
+For the moment look at the samples. More detailed docs will come in the Wiki (when someone adds it).
 
 Other MvvmCross plugins
 =======================
@@ -81,3 +83,5 @@ License
 [secure-storage]: https://github.com/ChristianRuiz/MvvmCross-SecureStorage
 [controlsnav]: https://github.com/ChristianRuiz/MvvmCross-ControlsNavigation
 [ChristianRuiz]: https://github.com/ChristianRuiz
+[marcos]: https://github.com/MarcosCobena
+[fp]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/FormsPresenters
