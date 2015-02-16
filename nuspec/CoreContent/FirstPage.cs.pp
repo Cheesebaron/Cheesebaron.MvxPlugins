@@ -1,10 +1,10 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 
-namespace FormsPresenters.Sample.Pages
+namespace $rootnamespace$.Pages
 {
-    public class MainPage : ContentPage
+    public class FirstPage : ContentPage
     {
-        public MainPage()
+        public FirstPage()
         { 
             var content = new StackLayout
             {

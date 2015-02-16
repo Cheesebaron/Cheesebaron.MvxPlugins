@@ -1,10 +1,10 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.ViewModels;
 
-namespace FormsPresenters.Sample.ViewModels
+namespace $rootnamespace$.ViewModels
 {
-    public class MainViewModel : MvxViewModel
+    public class FirstViewModel : MvxViewModel
     {
-        public MainViewModel() { Hello = "Hello, from MvvmCross"; }
+        public FirstViewModel() { Hello = "Hello, from MvvmCross"; }
 
         private string _hello;
         public string Hello

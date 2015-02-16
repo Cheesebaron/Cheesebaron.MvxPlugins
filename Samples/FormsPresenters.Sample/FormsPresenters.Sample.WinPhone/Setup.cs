@@ -5,11 +5,7 @@ using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.WindowsPhone.Platform;
 using Cirrious.MvvmCross.WindowsPhone.Views;
 using Microsoft.Phone.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace FormsPresenters.Sample.WinPhone
 {
@@ -32,9 +28,9 @@ namespace FormsPresenters.Sample.WinPhone
 
         protected override IMvxPhoneViewPresenter CreateViewPresenter(PhoneApplicationFrame rootFrame)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Forms.Init();
 
-            var xamarinFormsApp = new XamarinFormsApp();
+            var xamarinFormsApp = new MvxFormsApp();
 
             return new MvxFormsWindowsPhonePagePresenter(xamarinFormsApp, rootFrame);
         }

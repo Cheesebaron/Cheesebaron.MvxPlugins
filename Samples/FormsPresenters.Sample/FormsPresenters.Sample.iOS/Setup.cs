@@ -1,10 +1,10 @@
-using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Touch.Platform;
 using UIKit;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cheesebaron.MvxPlugins.FormsPresenters.Touch;
 using Cheesebaron.MvxPlugins.FormsPresenters.Core;
+using Xamarin.Forms;
 
 namespace FormsPresenters.Sample.iOS
 {
@@ -17,19 +17,14 @@ namespace FormsPresenters.Sample.iOS
 
 		protected override IMvxApplication CreateApp()
 		{
-			return new FormsPresenters.Sample.App();
+			return new App();
 		}
-		
-        protected override IMvxTrace CreateDebugTrace()
-        {
-            return new DebugTrace();
-        }
 
         protected override IMvxTouchViewPresenter CreatePresenter()
         {
-            global::Xamarin.Forms.Forms.Init();
+            Forms.Init();
 
-            var xamarinFormsApp = new XamarinFormsApp();
+            var xamarinFormsApp = new MvxFormsApp();
 
             return new MvxFormsTouchPagePresenter(Window, xamarinFormsApp);
         }
