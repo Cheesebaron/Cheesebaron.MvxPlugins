@@ -1,4 +1,5 @@
 using Android.Content;
+using Cheesebaron.MvxPlugins.FormsPresenters.Core;
 using Cheesebaron.MvxPlugins.FormsPresenters.Droid;
 using Cheesebaron.MvxPlugins.FormsPresenters.Droid.Interfaces;
 using Cirrious.CrossCore;
@@ -6,6 +7,7 @@ using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Views;
 
 namespace FormsPresenters.Sample.Droid
 {
@@ -27,8 +29,11 @@ namespace FormsPresenters.Sample.Droid
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            var presenter = new MvxFormsDroidPagePresenter();
-            Mvx.RegisterSingleton<IMvxPageNavigationHost>(presenter);
+            var mvxFormsApp = new MvxFormsApp();
+            var presenter = new MvxFormsDroidPagePresenter(mvxFormsApp);
+            //Mvx.RegisterSingleton<IMvxPageNavigationHost>(presenter);
+            Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+
             return presenter;
         }
     }

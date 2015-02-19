@@ -1,4 +1,5 @@
 using Cirrious.MvvmCross.Droid.Views;
+using Xamarin.Forms;
 
 namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
 {
@@ -13,6 +14,13 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
         public override void InitializationComplete()
         {
             StartActivity(typeof(MvxFormsNavigationActivity));
+        }
+
+        protected override void OnCreate(Android.OS.Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            Forms.Init(this, bundle);
         }
     }
 }

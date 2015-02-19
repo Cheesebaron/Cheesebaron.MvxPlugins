@@ -2,7 +2,9 @@ using Android.App;
 using Android.OS;
 using Cheesebaron.MvxPlugins.FormsPresenters.Droid.Interfaces;
 using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -10,7 +12,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
 {
     [Activity(Label = "View for anyViewModel")]
     public class MvxFormsNavigationActivity
-        : AndroidActivity
+        : FormsApplicationActivity
         , IMvxPageNavigationProvider
     {
         private NavigationPage _navPage;
@@ -18,9 +20,12 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            Forms.Init(this, bundle);
+            //Forms.Init(this, bundle);
 
-            Mvx.Resolve<IMvxPageNavigationHost>().NavigationProvider = this;
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
+            LoadApplication(presenter.MvxFormsApp);
+
+            //Mvx.Resolve<IMvxPageNavigationHost>().NavigationProvider = this;
             Mvx.Resolve<IMvxAppStart>().Start();
         }
 
