@@ -13,7 +13,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
 
         public override void InitializationComplete()
         {
-            StartActivity(typeof(MvxFormsNavigationActivity));
+            StartActivity(typeof(MvxFormsApplicationActivity));
         }
 
         protected override void OnCreate(Android.OS.Bundle bundle)

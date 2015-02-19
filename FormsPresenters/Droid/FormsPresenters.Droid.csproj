@@ -84,10 +84,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventSourceAndroidActivity.cs" />
-    <Compile Include="Interfaces\IMvxPageNavigationProvider.cs" />
-    <Compile Include="Interfaces\INavigationHost.cs" />
-    <Compile Include="MvxFormsAndroidActivity.cs" />
     <Compile Include="MvxFormsDroidPagePresenter.cs" />
     <Compile Include="MvxFormsNavigationActivity.cs" />
     <Compile Include="MvxFormsSplashScreenActivity.cs" />
