@@ -10,67 +10,20 @@ using System;
 namespace Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone
 {
     public class MvxFormsWindowsPhonePagePresenter 
-        : IMvxPhoneViewPresenter
+        : MvxFormsPagePresenter
+        , IMvxPhoneViewPresenter
     {
-        private PhoneApplicationFrame _rootFrame;
+        private readonly PhoneApplicationFrame _rootFrame;
 
-        public static Application XamarinFormsApp;
-
-        public MvxFormsWindowsPhonePagePresenter(Application xamarinFormsApp, PhoneApplicationFrame rootFrame)
+        public MvxFormsWindowsPhonePagePresenter(PhoneApplicationFrame rootFrame, Application mvxFormsApp)
+            : base(mvxFormsApp)
         {
-            XamarinFormsApp = xamarinFormsApp;
             _rootFrame = rootFrame;
         }
 
-        public async void Show(MvxViewModelRequest request)
+        protected override void CustomPlatformInitialization(NavigationPage mainPage)
         {
-            if (await TryShowPage(request))
-                return;
-
-            Mvx.Error("Skipping request for {0}", request.ViewModelType.Name);
-        }
-
-        private async Task<bool> TryShowPage(MvxViewModelRequest request)
-        {
-            var page = MvxPresenterHelpers.CreatePage(request);
-            if (page == null)
-                return false;
-
-            var viewModel = MvxPresenterHelpers.LoadViewModel(request);
-
-            var mainPage = XamarinFormsApp.MainPage as NavigationPage;
-
-            if (mainPage == null)
-            {
-                XamarinFormsApp.MainPage = new NavigationPage(page);
-                mainPage = XamarinFormsApp.MainPage as NavigationPage;
-                _rootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            }
-            else
-            {
-                await mainPage.PushAsync(page);
-            }
-
-            page.BindingContext = viewModel;
-            return true;
-        }
-
-        public async void ChangePresentation(MvxPresentationHint hint)
-        {
-            if (hint is MvxClosePresentationHint)
-            {
-                var mainPage = XamarinFormsApp.MainPage as NavigationPage;
-
-                if (mainPage == null)
-                {
-                    Mvx.TaggedTrace("MvxFormsPresenter:ChangePresentation()", "Shit, son! Don't know what to do");
-                }
-                else
-                {
-                    // TODO - perhaps we should do more here... also async void is a boo boo
-                    await mainPage.PopAsync();
-                }
-            }
+            _rootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));            
         }
     }
 }

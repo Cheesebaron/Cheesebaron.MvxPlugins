@@ -8,6 +8,8 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Views;
 
 namespace FormsPresenters.Sample.WinPhone
 {
@@ -18,7 +20,8 @@ namespace FormsPresenters.Sample.WinPhone
             InitializeComponent();
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 
-            LoadApplication(MvxFormsWindowsPhonePagePresenter.XamarinFormsApp);
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsWindowsPhonePagePresenter;
+            LoadApplication(presenter.MvxFormsApp);
         }
     }
 }

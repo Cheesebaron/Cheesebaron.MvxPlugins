@@ -1,0 +1,83 @@
+﻿using Cirrious.CrossCore;
+using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
+{
+    public class MvxFormsPagePresenter
+        : IMvxViewPresenter
+    {
+        private readonly Application _mvxFormsApp;
+
+        public Application MvxFormsApp
+        {
+            get { return _mvxFormsApp; }
+        }
+
+        public MvxFormsPagePresenter(Application mvxFormsApp)
+        {
+            _mvxFormsApp = mvxFormsApp;
+        }
+
+        public async void ChangePresentation(MvxPresentationHint hint)
+        {
+            if (hint is MvxClosePresentationHint)
+            {
+                var mainPage = _mvxFormsApp.MainPage as NavigationPage;
+
+                if (mainPage == null)
+                {
+                    Mvx.TaggedTrace("MvxFormsPresenter:ChangePresentation()", "Shit, son! Don't know what to do");
+                }
+                else
+                {
+                    // TODO - perhaps we should do more here... also async void is a boo boo
+                    await mainPage.PopAsync();
+                }
+            }
+        }
+
+        public async void Show(MvxViewModelRequest request)
+        {
+            if (await TryShowPage(request))
+                return;
+
+            Mvx.Error("Skipping request for {0}", request.ViewModelType.Name);
+        }
+
+        protected virtual void CustomPlatformInitialization(NavigationPage mainPage)
+        {
+        }
+
+        private async Task<bool> TryShowPage(MvxViewModelRequest request)
+        {
+            var page = MvxPresenterHelpers.CreatePage(request);
+            if (page == null)
+                return false;
+
+            var viewModel = MvxPresenterHelpers.LoadViewModel(request);
+
+            var mainPage = _mvxFormsApp.MainPage as NavigationPage;
+
+            if (mainPage == null)
+            {
+                _mvxFormsApp.MainPage = new NavigationPage(page);
+                mainPage = _mvxFormsApp.MainPage as NavigationPage;
+                CustomPlatformInitialization(mainPage);
+            }
+            else
+            {
+                await mainPage.PushAsync(page);
+            }
+
+            page.BindingContext = viewModel;
+            return true;
+        }
+    }
+}
