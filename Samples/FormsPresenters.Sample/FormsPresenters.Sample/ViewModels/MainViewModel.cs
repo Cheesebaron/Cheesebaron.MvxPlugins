@@ -4,7 +4,7 @@ namespace FormsPresenters.Sample.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
-        public MainViewModel() { Hello = "Hello, from MvvmCross"; }
+        public MainViewModel() { Hello = "Binding w/ Xamarin Forms & MvvmCross!"; }
 
         private string _hello;
         public string Hello
