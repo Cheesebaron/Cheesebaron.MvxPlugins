@@ -1,15 +1,18 @@
-using Android.App;
+﻿using Android.App;
+using Android.Content.PM;
 using Android.OS;
+using Cheesebaron.MvxPlugins.FormsPresenters.Core;
+using Cheesebaron.MvxPlugins.FormsPresenters.Droid;
 using Cirrious.CrossCore;
-using Cirrious.MvvmCross.Droid.Views;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
+// TODO: Change namespace
+namespace Namespace
 {
-    [Activity(Label = "View for anyViewModel")]
+    [Activity(Label = "View for anyViewModel", ScreenOrientation=ScreenOrientation.Portrait)]
     public class MvxFormsApplicationActivity
         : FormsApplicationActivity
     {
@@ -17,8 +20,12 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
         {
             base.OnCreate(bundle);
 
+            Forms.Init(this, bundle);
+            var mvxFormsApp = new MvxFormsApp();
+            LoadApplication(mvxFormsApp);
+
             var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsDroidPagePresenter;
-            LoadApplication(presenter.MvxFormsApp);
+            presenter.MvxFormsApp = mvxFormsApp;
 
             Mvx.Resolve<IMvxAppStart>().Start();
         }

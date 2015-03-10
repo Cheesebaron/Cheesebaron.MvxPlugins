@@ -13,12 +13,24 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
     public class MvxFormsPagePresenter
         : IMvxViewPresenter
     {
-        private readonly Application _mvxFormsApp;
+        private Application _mvxFormsApp;
 
         public Application MvxFormsApp
         {
             get { return _mvxFormsApp; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("MvxFormsApp cannot be null");
+                }
+
+                _mvxFormsApp = value;
+            }
         }
+
+        public MvxFormsPagePresenter()
+        { }
 
         public MvxFormsPagePresenter(Application mvxFormsApp)
         {
@@ -73,7 +85,14 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
             }
             else
             {
-                await mainPage.PushAsync(page);
+                try
+                {
+                    await mainPage.PushAsync(page);
+                }
+                catch (Exception e)
+                {
+                    Mvx.Error("Exception pushing {0}: {1}\n{2}", page.GetType(), e.Message, e.StackTrace);
+                }
             }
 
             page.BindingContext = viewModel;

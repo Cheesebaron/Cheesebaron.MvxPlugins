@@ -28,8 +28,7 @@ namespace FormsPresenters.Sample.Droid
 
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
-            var mvxFormsApp = new MvxFormsApp();
-            var presenter = new MvxFormsDroidPagePresenter(mvxFormsApp);
+            var presenter = new MvxFormsDroidPagePresenter();
             Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
 
             return presenter;

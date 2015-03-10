@@ -12,6 +12,10 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Droid
         : MvxFormsPagePresenter
         , IMvxAndroidViewPresenter
     {
+        public MvxFormsDroidPagePresenter()
+        {
+        }
+
         public MvxFormsDroidPagePresenter(MvxFormsApp mvxFormsApp)
             : base(mvxFormsApp)
         {

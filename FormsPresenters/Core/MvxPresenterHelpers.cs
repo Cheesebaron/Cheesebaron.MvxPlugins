@@ -17,7 +17,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
             return viewModel;
         }
 
-        public static ContentPage CreatePage(MvxViewModelRequest request)
+        public static Page CreatePage(MvxViewModelRequest request)
         {
             var viewModelName = request.ViewModelType.Name;
             var pageName = viewModelName.Replace("ViewModel", "Page");
@@ -29,7 +29,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
                 return null;
             }
 
-            var page = Activator.CreateInstance(pageType) as ContentPage;
+            var page = Activator.CreateInstance(pageType) as Page;
             if (page == null)
             {
                 Mvx.Error("Failed to create ContentPage {0}", pageName);

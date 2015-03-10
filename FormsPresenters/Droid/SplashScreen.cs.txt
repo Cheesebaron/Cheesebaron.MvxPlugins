@@ -1,14 +1,15 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Cirrious.MvvmCross.Droid.Views;
-using FormsPresenters.Sample.Droid;
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace FormsPresenters.Sample.Droid
+// TODO: Change namespace
+namespace Namespace
 {
+	// TODO: Change app name through below Label property
     [Activity(
-		Label = "FormsPresenters Sample"
+		Label = "App Name"
 		, MainLauncher = true
 		, Icon = "@drawable/icon"
 		, Theme = "@style/Theme.Splash"
