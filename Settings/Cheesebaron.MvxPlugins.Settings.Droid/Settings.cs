@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------
 // Copyright 2013 Ceton Corp
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2013-2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -29,29 +29,18 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
     {
         private static string _settingsFileName;
 
-        private static ISharedPreferences _sharedPreferences;
         private static ISharedPreferences SharedPreferences
         {
             get
             {
-                if(_sharedPreferences != null) return _sharedPreferences;
-
                 var context = Mvx.Resolve<IMvxAndroidGlobals>().ApplicationContext;
 
                 //If file name is empty use defaults
                 if(string.IsNullOrEmpty(_settingsFileName))
-                {
-                    _sharedPreferences =
-                        PreferenceManager.GetDefaultSharedPreferences(context);
-                }
-                else
-                {
-                    _sharedPreferences =
-                        context.ApplicationContext.GetSharedPreferences(_settingsFileName,
-                            FileCreationMode.Append);
-                }
+                    return PreferenceManager.GetDefaultSharedPreferences(context);
 
-                return _sharedPreferences;
+                return context.ApplicationContext.GetSharedPreferences(_settingsFileName,
+                    FileCreationMode.Append);
             }
         }
 
@@ -66,47 +55,51 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 type = Nullable.GetUnderlyingType(type);
 
-            object returnVal;
-            switch(Type.GetTypeCode(type))
+            using (var sharedPrefs = SharedPreferences)
             {
-                case TypeCode.Boolean:
-                    returnVal = SharedPreferences.GetBoolean(key, Convert.ToBoolean(defaultValue));
-                    break;
-                case TypeCode.Int64:
-                    returnVal = SharedPreferences.GetLong(key, Convert.ToInt64(defaultValue));
-                    break;
-                case TypeCode.Int32:
-                    returnVal = SharedPreferences.GetInt(key, Convert.ToInt32(defaultValue));
-                    break;
-                case TypeCode.Single:
-                    returnVal = SharedPreferences.GetFloat(key, Convert.ToSingle(defaultValue));
-                    break;
-                case TypeCode.String:
-                    returnVal = SharedPreferences.GetString(key, Convert.ToString(defaultValue));
-                    break;
-                case TypeCode.DateTime:
+                object returnVal;
+                switch (Type.GetTypeCode(type))
                 {
-                    var ticks = SharedPreferences.GetLong(key, -1);
-                    if (ticks == -1)
-                        returnVal = defaultValue;
-                    else
-                        returnVal = new DateTime(ticks);
-                    break;
-                }
-                default:
-                    if (type.Name == typeof(DateTimeOffset).Name)
-                    {
-                        var ticks = SharedPreferences.GetString(key, "");
-                        if (String.IsNullOrWhiteSpace(ticks))
-                            returnVal = defaultValue;
+                    case TypeCode.Boolean:
+                        returnVal = sharedPrefs.GetBoolean(key, Convert.ToBoolean(defaultValue));
+                        break;
+                    case TypeCode.Int64:
+                        returnVal = sharedPrefs.GetLong(key, Convert.ToInt64(defaultValue));
+                        break;
+                    case TypeCode.Int32:
+                        returnVal = sharedPrefs.GetInt(key, Convert.ToInt32(defaultValue));
+                        break;
+                    case TypeCode.Single:
+                        returnVal = sharedPrefs.GetFloat(key, Convert.ToSingle(defaultValue));
+                        break;
+                    case TypeCode.String:
+                        returnVal = sharedPrefs.GetString(key, Convert.ToString(defaultValue));
+                        break;
+                    case TypeCode.DateTime:
+                        {
+                            var ticks = sharedPrefs.GetLong(key, -1);
+                            if (ticks == -1)
+                                returnVal = defaultValue;
+                            else
+                                returnVal = new DateTime(ticks);
+                            break;
+                        }
+                    default:
+                        if (type.Name == typeof(DateTimeOffset).Name)
+                        {
+                            var ticks = sharedPrefs.GetString(key, "");
+                            if (String.IsNullOrWhiteSpace(ticks))
+                                returnVal = defaultValue;
+                            else
+                                returnVal = DateTimeOffset.Parse(ticks);
+                        }
                         else
-                            returnVal = DateTimeOffset.Parse(ticks);
-                    }
-                    else
-                        returnVal = defaultValue;
-                    break;
+                            returnVal = defaultValue;
+                        break;
+                }
+                return (T)returnVal;
             }
-            return (T)returnVal;
+            
         }
 
         public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
@@ -114,39 +107,42 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
 
-            var editor = SharedPreferences.Edit();
-            var type = value.GetType();
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                type = Nullable.GetUnderlyingType(type);
-
-            switch(Type.GetTypeCode(type))
+            using (var sharedPrefs = SharedPreferences)
+            using (var editor = sharedPrefs.Edit())
             {
-                case TypeCode.Boolean:
-                    editor.PutBoolean(key, Convert.ToBoolean(value));
-                    break;
-                case TypeCode.Int64:
-                    editor.PutLong(key, Convert.ToInt64(value));
-                    break;
-                case TypeCode.Int32:
-                    editor.PutInt(key, Convert.ToInt32(value));
-                    break;
-                case TypeCode.Single:
-                    editor.PutFloat(key, Convert.ToSingle(value));
-                    break;
-                case TypeCode.String:
-                    editor.PutString(key, Convert.ToString(value));
-                    break;
-                case TypeCode.DateTime:
-                    editor.PutLong(key, ((DateTime)(object)value).Ticks);
-                    break;
-                default:
-                    if(type.Name == typeof(DateTimeOffset).Name)
-                        editor.PutString(key, ((DateTimeOffset)(object)value).ToString("o"));
-                    else
-                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
-                    break;
+                var type = value.GetType();
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                    type = Nullable.GetUnderlyingType(type);
+
+                switch (Type.GetTypeCode(type))
+                {
+                    case TypeCode.Boolean:
+                        editor.PutBoolean(key, Convert.ToBoolean(value));
+                        break;
+                    case TypeCode.Int64:
+                        editor.PutLong(key, Convert.ToInt64(value));
+                        break;
+                    case TypeCode.Int32:
+                        editor.PutInt(key, Convert.ToInt32(value));
+                        break;
+                    case TypeCode.Single:
+                        editor.PutFloat(key, Convert.ToSingle(value));
+                        break;
+                    case TypeCode.String:
+                        editor.PutString(key, Convert.ToString(value));
+                        break;
+                    case TypeCode.DateTime:
+                        editor.PutLong(key, ((DateTime)(object)value).Ticks);
+                        break;
+                    default:
+                        if (type.Name == typeof(DateTimeOffset).Name)
+                            editor.PutString(key, ((DateTimeOffset)(object)value).ToString("o"));
+                        else
+                            throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                        break;
+                }
+                return editor.Commit();    
             }
-            return editor.Commit();
         }
 
         public bool DeleteValue(string key, bool roaming = false)
@@ -154,21 +150,28 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
 
-            var editor = SharedPreferences.Edit();
-            editor.Remove(key);
-            return editor.Commit();
+            using (var sharedPrefs = SharedPreferences)
+            using (var editor = sharedPrefs.Edit())
+            {
+                editor.Remove(key);
+                return editor.Commit();    
+            }
         }
 
         public bool Contains(string key, bool roaming = false)
         {
-            return SharedPreferences.Contains(key);
+            using (var sharedPrefs = SharedPreferences)
+                return sharedPrefs.Contains(key);
         }
 
         public bool ClearAllValues(bool roaming = false)
         {
-            var editor = SharedPreferences.Edit();
-            editor.Clear();
-            return editor.Commit();
+            using (var sharedPrefs = SharedPreferences)
+            using (var editor = sharedPrefs.Edit())
+            {
+                editor.Clear();
+                return editor.Commit();    
+            }
         }
     }
 }

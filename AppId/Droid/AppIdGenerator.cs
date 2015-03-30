@@ -53,7 +53,10 @@ namespace Cheesebaron.MvxPlugins.AppId
                     // Android 2.3 and up (API 10)
                     serial = Build.Serial;    
                 }
-                catch(Exception) {}
+                catch (Exception)
+                {
+                    // ignored
+                }
 
                 var androidId = "";
                 try
@@ -62,7 +65,10 @@ namespace Cheesebaron.MvxPlugins.AppId
                     var globals = Mvx.Resolve<IMvxAndroidGlobals>();
                     androidId = Settings.Secure.GetString(globals.ApplicationContext.ContentResolver, Settings.Secure.AndroidId);
                 }
-                catch(Exception) {}
+                catch (Exception)
+                {
+                    // ignored
+                }
 
                 return serial + androidId;
             }
@@ -84,6 +90,12 @@ namespace Cheesebaron.MvxPlugins.AppId
             }
         }
 
-        public string Platform { get { return Constants.DeviceType.Android; } }
+        public string Platform
+        {
+            get
+            {
+                return Constants.DeviceType.Android;
+            }
+        }
     }
 }
