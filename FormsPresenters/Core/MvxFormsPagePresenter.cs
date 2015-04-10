@@ -13,7 +13,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
     public class MvxFormsPagePresenter
         : IMvxViewPresenter
     {
-        private Application _mvxFormsApp;
+        protected Application _mvxFormsApp;
 
         public Application MvxFormsApp
         {
@@ -37,7 +37,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
             _mvxFormsApp = mvxFormsApp;
         }
 
-        public async void ChangePresentation(MvxPresentationHint hint)
+        public virtual async void ChangePresentation(MvxPresentationHint hint)
         {
             if (hint is MvxClosePresentationHint)
             {
@@ -55,7 +55,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
             }
         }
 
-        public async void Show(MvxViewModelRequest request)
+        public virtual async void Show(MvxViewModelRequest request)
         {
             if (await TryShowPage(request))
                 return;
