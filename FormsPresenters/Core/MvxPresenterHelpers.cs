@@ -3,7 +3,7 @@
 // Cheesebaron.MvxPlugins.FormsPresenters is licensed using Microsoft Public License (Ms-PL)
 // Contributions and inspirations noted in readme.md and license.txt
 // 
-// Project Lead - Tomasz Cielecii, @cheesebaron, mvxplugins@ostebaronen.dk
+// Project Lead - Tomasz Cielecki, @cheesebaron, mvxplugins@ostebaronen.dk
 ﻿
 ﻿using System;
 using System.Linq;
