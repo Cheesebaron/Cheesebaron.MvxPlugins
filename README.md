@@ -58,6 +58,7 @@ License
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
 - **SMS** plugin is licensed under [Apache 2.0][apache]
+- **FormsPresenters** plugin is licensed under [MIT][mit]
 
 [apache]: https://www.apache.org/licenses/LICENSE-2.0.html
 [mit]: http://opensource.org/licenses/mit-license
