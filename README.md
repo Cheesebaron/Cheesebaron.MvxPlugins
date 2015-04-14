@@ -23,7 +23,12 @@ Thanks to
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
 - [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
 - [Paul Betts][paulb] for his great work on [ModernHttpClient][modern].
-- [Marcos Cobeña Morián][marcos] for his contributions to the [FormsPresenters][fp] plugin.
+
+Contributors 
+============
+Major contributors will be listed below.
+
+- [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
 
 Documentation
 =============
