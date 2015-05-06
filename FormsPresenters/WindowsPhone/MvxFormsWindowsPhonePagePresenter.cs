@@ -4,6 +4,7 @@
 // Contributions and inspirations noted in readme.md and license.txt
 // 
 // Project Lead - Tomasz Cielecki, @cheesebaron, mvxplugins@ostebaronen.dk
+// Contributor - Marcos Cobeña Morián, @CobenaMarcos, marcoscm@me.com
 ﻿
 ﻿using System.Threading.Tasks;
 using Cheesebaron.MvxPlugins.FormsPresenters.Core;
