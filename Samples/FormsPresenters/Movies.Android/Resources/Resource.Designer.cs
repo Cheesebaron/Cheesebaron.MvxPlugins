@@ -26,6 +26,8 @@ namespace CoolBeans.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::CoolBeans.Droid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::CoolBeans.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -106,6 +108,25 @@ namespace CoolBeans.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class String
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int ApplicationName = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int Hello = 2131099648;
+			
+			static String()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private String()
 			{
 			}
 		}
