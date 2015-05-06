@@ -193,6 +193,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.iOS", "Samples\Forms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WinPhone", "Samples\FormsPresenters\Movies.WinPhone\Movies.WinPhone.csproj", "{1EA8E847-1D37-4217-8F2B-1A899159443E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.WindowsCommon", "SMS.WindowsCommon\SMS.WindowsCommon.csproj", "{8C431286-4E84-4A62-AF1F-2C2AFAFAFF1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
