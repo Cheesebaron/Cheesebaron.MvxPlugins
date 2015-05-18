@@ -145,9 +145,8 @@
     <Reference Include="Cirrious.MvvmCross.Touch">
       <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient, Version=2.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\modernhttpclient.2.1.5\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\..\..\packages\modernhttpclient.2.4.1\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />

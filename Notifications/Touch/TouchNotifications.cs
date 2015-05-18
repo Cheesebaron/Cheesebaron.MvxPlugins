@@ -93,21 +93,29 @@ namespace Cheesebaron.MvxPlugins.Notifications
             });
         }
 
-        public async Task RegisterAsync()
+        public Task RegisterAsync()
         {
+            var tcs = new TaskCompletionSource<object>();
+
             var dispatcher = Mvx.Resolve<IMvxMainThreadDispatcher>();
 
             dispatcher.RequestMainThreadAction(() =>
                 UIApplication.SharedApplication
                 .RegisterForRemoteNotificationTypes(Configuration.NotificationTypes));
+
+            return tcs.Task;
         }
 
-        public async Task UnregisterAsync()
+        public Task UnregisterAsync()
         {
+            var tcs = new TaskCompletionSource<object>();
+
             var dispatcher = Mvx.Resolve<IMvxMainThreadDispatcher>();
 
             dispatcher.RequestMainThreadAction(() => 
                 UIApplication.SharedApplication.UnregisterForRemoteNotifications());
+
+            return tcs.Task;
         }
 
         private ISettings Settings

@@ -107,6 +107,9 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Setup.cs" />
+    <Compile Include="Views\FirstView.xaml.cs">
+      <DependentUpon>FirstView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,6 +119,10 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FirstView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +153,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="README_FIRST.txt" />
+    <Content Include="ToDo-MvvmCross\_ Windows Phone UI.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -174,26 +182,25 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\wp8\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.CrossCore.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.CrossCore.WindowsPhone">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\wp8\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.0\lib\wp8\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\wp8\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\wp8\Cirrious.MvvmCross.Localization.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Plugins.WebBrowser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.WebBrowser.3.5.0\lib\wp8\Cirrious.MvvmCross.Plugins.WebBrowser.dll</HintPath>
+    <Reference Include="Cirrious.MvvmCross.Plugins.WebBrowser">
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.WebBrowser.3.5.1\lib\wp8\Cirrious.MvvmCross.Plugins.WebBrowser.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.WebBrowser.WindowsPhone">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.WebBrowser.3.5.0\lib\wp8\Cirrious.MvvmCross.Plugins.WebBrowser.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.WebBrowser.3.5.1\lib\wp8\Cirrious.MvvmCross.Plugins.WebBrowser.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.WindowsPhone">
-      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.0\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>

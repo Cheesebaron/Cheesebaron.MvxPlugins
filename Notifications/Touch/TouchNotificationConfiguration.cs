@@ -54,7 +54,13 @@ namespace Cheesebaron.MvxPlugins.Notifications
             });
         };
 
-        internal readonly Func<string, string, Task> DefaultLocalNotification = async (action, body) => 
+        internal readonly Func<string, string, Task> DefaultLocalNotification = (action, body) => {
+            var tcs = new TaskCompletionSource<bool>();
+
             new UIAlertView(action, body, null, "OK", null).Show();
+
+            return tcs.Task;
+        };
+
     }
 }
