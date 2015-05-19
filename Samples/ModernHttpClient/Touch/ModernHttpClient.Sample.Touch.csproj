@@ -117,10 +117,6 @@
       <Project>{fa15c468-bf0b-4197-9602-3b49dcb53699}</Project>
       <Name>ModernHttpClient.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\submodules\Cirrious.FluentLayout\Cirrious.FluentLayout\Cirrious.FluentLayouts.Touch.csproj">
-      <Project>{75d2da9d-dfd4-49a1-98fb-fe0f0677ef0f}</Project>
-      <Name>Cirrious.FluentLayouts.Touch</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core\ModernHttpClient.Sample.Core.csproj">
       <Project>{b4f402f0-6cb0-411d-9f1d-b5de4b42b3eb}</Project>
       <Name>ModernHttpClient.Sample.Core</Name>
@@ -132,6 +128,10 @@
     </Reference>
     <Reference Include="Cirrious.CrossCore.Touch">
       <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\Touch\Cirrious.CrossCore.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.FluentLayouts.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Cirrious.FluentLayout.2.0.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
       <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\Touch\Cirrious.MvvmCross.dll</HintPath>
