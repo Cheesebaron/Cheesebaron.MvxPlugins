@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.FormsPresenters</id>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 		<title>MvvmCross FormsPresenters</title>
-		<authors>Tomasz Cielecki</authors>
+		<authors>Tomasz Cielecki, Marcos Cobeña Morián</authors>
 		<owners>Tomasz Cielecki</owners>
 		<licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
@@ -12,39 +12,51 @@
 		<description>This package contains Presenters for MvvmCross v3.5 to mix in with Xamarin.Forms</description>
 		<tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone xamplugins xamarin.forms xamarin</tags>
 		<dependencies>
-		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.5" />
-		  <dependency id="Xamarin.Forms" version="1.3.2" />
+		  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.5.1" />
+		  <dependency id="Xamarin.Forms" version="1.4.2.6359" />
 		</dependencies>
 	</metadata>
 	<files>		
 		<!-- PCL -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" 
-			target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
+			target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" />
 		<file src="CoreContent\FirstViewModel.cs.pp" 
 			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\ViewModels\FirstViewModel.cs.pp" />
 		<file src="CoreContent\FirstPage.cs.pp" 
 			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Pages\FirstPage.cs.pp" />
 			
+		<file src="..\FormsPresenters\Core\**\*.cs" target="src\Cheesebaron.MvxPlugins.FormsPresenters.Core" />
 
 		<!-- phone -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" 
-			target="lib\wp8\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" />
-		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone.dll" 
-			target="lib\wp8\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone.dll" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
+			target="lib\wp8" />
+		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone.*" 
+			target="lib\wp8" />
 		<file src="PhoneBootstrapContent\_FormsSetup.txt" target="content\wp8\ToDo-FormsPresenters\_Setup.txt" />
+		
+		<file src="..\FormsPresenters\WindowsPhone\**\*.cs"
+			target="src\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone" />
 	
 		<!-- droid -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" 
-			target="lib\MonoAndroid10\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" />
-		<file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.FormsPresenters.Droid.dll" 
-			target="lib\MonoAndroid10\Cheesebaron.MvxPlugins.FormsPresenters.Droid.dll" />
-		<file src="DroidBootstrapContent\_FormsSetup.txt" target="content\MonoAndroid10\ToDo-FormsPresenters\_Setup.txt" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
+			target="lib\MonoAndroid10" />
+		<file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.FormsPresenters.Droid.*" 
+			target="lib\MonoAndroid10" />
+		<file src="DroidBootstrapContent\_FormsSetup.txt"
+			target="content\MonoAndroid10\ToDo-FormsPresenters\_Setup.txt" />
+			
+		<file src="..\FormsPresenters\Droid\**\*.cs"
+			target="src\Cheesebaron.MvxPlugins.FormsPresenters.Droid" />
 		
 		<!-- touch -->
-		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" 
-			target="lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.FormsPresenters.Core.dll" />
-		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.FormsPresenters.Touch.dll" 
-			target="lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.FormsPresenters.Touch.dll" />
-		<file src="TouchBootstrapContent\_FormsSetup.txt" target="content\Xamarin.iOS10\ToDo-FormsPresenters\_Setup.txt" />
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
+			target="lib\Xamarin.iOS10" />
+		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.FormsPresenters.Touch.*" 
+			target="lib\Xamarin.iOS10" />
+		<file src="TouchBootstrapContent\_FormsSetup.txt"
+			target="content\Xamarin.iOS10\ToDo-FormsPresenters\_Setup.txt" />
+			
+		<file src="..\FormsPresenters\Touch\**\*.cs"
+			target="src\Cheesebaron.MvxPlugins.FormsPresenters.Touch" />
 	</files>
 </package>
