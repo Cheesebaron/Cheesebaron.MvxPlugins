@@ -193,6 +193,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.iOS", "Samples\Forms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WinPhone", "Samples\FormsPresenters\Movies.WinPhone\Movies.WinPhone.csproj", "{1EA8E847-1D37-4217-8F2B-1A899159443E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Settings.Wpf", "Settings\Wpf\Cheesebaron.MvxPlugins.Settings.Wpf.csproj", "{65227774-7701-4FD8-8DB8-7F844B9AC016}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -3087,6 +3089,42 @@ Global
 		{1EA8E847-1D37-4217-8F2B-1A899159443E}.Release|x86.ActiveCfg = Release|x86
 		{1EA8E847-1D37-4217-8F2B-1A899159443E}.Release|x86.Build.0 = Release|x86
 		{1EA8E847-1D37-4217-8F2B-1A899159443E}.Release|x86.Deploy.0 = Release|x86
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|Mixed Platforms.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|x64.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|Mixed Platforms.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|ARM.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|x64.ActiveCfg = Release|Any CPU
+		{65227774-7701-4FD8-8DB8-7F844B9AC016}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -3180,5 +3218,6 @@ Global
 		{8C028968-7032-40C8-93DF-B3985E58C892} = {236FD2AC-CD45-4FBF-B645-BDF0D5121019}
 		{82C953F1-138A-478F-A558-424804DEA843} = {236FD2AC-CD45-4FBF-B645-BDF0D5121019}
 		{1EA8E847-1D37-4217-8F2B-1A899159443E} = {236FD2AC-CD45-4FBF-B645-BDF0D5121019}
+		{65227774-7701-4FD8-8DB8-7F844B9AC016} = {5CBDA1DE-E824-4F8D-8E27-4474FC4F3D77}
 	EndGlobalSection
 EndGlobal
