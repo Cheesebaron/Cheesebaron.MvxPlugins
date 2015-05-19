@@ -21,21 +21,34 @@ namespace Touch.Views
 
         public override void ViewDidLoad()
         {
+            base.ViewDidLoad();
+
+            View.BackgroundColor = UIColor.White;
             _key = new UITextField {
                 Placeholder = "Key",
-                Enabled = false,
-                ClipsToBounds = true,
+                ShouldReturn = ShouldReturn,
+                KeyboardType = UIKeyboardType.Default,
+                ClearButtonMode = UITextFieldViewMode.Always,
+                ReturnKeyType = UIReturnKeyType.Default,
+                ShouldClear = field => true,
+                AutocapitalizationType = UITextAutocapitalizationType.None,
             };
             _value = new UITextField
             {
                 Placeholder = "Value",
-                Enabled = false,
-                ClipsToBounds = true,
+                ShouldReturn = ShouldReturn,
+                KeyboardType = UIKeyboardType.Default,
+                ClearButtonMode = UITextFieldViewMode.Always,
+                ReturnKeyType = UIReturnKeyType.Default,
+                ShouldClear = field => true,
+                AutocapitalizationType = UITextAutocapitalizationType.None,
             };
             _keyLabel = new UILabel {Text = "Key"};
             _valueLabel = new UILabel { Text = "Value" };
             _saveSetting = UIButton.FromType(UIButtonType.RoundedRect);
+            _saveSetting.SetTitle("Save", UIControlState.Normal);
             _retrieveSetting = UIButton.FromType(UIButtonType.RoundedRect);
+            _retrieveSetting.SetTitle("Get", UIControlState.Normal);
 
             var bSet = this.CreateBindingSet<TestView, TestViewModel>();
             bSet.Bind(_key).To(vm => vm.StringKey).TwoWay();
@@ -92,6 +105,12 @@ namespace Touch.Views
                 );
 
             View.LayoutSubviews();
+        }
+
+        private static bool ShouldReturn(UITextField textfield)
+        {
+            textfield.ResignFirstResponder();
+            return true;
         }
     }
 }

@@ -40,6 +40,9 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             switch (Type.GetTypeCode(type))
             {
                 case TypeCode.Boolean:
+                    if (!Contains(key, roaming))
+                        return defaultValue;        
+
                     returnVal = defaults.BoolForKey(key);
                     break;
                 case TypeCode.Int64:
@@ -50,10 +53,10 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                     returnVal = defaults.DoubleForKey(key);
                     break;
                 case TypeCode.Int32:
-                    returnVal = (Int32)defaults.IntForKey(key);
+                    returnVal = (int)defaults.IntForKey(key);
                     break;
                 case TypeCode.Single:
-                    returnVal = (float)defaults.FloatForKey(key);
+                    returnVal = defaults.FloatForKey(key);
                     break;
                 case TypeCode.String:
                     returnVal = defaults.StringForKey(key);
@@ -132,7 +135,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
             var defaults = NSUserDefaults.StandardUserDefaults;
             try
             {
-                var stuff = defaults[key];
+                var stuff = defaults.ValueForKey(new NSString(key));
                 return stuff != null;
             }
             catch
