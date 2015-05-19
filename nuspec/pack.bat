@@ -5,3 +5,4 @@ nuget pack Cheesebaron.MvxPlugins.Settings.nuspec
 nuget pack Cheesebaron.MvxPlugins.SimpleWebToken.nuspec
 nuget pack Cheesebaron.MvxPlugins.ModernHttpClient.nuspec
 nuget pack Cheesebaron.MvxPlugins.FormsPresenters.nuspec
+nuget pack Cheesebaron.MvxPlugins.Notifications.nuspec
