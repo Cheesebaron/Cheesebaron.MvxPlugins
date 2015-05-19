@@ -26,7 +26,6 @@ namespace Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::ModernHttpClient.Resource.String.library_name = global::Droid.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
@@ -134,9 +133,6 @@ namespace Droid
 			
 			// aapt resource value: 0x7f050000
 			public const int Hello = 2131034112;
-			
-			// aapt resource value: 0x7f050002
-			public const int library_name = 2131034114;
 			
 			static String()
 			{

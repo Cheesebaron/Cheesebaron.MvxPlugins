@@ -9,13 +9,24 @@ namespace Core.ViewModels
     public class TestViewModel
         : MvxViewModel
     {
-        private const string StringKey = "cheesey.string";
         private readonly ISettings _settings;
 
         public TestViewModel(ISettings settings)
         {
             _settings = settings;
             RestoredStringSetting = "<Empty>";
+        }
+
+        private string _stringKey = "cheesey.string";
+
+        public string StringKey
+        {
+            get { return _stringKey; }
+            set
+            {
+                _stringKey = value;
+                RaisePropertyChanged(() => StringKey);
+            }
         }
 
         private string _stringSetting;
