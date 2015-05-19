@@ -84,6 +84,6 @@ Fixes boolean getter
 		
         <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\net45\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 		
-		<file src="..\Settings\Cheesebaron.MvxPlugins.Settings.Wpf\**\*.cs" target="src\Cheesebaron.MvxPlugins.Settings.Wpf" />
+		<file src="..\Settings\Wpf\**\*.cs" target="src\Cheesebaron.MvxPlugins.Settings.Wpf" />
 	</files>
 </package>
