@@ -7,18 +7,18 @@ namespace Cheesebaron.MvxPlugins.Connectivity
     {
         public Connectivity()
         {
-            Reachability.ReachabilityChanged += (sender, args) =>
-            {
-                var remoteHostStatus = Reachability.RemoteHostStatus();
-                var internetStatus = Reachability.InternetConnectionStatus();
-                var localWifiStatus = Reachability.LocalWifiConnectionStatus();
-                IsConnected = (internetStatus == NetworkStatus.ReachableViaCarrierDataNetwork ||
-                               internetStatus == NetworkStatus.ReachableViaWiFiNetwork) ||
-                              (localWifiStatus == NetworkStatus.ReachableViaCarrierDataNetwork ||
-                               localWifiStatus == NetworkStatus.ReachableViaWiFiNetwork) ||
-                              (remoteHostStatus == NetworkStatus.ReachableViaCarrierDataNetwork ||
-                               remoteHostStatus == NetworkStatus.ReachableViaWiFiNetwork);
-            };
+            CheckConnectionStatus();
+            Reachability.ReachabilityChanged += (sender, args) => CheckConnectionStatus();
+        }
+
+        private void CheckConnectionStatus()
+        {
+            var remoteHostStatus = Reachability.RemoteHostStatus();
+            var internetStatus = Reachability.InternetConnectionStatus();
+            var localWifiStatus = Reachability.LocalWifiConnectionStatus();
+
+            IsConnected = (internetStatus != NetworkStatus.NotReachable) || (localWifiStatus != NetworkStatus.NotReachable) ||
+                           (remoteHostStatus != NetworkStatus.NotReachable);
         }
 
 
