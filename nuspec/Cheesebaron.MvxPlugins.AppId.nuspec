@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.AppId</id>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<title>MvvmCross Application Identification Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
@@ -45,6 +45,10 @@
 			target="lib\wpa81" />
 		<file src="BootstrapContent\AppIdPluginBootstrap.cs.pp" 
 			target="content\wpa81\Bootstrap\AppIdPluginBootstrap.cs.pp" />
+			
+		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\portable-win81+wpa81" />
+		<file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.AppId.WindowsCommon.*" 
+			target="lib\portable-win81+wpa81" />
 		
 		<file src="..\AppId\WindowsCommon\**\*.cs" 
 			target="src\Cheesebaron.MvxPlugins.AppId.WindowsCommon" />
