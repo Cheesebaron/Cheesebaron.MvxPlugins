@@ -29,6 +29,7 @@ Contributors
 Major contributors will be listed below.
 
 - [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
+- [Patrick Long][munkii] - WPF solution for [Settings][settings].
 
 Documentation
 =============
@@ -91,3 +92,5 @@ License
 [ChristianRuiz]: https://github.com/ChristianRuiz
 [marcos]: https://github.com/MarcosCobena
 [fp]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/FormsPresenters
+[settings]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/Settings
+[munkii]: https://github.com/munkii
