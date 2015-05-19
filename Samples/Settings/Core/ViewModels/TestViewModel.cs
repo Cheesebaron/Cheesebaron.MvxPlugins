@@ -56,14 +56,14 @@ namespace Core.ViewModels
         {
             get
             {
-                _saveSettingsCommand = _saveSettingsCommand ?? new MvxCommand(DoSaveSettingsCommand);
+                _saveSettingsCommand = _saveSettingsCommand ?? new MvxCommand(DoSaveSettingsCommand, () => true);
                 return _saveSettingsCommand;
             }
         }
 
         private void DoSaveSettingsCommand()
         {
-            _settings.AddOrUpdateValue(StringKey, _stringSetting);
+            _settings.AddOrUpdateValue(StringKey, StringSetting);
         }
 
         private MvxCommand _restoreSettingsCommand;
@@ -71,14 +71,14 @@ namespace Core.ViewModels
         {
             get
             {
-                _restoreSettingsCommand = _restoreSettingsCommand ?? new MvxCommand(DoRestoreSettingsCommand);
+                _restoreSettingsCommand = _restoreSettingsCommand ?? new MvxCommand(DoRestoreSettingsCommand, () => true);
                 return _restoreSettingsCommand;
             }
         }
 
         private void DoRestoreSettingsCommand()
         {
-            RestoredStringSetting = _settings.GetValue(StringKey, "<Empty>");
+            RestoredStringSetting = _settings.GetValue(StringKey,"<Empty>");
         }
     }
 }
