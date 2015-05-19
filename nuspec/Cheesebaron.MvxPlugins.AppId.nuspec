@@ -61,7 +61,7 @@
 		<!-- touch -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\Xamarin.iOS10" />
 		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.AppId.Touch.*" target="lib\Xamarin.iOS10" />
-		<file src="TouchBootstrapContent\SimpleWebTokenPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SimpleWebTokenPluginBootstrap.cs.pp" />
+		<file src="TouchBootstrapContent\AppIdPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\AppIdPluginBootstrap.cs.pp" />
 		
 		<file src="..\AppId\Touch\**\*.cs" target="src\Cheesebaron.MvxPlugins.AppId.Touch" />	
 	</files>
