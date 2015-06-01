@@ -41,7 +41,7 @@ namespace AppCompatExtensions.Droid.v7
 
         public void MvxInternalStartActivityForResult(Intent intent, int requestCode)
         {
-            base.StartActivityForResult(intent, requestCode);
+            StartActivityForResult(intent, requestCode);
         }
 
         public IMvxBindingContext BindingContext { get; set; }
@@ -60,8 +60,6 @@ namespace AppCompatExtensions.Droid.v7
         {
             return base.OnMenuItemSelected(featureId, item);
         }
-
-        public LayoutInflater LayoutInflater { get; private set; }
     }
 
     public class MvxActionBarCompatEventSourceActivity
