@@ -4,9 +4,7 @@ MvxPlugins
 This repository is a collection of plugins for MvvmCross. Currently it consists of the following plugins:
 
 - **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
-- **Azure Access Control** This plugin provides Authentication against Windows Azure ACS (don't confuse it with Windows Azure Mobile Services).
 - **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
-- **ModernHttpClient** A wrapper around [Paul Betts'][paulb] [ModernHttpClient][modern].
 - **Notifications** A plugin which provides simple clients for registering and receiving notifications.
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
@@ -18,11 +16,9 @@ Thanks to
 =========
 
 - [Stuart Lodge][slodge] and the community for [MvvmCross][mvx]
-- Microsoft for [Windows Azure Toolkits][wat] which the Azure Access Control plugin is based on.
 - [James Montemagno][james] for his [Settings][ceton] plugin, which the **Settings** plugin in this repository is based on.
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
 - [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
-- [Paul Betts][paulb] for his great work on [ModernHttpClient][modern].
 
 Contributors 
 ============
@@ -57,9 +53,7 @@ License
 =======
 
 - **AppId** plugin is licensed under [Apache 2.0][apache]
-- **Azure Access Control** plugin is licensed under [Apache 2.0][apache]
 - **Connectivity** plugin is licensed under [Apache 2.0][apache]
-- **ModernHttpClient** plugin is licensed under [Apache 2.0][apache]
 - **Notifications** plugin is licensed under [Apache 2.0][apache]
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
