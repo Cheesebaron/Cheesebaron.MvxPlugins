@@ -1,5 +1,6 @@
 using System;
 using Cirrious.FluentLayouts.Touch;
+using Cirrious.MvvmCross.Binding;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Touch.Views;
 using Core.ViewModels;
@@ -18,6 +19,10 @@ namespace Touch.Views
         private UITextField _key;
         private UILabel _keyLabel;
         private UILabel _valueLabel;
+        private UILabel _boolLabel;
+        private UISwitch _boolSwitch;
+        private UILabel _restoredBoolLabel;
+        private UILabel _restoredBoolValue;
 
         public override void ViewDidLoad()
         {
@@ -50,11 +55,18 @@ namespace Touch.Views
             _retrieveSetting = UIButton.FromType(UIButtonType.RoundedRect);
             _retrieveSetting.SetTitle("Get", UIControlState.Normal);
 
+            _boolLabel = new UILabel { Text = "Bool Value"};
+            _restoredBoolLabel = new UILabel {Text = "Restored Bool Value"};
+            _restoredBoolValue = new UILabel();
+            _boolSwitch = new UISwitch();
+
             var bSet = this.CreateBindingSet<TestView, TestViewModel>();
             bSet.Bind(_key).To(vm => vm.StringKey).TwoWay();
             bSet.Bind(_value).To(vm => vm.StringSetting);
             bSet.Bind(_saveSetting).To(vm => vm.SaveSettingsCommand);
             bSet.Bind(_retrieveSetting).To(vm => vm.RestoreSettingsCommand);
+            bSet.Bind(_boolSwitch).To(vm => vm.BoolSetting).TwoWay();
+            bSet.Bind(_restoredBoolValue).To(vm => vm.RestoredBoolSetting);
             bSet.Apply();
 
             Add(_keyLabel);
@@ -63,6 +75,10 @@ namespace Touch.Views
             Add(_value);
             Add(_saveSetting);
             Add(_retrieveSetting);
+            Add(_boolLabel);
+            Add(_boolSwitch);
+            Add(_restoredBoolLabel);
+            Add(_restoredBoolValue);
             
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
         }
@@ -95,9 +111,21 @@ namespace Touch.Views
                 _value.WithSameRight(_valueLabel),
                 _value.Below(_valueLabel, margin),
 
+                _boolLabel.WithSameLeft(_keyLabel),
+                _boolLabel.Below(_value, margin),
+
+                _boolSwitch.ToRightOf(_boolLabel, margin),
+                _boolSwitch.WithSameTop(_boolLabel),
+
+                _restoredBoolLabel.WithSameLeft(_boolLabel),
+                _restoredBoolLabel.Below(_boolLabel, margin),
+
+                _restoredBoolValue.ToRightOf(_restoredBoolLabel, margin),
+                _restoredBoolValue.WithSameTop(_restoredBoolLabel),
+
                 _saveSetting.WithSameLeft(_value),
                 _saveSetting.WithSameRight(_value),
-                _saveSetting.Below(_value, margin),
+                _saveSetting.Below(_restoredBoolValue, margin),
 
                 _retrieveSetting.WithSameLeft(_saveSetting),
                 _retrieveSetting.WithSameRight(_saveSetting),

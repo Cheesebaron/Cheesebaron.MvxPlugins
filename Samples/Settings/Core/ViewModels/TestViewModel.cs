@@ -18,6 +18,7 @@ namespace Core.ViewModels
         }
 
         private string _stringKey = "cheesey.string";
+        private string _boolKey = "cheesey.bool";
 
         public string StringKey
         {
@@ -26,6 +27,16 @@ namespace Core.ViewModels
             {
                 _stringKey = value;
                 RaisePropertyChanged(() => StringKey);
+            }
+        }
+
+        public string BoolKey
+        {
+            get { return _boolKey;}
+            set
+            {
+                _boolKey = value;
+                RaisePropertyChanged(() => BoolKey);
             }
         }
 
@@ -40,6 +51,17 @@ namespace Core.ViewModels
             }
         }
 
+        private bool _boolSetting;
+        public bool BoolSetting
+        {
+            get { return _boolSetting; }
+            set
+            {
+                _boolSetting = value;
+                RaisePropertyChanged(() => BoolSetting);
+            }
+        }
+
         private string _restoredStringSetting;
         public string RestoredStringSetting
         {
@@ -48,6 +70,17 @@ namespace Core.ViewModels
             {
                 _restoredStringSetting = value;
                 RaisePropertyChanged(() => RestoredStringSetting);
+            }
+        }
+
+        private bool _restoredBoolSetting;
+        public bool RestoredBoolSetting
+        {
+            get { return _restoredBoolSetting; }
+            set
+            {
+                _restoredBoolSetting = value;
+                RaisePropertyChanged(() => RestoredBoolSetting);
             }
         }
         
@@ -64,6 +97,7 @@ namespace Core.ViewModels
         private void DoSaveSettingsCommand()
         {
             _settings.AddOrUpdateValue(StringKey, StringSetting);
+            _settings.AddOrUpdateValue(BoolKey, BoolSetting);
         }
 
         private MvxCommand _restoreSettingsCommand;
@@ -79,6 +113,7 @@ namespace Core.ViewModels
         private void DoRestoreSettingsCommand()
         {
             RestoredStringSetting = _settings.GetValue(StringKey,"<Empty>");
+            RestoredBoolSetting = _settings.GetValue(BoolKey, false);
         }
     }
 }
