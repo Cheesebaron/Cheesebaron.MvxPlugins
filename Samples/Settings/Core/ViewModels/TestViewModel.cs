@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
 
@@ -98,6 +99,8 @@ namespace Core.ViewModels
         {
             _settings.AddOrUpdateValue(StringKey, StringSetting);
             _settings.AddOrUpdateValue(BoolKey, BoolSetting);
+
+            _settings.AddOrUpdateValue("Guid", Guid.NewGuid());
         }
 
         private MvxCommand _restoreSettingsCommand;
@@ -110,10 +113,13 @@ namespace Core.ViewModels
             }
         }
 
+        private Guid _guid;
         private void DoRestoreSettingsCommand()
         {
             RestoredStringSetting = _settings.GetValue(StringKey,"<Empty>");
             RestoredBoolSetting = _settings.GetValue(BoolKey, false);
+
+            _guid = _settings.GetValue("Guid", Guid.Empty);
         }
     }
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -125,6 +125,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
@@ -166,25 +167,30 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.CrossCore.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Cirrious.CrossCore.WindowsPhone">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.CrossCore.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\wp8\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.BindingEx.3.5.1\lib\wp8\Cirrious.MvvmCross.Binding.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.BindingEx.WindowsPhone">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.BindingEx.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.BindingEx.3.5.1\lib\wp8\Cirrious.MvvmCross.BindingEx.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.MethodBinding">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\Portable\Cirrious.MvvmCross.Plugins.MethodBinding.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.Plugin.MethodBinding.3.5.1\lib\wp8\Cirrious.MvvmCross.Plugins.MethodBinding.dll</HintPath>
     </Reference>
     <Reference Include="Cirrious.MvvmCross.WindowsPhone">
-      <HintPath>..\..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
+      <HintPath>..\..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\wp8\Cirrious.MvvmCross.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
   </ItemGroup>

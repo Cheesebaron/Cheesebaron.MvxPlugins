@@ -1,13 +1,12 @@
 using System;
 using Cirrious.FluentLayouts.Touch;
-using Cirrious.MvvmCross.Binding;
 using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Touch.Views;
 using Core.ViewModels;
 using Foundation;
 using UIKit;
 
-namespace Touch.Views
+namespace Settings.Sample.Touch.Views
 {
     [Register("TestView")]
     public class TestView 

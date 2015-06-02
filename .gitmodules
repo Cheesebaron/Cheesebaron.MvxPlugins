@@ -1,9 +1,0 @@
-[submodule "submodules/MvvmCross-Binaries"]
-	path = submodules/MvvmCross-Binaries
-	url = https://github.com/MvvmCross/MvvmCross-Binaries.git
-	ignore = dirty
-[submodule "submodules/MvvmCross"]
-	path = submodules/MvvmCross
-	url = git@github.com:MvvmCross/MvvmCross.git
-	branch = 3.5
-	ignore = dirty

@@ -147,7 +147,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WinPhone", "Samples\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Settings.Wpf", "Settings\Wpf\Cheesebaron.MvxPlugins.Settings.Wpf.csproj", "{65227774-7701-4FD8-8DB8-7F844B9AC016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Touch", "Samples\Settings\Touch\Touch.csproj", "{CD06D972-BA47-4E34-9DAE-C9D060998BD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Sample.Touch", "Samples\Settings\Touch\Settings.Sample.Touch.csproj", "{CD06D972-BA47-4E34-9DAE-C9D060998BD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

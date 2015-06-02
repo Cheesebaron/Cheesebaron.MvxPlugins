@@ -1,4 +1,4 @@
-﻿using Cirrious.CrossCore.Plugins;
+using Cirrious.CrossCore.Plugins;
 
 namespace Notifications.Sample.WindowsPhone.Bootstrap
 {

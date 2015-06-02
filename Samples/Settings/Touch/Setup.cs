@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cirrious.MvvmCross.Touch.Platform;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using Core;
-using Foundation;
 using UIKit;
 
-namespace Touch
+namespace Settings.Sample.Touch
 {
     public class Setup : MvxTouchSetup
     {
