@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.Settings</id>
-		<version>1.1.4</version>
+		<version>1.1.5</version>
 		<title>MvvmCross Settings Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
@@ -13,8 +13,13 @@
 		<tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin wpa81 win81 mvx</tags>
 		<dependencies>
 			<dependency id="MvvmCross.HotTuna.CrossCore" version="3.5.1" />
+			<dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="3.5.1" />
 		</dependencies>
 		<releaseNotes>
+1.1.5
+Built against 3.5.1 instead of main branch
+Added Guid support on Android and iOS
+		
 1.1.4
 Fixed bug where booleans would return false instead of specified default value on iOS
 		
