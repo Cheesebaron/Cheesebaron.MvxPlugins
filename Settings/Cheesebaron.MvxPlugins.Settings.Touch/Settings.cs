@@ -93,11 +93,6 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
 							"defaultValue");
 				}
 
-				if (Equals(default(T), returnVal))
-				{
-					returnVal = defaultValue;
-				}
-
 				return (T)returnVal;
 			}
         }

@@ -28,6 +28,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
     public class Settings : ISettings
     {
         private static string _settingsFileName;
+        private readonly object _locker = new object();
 
         private static ISharedPreferences SharedPreferences
         {
@@ -51,70 +52,72 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
 
-            var type = typeof(T);
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                type = Nullable.GetUnderlyingType(type);
-
-            using (var sharedPrefs = SharedPreferences)
+            lock (_locker)
             {
-                object returnVal;
-                switch (Type.GetTypeCode(type))
-                {
-                    case TypeCode.Boolean:
-                        returnVal = sharedPrefs.GetBoolean(key, Convert.ToBoolean(defaultValue));
-                        break;
-                    case TypeCode.Int64:
-                        returnVal = sharedPrefs.GetLong(key, Convert.ToInt64(defaultValue));
-                        break;
-                    case TypeCode.Int32:
-                        returnVal = sharedPrefs.GetInt(key, Convert.ToInt32(defaultValue));
-                        break;
-                    case TypeCode.Single:
-                        returnVal = sharedPrefs.GetFloat(key, Convert.ToSingle(defaultValue));
-                        break;
-                    case TypeCode.String:
-                        returnVal = sharedPrefs.GetString(key, Convert.ToString(defaultValue));
-                        break;
-                    case TypeCode.DateTime:
-                        {
-                            var ticks = sharedPrefs.GetLong(key, -1);
-                            if (ticks == -1)
-                                returnVal = defaultValue;
-                            else
-                                returnVal = new DateTime(ticks);
-                            break;
-                        }
-                    default:
-                        if (type.Name == typeof(DateTimeOffset).Name)
-                        {
-                            var ticks = sharedPrefs.GetString(key, "");
-                            if (string.IsNullOrEmpty(ticks))
-                                returnVal = defaultValue;
-                            else
-                                returnVal = DateTimeOffset.Parse(ticks);
-                            break;
-                        }
-                        if (type.Name == typeof(Guid).Name)
-                        {
-                            
-                            var guid = sharedPrefs.GetString(key, "");
-                            if (!string.IsNullOrEmpty(guid))
-                            {
-                                Guid outGuid;
-                                Guid.TryParse(guid, out outGuid);
-                                returnVal = outGuid;
-                            }
-                            else
-                                returnVal = defaultValue;
-                            break;
-                        }
+                var type = typeof(T);
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                    type = Nullable.GetUnderlyingType(type);
 
-                        throw new ArgumentException(string.Format("Type {0} is not supported", type),
-                            "defaultValue");
+                using (var sharedPrefs = SharedPreferences)
+                {
+                    object returnVal;
+                    switch (Type.GetTypeCode(type))
+                    {
+                        case TypeCode.Boolean:
+                            returnVal = sharedPrefs.GetBoolean(key, Convert.ToBoolean(defaultValue));
+                            break;
+                        case TypeCode.Int64:
+                            returnVal = sharedPrefs.GetLong(key, Convert.ToInt64(defaultValue));
+                            break;
+                        case TypeCode.Int32:
+                            returnVal = sharedPrefs.GetInt(key, Convert.ToInt32(defaultValue));
+                            break;
+                        case TypeCode.Single:
+                            returnVal = sharedPrefs.GetFloat(key, Convert.ToSingle(defaultValue));
+                            break;
+                        case TypeCode.String:
+                            returnVal = sharedPrefs.GetString(key, Convert.ToString(defaultValue));
+                            break;
+                        case TypeCode.DateTime:
+                            {
+                                var ticks = sharedPrefs.GetLong(key, -1);
+                                if (ticks == -1)
+                                    returnVal = defaultValue;
+                                else
+                                    returnVal = new DateTime(ticks);
+                                break;
+                            }
+                        default:
+                            if (type.Name == typeof(DateTimeOffset).Name)
+                            {
+                                var ticks = sharedPrefs.GetString(key, "");
+                                if (string.IsNullOrEmpty(ticks))
+                                    returnVal = defaultValue;
+                                else
+                                    returnVal = DateTimeOffset.Parse(ticks);
+                                break;
+                            }
+                            if (type.Name == typeof(Guid).Name)
+                            {
+                            
+                                var guid = sharedPrefs.GetString(key, "");
+                                if (!string.IsNullOrEmpty(guid))
+                                {
+                                    Guid outGuid;
+                                    Guid.TryParse(guid, out outGuid);
+                                    returnVal = outGuid;
+                                }
+                                else
+                                    returnVal = defaultValue;
+                                break;
+                            }
+
+                            throw new ArgumentException(string.Format("Type {0} is not supported", type),
+                                "defaultValue");
+                    }
+                    return (T)returnVal;
                 }
-                return (T)returnVal;
             }
-            
         }
 
         public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
@@ -122,50 +125,54 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
 
-            using (var sharedPrefs = SharedPreferences)
-            using (var editor = sharedPrefs.Edit())
+            lock (_locker)
             {
-                var type = value.GetType();
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    type = Nullable.GetUnderlyingType(type);
-
-                switch (Type.GetTypeCode(type))
+                using (var sharedPrefs = SharedPreferences)
+                using (var editor = sharedPrefs.Edit())
                 {
-                    case TypeCode.Boolean:
-                        editor.PutBoolean(key, Convert.ToBoolean(value));
-                        break;
-                    case TypeCode.Int64:
-                        editor.PutLong(key, Convert.ToInt64(value));
-                        break;
-                    case TypeCode.Int32:
-                        editor.PutInt(key, Convert.ToInt32(value));
-                        break;
-                    case TypeCode.Single:
-                        editor.PutFloat(key, Convert.ToSingle(value));
-                        break;
-                    case TypeCode.String:
-                        editor.PutString(key, Convert.ToString(value));
-                        break;
-                    case TypeCode.DateTime:
-                        editor.PutLong(key, ((DateTime)(object)value).Ticks);
-                        break;
-                    default:
-                        if (type.Name == typeof (DateTimeOffset).Name)
-                        {
-                            editor.PutString(key, ((DateTimeOffset)(object)value).ToString("o"));
-                            break;    
-                        }
-                        if (type.Name == typeof(Guid).Name)
-                        {
-                            var g = value as Guid?;
-                            if (g.HasValue)
-                                editor.PutString(key, g.Value.ToString());
+                    var type = value.GetType();
+                    if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof (Nullable<>))
+                        type = Nullable.GetUnderlyingType(type);
+
+                    switch (Type.GetTypeCode(type))
+                    {
+                        case TypeCode.Boolean:
+                            editor.PutBoolean(key, Convert.ToBoolean(value));
                             break;
-                        }
-                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
-                        
+                        case TypeCode.Int64:
+                            editor.PutLong(key, Convert.ToInt64(value));
+                            break;
+                        case TypeCode.Int32:
+                            editor.PutInt(key, Convert.ToInt32(value));
+                            break;
+                        case TypeCode.Single:
+                            editor.PutFloat(key, Convert.ToSingle(value));
+                            break;
+                        case TypeCode.String:
+                            editor.PutString(key, Convert.ToString(value));
+                            break;
+                        case TypeCode.DateTime:
+                            editor.PutLong(key, ((DateTime) (object) value).Ticks);
+                            break;
+                        default:
+                            if (type.Name == typeof (DateTimeOffset).Name)
+                            {
+                                editor.PutString(key, ((DateTimeOffset) (object) value).ToString("o"));
+                                break;
+                            }
+                            if (type.Name == typeof (Guid).Name)
+                            {
+                                var g = value as Guid?;
+                                if (g.HasValue)
+                                    editor.PutString(key, g.Value.ToString());
+                                break;
+                            }
+                            throw new ArgumentException(
+                                string.Format("Type {0} is not supported", type), "value");
+
+                    }
+                    return editor.Commit();
                 }
-                return editor.Commit();    
             }
         }
 
@@ -174,27 +181,39 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentException("Key must have a value", "key");
 
-            using (var sharedPrefs = SharedPreferences)
-            using (var editor = sharedPrefs.Edit())
+            lock (_locker)
             {
-                editor.Remove(key);
-                return editor.Commit();    
+                using (var sharedPrefs = SharedPreferences)
+                using (var editor = sharedPrefs.Edit())
+                {
+                    editor.Remove(key);
+                    return editor.Commit();    
+                }
             }
         }
 
         public bool Contains(string key, bool roaming = false)
         {
-            using (var sharedPrefs = SharedPreferences)
-                return sharedPrefs.Contains(key);
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentException("Key must have a value", "key");
+
+            lock (_locker)
+            {
+                using (var sharedPrefs = SharedPreferences)
+                    return sharedPrefs.Contains(key);    
+            }
         }
 
         public bool ClearAllValues(bool roaming = false)
         {
-            using (var sharedPrefs = SharedPreferences)
-            using (var editor = sharedPrefs.Edit())
+            lock (_locker)
             {
-                editor.Clear();
-                return editor.Commit();    
+                using (var sharedPrefs = SharedPreferences)
+                using (var editor = sharedPrefs.Edit())
+                {
+                    editor.Clear();
+                    return editor.Commit();    
+                }
             }
         }
     }
