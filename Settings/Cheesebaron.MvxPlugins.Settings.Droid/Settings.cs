@@ -88,14 +88,29 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                         if (type.Name == typeof(DateTimeOffset).Name)
                         {
                             var ticks = sharedPrefs.GetString(key, "");
-                            if (String.IsNullOrWhiteSpace(ticks))
+                            if (string.IsNullOrEmpty(ticks))
                                 returnVal = defaultValue;
                             else
                                 returnVal = DateTimeOffset.Parse(ticks);
+                            break;
                         }
-                        else
-                            returnVal = defaultValue;
-                        break;
+                        if (type.Name == typeof(Guid).Name)
+                        {
+                            
+                            var guid = sharedPrefs.GetString(key, "");
+                            if (!string.IsNullOrEmpty(guid))
+                            {
+                                Guid outGuid;
+                                Guid.TryParse(guid, out outGuid);
+                                returnVal = outGuid;
+                            }
+                            else
+                                returnVal = defaultValue;
+                            break;
+                        }
+
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type),
+                            "defaultValue");
                 }
                 return (T)returnVal;
             }
@@ -135,11 +150,20 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                         editor.PutLong(key, ((DateTime)(object)value).Ticks);
                         break;
                     default:
-                        if (type.Name == typeof(DateTimeOffset).Name)
+                        if (type.Name == typeof (DateTimeOffset).Name)
+                        {
                             editor.PutString(key, ((DateTimeOffset)(object)value).ToString("o"));
-                        else
-                            throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
-                        break;
+                            break;    
+                        }
+                        if (type.Name == typeof(Guid).Name)
+                        {
+                            var g = value as Guid?;
+                            if (g.HasValue)
+                                editor.PutString(key, g.Value.ToString());
+                            break;
+                        }
+                        throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+                        
                 }
                 return editor.Commit();    
             }
