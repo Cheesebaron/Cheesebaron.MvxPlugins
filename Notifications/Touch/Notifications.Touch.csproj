@@ -34,8 +34,6 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="NotificationsAppDelegate.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
