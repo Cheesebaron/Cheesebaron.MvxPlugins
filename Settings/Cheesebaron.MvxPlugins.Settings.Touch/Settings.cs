@@ -39,59 +39,64 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
 					type = Nullable.GetUnderlyingType(type);
 				}
 
-				object returnVal;
-				var defaults = NSUserDefaults.StandardUserDefaults;
-				switch (Type.GetTypeCode(type))
-				{
-					case TypeCode.Boolean:
-						if (!Contains(key, roaming))
-							return defaultValue;        
+                object returnVal;
+			    if (!Contains(key, roaming))
+			        returnVal = defaultValue;
+			    else
+			    {
+                    var defaults = NSUserDefaults.StandardUserDefaults;
+                    switch (Type.GetTypeCode(type))
+                    {
+                        case TypeCode.Boolean:
+                            returnVal = defaults.BoolForKey(key);
+                            break;
+                        case TypeCode.Int64:
+                            var savedval = defaults.StringForKey(key);
+                            returnVal = Convert.ToInt64(savedval);
+                            break;
+                        case TypeCode.Double:
+                            returnVal = defaults.DoubleForKey(key);
+                            break;
+                        case TypeCode.Int32:
+                            returnVal = (int)defaults.IntForKey(key);
+                            break;
+                        case TypeCode.Single:
+                            returnVal = defaults.FloatForKey(key);
+                            break;
+                        case TypeCode.String:
+                            returnVal = defaults.StringForKey(key);
+                            break;
+                        case TypeCode.DateTime:
+                            {
+                                var ticks = defaults.DoubleForKey(key);
+                                returnVal = new DateTime(Convert.ToInt64(ticks));
+                                break;
+                            }
+                        default:
+                            if (type.Name == typeof(DateTimeOffset).Name)
+                            {
+                                var ticks = defaults.StringForKey(key);
+                                returnVal = DateTimeOffset.Parse(ticks);
+                                break;
+                            }
+                            if (type.Name == typeof(Guid).Name)
+                            {
+                                var outGuid = Guid.Empty;
+                                var guid = defaults.StringForKey(key);
+                                if (!string.IsNullOrEmpty(guid))
+                                    Guid.TryParse(guid, out outGuid);
 
-						returnVal = defaults.BoolForKey(key);
-						break;
-					case TypeCode.Int64:
-						var savedval = defaults.StringForKey(key);
-						returnVal = Convert.ToInt64(savedval);
-						break;
-					case TypeCode.Double:
-						returnVal = defaults.DoubleForKey(key);
-						break;
-					case TypeCode.Int32:
-						returnVal = (int)defaults.IntForKey(key);
-						break;
-					case TypeCode.Single:
-						returnVal = defaults.FloatForKey(key);
-						break;
-					case TypeCode.String:
-						returnVal = defaults.StringForKey(key);
-						break;
-					case TypeCode.DateTime:
-					{ 
-						var ticks = defaults.DoubleForKey(key);
-						returnVal = new DateTime(Convert.ToInt64(ticks));
-						break;
-					}
-					default:
-						if (type.Name == typeof (DateTimeOffset).Name)
-						{
-							var ticks = defaults.StringForKey(key);
-							returnVal = DateTimeOffset.Parse(ticks);
-							break;
-						}
-						if (type.Name == typeof(Guid).Name)
-						{
-							var outGuid = Guid.Empty;
-							var guid = defaults.StringForKey(key);
-							if (!string.IsNullOrEmpty(guid))
-								Guid.TryParse(guid, out outGuid);
-							
-							returnVal = outGuid;
-							break;
-						}
-						
-						throw new ArgumentException(string.Format("Type {0} is not supported", type), 
-							"defaultValue");
-				}
+                                returnVal = outGuid;
+                                break;
+                            }
+
+                            throw new ArgumentException(string.Format("Type {0} is not supported", type),
+                                "defaultValue");
+                    }
+			    }
+
+			    if (Equals(default(T), returnVal) && Type.GetTypeCode(type) != TypeCode.Boolean)
+			        returnVal = defaultValue;
 
 				return (T)returnVal;
 			}

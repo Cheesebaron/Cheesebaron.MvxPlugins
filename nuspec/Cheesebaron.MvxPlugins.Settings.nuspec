@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.Settings</id>
-		<version>1.1.6</version>
+		<version>1.1.7</version>
 		<title>MvvmCross Settings Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
@@ -16,6 +16,9 @@
 			<dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="3.5.1" />
 		</dependencies>
 		<releaseNotes>
+1.1.7
+Fix regression for other types on iOS
+		
 1.1.6
 Fix boolean always returning default value on iOS
 		
