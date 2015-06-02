@@ -142,12 +142,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Android", "Samples\FormsPresenters\Movies.Android\Movies.Android.csproj", "{8C028968-7032-40C8-93DF-B3985E58C892}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.iOS", "Samples\FormsPresenters\Movies.iOS\Movies.iOS.csproj", "{82C953F1-138A-478F-A558-424804DEA843}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24EE3829-6818-477A-9750-9D3F3D0013D8} = {24EE3829-6818-477A-9750-9D3F3D0013D8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.WinPhone", "Samples\FormsPresenters\Movies.WinPhone\Movies.WinPhone.csproj", "{1EA8E847-1D37-4217-8F2B-1A899159443E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Settings.Wpf", "Settings\Wpf\Cheesebaron.MvxPlugins.Settings.Wpf.csproj", "{65227774-7701-4FD8-8DB8-7F844B9AC016}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Sample.Touch", "Samples\Settings\Touch\Settings.Sample.Touch.csproj", "{CD06D972-BA47-4E34-9DAE-C9D060998BD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E2A2E03-C44B-4F05-857E-AED18F4EB4AE}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
