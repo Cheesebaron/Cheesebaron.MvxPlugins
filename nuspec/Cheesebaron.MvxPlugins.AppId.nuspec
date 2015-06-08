@@ -20,8 +20,6 @@
 	<files>		
 		<!-- PCL -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" />
-		
-		<file src="..\AppId\Core\**\*.cs" target="src\Cheesebaron.MvxPlugins.AppId" />
 
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\wp8" />
@@ -30,9 +28,6 @@
 			
 		<file src="BootstrapContent\AppIdPluginBootstrap.cs.pp" 
 			target="content\wp8\Bootstrap\AppIdPluginBootstrap.cs.pp" />
-		
-		<file src="..\AppId\WindowsPhone\**\*.cs" 
-			target="src\Cheesebaron.MvxPlugins.AppId.WindowsPhone" />
 		
 		<!-- store -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\win81" />
@@ -49,9 +44,6 @@
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\portable-win81+wpa81" />
 		<file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.AppId.WindowsCommon.*" 
 			target="lib\portable-win81+wpa81" />
-		
-		<file src="..\AppId\WindowsCommon\**\*.cs" 
-			target="src\Cheesebaron.MvxPlugins.AppId.WindowsCommon" />
 	
 		<!-- droid -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\MonoAndroid10" />
@@ -59,14 +51,11 @@
 		<file src="BootstrapContent\AppIdPluginBootstrap.cs.pp" 
 			target="content\MonoAndroid10\Bootstrap\AppIdPluginBootstrap.cs.pp" />
 		
-		<file src="..\AppId\Droid\**\*.cs" 
-			target="src\Cheesebaron.MvxPlugins.AppId.Droid" />
-		
 		<!-- touch -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.AppId.*" target="lib\Xamarin.iOS10" />
 		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.AppId.Touch.*" target="lib\Xamarin.iOS10" />
 		<file src="TouchBootstrapContent\AppIdPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\AppIdPluginBootstrap.cs.pp" />
-		
-		<file src="..\AppId\Touch\**\*.cs" target="src\Cheesebaron.MvxPlugins.AppId.Touch" />	
+        
+        <file src="..\AppId\**\*.cs" target="src\AppId" />
 	</files>
 </package>

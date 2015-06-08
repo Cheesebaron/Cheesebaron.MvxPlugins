@@ -24,8 +24,6 @@
 			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\ViewModels\FirstViewModel.cs.pp" />
 		<file src="CoreContent\FirstPage.cs.pp" 
 			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Pages\FirstPage.cs.pp" />
-			
-		<file src="..\FormsPresenters\Core\**\*.cs" target="src\Cheesebaron.MvxPlugins.FormsPresenters.Core" />
 
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
@@ -33,9 +31,7 @@
 		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone.*" 
 			target="lib\wp8" />
 		<file src="PhoneBootstrapContent\_FormsSetup.txt" target="content\wp8\ToDo-FormsPresenters\_Setup.txt" />
-		
-		<file src="..\FormsPresenters\WindowsPhone\**\*.cs"
-			target="src\Cheesebaron.MvxPlugins.FormsPresenters.WindowsPhone" />
+	
 	
 		<!-- droid -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
@@ -44,9 +40,7 @@
 			target="lib\MonoAndroid10" />
 		<file src="DroidBootstrapContent\_FormsSetup.txt"
 			target="content\MonoAndroid10\ToDo-FormsPresenters\_Setup.txt" />
-			
-		<file src="..\FormsPresenters\Droid\**\*.cs"
-			target="src\Cheesebaron.MvxPlugins.FormsPresenters.Droid" />
+
 		
 		<!-- touch -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
@@ -55,8 +49,7 @@
 			target="lib\Xamarin.iOS10" />
 		<file src="TouchBootstrapContent\_FormsSetup.txt"
 			target="content\Xamarin.iOS10\ToDo-FormsPresenters\_Setup.txt" />
-			
-		<file src="..\FormsPresenters\Touch\**\*.cs"
-			target="src\Cheesebaron.MvxPlugins.FormsPresenters.Touch" />
+
+        <file src="..\FormsPresenters\**\*.cs" target="src\FormsPresenters" />
 	</files>
 </package>

@@ -38,5 +38,6 @@ Added support for iOS Unified API
 		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.SMS.Touch.dll" target="lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.SMS.Touch.dll" />
         <file src="TouchBootstrapContent\SmsPluginBootstrap.cs.pp" target="content\MonoTouch\Bootstrap\SmsPluginBootstrap.cs.pp" />
 		
+        <file src="..\SMS\**\*.cs" target="src\SMS" />
 	</files>
 </package>

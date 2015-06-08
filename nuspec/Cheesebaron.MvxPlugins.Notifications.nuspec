@@ -27,8 +27,6 @@
 	<files>		
 		<!-- PCL -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Notifications.*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" />
-		
-		<file src="..\Notifications\Core\**\*.cs" target="src\Cheesebaron.MvxPlugins.Notifications" />
 
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Notifications.*" target="lib\wp8" />
@@ -37,9 +35,6 @@
 			
 		<file src="BootstrapContent\NotificationsPluginBootstrap.cs.pp" 
 			target="content\wp8\Bootstrap\NotificationsPluginBootstrap.cs.pp" />
-		
-		<file src="..\Notifications\WindowsPhone\**\*.cs" 
-			target="src\Cheesebaron.MvxPlugins.Notifications.WindowsPhone" />
 	
 		<!-- droid -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Notifications.*" target="lib\MonoAndroid10" />
@@ -47,14 +42,11 @@
 		<file src="BootstrapContent\NotificationsPluginBootstrap.cs.pp" 
 			target="content\MonoAndroid10\Bootstrap\NotificationsPluginBootstrap.cs.pp" />
 		
-		<file src="..\Notifications\Droid\**\*.cs" 
-			target="src\Cheesebaron.MvxPlugins.Notifications.Droid" />
-		
 		<!-- touch -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Notifications.*" target="lib\Xamarin.iOS10" />
 		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.Notifications.Touch.*" target="lib\Xamarin.iOS10" />
 		<file src="TouchBootstrapContent\NotificationsPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\NotificationsPluginBootstrap.cs.pp" />
-		
-		<file src="..\Notifications\Touch\**\*.cs" target="src\Cheesebaron.MvxPlugins.Notifications.Touch" />	
+        
+        <file src="..\Notifications\**\*.cs" target="src\Notifications" />
 	</files>
 </package>
