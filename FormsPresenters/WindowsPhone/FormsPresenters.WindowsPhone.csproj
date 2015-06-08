@@ -107,9 +107,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.1\lib\wp8\Cirrious.MvvmCross.dll</HintPath>
     </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\..\submodules\MvvmCross\bin\Debug\Mvx\WindowsPhone\Cirrious.MvvmCross.Binding.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\wp8\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
