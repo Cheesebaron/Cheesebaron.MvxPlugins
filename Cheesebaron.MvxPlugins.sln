@@ -157,6 +157,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E2A2E
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspecs", "Nuspecs", "{3C8E8577-3543-43C6-B337-76EDEE8FCBDA}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\Cheesebaron.MvxPlugins.AppId.nuspec = nuspec\Cheesebaron.MvxPlugins.AppId.nuspec
+		nuspec\Cheesebaron.MvxPlugins.FormsPresenters.nuspec = nuspec\Cheesebaron.MvxPlugins.FormsPresenters.nuspec
+		nuspec\Cheesebaron.MvxPlugins.Notifications.nuspec = nuspec\Cheesebaron.MvxPlugins.Notifications.nuspec
+		nuspec\Cheesebaron.MvxPlugins.Settings.nuspec = nuspec\Cheesebaron.MvxPlugins.Settings.nuspec
+		nuspec\Cheesebaron.MvxPlugins.SimpleWebToken.nuspec = nuspec\Cheesebaron.MvxPlugins.SimpleWebToken.nuspec
+		nuspec\Cheesebaron.MvxPlugins.Sms.nuspec = nuspec\Cheesebaron.MvxPlugins.Sms.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
