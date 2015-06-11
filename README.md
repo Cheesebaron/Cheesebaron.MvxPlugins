@@ -1,52 +1,89 @@
 MvxPlugins
 ==========
 
-This repository is a collection of plugins for MvvmCross. Currently it consists of the following plugins:
+This repository is a collection of plugins for MvvmCross. It is a fork of https://github.com/Cheesebaron/Cheesebaron.MvxPlugins by Tomasz Cielecki.
 
-- **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
-- **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
-- **Notifications** A plugin which provides simple clients for registering and receiving notifications.
-- **Settings** A plugin for saving simple key/value kind of settings into persistant storage
-- **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
-- **SMS** A simple task to send SMS using default/install SMS applications on device.
-- **FormsPresenters** Presenters which make MvvmCross play along with Xamarin.Forms (mainly ViewModel navigation).
-- More to come! If you have a good idea, feel free to pitch it with me.
+I will be pulling updates from the root on a regular basis. The intention is that this fork is temporary and that Tomasz will eventually update the
+root with changes I make.
 
-Thanks to
-=========
 
-- [Stuart Lodge][slodge] and the community for [MvvmCross][mvx]
-- [James Montemagno][james] for his [Settings][ceton] plugin, which the **Settings** plugin in this repository is based on.
-- [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
-- [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
+Changes should be limited to the **FormsPresenters** plugin plus examples.
 
-Contributors 
-============
-Major contributors will be listed below.
+The need for change occurred after the release of Visual Studio 2015 RC. Microsoft have dropped default support for Xamarin Windows Phone 8.0 and
+have at long last added support for Xamarin Windows Phone 8.1 and Windows 8.1. If you had solutions that were developed via a Visual Studio version
+prior to the 2015 RC then you will need to make some changes as outlined below.
 
-- [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
-- [Patrick Long][munkii] - WPF solution for [Settings][settings].
+Many users of MvxPlugins will still be using Visual Studio 2013 and we do not wish to disrupt their workings. For this reason there may be some delay
+before Tomasz pulls the changes back into the root.
 
-Documentation
-=============
+The Changes That Happened With Visual Studio 2015 RC
+====================================================
 
-For the moment look at the samples. More detailed docs will come in the Wiki (when someone adds it).
+Originally in a visual Studio Xamarin solution including FormsPresenters there were just three targets: iOS, Android and Windows Phone 8. Most Windows
+Phones are actually running WP 8.1, however this was not a problem because in fact the real target was SilverLight 8 and applications written for
+SilverLight 8 run on Windows Phone 8.1. At that time there was no support for Xamarin targeting Windows 8.1 or Windows Phone 8.1.
 
-Other MvvmCross plugins
-=======================
+In Visual Studio 2015 RC Microsoft made several changes that require you to modify your solution.
+- They removed the Windows Phone 8.0 SDK, but provide a Windows Phone 8.1 SDK. This will break your WP project. You can work around the issue by
+  installing the SDK from within VS 2013. However it is easier to upgrade to Windows 8.1.
+- They added Xamarin support for Windows 8.1 as a Target. This however changes the Portable Library Profile you need to conform to in your solution.
 
-Other people are doing MvvmCross plugins as well and I think it is great to mention them, as they might have a useful plugin for your MvvmCross project.
+FormsPresenters has a Portable library, and the example solution "Movies" also has a PCL
 
-| Dev                                 | Plugin                                      |
-| ----------------------------------- | ------------------------------------------- |
-| [Kerry Street][kstreet]             | [Street.MvxPlugins][streetmvx]              |
-| [James Montemagno][james] for ceton | [Mvx.Plugins.Settings][ceton]               |
-| [Geoffrey Huntley][ghuntley]        | [Ghuntley.MvxPlugins.FaceTime][facetime]    |
-| [Artur Rybak][wedkarz]              | [IHS.MvvmCross.Plugins.Keychain][keychain]  |
-| [Allan Ritchie][aritchie]           | [acrmvvmcross][acrmvvmcross]                |
-| [SeeD-Seifer][SeeD-Seifer]          | [Mvx.Geocoder][geocoder]                    |
-| [ChristianRuiz][ChristianRuiz]      | [MvvmCross-SecureStorage][secure-storage]   |
-| [ChristianRuiz][ChristianRuiz]      | [MvvmCross-ControlsNavigation][controlsnav]   |
+The FormsPresenters.Core project (Portable) had the following targets
+.NET Framework 4.5,
+Windows Phone Silverlight 8
+Xamarin.Android
+Xamarin.iOS
+Xamarin.iOS (Classic)
+
+This is the PCL profile that we all have been using for some time now. It is a list of supported solution targets compiled into the Meta Data. When
+you reference a PCL, VS checks that the Target you are working on is supported.
+
+Now in the Samples Movies project (Portable), to get this working again in Visual Studio 2015 RC we need the following targets:
+.NET Framework 4.5,
+Windows 8
+Windows Phone 8.1
+Windows Phone Silverlight 8
+Xamarin.Android
+Xamarin.iOS
+Xamarin.iOS (Classic)
+
+There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in the SDK. You don't have the option
+not to also include Windows 8.
+
+Note that you are not really able to pick anything you like here, for example you can select Windows 8.1 instead of Windows 8 but you get Windows 8
+because they support the same interfaces, but primarily because there really is only a limited set of standard profiles to choose from. This keeps
+things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
+
+In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.10
+as Targets. You don't have add the additional targets to your solution though. You will need to change your Windows Phone project to target 8.1.
+I personally added a Windows 8 target to a project and tested it. This kind of App would run on a Windows Tablet.
+
+Also note there is yet another change due shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
+Platforms: Desktop, Tablet, Mobile, XBOX, ... This will change the standard PCL profile yet again.
+
+As an aside: Windows 10 arrives late July and Microsoft are offering free upgrades to Windows 7 and Windows 8 users. I believe that the uptake will be
+very large for the personal users. The enterprises should follow within the year. It is of course a cost for them, but it will also be a cost not to
+upgrade because Windows 7 support ends unless the enterprise pays for extended support. Many enterprises will also be looking at developing Xamarin
+multi-target Apps with the three targets being: Windows UAP, iOS, Android. I would like to include Xamarin Mac here also but the Xamarin Mac product
+really has a different purpose and that is to build pure Mac applications mixing c# and Objective-C.
+
+Planned Changes
+===============
+
+My changes then to MvxPlugins will be limited to:
+
+1. Changing the Sample FormsPresenters to use a fully supported PCL profile
+2. If required also changing the PCL profile of the FormsPresenters.Core
+3. Adding additional FormsPresenters for Windows8 and Windows 10 UAP.
+4. Adding the Samples needed to demonstrate new targets working.
+
+Other things I am working on will be done in another Git Repository.
+
+Tomasz has hinted that I might need to update NuGet, or possibly set up a separate NuGet Package of FormsPresenters. I will come back to that issue,
+but given that I am only adding additional supported targets, this could be quite simple. The changed PCL Profile does not remove support
+for any target, it simply adds support for additional targets, so we might be able to get away with a single set of NuGet packages.
 
 
 License
