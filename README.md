@@ -1,4 +1,4 @@
-MvxPlugins
++MvxPlugins
 ==========
 
 This repository is a collection of plugins for MvvmCross. It is a fork of https://github.com/Cheesebaron/Cheesebaron.MvxPlugins by Tomasz Cielecki.
@@ -16,7 +16,7 @@ prior to the 2015 RC then you will need to make some changes as outlined below.
 Many users of MvxPlugins will still be using Visual Studio 2013 and we do not wish to disrupt their workings. For this reason there may be some delay
 before Tomasz pulls the changes back into the root.
 
-The Changes That Happened With Visual Studio 2015 RC
++The Changes That Happened With Visual Studio 2015 RC
 ====================================================
 
 Originally in a visual Studio Xamarin solution including FormsPresenters there were just three targets: iOS, Android and Windows Phone 8. Most Windows
@@ -31,23 +31,23 @@ In Visual Studio 2015 RC Microsoft made several changes that require you to modi
 FormsPresenters has a Portable library, and the example solution "Movies" also has a PCL
 
 The FormsPresenters.Core project (Portable) had the following targets
-.NET Framework 4.5,
-Windows Phone Silverlight 8
-Xamarin.Android
-Xamarin.iOS
-Xamarin.iOS (Classic)
+* .NET Framework 4.5,
+* Windows Phone Silverlight 8
+* Xamarin.Android
+* Xamarin.iOS
+* Xamarin.iOS (Classic)
 
 This is the PCL profile that we all have been using for some time now. It is a list of supported solution targets compiled into the Meta Data. When
 you reference a PCL, VS checks that the Target you are working on is supported.
 
 Now in the Samples Movies project (Portable), to get this working again in Visual Studio 2015 RC we need the following targets:
-.NET Framework 4.5,
-Windows 8
-Windows Phone 8.1
-Windows Phone Silverlight 8
-Xamarin.Android
-Xamarin.iOS
-Xamarin.iOS (Classic)
+* .NET Framework 4.5,
+* Windows 8
+* **Windows Phone 8.1**
+* **Windows Phone Silverlight 8**
+* Xamarin.Android
+* Xamarin.iOS
+* Xamarin.iOS (Classic)
 
 There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in the SDK. You don't have the option
 not to also include Windows 8.
@@ -69,7 +69,7 @@ upgrade because Windows 7 support ends unless the enterprise pays for extended s
 multi-target Apps with the three targets being: Windows UAP, iOS, Android. I would like to include Xamarin Mac here also but the Xamarin Mac product
 really has a different purpose and that is to build pure Mac applications mixing c# and Objective-C.
 
-Planned Changes
++Planned Changes
 ===============
 
 My changes then to MvxPlugins will be limited to:
@@ -86,7 +86,7 @@ but given that I am only adding additional supported targets, this could be quit
 for any target, it simply adds support for additional targets, so we might be able to get away with a single set of NuGet packages.
 
 
-License
+*License
 =======
 
 - **AppId** plugin is licensed under [Apache 2.0][apache]
