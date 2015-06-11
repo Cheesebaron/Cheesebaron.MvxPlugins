@@ -1,4 +1,4 @@
-+MvxPlugins
+MvxPlugins
 ==========
 
 This repository is a collection of plugins for MvvmCross. It is a fork of https://github.com/Cheesebaron/Cheesebaron.MvxPlugins by Tomasz Cielecki.
@@ -16,7 +16,7 @@ prior to the 2015 RC then you will need to make some changes as outlined below.
 Many users of MvxPlugins will still be using Visual Studio 2013 and we do not wish to disrupt their workings. For this reason there may be some delay
 before Tomasz pulls the changes back into the root.
 
-+The Changes That Happened With Visual Studio 2015 RC
+The Changes That Happened With Visual Studio 2015 RC
 ====================================================
 
 Originally in a visual Studio Xamarin solution including FormsPresenters there were just three targets: iOS, Android and Windows Phone 8. Most Windows
@@ -69,7 +69,7 @@ upgrade because Windows 7 support ends unless the enterprise pays for extended s
 multi-target Apps with the three targets being: Windows UAP, iOS, Android. I would like to include Xamarin Mac here also but the Xamarin Mac product
 really has a different purpose and that is to build pure Mac applications mixing c# and Objective-C.
 
-+Planned Changes
+Planned Changes
 ===============
 
 My changes then to MvxPlugins will be limited to:
@@ -86,7 +86,7 @@ but given that I am only adding additional supported targets, this could be quit
 for any target, it simply adds support for additional targets, so we might be able to get away with a single set of NuGet packages.
 
 
-*License
+License
 =======
 
 - **AppId** plugin is licensed under [Apache 2.0][apache]
