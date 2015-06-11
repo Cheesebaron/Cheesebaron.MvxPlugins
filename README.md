@@ -16,8 +16,8 @@ prior to the 2015 RC then you will need to make some changes as outlined below.
 Many users of MvxPlugins will still be using Visual Studio 2013 and we do not wish to disrupt their workings. For this reason there may be some delay
 before Tomasz pulls the changes back into the root.
 
-The Changes That Happened With Visual Studio 2015 RC
-====================================================
+Changes Starting with Visual Studio 2015 RC
+===========================================
 
 Originally in a visual Studio Xamarin solution including FormsPresenters there were just three targets: iOS, Android and Windows Phone 8. Most Windows
 Phones are actually running WP 8.1, however this was not a problem because in fact the real target was SilverLight 8 and applications written for
@@ -25,10 +25,10 @@ SilverLight 8 run on Windows Phone 8.1. At that time there was no support for Xa
 
 In Visual Studio 2015 RC Microsoft made several changes that require you to modify your solution.
 - They removed the Windows Phone 8.0 SDK, but provide a Windows Phone 8.1 SDK. This will break your WP project. You can work around the issue by
-  installing the SDK from within VS 2013. However it is easier to upgrade to Windows 8.1.
-- They added Xamarin support for Windows 8.1 as a Target. This however changes the Portable Library Profile you need to conform to in your solution.
+  installing the SDK from within VS 2013. However it is easier to upgrade the project to Windows 8.1.
+- They added Xamarin support for Windows 8.1 as a Target. This changes the Portable Library Profile you need you will use in your solution.
 
-FormsPresenters has a Portable library, and the example solution "Movies" also has a PCL
+FormsPresenters project has a Portable library, and the example projects "Movies" also use a PCL
 
 The FormsPresenters.Core project (Portable) had the following targets
 * .NET Framework 4.5,
@@ -42,25 +42,28 @@ you reference a PCL, VS checks that the Target you are working on is supported.
 
 Now in the Samples Movies project (Portable), to get this working again in Visual Studio 2015 RC we need the following targets:
 * .NET Framework 4.5,
-* Windows 8
+* **Windows 8**
 * **Windows Phone 8.1**
-* **Windows Phone Silverlight 8**
+* Windows Phone Silverlight 8
 * Xamarin.Android
 * Xamarin.iOS
 * Xamarin.iOS (Classic)
 
-There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in the SDK. You don't have the option
+There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in that SDK. You don't have the option
 not to also include Windows 8.
 
-Note that you are not really able to pick anything you like here, for example you can select Windows 8.1 instead of Windows 8 but you get Windows 8
-because they support the same interfaces, but primarily because there really is only a limited set of standard profiles to choose from. This keeps
-things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
+Note that when selecting the PCL targets, you are not really able to pick every possible combination, for example you can select Windows 8.1 instead of
+Windows 8 but you get Windows 8 because they support the same interfaces, but primarily because there really is only a limited set of standard profiles
+to choose from. This keeps things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
 
-In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.10
-as Targets. You don't have add the additional targets to your solution though. You will need to change your Windows Phone project to target 8.1.
+In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.1
+as Targets. You don't have add the additional Windows 8 target as a project to your solution though.
+
+You will need to change your Windows Phone project from Windows Phone 8.0 to 8.1.
+
 I personally added a Windows 8 target to a project and tested it. This kind of App would run on a Windows Tablet.
 
-Also note there is yet another change due shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
+Also note there is yet another coming shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
 Platforms: Desktop, Tablet, Mobile, XBOX, ... This will change the standard PCL profile yet again.
 
 As an aside: Windows 10 arrives late July and Microsoft are offering free upgrades to Windows 7 and Windows 8 users. I believe that the uptake will be
