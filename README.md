@@ -61,15 +61,15 @@ It you need to know where these Portable Profiles are documented, that actually 
 
 > C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5
 
-Looking into their metadata and I find 46 distinct profiles. The information relating to profile 259 is as follows:
+Looking into the metadata in these DLL's I find 46 distinct profiles. The information relating to profile 259 is as follows:
 
--"fullName": ".NETPortable,Version=v4.5,Profile=Profile259",
--"displayName": ".NET Portable Subset (.NET Framework 4.5, Windows 8, Windows Phone 8.1, Windows Phone Silverlight 8)",
--"profileName": "Profile259",
--"supportedByVisualStudio2013": true,
--...
+-	"fullName": ".NETPortable,Version=v4.5,Profile=Profile259",
+-	"displayName": ".NET Portable Subset (.NET Framework 4.5, Windows 8, Windows Phone 8.1, Windows Phone Silverlight 8)",
+-	"profileName": "Profile259",
+-	"supportedByVisualStudio2013": true,
+-	...
 
-So it would appear that switching to Profile 259 should not impact developers still using Visual Studio 2013.
+So it would appear that switching to PCL Profile 259 should not impact developers still using Visual Studio 2013.
 
 
 In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.1
