@@ -94,16 +94,16 @@ Planned Changes
 
 My changes then to MvxPlugins will be limited to:
 
-1. Changing the Sample FormsPresenters to use a fully supported PCL profile
-2. If required also changing the PCL profile of the FormsPresenters.Core
-3. Adding additional FormsPresenters for Windows8 and Windows 10 UAP.
+1. Changing the Sample FormsPresenters to use profile 259
+2. Changing the PCL profile of the FormsPresenters.Core to profile 259
+3. Adding additional FormsPresenters for Windows8.
 4. Adding the Samples needed to demonstrate new targets working.
 
 Other things I am working on will be done in another Git Repository.
 
 Tomasz has hinted that I might need to update NuGet, or possibly set up a separate NuGet Package of FormsPresenters. I will come back to that issue,
-but given that I am only adding additional supported targets, this could be quite simple. The changed PCL Profile does not remove support
-for any target, it simply adds support for additional targets, so we might be able to get away with a single set of NuGet packages.
+but given that a NuGet Package of FormsPresenters based on profile 259 should continue to support solutions that were developed in VS 2013 based on
+PCL profile 78, this could be quite simple.
 
 
 License
