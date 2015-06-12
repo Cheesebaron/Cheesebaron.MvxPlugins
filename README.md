@@ -71,7 +71,7 @@ Looking into the metadata in these DLL's I find 46 distinct profiles. The inform
 
 So it would appear that switching to PCL Profile 259 should not impact developers still using Visual Studio 2013.
 
-##Summary##
+###Summary###
 
 To adapt to the changes:
 -	you need to be using Visual Studio 2013 with latest updates, or using Visual Studio 2015 RC or later
@@ -83,14 +83,11 @@ To adapt to the changes:
 
 I personally added a Windows 8 target to a project and tested it. This kind of App would run on a Windows Tablet.
 
-Also note there is yet another profile coming shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
-Platforms: Desktop, Tablet, Mobile, XBOX, ... This will change the standard PCL profile yet again.
+Also note for Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows Platforms: Desktop, Tablet, Mobile, XBOX, ...
+This could change the standard PCL profile yet again, but Universal Apps were actually developed for Windows 8.1 so Profile 259 is the one to use.
 
-As an aside: Windows 10 arrives late July and Microsoft are offering free upgrades to Windows 7 and Windows 8 users. I believe that the uptake will be
-very large for the personal users. The enterprises should follow within the year. It is of course a cost for them, but it will also be a cost not to
-upgrade because Windows 7 support ends unless the enterprise pays for extended support. Many enterprises will also be looking at developing Xamarin
-multi-target Apps with the three targets being: Windows UAP, iOS, Android. I would like to include Xamarin Mac here also but the Xamarin Mac product
-really has a different purpose and that is to build pure Mac applications mixing c# and Objective-C.
+I would like to include Xamarin Mac here also but the Xamarin Mac product really has a different purpose and that is to build pure Mac applications 
+mixing c# and Objective-C.
 
 Planned Changes
 ===============
