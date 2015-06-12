@@ -59,7 +59,7 @@ from. This keeps things simple in the NuGet packages, you do not want every poss
 
 It you need to know where these Portable Profiles are documented, that actually is a hard question. I use a tool to enumerate all of the assemblies in
 
-> C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5
+> C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\
 
 Looking into the metadata in these DLL's I find 46 distinct profiles. The information relating to profile 259 is as follows:
 
@@ -71,15 +71,19 @@ Looking into the metadata in these DLL's I find 46 distinct profiles. The inform
 
 So it would appear that switching to PCL Profile 259 should not impact developers still using Visual Studio 2013.
 
+##Summary##
 
-In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.1
-as Targets. You don't have add the additional Windows 8 target as a project to your solution though.
-
-You will need to change your Windows Phone project from Windows Phone 8.0 to 8.1.
+To adapt to the changes:
+-	you need to be using Visual Studio 2013 with latest updates, or using Visual Studio 2015 RC or later
+-	The removal of the WP 8.0 SDK in Visual Studio 2015 means we need to be using **PCL Profile 259**
+-	This profile adds two new targets: Windows 8 and Windows Phone 8.1, but you don't have to create Apps for these targets
+-	Xamarin actually targets Silverlight 8 for its Windows Phone App and Silverlight 8 continues to be supported.
+-	Visual Studio 2015 users will need to change the property pages of their Windows Phone App's as targeting Windows Phone 8.1 to 8.0 to get the SDK.
+-	Visual Studio 2013 users should do likewise, although existing compilations may continue to work.
 
 I personally added a Windows 8 target to a project and tested it. This kind of App would run on a Windows Tablet.
 
-Also note there is yet another coming shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
+Also note there is yet another profile coming shortly. For Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows
 Platforms: Desktop, Tablet, Mobile, XBOX, ... This will change the standard PCL profile yet again.
 
 As an aside: Windows 10 arrives late July and Microsoft are offering free upgrades to Windows 7 and Windows 8 users. I believe that the uptake will be
