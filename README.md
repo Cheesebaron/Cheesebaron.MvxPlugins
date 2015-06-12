@@ -58,7 +58,9 @@ but you get Windows 8 because they the interfaces are identical, but primarily b
 from. This keeps things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
 
 It you need to know where these Portable Profiles are documented, that actually is a hard question. I use a tool to enumerate all of the assemblies in
+
 > C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5
+
 looking into their metadata and I find 46 distinct profiles. The information relating to profile 259 is as follows:
 -"fullName": ".NETPortable,Version=v4.5,Profile=Profile259",
 -"displayName": ".NET Portable Subset (.NET Framework 4.5, Windows 8, Windows Phone 8.1, Windows Phone Silverlight 8)",
