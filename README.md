@@ -81,9 +81,15 @@ To adapt to the changes:
 -	Visual Studio 2015 users will need to change the property pages of their Windows Phone App's as targeting Windows Phone 8.1 to 8.0 to get the SDK.
 -	Visual Studio 2013 users should do likewise, although existing compilations may continue to work.
 
+Recently Xamarin released their Xamarin.Forms product for Windows 8.1 and Windows Phone 8.1 (sans silverlight). There are some missing elements in the XAML
+right now, but that is expected to be fixed very soon.
+
 I personally added a Windows 8 target to a project and tested it. This kind of App would run on a Windows Tablet.
 
 Also note for Windows 10 Microsoft have created a Universal APP and this kind of App will run on all Windows Platforms: Desktop, Tablet, Mobile, XBOX, ...
+The XAML here is adaptive in that you can describe how the presentation should degrade when the App is accessed on smaller screens. This is why it is called
+a Universal App. Xamarin are working on matching these developments in their own variation of XAML.
+
 This could change the standard PCL profile yet again, but Universal Apps were actually developed for Windows 8.1 so Profile 259 is the one to use.
 
 I would like to include Xamarin Mac here also but the Xamarin Mac product really has a different purpose and that is to build pure Mac applications 
