@@ -37,8 +37,8 @@ The FormsPresenters.Core project (Portable) had the following targets
 * Xamarin.iOS
 * Xamarin.iOS (Classic)
 
-This is the PCL profile that we all have been using for some time now. It is a list of supported solution targets compiled into the Meta Data. When
-you reference a PCL, VS checks that the Target you are working on is supported.
+This is the PCL profile 78 that we all have been using for some time now. It is a list of supported solution targets compiled into the Meta Data.
+When you reference a PCL, VS checks that the Target you are working on is supported.
 
 Now in the Samples Movies project (Portable), to get this working again in Visual Studio 2015 RC we need the following targets:
 * .NET Framework 4.5,
@@ -49,12 +49,25 @@ Now in the Samples Movies project (Portable), to get this working again in Visua
 * Xamarin.iOS
 * Xamarin.iOS (Classic)
 
+This is profile 259.
 There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in that SDK. You don't have the option
 not to also include Windows 8.
 
-Note that when selecting the PCL targets, you are not really able to pick every possible combination, for example you can select Windows 8.1 instead of
-Windows 8 but you get Windows 8 because they support the same interfaces, but primarily because there really is only a limited set of standard profiles
-to choose from. This keeps things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
+When selecting the PCL targets, you are not really able to check every possible combination, for example you can select Windows 8.1 instead of Windows 8
+but you get Windows 8 because they the interfaces are identical, but primarily because there really is only a limited set of standard profiles to choose
+from. This keeps things simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
+
+It you need to know where these Portable Profiles are documented, that actually is a hard question. I use a tool to enumerate all of the assemblies in
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5 looking into their metadata and I find 46 distinct profiles. The
+information relating to profile 259 is as follows:
+-"fullName": ".NETPortable,Version=v4.5,Profile=Profile259",
+-"displayName": ".NET Portable Subset (.NET Framework 4.5, Windows 8, Windows Phone 8.1, Windows Phone Silverlight 8)",
+-"profileName": "Profile259",
+-"supportedByVisualStudio2013": true,
+-...
+
+So it would appear that switching to Profile 259 should not impact developers still using Visual Studio 2013.
+
 
 In summary: the removal of the WP 8.0 SDK means you need to base everything on a new PCL profile that now also includes Windows 8 and Windows Phone 8.1
 as Targets. You don't have add the additional Windows 8 target as a project to your solution though.
