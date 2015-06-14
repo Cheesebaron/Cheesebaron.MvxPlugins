@@ -33,6 +33,13 @@ Documentation
 
 For the moment look at the samples. More detailed docs will come in the Wiki (when someone adds it).
 
+Pull Requests
+=============
+
+| Date        | Dev                                 | Plugin                                      | Title                      |
+| ----------- | ----------------------------------- | ------------------------------------------- | -------------------------- |
+| 15/Jun/2015 | [Peter Burke][peterburke]           | [FormsPresenters][fp]                       | Upgrade to PCL Profile 259 |
+
 Other MvvmCross plugins
 =======================
 
