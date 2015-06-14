@@ -71,7 +71,7 @@ Looking into the metadata in these DLL's I find 46 distinct profiles. The inform
 
 So it would appear that switching to PCL Profile 259 should not impact developers still using Visual Studio 2013.
 
-###Summary###
+### Summary ###
 
 To adapt to the changes:
 -	you need to be using Visual Studio 2013 with latest updates, or using Visual Studio 2015 RC or later

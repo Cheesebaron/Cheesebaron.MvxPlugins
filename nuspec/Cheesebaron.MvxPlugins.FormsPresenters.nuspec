@@ -19,11 +19,11 @@
 	<files>		
 		<!-- PCL -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
-			target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" />
+			target="lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" />
 		<file src="CoreContent\FirstViewModel.cs.pp" 
-			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\ViewModels\FirstViewModel.cs.pp" />
+			target="content\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\ViewModels\FirstViewModel.cs.pp" />
 		<file src="CoreContent\FirstPage.cs.pp" 
-			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Pages\FirstPage.cs.pp" />
+			target="content\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Pages\FirstPage.cs.pp" />
 
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
