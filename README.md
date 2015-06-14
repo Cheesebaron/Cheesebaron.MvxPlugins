@@ -36,9 +36,9 @@ For the moment look at the samples. More detailed docs will come in the Wiki (wh
 Pull Requests
 =============
 
-| Date        | Dev                                 | Plugin                                      | Title                      |
-| ----------- | ----------------------------------- | ------------------------------------------- | -------------------------- |
-| 15/Jun/2015 | [Peter Burke][peterburke]           | [FormsPresenters][fp]                       | Upgrade to PCL Profile 259 |
+| Date        | Dev                                 | Plugin                                      | Documentation                            | 
+| ----------- | ----------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| 15/Jun/2015 | [Peter Burke][peterburke]           | [FormsPresenters][fp]                       | [Upgrade to PCL Profile 259][pr20150615] |
 
 Other MvvmCross plugins
 =======================
@@ -97,3 +97,4 @@ License
 [settings]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/Settings
 [munkii]: https://github.com/munkii
 [peterburke]: https://github.com/PeterBurke
+[pr20150615]: https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/PULL_REQUEST_001.md
