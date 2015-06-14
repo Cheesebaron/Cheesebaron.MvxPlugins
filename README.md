@@ -26,7 +26,7 @@ Major contributors will be listed below.
 
 - [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
 - [Patrick Long][munkii] - WPF solution for [Settings][settings].
-- [Peter Burke][PeterBurke] - updating [FormsPresenters] to PCL Profile 259.
+- [Peter Burke][peterburke] - updating [FormsPresenters][fp] plugin to PCL Profile 259.
 
 Documentation
 =============
@@ -89,3 +89,4 @@ License
 [fp]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/FormsPresenters
 [settings]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/Settings
 [munkii]: https://github.com/munkii
+[peterburke]: https://github.com/PeterBurke
