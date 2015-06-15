@@ -16,14 +16,14 @@ nuget pack Cheesebaron.MvxPlugins.Notifications.nuspec -symbols
 
 nuget push Cheesebaron.MvxPlugins.AppId.1.0.2.nupkg
 nuget push Cheesebaron.MvxPlugins.Sms.1.1.0.nupkg
-nuget push Cheesebaron.MvxPlugins.Settings.1.1.8.nupkg
+nuget push Cheesebaron.MvxPlugins.Settings.1.2.0.nupkg
 nuget push Cheesebaron.MvxPlugins.SimpleWebToken.1.0.1.nupkg
 nuget push Cheesebaron.MvxPlugins.FormsPresenters.0.0.2.nupkg
 nuget push Cheesebaron.MvxPlugins.Notifications.1.0.1.nupkg
 
 nuget push Cheesebaron.MvxPlugins.AppId.1.0.2.symbols.nupkg
 nuget push Cheesebaron.MvxPlugins.Sms.1.1.0.symbols.nupkg
-nuget push Cheesebaron.MvxPlugins.Settings.1.1.8.symbols.nupkg
+nuget push Cheesebaron.MvxPlugins.Settings.1.2.0.symbols.nupkg
 nuget push Cheesebaron.MvxPlugins.SimpleWebToken.1.0.1.symbols.nupkg
 nuget push Cheesebaron.MvxPlugins.FormsPresenters.0.0.2.symbols.nupkg
 nuget push Cheesebaron.MvxPlugins.Notifications.1.0.1.symbols.nupkg

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Cheesebaron.MvxPlugins.Settings</id>
-		<version>1.1.8</version>
+		<version>1.2.0</version>
 		<title>MvvmCross Settings Plugin</title>
 		<authors>Tomasz Cielecki</authors>
 		<owners>Tomasz Cielecki</owners>
@@ -11,11 +11,28 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Settings Plugin for MvvmCross, supporting Android, iOS, Windows Phone 8/8.1 (silverlight),  Windows Store (Windows Phone 8.1 and Windows Store 8.1) and WPF projects.</description>
 		<tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin wpa81 win81 mvx</tags>
-		<dependencies>
-			<dependency id="MvvmCross.HotTuna.CrossCore" version="3.5.1" />
-			<dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="3.5.1" />
-		</dependencies>
+    <dependencies>
+      <group>
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="3.5.1" />
+        <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="3.5.1" />
+      </group>
+      <group targetFramework="win81">
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+      </group>
+      <group targetFramework="wpa81">
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+      </group>
+      <group targetFramework="portable-win81+wpa81">
+        <dependency id="Newtonsoft.Json" version="6.0.8" />
+      </group>
+    </dependencies>
 		<releaseNotes>
+1.2.0
+Removed permissions in Android
+      
+1.1.9
+WindowsCommon version now internally serializing and deserializing using JSON.Net
+
 1.1.8
 Fix missing bootstrap content for iOS
 
@@ -57,7 +74,7 @@ Fixes boolean getter
 		<!-- phone -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\wp8" />
 		<file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.*" target="lib\wp8" />
-        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\wp8\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+    <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\wp8\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 		
 		<!-- store -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\win81" />
@@ -65,32 +82,32 @@ Fixes boolean getter
 		
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\wpa81" />
 		<file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Settings.WindowsCommon.*"
-		target="lib\wpa81" />
+		  target="lib\wpa81" />
 		
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\portable-win81+wpa81" />
 		<file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Settings.WindowsCommon.*" target="lib\portable-win81+wpa81" />
 		
 		<file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\win81\Bootstrap\SettingsPluginBootstrap.cs.pp" />
-        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\wpa81\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+    <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\wpa81\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 	
 		<!-- droid -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\MonoAndroid10" />
 		<file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.Settings.Droid.*" target="lib\MonoAndroid10" />
 		
-        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\MonoAndroid\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+    <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\MonoAndroid\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 		
 		<!-- touch -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\Xamarin.iOS10" />
 		<file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.Settings.Touch.*" target="lib\Xamarin.iOS10" />
 		
-        <file src="TouchBootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+    <file src="TouchBootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SettingsPluginBootstrap.cs.pp" />
 		
 		<!-- wpf -->
 		<file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\net45" />
 		<file src="..\bin\Release\Wpf\Cheesebaron.MvxPlugins.Settings.Wpf.*" target="lib\net45" />
 		
-        <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\net45\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+    <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" target="content\net45\Bootstrap\SettingsPluginBootstrap.cs.pp" />
         
-        <file src="..\Settings\**\*.cs" target="src\Settings" />
+    <file src="..\Settings\**\*.cs" target="src\Settings" />
 	</files>
 </package>
