@@ -34,7 +34,7 @@ Fixing this is quite easy.
 
 First go to your PCL project settings page:
 
-Markup: ![PCL settings before](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
+![PCL settings before](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
 
 This is the **PCL profile 78** that we all have been using for some time now.
 
@@ -43,7 +43,7 @@ is then compiled into the Assembly metadata and later checked by the consumer pr
 
 Click the Change... button and check two additional targets:
 
-Markup: ![PCL settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
+![PCL settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingafter.png)
 
 This is **PCL Profile 259**.
 
@@ -61,7 +61,7 @@ simple in the NuGet packages, you do not want every possible combination of targ
 
 The other thing you need to do is in your Windows Phone Xamarin project, open the settings: 
 
-Markup: ![WP Settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/TargetWP81.png)
+![WP Settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/TargetWP81.png)
 
 Again this tells the build to locate Assemblies from the WP SDK 8.1 whereas previously it located them from the WP SDK 8.0.
 
