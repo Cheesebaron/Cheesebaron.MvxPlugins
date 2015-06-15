@@ -72,7 +72,7 @@ does is that allows the build to check the suitability of the PCL to be consumed
 
 The Android and iOS targets need to know that the PCL can be run on those platforms. If we look into the full metadata for PCL 259:
 
-`{
+```{
 	"fullName": ".NETPortable,Version=v4.5,Profile=Profile259",
 	"displayName": ".NET Portable Subset (.NET Framework 4.5, Windows 8, Windows Phone 8.1, Windows Phone Silverlight 8)",
 	"profileName": "Profile259",
@@ -108,7 +108,8 @@ The Android and iOS targets need to know that the PCL can be run on those platfo
 		"fullName": "MonoTouch,Version=v1.0,Profile=*",
 		"displayName": "Xamarin.iOS (Classic)"
 	}]
-}`
+}
+```
 
 You can see that this profile quite clearly supports Xamarin.iOS classic and the new iPhone iPad unified targets, plus MonoAndroid. It also supports
 "Windows Phone Silverlight" a target that is the same on Windows Phone 8.0 and Windows Phone 8.1.
