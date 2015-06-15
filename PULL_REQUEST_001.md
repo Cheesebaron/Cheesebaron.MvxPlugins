@@ -161,8 +161,3 @@ The change is so trivial that it would be a shame to have to permanently for the
 
 I wonder if we could not simply put a second NuSpec in there with say a Package ID of "Cheesebaron.MvxPlugins.FormsPresenters.ForXaml"?
 
-
-
-
-
-If you are installing packages at the 
