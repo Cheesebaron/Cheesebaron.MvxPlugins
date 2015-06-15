@@ -1,53 +1,75 @@
-MvxPlugins
-==========
+Upgrade FormsPresenters to PCL Profile 259
+==========================================
 
-This repository is a collection of plugins for MvvmCross. It is a fork of https://github.com/Cheesebaron/Cheesebaron.MvxPlugins by Tomasz Cielecki.
+As of June 2015 most users of the FormsPresenters plugin will be using Visual Studio 2013. Some of us were working with the Visual Studio 2015 community technical preview
+so as to gain early access to an exceptionally large release of new features. On the 29th of April Microsoft released the Visual Studio 2015 Release Candidate and there
+were some changes that impacted cross platform development using Xamarin.
 
-I will be pulling updates from the root on a regular basis. The intention is that this fork is temporary and that Tomasz will eventually update the
-root with changes I make.
+Prior to this watershed, when developing cross platform Apps with Xamarin, there was the iOS Target, the Android target and the Windows Phone target.
 
-
-Changes should be limited to the **FormsPresenters** plugin plus examples.
-
-The need for change occurred after the release of Visual Studio 2015 RC. Microsoft have dropped default support for Xamarin Windows Phone 8.0 and
-have at long last added support for Xamarin Windows Phone 8.1 and Windows 8.1. If you had solutions that were developed via a Visual Studio version
-prior to the 2015 RC then you will need to make some changes as outlined below.
-
-Many users of MvxPlugins will still be using Visual Studio 2013 and we do not wish to disrupt their workings. For this reason there may be some delay
-before Tomasz pulls the changes back into the root.
+The Windows Phone target was actually targeting Silverlight 8 on Windows Phone 8. Of course for almost a year most Windows phones have been upgraded to run Windows Phone
+8.1. Not really an issue because the Silverlight 8 Apps would run on WP 8.1.
 
 Changes Starting with Visual Studio 2015 RC
 ===========================================
 
-Originally in a visual Studio Xamarin solution including FormsPresenters there were just three targets: iOS, Android and Windows Phone 8. Most Windows
-Phones are actually running WP 8.1, however this was not a problem because in fact the real target was SilverLight 8 and applications written for
-SilverLight 8 run on Windows Phone 8.1. At that time there was no support for Xamarin targeting Windows 8.1 or Windows Phone 8.1.
+Microsoft and Xamarin had been cooperating for some time in order to get what is known as Universal Apps running on Windows 8.1 and on WP 8.1 natively i.e. no Silverlight.
 
-In Visual Studio 2015 RC Microsoft made several changes that require you to modify your solution.
-- They removed the Windows Phone 8.0 SDK, but provide a Windows Phone 8.1 SDK. This will break your WP project. You can work around the issue by
-  installing the SDK from within VS 2013. However it is easier to upgrade the project to Windows 8.1.
-- They added Xamarin support for Windows 8.1 as a Target. This changes the Portable Library Profile you need you will use in your solution.
+Universal Apps will be a big feature in Windows 10 to be released late July. The idea is that you can go to the store and download an App and it should be able to run on
+any Windows device. In order to achieve that, Microsoft needed to unify the various versions of the operating system to present a common interface between operating 
+system and App. More importantly from a development perspective, they needed to provide a way for Apps to be written to accept input from different input devices and to
+adapt the visual presentation dependant on display size. One of the aspects was an extension to the XAML schema that allows visual elements to adapt to screen geometry.
 
-FormsPresenters project has a Portable library, and the example projects "Movies" also use a PCL
+So starting with the upgrade to Visual Studio 2015 we discovered the following:
+- Projects that targeted Windows Phone were broken and changes were needed to get them working again.
+- There was an additional target you could add to your App. This target was a Universal App that would run both on WP8/8.1 natively and Windows 8/8.1.
 
-The FormsPresenters.Core project (Portable) had the following targets
-* .NET Framework 4.5,
-* Windows Phone Silverlight 8
-* Xamarin.Android
-* Xamarin.iOS
-* Xamarin.iOS (Classic)
+The reason why the existing Windows Phone projects broke was because in VS 2015 RC Microsoft removed the Windows Phone 8.0 SDK. This makes sense because they provide the
+Windows Phone 8.1 SDK and the 8.0 SDK is a legacy they do not want to support. I tried to fix this problem by downloading and installing the 8.0 SDK, but that does not
+work as the installer asks what version of VS and does not give you a choice of 2015. But you can still install it via Visual Studio 2013.
 
-This is the **PCL profile 78** that we all have been using for some time now. It is a list of supported solution targets compiled into the Meta Data.
-When you reference a PCL, VS checks that the Target you are working on is supported.
+The Windows Phone SDK provides a number of DLL's that your project needs to link to, and without these your Windows Phone Xamarin Target will not compile.
 
-Now in the Samples Movies project (Portable), to get this working again in Visual Studio 2015 RC we need the following targets:
-* .NET Framework 4.5,
-* **Windows 8**
-* **Windows Phone 8.1**
-* Windows Phone Silverlight 8
-* Xamarin.Android
-* Xamarin.iOS
-* Xamarin.iOS (Classic)
+Fixing this is quite easy. 
+
+First go to your PCL project settings page:
+
+Markup: ![PCL settings before](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
+
+This is the **PCL profile 78** that we all have been using for some time now.
+
+Notice the Targeting and Targets. This is a feature of the property page for a PCL project. You select a set of targets that this PCL is to be used by. This information
+is then compiled into the Assembly metadata and later checked by the consumer project.
+
+Click the Change... button and check two additional targets:
+
+Markup: ![PCL settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
+
+This is **PCL Profile 259**.
+
+You add the two new projects:
+
+* Windows 8
+* Windows Phone 8.1
+
+This allows you to later create a new Windows Store Universal App as a target. Also including Windows Phone 8.1 tells Visual Studio to look for assembly references in the
+Windows Phone SDK 8.1 and this also fixes the issue with the Windows Phone Silverlight 8 Xamarin target.
+
+When selecting the PCL targets, you are not really able to check every possible combination of targets, for example you can select Windows 8.1 instead of Windows 8 but you
+get Windows 8 because the the interfaces are identical, but primarily because there really is only a limited set of standard profiles to choose from. This keeps things
+simple in the NuGet packages, you do not want every possible combination of targets as that would become massive.
+
+The other thing you need to do is in your Windows Phone Xamarin project, open the settings: 
+
+Markup: ![WP Settings after](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/TargetWP81.png)
+
+Again this tells the build to locate Assemblies from the WP SDK 8.1 whereas previously it located them from the WP SDK 8.0.
+
+
+
+
+
+
 
 This is **PCL Profile 259**.
 There are two additional targets: Windows 8, Windows Phone 8.1. You need the Windows Phone 8.1 to reference DLL's in that SDK. You don't have the option
