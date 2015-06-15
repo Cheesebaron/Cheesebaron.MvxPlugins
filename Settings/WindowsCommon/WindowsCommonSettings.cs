@@ -1,6 +1,7 @@
 using System;
 using Windows.Storage;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using Newtonsoft.Json;
 
 namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
 {
@@ -24,7 +25,13 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
             object value;
 
             if (container.Values.TryGetValue(key, out value))
-                return (T) value;
+            {
+                var json = (string) value;
+                if (string.IsNullOrEmpty(json)) return defaultValue;
+
+                var deserializedValue = JsonConvert.DeserializeObject<T>(json);
+                return deserializedValue;
+            }
 
             return defaultValue;
         }
@@ -38,13 +45,15 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
         {
             if (container == null) throw new ArgumentNullException("container");
 
+            var serializedValue = JsonConvert.SerializeObject(value);
+
             if (container.Values.ContainsKey(key))
             {
-                container.Values[key] = value;
+                container.Values[key] = serializedValue;
                 return true;
             }
 
-            container.Values.Add(key, value);
+            container.Values.Add(key, serializedValue);
             return true;    
         }
 
