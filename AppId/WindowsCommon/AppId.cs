@@ -1,10 +1,12 @@
 using System;
+using System.Threading.Tasks;
 using Windows.System.Profile;
+using Cirrious.CrossCore.Exceptions;
 
 namespace Cheesebaron.MvxPlugins.AppId.WindowsCommon
 {
-    public class AppId 
-        : IAppIdGenerator
+    public class AppId
+        : IAppIdGeneratorEx
     {
         public string GenerateAppId(bool usingPhoneId = false, string prefix = null, string suffix = null)
         {
@@ -42,17 +44,20 @@ namespace Cheesebaron.MvxPlugins.AppId.WindowsCommon
 
         public string PhoneModel
         {
-            get { return SystemInfoHelper.GetDeviceModelAsync().Result; }
+            get { throw new MvxException("Use IAppIdGeneratorEx"); }
         }
 
         public string OsVersion
         {
-            get { return SystemInfoHelper.GetWindowsVersionAsync().Result; }
+            get { throw new MvxException("Use IAppIdGeneratorEx"); }
         }
 
         public string Platform
         {
             get { return "Windows 8.1 Universal"; }
         }
+
+        public Task<string> GetOsVersionAsync() { return SystemInfoHelper.GetWindowsVersionAsync(); }
+        public Task<string> GetPhoneModelAsync() { return SystemInfoHelper.GetDeviceModelAsync(); }
     }
 }

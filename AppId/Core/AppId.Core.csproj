@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="IAppIdGenerator.cs" />
+    <Compile Include="IAppIdGeneratorEx.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
