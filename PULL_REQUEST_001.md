@@ -203,3 +203,15 @@ the FormsPresnter solution from the viewpoint of a developer trying to use that 
 On my own Site I intend to setup a collection of XAML based project and item templates that cover a range of things. They will need the FormsPresenters NuGet, but
 they cover a range of topics. For example usage of the new Entity Framework 7 for SQLite.
 
+### FormsPresenter for Windows and Windows Phone no Silverlight ###
+
+With the changes that came with VS 2015 RC, it became possible to create a new Xamarin Target project for Windows and Windows Phone. This target does not use Silverlight.
+Right now though when you create a Xamarin Solution using Xamarin's template, they do not automatically add this target.
+
+As previously mentioned, this target is really a Windows Store App that can run on every Windows device, so long as they are running Windows 8.1, Windows Phone 8.1
+or Windows 10. That requires many enhancements to the Xamarin.Forms Schema, but right now for this target Xamarin do not completely implement everything that is in
+the original schema.
+
+I can write the FormsPresenter and sample component for this target.
+
+
