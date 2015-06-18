@@ -122,42 +122,84 @@ Switching from PCL Profile 78 to 259 in the FormsPresenters should not impact VS
 The changes I have made in the Pull Request have all been tested using VS 2015 RC, i.e. the three FormsPresenters have been proven to work. I have not
 tested them against VS 2013.
 
-NUGET TARGET STRINGS
-====================
+OPEN ISSUES
+===========
 
-The NuGet enforced package conventions describes how NuGet when called from within Visual Studio attempts to link or relink referenced assemblies from
-downloaded packages directory. Often their are multiple subdirectories for it to choose from, but it only ever links a VS Project to assemblies within
-a single directory. The directory naming conventions are designed to make this selection automatic.
+There are several aspects of the MvxPlugins.FormsPresenters that I would like to change, but due to unresolved issues these must wait for another day.
 
-Originally the only choices were based on dot net framework versions. After the invention of Portable Libraries, things got a lot more complex. In fact
-it seems to me that there is no clear standard here.
+I list them in the following sections for review and discussion.
 
-For example in the FormsPresenters NuSpec we have for the PCL a "Nuget Target" = "lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10".
-So when we install the package it creates a directory tree that matches that, put the DLL's in there and links them to your project. In the project
-directory, it records the package it linked to in a packages.config file. This helps NuGet restore packages. The convention is that second level packages
-are not downloaded directly but only downloaded if they are not already downloaded so this makes good sense.
+### NuGet Target Strings ###
 
-In this process NuGet really does not care how we name these target directories. But it may do so if you run the package manager at a solution level.
+In the NuSpec we currently have a set of Target strings and I am concerned that these do not properly align with PCL 259 Profile.
 
-Now what I have noticed is that there is quite a lot of inconsistency between these NuGet Target Strings. Theoretically they should be the same for the
-same PCL Profile, but different developers have different ideas about that.
+| Project     | Target String (ChheseBaron)                                    | Xamarin.Forms                                                               | MvvmCross.HotTuna.CrossCore.3.5.1 |
+| ----------- | -------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------- |
+| Portable    | portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10 | portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10 | portable-win+net45+wp8+win8+wpa81 |
+| Phone (sl8) | wp8                                                            | wp80                                                                        | wp8 |
+| droid       | MonoAndroid10                                                  | MonoAndroid10                                                               | MonoAndroid |
+| touch       | Xamarin.iOS10                                                  | Xamarin.iOS10                                                               | Xamarin.iOS10 |
+| old iOS     |                                                                | MonoTouch10                                                                 | |
+| new win     |                                                                | win81                                                                       | win81 |
+| win store   |                                                                | wpa81                                                                       | wpa81 |
 
-For example if "portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" is the string for PCL profile 259 it should be
-"portable-net45+netcore45+wp8" according to [Plunker](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview).
+We also have for the portable project:
 
-Xamarin however for their Xamarin.forms NuGet package use "portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10" as their
-NuGet string,
+| Plunker 259                  |
+| ---------------------------- |
+| portable-net45+netcore45+wp8 |
 
-I Recommend leaving this as is for now, because changing it could impact existing installs.
 
-FORMSPRESENTERS NUSPEC FOR XAMARIN FORMS XAML SOLUTION
-======================================================
+The Target strings define a set of folders that are under the lib folder in the package. NuGet when it is setting up packages for the first time, for
+each project in the solution, must select one only of these directories and link the project to the assemblies in that folder. It also creates a
+packages.config folder and records details of these linkages for subsequent package restore process.
 
-I need to create a NuGet package that differs slightly from the "Cheesebaron.MvxPlugins.FormsPresenters" package. This is for a XAML Based solution.
-The FormsPresenters DLL's generated by this Pull request are OK, the issue is that the NuSpec on package restore is creating files that conflict with
-a XAML based solution. For example FirstPage.cs is a problem here because in a XAML based solution, pages are written in XAML rather than CS.
+The naming convention for these Target Strings is documented in [NuGet Enforced Package Conventions](https://docs.nuget.org/create/enforced-package-conventions)
+but seems to be hopelessly out of date.
 
-The change is so trivial that it would be a shame to have to permanently for the Repository in order to achieve this.
+Further references are [Stephen Cleary](http://blog.stephencleary.com/2012/05/framework-profiles-in-net.html) and [Plunker](http://embed.plnkr.co/03ck2dCtnJogBKHJ9EjY/preview)
 
-I wonder if we could not simply put a second NuSpec in there with say a Package ID of "Cheesebaron.MvxPlugins.FormsPresenters.ForXaml"?
+There is only weak consistency in the naming of NuGet Target strings in the above!
+
+Does it matter? It should not matter once you get the package.config files created because after then NuGet should not care how you named these directories.
+
+But the naming conventions must be important when you initially install NuGet packages, because for each ProjectTypeGuid it needs to select a single directory to link to.
+
+Quite possibly NuGet is robust enough not to fail here. It may for example when you are connecting the packages for a PCL project be smart enough to realise that there
+is only one directory that starts with "portable-". It might be smart enough to to realise that wp8 == wp80 || wp81 and so on.
+
+Given some time I might experiment with this and see what works.
+
+### Update the Version of the NuSpec ###
+
+This could help avoid problems if the NuGet Target String changes. We would include a powershell script to rewrite package.config files when upgrading so that
+existing references copy over with a package restore.
+
+### FormsPresenters NuSpec Issue Xamarin.Forms XAML Solution ###
+
+The Sample Application for the FormsPresenters called Movies does not use the NuSpec, instead it does a project reference within a top level solution. Also this
+sample uses C# to code Xamarin.Forms and not XAML. I have worked on building a set of examples that use the FormsPresenters but in each case mine are based on XAML.
+
+If a NuGet user uses the FormsPresenters plugin, it creates code files that basically will break a XAML based solution.
+
+For example in the NuSpec:
+
+```
+		<file src="CoreContent\FirstViewModel.cs.pp" 
+			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\ViewModels\FirstViewModel.cs.pp" />
+		<file src="CoreContent\FirstPage.cs.pp" 
+			target="content\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Pages\FirstPage.cs.pp" />
+```
+
+The pp files will be copied to the target directory and renamed to remove the pp extension. Plus there will be some substitutions in the code.
+
+What I would like to do for the next Version is to remove these. Instead what I propose is to simply take the Sample application Movies and to use it to create
+a Visual Studio Template. These Templates if you recall do something similar to the NuSpec substitutions enabling the developer to choose a solution other than Movies
+and to locate where the solution will be deposited.
+
+I will not attempt to do this for any of the other plugins, but it could be helpful for consistency. I will also add an additional MD file that documents
+the FormsPresnter solution from the viewpoint of a developer trying to use that plugin. If you need help in getting the remaining Plugins into the same state I can help.
+
+On my own Site I intend to setup a collection of XAML based project and item templates that cover a range of things. They will need the FormsPresenters NuGet, but
+they cover a range of topics. For example usage of the new Entity Framework 7 for SQLite.
 
