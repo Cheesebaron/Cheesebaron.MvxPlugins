@@ -125,9 +125,8 @@ tested them against VS 2013.
 OPEN ISSUES
 ===========
 
-There are several aspects of the MvxPlugins.FormsPresenters that I would like to change, but due to unresolved issues these must wait for another day.
-
-I list them in the following sections for review and discussion.
+Tomasz Cielecki as the owner of MvxPlugins I would like some feedback from you about this change and some additional changes I have in mind. These additional changes
+can be deferred to another pull request or if you take your time, I might have them ready to be released as a single new revision.
 
 ### NuGet Target Strings ###
 
@@ -152,7 +151,7 @@ We also have for the portable project:
 
 The Target strings define a set of folders that are under the lib folder in the package. NuGet when it is setting up packages for the first time, for
 each project in the solution, must select one only of these directories and link the project to the assemblies in that folder. It also creates a
-packages.config folder and records details of these linkages for subsequent package restore process.
+packages.config file and records details of the directories these linkages for subsequent package restore process.
 
 The naming convention for these Target Strings is documented in [NuGet Enforced Package Conventions](https://docs.nuget.org/create/enforced-package-conventions)
 but seems to be hopelessly out of date.
@@ -161,14 +160,19 @@ Further references are [Stephen Cleary](http://blog.stephencleary.com/2012/05/fr
 
 There is only weak consistency in the naming of NuGet Target strings in the above!
 
-Does it matter? It should not matter once you get the package.config files created because after then NuGet should not care how you named these directories.
+Does it matter? It should not matter once you get the packages.config files created because after then NuGet should not care how you named these directories. Plus
+if you create your Solution from a Template, that Template will include packages.config files and the package restore does the rest. However Xamarin cross platform
+Solutions are typically have one or more PCL projects and many targets, each target needs one or more of the PCL's and a sunset of the assemblies like Droid and iOS10
+that are specific to each target.
 
-But the naming conventions must be important when you initially install NuGet packages, because for each ProjectTypeGuid it needs to select a single directory to link to.
+I would like to get it right. From what I can tell by looking into the Git source for NuGet, that code is being changed very frequently, and there are files that contain
+the information I need. FrameworkConstants.cs contains a list of FrameworkIdentifiers e.g. Xamarin.iOS.
 
-Quite possibly NuGet is robust enough not to fail here. It may for example when you are connecting the packages for a PCL project be smart enough to realise that there
-is only one directory that starts with "portable-". It might be smart enough to to realise that wp8 == wp80 || wp81 and so on.
+DefaultPortableFrameworkMappings.cs contains a Dictionary that has the profile number as key and then lists the CommonFrameworks supported. This excludes the Xamarin frameworks,
+not sure why, the Xamarin Frameworks should implement a dot net core framework on another target providing complete coverage of the .NET Framework number. Mostly that is true,
+and so the Nuget developers see no point in listing Xamarin targets in addition to .NET targets.
 
-Given some time I might experiment with this and see what works.
+I need to look into this further in order to understand how it works and then nail down the correct NuGet target strings.
 
 ### Update the Version of the NuSpec ###
 
