@@ -18,6 +18,8 @@
       </group>
       <group targetFramework="MonoAndroid10">
         <dependency id="Xamarin.GooglePlayServices" version="22.0.0.2" />
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="3.5.1" />
+        <dependency id="MvvmCross.HotTuna.Plugin.Messenger" version="3.5.1" />
       </group>
     </dependencies>
     <releaseNotes>
