@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Settings</id>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <title>MvvmCross Settings Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -34,6 +34,9 @@
     </group>
   </dependencies>
   <releaseNotes>
+1.2.1
+Fix nuspec dependencies
+
 1.2.0
 Removed permissions in Android
     

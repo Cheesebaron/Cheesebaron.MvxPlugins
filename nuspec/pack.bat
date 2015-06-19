@@ -8,10 +8,11 @@ nuget pack Cheesebaron.MvxPlugins.SimpleWebToken.nuspec -symbols
 nuget pack Cheesebaron.MvxPlugins.FormsPresenters.nuspec -symbols
 nuget pack Cheesebaron.MvxPlugins.Notifications.nuspec -symbols
 
-nuget push Cheesebaron.MvxPlugins.AppId.1.0.6.nupkg
-nuget push Cheesebaron.MvxPlugins.Sms.1.1.0.nupkg
-nuget push Cheesebaron.MvxPlugins.Settings.1.2.0.nupkg
-nuget push Cheesebaron.MvxPlugins.SimpleWebToken.1.0.1.nupkg
-nuget push Cheesebaron.MvxPlugins.FormsPresenters.0.0.2.nupkg
-nuget push Cheesebaron.MvxPlugins.Notifications.1.0.1.nupkg
+for /r %%i in (*.nupkg) do (call :pushpackage "%%i")
 pause
+
+:pushpackage
+  set np=%1
+  if "%np%"=="%np:symbols=%" (
+	nuget push %np% 
+  )
