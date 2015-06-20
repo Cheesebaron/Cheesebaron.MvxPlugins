@@ -9,6 +9,7 @@ namespace Cheesebaron.MvxPlugins.AppId.WindowsCommon
         public void Load()
         {
             Mvx.RegisterType<IAppIdGenerator, AppId>();
+            Mvx.RegisterType<IAppIdGeneratorEx, AppId>();
         }
     }
 }
