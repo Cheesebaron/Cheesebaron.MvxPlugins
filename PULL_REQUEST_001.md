@@ -36,7 +36,7 @@ First go to your PCL project settings page:
 
 ![PCL settings before](https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/wpsettingbefore.png)
 
-This is the **PCL profile 78** that we all have been using for some time now.
+This is the **PCL profile 49** that we all have been using for some time now.
 
 Notice the Targeting and Targets. This is a feature of the property page for a PCL project. You select a set of targets that this PCL is to be used by. This information
 is then compiled into the Assembly metadata and later checked by the consumer project.
@@ -65,7 +65,7 @@ The other thing you need to do is in your Windows Phone Xamarin project, open th
 
 Again this tells the build to locate Assemblies from the WP SDK 8.1 whereas previously it located them from the WP SDK 8.0.
 
-### How Does Changing from PCL Profile 78 to 259 Impact VS 2013 Developers ###
+### How Does Changing from PCL Profile 49 to 259 Impact VS 2013 Developers ###
 
 This change should not impact VS 2013 developers. The only real change is in the metadata in the PCL. PCL 259 has been around for quite some time now. What the metadata
 does is that allows the build to check the suitability of the PCL to be consumed by the Consumer. We have added two new targets, but we have not removed any existing targets.
@@ -170,9 +170,9 @@ the information I need. **FrameworkConstants.cs** contains a list of FrameworkId
 
 **DefaultPortableFrameworkMappings.cs** contains a Dictionary that has the profile number as key and then lists the CommonFrameworks supported.
 
-In this code the Xamarin frameworks like Xamarin.iOS and MonoAndroid are not considered to be a separate Common Framework. This is I believe because they implement dot net
-Frameworks like 4.5 as fully or nearly fully (one exception I know of relates to Data Annotations and Data Validation). Other Common Frameworks like "Client Profile" and
-Silverlight do not (the issue with Data Annotations is that the standard evolved and is no longer compatible with the version in the "Client Profile").
+In this code the Xamarin frameworks like Xamarin.iOS and MonoAndroid are not considered to be a separate Common Framework. This is I believe because Portable Frameworks only
+support common core features of .NET and not things that are operating system variant,  they implement dot net. The PCL profiles that target Xamarin platforms really only
+need to implement core .NET fully or nearly fully, and Xamarin have done this in their Mono derivatives.
 
 This could explain why Plunker does not include Xamarin in his NuGet string for PCL 259. It would seem to me though that we need the correct **FrameworkConstants.cs**
 fragments in the NuGet string for non PCL projects for NuGet to locate the correct Lib directory.
