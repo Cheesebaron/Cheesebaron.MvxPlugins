@@ -162,22 +162,28 @@ There is only weak consistency in the naming of NuGet Target strings in the abov
 
 Does it matter? It should not matter once you get the packages.config files created because after then NuGet should not care how you named these directories. Plus
 if you create your Solution from a Template, that Template will include packages.config files and the package restore does the rest. However Xamarin cross platform
-Solutions are typically have one or more PCL projects and many targets, each target needs one or more of the PCL's and a sunset of the assemblies like Droid and iOS10
+Solutions are typically have one or more PCL projects and many targets, each target needs one or more of the PCL's and a subset of the assemblies like Droid and iOS10
 that are specific to each target.
 
 I would like to get it right. From what I can tell by looking into the Git source for NuGet, that code is being changed very frequently, and there are files that contain
-the information I need. FrameworkConstants.cs contains a list of FrameworkIdentifiers e.g. Xamarin.iOS.
+the information I need. **FrameworkConstants.cs** contains a list of FrameworkIdentifiers e.g. Xamarin.iOS.
 
-DefaultPortableFrameworkMappings.cs contains a Dictionary that has the profile number as key and then lists the CommonFrameworks supported. This excludes the Xamarin frameworks,
-not sure why, the Xamarin Frameworks should implement a dot net core framework on another target providing complete coverage of the .NET Framework number. Mostly that is true,
-and so the Nuget developers see no point in listing Xamarin targets in addition to .NET targets.
+**DefaultPortableFrameworkMappings.cs** contains a Dictionary that has the profile number as key and then lists the CommonFrameworks supported.
 
-I need to look into this further in order to understand how it works and then nail down the correct NuGet target strings.
+In this code the Xamarin frameworks like Xamarin.iOS and MonoAndroid are not considered to be a separate Common Framework. This is I believe because they implement dot net
+Frameworks like 4.5 as fully or nearly fully (one exception I know of relates to Data Annotations and Data Validation). Other Common Frameworks like "Client Profile" and
+Silverlight do not (the issue with Data Annotations is that the standard evolved and is no longer compatible with the version in the "Client Profile").
 
-### Update the Version of the NuSpec ###
+This could explain why Plunker does not include Xamarin in his NuGet string for PCL 259. It would seem to me though that we need the correct **FrameworkConstants.cs**
+fragments in the NuGet string for non PCL projects for NuGet to locate the correct Lib directory.
+
+I need to look into this further in order to confirm my hunches and then nail down the correct NuGet target strings.
+
+### Update the Version Number of the NuSpec ###
 
 This could help avoid problems if the NuGet Target String changes. We would include a powershell script to rewrite package.config files when upgrading so that
-existing references copy over with a package restore.
+existing references copy over with a package restore. Meanwhile the original FormsPresenters will still be there and your users will not be impacted until they decide
+to upgrade to the new release.
 
 ### FormsPresenters NuSpec Issue Xamarin.Forms XAML Solution ###
 
@@ -201,11 +207,14 @@ What I would like to do for the next Version is to remove these. Instead what I 
 a Visual Studio Template. These Templates if you recall do something similar to the NuSpec substitutions enabling the developer to choose a solution other than Movies
 and to locate where the solution will be deposited.
 
-I will not attempt to do this for any of the other plugins, but it could be helpful for consistency. I will also add an additional MD file that documents
-the FormsPresnter solution from the viewpoint of a developer trying to use that plugin. If you need help in getting the remaining Plugins into the same state I can help.
+I do not plan to do this for any of the other plugins, but it could be helpful for consistency. I will also add an additional MD file that documents the FormsPresnter
+solution from the viewpoint of a developer trying to use that plugin. If you need help in getting the remaining Plugins into the same state I can help.
 
-On my own Site I intend to setup a collection of XAML based project and item templates that cover a range of things. They will need the FormsPresenters NuGet, but
-they cover a range of topics. For example usage of the new Entity Framework 7 for SQLite.
+On my own Site I intend to publish a collection of XAML based project and item templates that cover a range of things. They will need the FormsPresenters NuGet, but
+they cover a range of topics. For example: using both shared and PCL projects together; using rich data models that include Data Annotations, Validations and Defaults;
+use of Odata to transact models as JSON in both directions via RESTFUL interface with c# model code shared between Server and Client; usage of T4 to auto generate
+ViewModel inclusions from the Data Models; usage of the new Entity Framework 7 for SQLite; Using Open ID Connect to establish an X509 Client Certificate on a
+Mobile device.
 
 ### FormsPresenter for Windows and Windows Phone no Silverlight ###
 
@@ -216,6 +225,6 @@ As previously mentioned, this target is really a Windows Store App that can run 
 or Windows 10. That requires many enhancements to the Xamarin.Forms Schema, but right now for this target Xamarin do not completely implement everything that is in
 the original schema.
 
-I can write the FormsPresenter and sample component for this target.
+I plan to write the FormsPresenter and Sample project for this target.
 
 
