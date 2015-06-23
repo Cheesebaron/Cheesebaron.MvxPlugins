@@ -84,6 +84,7 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
             var viewModel = MvxPresenterHelpers.LoadViewModel(request);
 
             var mainPage = _mvxFormsApp.MainPage as NavigationPage;
+            page.BindingContext = viewModel;
 
             if (mainPage == null)
             {
@@ -103,7 +104,6 @@ namespace Cheesebaron.MvxPlugins.FormsPresenters.Core
                 }
             }
 
-            page.BindingContext = viewModel;
             return true;
         }
     }
