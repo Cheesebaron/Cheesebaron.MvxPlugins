@@ -36,11 +36,11 @@
   
     <!-- droid -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.FormsPresenters.Core.*" 
-      target="lib\MonoAndroid10" />
+      target="lib\MonoAndroid403" />
     <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.FormsPresenters.Droid.*" 
-      target="lib\MonoAndroid10" />
+      target="lib\MonoAndroid403" />
     <file src="DroidBootstrapContent\_FormsSetup.txt"
-      target="content\MonoAndroid10\ToDo-FormsPresenters\_Setup.txt" />
+      target="content\MonoAndroid403\ToDo-FormsPresenters\_Setup.txt" />
 
     
     <!-- touch -->
