@@ -26,11 +26,19 @@ Major contributors will be listed below.
 
 - [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
 - [Patrick Long][munkii] - WPF solution for [Settings][settings].
+- [Peter Burke][peterburke] - updating [FormsPresenters][fp] plugin to PCL Profile 259.
 
 Documentation
 =============
 
 For the moment look at the samples. More detailed docs will come in the Wiki (when someone adds it).
+
+Pull Requests
+=============
+
+| Date        | Dev                                 | Plugin                                      | Documentation                            | 
+| ----------- | ----------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| 15/Jun/2015 | [Peter Burke][peterburke]           | [FormsPresenters][fp]                       | [Upgrade to PCL Profile 259][pr20150615] |
 
 Other MvvmCross plugins
 =======================
@@ -88,3 +96,5 @@ License
 [fp]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/FormsPresenters
 [settings]: https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/tree/master/Settings
 [munkii]: https://github.com/munkii
+[peterburke]: https://github.com/PeterBurke
+[pr20150615]: https://github.com/PeterBurke/Cheesebaron.MvxPlugins/blob/master/PULL_REQUEST_001.md
