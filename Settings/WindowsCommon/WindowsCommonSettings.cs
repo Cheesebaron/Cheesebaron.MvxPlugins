@@ -8,19 +8,12 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
     public class WindowsCommonSettings
         : ISettings
     {
-        private static ApplicationDataContainer LocalSettings
-        {
-            get { return ApplicationData.Current.LocalSettings; }
-        }
-
-        private static ApplicationDataContainer RoamingSettings
-        {
-            get { return ApplicationData.Current.RoamingSettings; }
-        }
+        private static ApplicationDataContainer LocalSettings => ApplicationData.Current.LocalSettings;
+        private static ApplicationDataContainer RoamingSettings => ApplicationData.Current.RoamingSettings;
 
         private static T GetValue<T>(ApplicationDataContainer container, string key, T defaultValue = default(T))
         {
-            if (container == null) throw new ArgumentNullException("container");
+            if (container == null) throw new ArgumentNullException(nameof(container));
 
             object value;
 
@@ -43,7 +36,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
 
         private static bool AddOrUpdateValue<T>(ApplicationDataContainer container, string key, T value = default(T))
         {
-            if (container == null) throw new ArgumentNullException("container");
+            if (container == null) throw new ArgumentNullException(nameof(container));
 
             var serializedValue = JsonConvert.SerializeObject(value);
 
@@ -88,7 +81,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsCommon
             return Contains(!roaming ? LocalSettings : RoamingSettings, key);
         }
 
-        private bool ClearAllValues(ApplicationDataContainer container)
+        private static bool ClearAllValues(ApplicationDataContainer container)
         {
             container.Values.Clear();
             return true;
