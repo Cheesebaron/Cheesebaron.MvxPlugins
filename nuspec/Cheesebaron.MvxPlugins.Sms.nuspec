@@ -69,18 +69,18 @@
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*"
 	  target="lib\wpa8" />
     <file src="..\bin\Release\WindowsPhoneStore\Cheesebaron.MvxPlugins.SMS.WindowsPhoneStore.*" target="lib\wpa8" />
-    <file src="BootstrapContent\SmsPluginBootstrap.cs.pp" target="content\wp8\Bootstrap\SmsPluginBootstrap.cs.pp" />
+    <file src="BootstrapContent\SmsPluginBootstrap.cs.pp" target="content\wpa8\Bootstrap\SmsPluginBootstrap.cs.pp" />
   
     <!-- droid -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\MonoAndroid10" />
     <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.SMS.Droid.*" target="lib\MonoAndroid10" />
     <file src="BootstrapContent\SmsPluginBootstrap.cs.pp" 
-	  target="content\MonoAndroid\Bootstrap\SmsPluginBootstrap.cs.pp" />
+	  target="content\MonoAndroid10\Bootstrap\SmsPluginBootstrap.cs.pp" />
     
     <!-- touch -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\Xamarin.iOS10" />
     <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.SMS.Touch.*" target="lib\Xamarin.iOS10" />
-    <file src="TouchBootstrapContent\SmsPluginBootstrap.cs.pp" target="content\MonoTouch\Bootstrap\SmsPluginBootstrap.cs.pp" />
+    <file src="TouchBootstrapContent\SmsPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SmsPluginBootstrap.cs.pp" />
     
     <file src="..\SMS\**\*.cs" target="src\SMS" />
   </files>
