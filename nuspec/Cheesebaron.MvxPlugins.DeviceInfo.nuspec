@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Cheesebaron.MvxPlugins.DeviceInfo</id>
+    <version>0.0.1-pre2</version>
+    <title>MvvmCross Device Information Plugin</title>
+    <authors>Tomasz Cielecki</authors>
+    <owners>Tomasz Cielecki</owners>
+    <licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Device Information plugin for MvvmCross. Helps getting Device Information in your shared PCL project.</description>
+    <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone deviceinfo screen hardware identification xamarin</tags>
+    <dependencies>
+      <group targetFramework ="net">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="win">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="wpa">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="MonoAndroid">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="MonoTouch">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="Xamarin.iOS">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="portable-net45+win8+wpa81">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="uap">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+      <group targetFramework ="dotnet">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      </group>
+    </dependencies>
+    <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
+  </metadata>
+  <files>   
+    <!-- PCL -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" 
+	  target="lib\portable-net45+netcore45+wpa8+win8+MonoAndroid10+Xamarin.iOS10" />
+
+    <!-- phone store -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\wpa81" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.DeviceInfo.WindowsCommon.*" target="lib\wpa81" />
+    <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\wpa81\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
+
+	  <!-- win store -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\win8" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.DeviceInfo.WindowsCommon.*" target="lib\win8" />
+    <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\win8\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
+
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\portable-win8+wpa81" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.DeviceInfo.WindowsCommon.*" target="lib\portable-win8+wpa81" />
+    <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\portable-win8+wpa81\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
+  
+    <!-- droid -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\MonoAndroid10" />
+    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.DeviceInfo.Droid.*" target="lib\MonoAndroid10" />
+    <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\MonoAndroid10\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
+    
+    <!-- touch -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\Xamarin.iOS10" />
+    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.DeviceInfo.Touch.*" target="lib\Xamarin.iOS10" />
+    <file src="TouchBootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
+    
+    <file src="..\DeviceInfo\**\*.cs" target="src\DeviceInfo" />
+  </files>
+</package>
