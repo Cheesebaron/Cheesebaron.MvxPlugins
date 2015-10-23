@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Settings</id>
-    <version>1.2.2-pre</version>
+    <version>1.2.2-pre2</version>
     <title>MvvmCross Settings Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -14,47 +14,47 @@
     <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
   <dependencies>
     <group targetFramework ="net">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="win">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="wp">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="wpa">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="MonoAndroid">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="MonoTouch">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="Xamarin.iOS">
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="portable-net45+win8+wpa81+wp8">
       <dependency id="Newtonsoft.Json" version="7.0.1" />
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="uap">
       <dependency id="Newtonsoft.Json" version="7.0.1" />
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
     <group targetFramework ="dotnet">
       <dependency id="Newtonsoft.Json" version="7.0.1" />
-      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta3" />
-      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta3" />
+      <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta4" />
+      <dependency id="MvvmCross.HotTuna.MvvmCrossLibraries" version="4.0.0-beta4" />
     </group>
   </dependencies>
   <releaseNotes>
@@ -81,7 +81,7 @@ Fix regression for other types on iOS
 Fix boolean always returning default value on iOS
     
 1.1.5
-Built against 4.0.0-beta3 instead of main branch
+Built against 4.0.0-beta4 instead of main branch
 Added Guid support on Android and iOS
     
 1.1.4
@@ -141,7 +141,7 @@ Fixes boolean getter
     <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.Settings.Droid.*" target="lib\MonoAndroid10" />
     
     <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" 
-	  target="content\MonoAndroid\Bootstrap\SettingsPluginBootstrap.cs.pp" />
+	  target="content\MonoAndroid10\Bootstrap\SettingsPluginBootstrap.cs.pp" />
     
     <!-- touch -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\Xamarin.iOS10" />
