@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.DeviceInfo</id>
-    <version>0.0.1-pre2</version>
+    <version>0.0.1-pre3</version>
     <title>MvvmCross Device Information Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>

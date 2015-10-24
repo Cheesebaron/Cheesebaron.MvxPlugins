@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.SimpleWebToken</id>
-    <version>1.1.0-pre2</version>
+    <version>1.1.0-pre3</version>
     <title>MvvmCross SimpleWebToken Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>

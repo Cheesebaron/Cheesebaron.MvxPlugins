@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Settings</id>
-    <version>1.2.2-pre2</version>
+    <version>1.2.2-pre3</version>
     <title>MvvmCross Settings Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
