@@ -5,7 +5,6 @@ This repository is a collection of plugins for MvvmCross. Currently it consists 
 
 - **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
 - **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
-- **Notifications** A plugin which provides simple clients for registering and receiving notifications.
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
 - **SMS** A simple task to send SMS using default/install SMS applications on device.
@@ -54,7 +53,6 @@ License
 
 - **AppId** plugin is licensed under [Apache 2.0][apache]
 - **Connectivity** plugin is licensed under [Apache 2.0][apache]
-- **Notifications** plugin is licensed under [Apache 2.0][apache]
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
 - **SMS** plugin is licensed under [Apache 2.0][apache]
