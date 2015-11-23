@@ -119,3 +119,4 @@ ModernHttpClient/vendor/MonoAndroid/*
 ModernHttpClient/vendor/MonoTouch/*
 
 *.mdb
+*.userprefs
