@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Cheesebaron.MvxPlugins.Connectivity</id>
+    <version>0.0.1-pre3</version>
+    <title>MvvmCross Connectivity Plugin</title>
+    <authors>Tomasz Cielecki</authors>
+    <owners>Tomasz Cielecki</owners>
+    <licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A MvvmCross plugin to detect network changes in your application</description>
+    <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
+    <dependencies>
+      <group targetFramework ="net">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="win">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="wp">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="wpa">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="MonoAndroid">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="MonoTouch">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="Xamarin.iOS">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="portable-net45+win8+wpa81+wp8">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="uap">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+      <group targetFramework ="dotnet">
+        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+      </group>
+    </dependencies>
+    <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
+  </metadata>
+  <files>     
+    <!-- PCL -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10" />
+        
+    <!-- store -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\win81" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Connectivity.WindowsCommon.*" 
+      target="lib\win81" />
+    <file src="BootstrapContent\ConnectivityPluginBootstrap.cs.pp" 
+	  target="content\win81\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />
+        
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\wpa81" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Connectivity.WindowsCommon.*" 
+      target="lib\wpa81" />
+    <file src="BootstrapContent\ConnectivityPluginBootstrap.cs.pp" 
+      target="content\wpa81\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />
+            
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\portable-win81+wpa81" />
+    <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Connectivity.WindowsCommon.*" 
+      target="lib\portable-win81+wpa81" />
+    
+    <!-- droid -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\MonoAndroid10" />
+    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.Connectivity.Droid.*" target="lib\MonoAndroid10" />
+    <file src="BootstrapContent\ConnectivityPluginBootstrap.cs.pp" 
+      target="content\MonoAndroid10\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />
+        
+    <!-- touch -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\Xamarin.iOS10" />
+    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.Connectivity.Touch.*" target="lib\Xamarin.iOS10" />
+    <file src="TouchBootstrapContent\ConnectivityPluginBootstrap.cs.pp" 
+      target="content\Xamarin.iOS10\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />
+
+    <!-- dotnet -->
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\dotnet" />
+        
+    <file src="..\Connectivity\**\*.cs" target="src\Connectivity" />
+  </files>
+</package>

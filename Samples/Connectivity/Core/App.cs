@@ -8,7 +8,7 @@ namespace Core
     {
         public override void Initialize()
         {
-            RegisterAppStart<FirstViewModel>();
+            RegisterAppStart<TestViewModel>();
         }
     }
 }
