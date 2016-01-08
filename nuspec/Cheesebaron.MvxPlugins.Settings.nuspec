@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Settings</id>
-    <version>1.2.2-pre4</version>
+    <version>1.2.2-pre6</version>
     <title>MvvmCross Settings Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -58,16 +58,19 @@
     </group>
   </dependencies>
   <releaseNotes>
+1.2.2-pre6
+Built against MvvmCross 4.0.0-beta7
+
 1.2.2-pre
 Updated to JSON.Net 7
 Updated MvvmCross packages to latest beta
-   
+
 1.2.1
 Fix nuspec dependencies
 
 1.2.0
 Removed permissions in Android
-    
+
 1.1.9
 WindowsCommon version now internally serializing and deserializing using JSON.Net
 
@@ -76,20 +79,20 @@ Fix missing bootstrap content for iOS
 
 1.1.7
 Fix regression for other types on iOS
-    
+
 1.1.6
 Fix boolean always returning default value on iOS
-    
+
 1.1.5
 Built against 4.0.0-beta5 instead of main branch
 Added Guid support on Android and iOS
-    
+
 1.1.4
 Fixed bug where booleans would return false instead of specified default value on iOS
-    
+
 1.1.3
 Added Wpf
-    
+
 1.1.2
 Added WindowsCommon project to package
 Added PDB files
@@ -103,7 +106,7 @@ Added support for iOS Unified API
 
 1.0.2
 Fixes boolean getter
-    </releaseNotes>
+  </releaseNotes>
   </metadata>
   <files>   
     <!-- PCL -->
