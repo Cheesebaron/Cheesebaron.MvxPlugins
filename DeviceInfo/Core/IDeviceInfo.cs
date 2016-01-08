@@ -56,5 +56,10 @@
         /// Is device a tablet
         /// </summary>
         bool IsTablet { get; }
+
+        /// <summary>
+        /// Device Type
+        /// </summary>
+        DeviceType DeviceType { get; }
     }
 }

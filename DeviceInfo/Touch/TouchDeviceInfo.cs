@@ -64,5 +64,6 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo.Touch
             IntPtr newp,
             int newlen);
 
+        public DeviceType DeviceType => DeviceType.Apple;
     }
 }

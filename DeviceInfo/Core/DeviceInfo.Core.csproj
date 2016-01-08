@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DeviceType.cs" />
     <Compile Include="IDeviceInfo.cs" />
     <Compile Include="IDisplay.cs" />
     <Compile Include="Orientation.cs" />

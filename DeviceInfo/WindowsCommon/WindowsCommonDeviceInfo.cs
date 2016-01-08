@@ -55,5 +55,7 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo.WindowsCommon
 
             return tzname;
         }
+
+        public DeviceType DeviceType => DeviceType.Windows;
     }
 }

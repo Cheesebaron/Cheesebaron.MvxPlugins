@@ -118,5 +118,7 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo.Droid
                 return Convert.ToInt64(split[1])*1024;
             }
         }
+
+        public DeviceType DeviceType => DeviceType.Android;
     }
 }
