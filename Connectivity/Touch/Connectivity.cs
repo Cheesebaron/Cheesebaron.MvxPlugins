@@ -1,36 +1,56 @@
-using System.Collections.Generic;
+//---------------------------------------------------------------------------------
+// Copyright 2013-2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Licensed under the Apache License, Version 2.0 (the "License"); 
+// You may not use this file except in compliance with the License. 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+
+// THIS CODE IS PROVIDED *AS IS* BASIS, WITHOUT WARRANTIES OR 
+// CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+// INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR 
+// CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
+// MERCHANTABLITY OR NON-INFRINGEMENT. 
+
+// See the Apache 2 License for the specific language governing 
+// permissions and limitations under the License.
+//---------------------------------------------------------------------------------
+
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cheesebaron.MvxPlugins.Connectivity
+namespace Cheesebaron.MvxPlugins.Connectivity.Touch
 {
-    public class Connectivity: IConnectivity
+    public class Connectivity
+        : BaseConnectivity
     {
         public Connectivity()
         {
-            CheckConnectionStatus();
-            Reachability.ReachabilityChanged += (sender, args) => CheckConnectionStatus();
+            CheckConnectionStatus(false);
+            Reachability.ReachabilityChanged += CheckConnectionStatus;
         }
 
-        private void CheckConnectionStatus()
+        private void CheckConnectionStatus(object sender, EventArgs e) { CheckConnectionStatus(); }
+
+        private void CheckConnectionStatus(bool fireMissiles = true)
         {
-            var remoteHostStatus = Reachability.RemoteHostStatus();
             var internetStatus = Reachability.InternetConnectionStatus();
-            var localWifiStatus = Reachability.LocalWifiConnectionStatus();
 
-            IsConnected = (internetStatus != NetworkStatus.NotReachable) || (localWifiStatus != NetworkStatus.NotReachable) ||
-                           (remoteHostStatus != NetworkStatus.NotReachable);
+            switch (internetStatus) {
+                case NetworkStatus.NotReachable:
+                    ChangeConnectivityStatus(false, false, false, fireMissiles);
+                    break;
+                case NetworkStatus.ReachableViaCarrierDataNetwork:
+                    ChangeConnectivityStatus(true, false, true, fireMissiles);
+                    break;
+                case NetworkStatus.ReachableViaWiFiNetwork:
+                    ChangeConnectivityStatus(true, true, false, fireMissiles);
+                    break;
+            }
         }
 
-
-        public bool IsConnected { get; private set; }
-        public Task<bool> IsPingReachable(string host, int msTimeout = 5000) { throw new System.NotImplementedException(); }
-
-        public Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000)
+        public override Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken))
         {
-            return new Task<bool>(() => Reachability.IsHostReachable(host));
+            return Task.Run(() => Reachability.IsHostReachable(host), token);
         }
-
-        public IEnumerable<ConnectionType> ConnectionTypes { get; private set; }
-        public IEnumerable<int> Bandwidths { get; private set; }
     }
 }

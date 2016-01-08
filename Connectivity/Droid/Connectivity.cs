@@ -1,136 +1,87 @@
+//---------------------------------------------------------------------------------
+// Copyright 2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Licensed under the Apache License, Version 2.0 (the "License"); 
+// You may not use this file except in compliance with the License. 
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+
+// THIS CODE IS PROVIDED *AS IS* BASIS, WITHOUT WARRANTIES OR 
+// CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+// INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR 
+// CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, 
+// MERCHANTABLITY OR NON-INFRINGEMENT. 
+
+// See the Apache 2 License for the specific language governing 
+// permissions and limitations under the License.
+//---------------------------------------------------------------------------------
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using Android.App;
 using Android.Content;
 using Android.Net;
-using Android.Net.Wifi;
+using Android.Runtime;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid;
-using Cirrious.CrossCore.Exceptions;
 using Java.Net;
 
-namespace Cheesebaron.MvxPlugins.Connectivity
+namespace Cheesebaron.MvxPlugins.Connectivity.Droid
 {
-    public class Connectivity : IConnectivity
+    public class Connectivity : BaseConnectivity
     {
-        private ConnectivityManager _connectivityManager;
-        private WifiManager _wifiManager;
-
-        protected ConnectivityManager ConnectivityManager
+        public Connectivity()
         {
-            get
-            {
-                _connectivityManager = _connectivityManager ??
-                                       (ConnectivityManager)
-                                       (Mvx.Resolve<IMvxAndroidGlobals>()
-                                           .ApplicationContext.GetSystemService(Context.ConnectivityService));
-                return _connectivityManager;
-            }
+            ConnectivityChangeBroadcastReceiver.OnChange = info => NetworkChanged(info);
+
+            Mvx.CallbackWhenRegistered<IMvxAndroidGlobals>(x => {
+                var manager =
+                    x.ApplicationContext.GetSystemService(Context.ConnectivityService)
+                        .JavaCast<ConnectivityManager>();
+                NetworkChanged(manager.ActiveNetworkInfo, false);
+            });
         }
 
-        protected WifiManager WifiManager
+        private void NetworkChanged(NetworkInfo info, bool fireMissiles = true)
         {
-            get
-            {
-                _wifiManager = _wifiManager ??
-                               (WifiManager)
-                               (Mvx.Resolve<IMvxAndroidGlobals>()
-                                   .ApplicationContext.GetSystemService(Context.WifiService));
-                return _wifiManager;
-            }
+            if (info == null) return;
+
+            ChangeConnectivityStatus(info.IsConnected, info.Type == ConnectivityType.Wifi,
+                info.Type == ConnectivityType.Mobile, fireMissiles);
         }
 
-        public bool IsConnected
+        public override Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken))
         {
-            get
+            return Task.Run(() =>
             {
-                try
-                {
-                    var activeConnection = ConnectivityManager.ActiveNetworkInfo;
+                if (string.IsNullOrEmpty(host))
+                    throw new ArgumentNullException(nameof(host));
 
-                    return ((activeConnection != null) && activeConnection.IsConnected);
+                try {
+                    return InetAddress.GetByName(host).IsReachable(5000);
                 }
-                catch (Exception e)
-                {
-                    Mvx.Warning("Unable to get connected state - do you have ACCESS_NETWORK_STATE permission? - error: {0}", e.ToLongString());
+                catch (UnknownHostException) {
                     return false;
                 }
-            }
+            }, token);
         }
+    }
 
-        public async Task<bool> IsPingReachable(string host, int msTimeout = 5000)
+    [BroadcastReceiver(Enabled = true, Label = "Network Connectivity Receiver")]
+    [IntentFilter(new[] { ConnectivityManager.ConnectivityAction })]
+    public class ConnectivityChangeBroadcastReceiver : BroadcastReceiver
+    {
+        internal static Action<NetworkInfo> OnChange { get; set; }
+
+        public override void OnReceive(Context context, Intent intent)
         {
-            if (string.IsNullOrEmpty(host))
-                throw new ArgumentNullException("host");
+            if (intent.Extras == null || OnChange == null)
+                return;
 
-            if (!IsConnected)
-                return false;
+            var ni = intent.Extras.Get(ConnectivityManager.ExtraNetworkInfo) as NetworkInfo;
+            if (ni == null)
+                return;
 
-            return await Task.Run(() =>
-                {
-                    bool reachable;
-                    try
-                    {
-                        reachable = InetAddress.GetByName(host).IsReachable(msTimeout);
-                    }
-                    catch (UnknownHostException)
-                    {
-                        reachable = false;
-                    }
-                    return reachable;
-                });
-        }
-
-        public async Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000)
-        {
-            return await Task.Run(async () =>
-                {
-                    var sockaddr = new InetSocketAddress(host, port);
-                    using (var sock = new Socket())
-                    {
-                        try
-                        {
-                            await sock.ConnectAsync(sockaddr, msTimeout);
-                            return true;
-                        }
-                        catch (Exception)
-                        {
-                            return false;
-                        }
-                    }
-                });
-        }
-
-        public IEnumerable<ConnectionType> ConnectionTypes
-        {
-            get
-            {
-                ConnectionType type;
-                var activeConnection = ConnectivityManager.ActiveNetworkInfo;
-                switch (activeConnection.Type)
-                {
-                    case ConnectivityType.Wimax:
-                        type = ConnectionType.Wimax;
-                        break;
-                    case ConnectivityType.Wifi:
-                        type = ConnectionType.WiFi;
-                        break;
-                    default:
-                        type = ConnectionType.Cellular;
-                        break;
-                }
-                yield return type;
-            }
-        }
-
-        public IEnumerable<int> Bandwidths
-        {
-            get
-            {
-                if (ConnectionTypes.FirstOrDefault() == ConnectionType.WiFi)
-                    yield return WifiManager.ConnectionInfo.LinkSpeed;
-            }
+            OnChange?.Invoke(ni);
         }
     }
 }

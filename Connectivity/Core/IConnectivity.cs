@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------------------------------------------
-// Copyright 2013 Tomasz Cielecki (tomasz@ostebaronen.dk)
+// Copyright 2013-2015 Tomasz Cielecki (tomasz@ostebaronen.dk)
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // You may not use this file except in compliance with the License. 
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
@@ -14,17 +14,17 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
-    public interface IConnectivity
+    public interface IConnectivity: INotifyPropertyChanged
     {
-        bool IsConnected{ get; }
-        Task<bool> IsPingReachable(string host, int msTimeout = 5000);
-        Task<bool> IsPortReachable(string host, int port = 80, int msTimeout = 5000);
-        IEnumerable<ConnectionType> ConnectionTypes { get; }
-        IEnumerable<int> Bandwidths { get; }
+        bool IsConnected { get; }
+        bool IsWifi { get; }
+        bool IsCellular { get; }
+        Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken));
     }
 }
