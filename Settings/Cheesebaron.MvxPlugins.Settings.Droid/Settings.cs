@@ -20,8 +20,8 @@ using Android.Content;
 using Android.Preferences;
 
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid;
 
 namespace Cheesebaron.MvxPlugins.Settings.Droid
 {

@@ -1,4 +1,4 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
 using SMS.Sample.Core.ViewModels;
 
 namespace SMS.Sample.Core

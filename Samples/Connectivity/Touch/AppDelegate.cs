@@ -1,7 +1,7 @@
-﻿using Cirrious.CrossCore;
-using Cirrious.MvvmCross.Touch.Platform;
-using Cirrious.MvvmCross.Touch.Views.Presenters;
-using Cirrious.MvvmCross.ViewModels;
+﻿using MvvmCross.Platform;
+using MvvmCross.iOS.Platform;
+using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Core.ViewModels;
 using Foundation;
 using UIKit;
 
@@ -28,7 +28,7 @@ namespace Touch
             // If you have defined a root view controller, set it here:
             // Window.RootViewController = myViewController;
 
-            var presenter = new MvxTouchViewPresenter(this, Window);
+            var presenter = new MvxIosViewPresenter(this, Window);
 
             var setup = new Setup(this, presenter);
             setup.Initialize();

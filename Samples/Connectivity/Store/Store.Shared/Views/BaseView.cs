@@ -4,8 +4,8 @@ using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Navigation;
-using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.WindowsCommon.Views;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.WindowsCommon.Views;
 
 #if WINDOWS_PHONE_APP
 using Windows.Phone.UI.Input;

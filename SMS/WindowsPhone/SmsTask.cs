@@ -14,8 +14,8 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using Cirrious.CrossCore.WindowsPhone.Tasks;
 using Microsoft.Phone.Tasks;
+using MvvmCross.Platform.WindowsPhone.Tasks;
 
 namespace Cheesebaron.MvxPlugins.SMS
 {

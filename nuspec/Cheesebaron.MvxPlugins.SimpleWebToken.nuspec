@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.SimpleWebToken</id>
-    <version>1.1.0-pre5</version>
+    <version>1.1.0</version>
     <title>MvvmCross SimpleWebToken Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -13,37 +13,36 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin wpa81 win81 mvx</tags>
     <dependencies>
       <group targetFramework ="net">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="win">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="wp">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="wpa">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="MonoAndroid">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
-      </group>
-      <group targetFramework ="MonoTouch">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="Xamarin.iOS">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="portable-net45+win8+wpa81+wp8">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="uap">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
       <group targetFramework ="dotnet">
-        <dependency id="MvvmCross.HotTuna.CrossCore" version="4.0.0-beta5" />
+        <dependency id="MvvmCross.Platform" version="4.0.0" />
       </group>
     </dependencies>
     <releaseNotes>
+1.1.0
+Built against MvvmCross 4.0.0
 1.1.0-pre5
 Built against MvvmCross 4.0.0-beta7
 1.1.0-pre

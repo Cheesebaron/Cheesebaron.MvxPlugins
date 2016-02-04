@@ -1,5 +1,5 @@
 ﻿using Cheesebaron.MvxPlugins.Settings;
-using Cirrious.CrossCore.Plugins;
+using MvvmCross.Platform.Plugins;
 
 namespace WindowsCommon.Bootstrap
 {

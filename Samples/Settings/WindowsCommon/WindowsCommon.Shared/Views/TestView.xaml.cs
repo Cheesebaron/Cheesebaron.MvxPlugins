@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WindowsCommon.Core.ViewModels;
-using Cirrious.MvvmCross.WindowsCommon.Views;
+using MvvmCross.WindowsCommon.Views;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 

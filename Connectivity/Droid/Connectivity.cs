@@ -21,9 +21,9 @@ using Android.App;
 using Android.Content;
 using Android.Net;
 using Android.Runtime;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid;
 using Java.Net;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid;
 
 namespace Cheesebaron.MvxPlugins.Connectivity.Droid
 {

@@ -1,8 +1,8 @@
 ﻿using Cheesebaron.MvxPlugins.Settings.Interfaces;
 
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Exceptions;
-using Cirrious.CrossCore.Plugins;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Exceptions;
+using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.Settings.Wpf
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
 
 namespace WindowsCommon.Core.ViewModels
 {

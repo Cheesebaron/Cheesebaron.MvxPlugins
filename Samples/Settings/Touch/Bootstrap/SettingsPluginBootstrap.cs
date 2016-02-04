@@ -1,6 +1,6 @@
 using Cheesebaron.MvxPlugins.Settings;
 using Cheesebaron.MvxPlugins.Settings.Touch;
-using Cirrious.CrossCore.Plugins;
+using MvvmCross.Platform.Plugins;
 
 namespace Settings.Sample.Touch.Bootstrap
 {

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Cheesebaron.MvxPlugins.SMS;
-using Cirrious.CrossCore;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Platform;
+using MvvmCross.Core.ViewModels;
 
 namespace SMS.Sample.Core.ViewModels
 {

@@ -16,7 +16,7 @@
 
 using Android.Content;
 using Android.Net;
-using Cirrious.CrossCore.Droid.Platform;
+using MvvmCross.Droid.Platform;
 
 namespace Cheesebaron.MvxPlugins.SMS
 {

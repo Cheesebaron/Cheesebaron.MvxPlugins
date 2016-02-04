@@ -3,8 +3,8 @@ using Android.Content;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid;
 
 namespace Cheesebaron.MvxPlugins.DeviceInfo.Droid
 {

@@ -4,11 +4,11 @@ using Android.Content;
 
 using Cheesebaron.MvxPlugins.Settings.Droid;
 
-using Cirrious.CrossCore.Plugins;
-using Cirrious.MvvmCross.Droid.Platform;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Platform.Plugins;
+using MvvmCross.Core.ViewModels;
 
 using Core;
+using MvvmCross.Droid.Platform;
 
 namespace Droid
 {

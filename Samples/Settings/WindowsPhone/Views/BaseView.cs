@@ -1,5 +1,5 @@
-﻿using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.WindowsPhone.Views;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.WindowsPhone.Views;
 
 namespace Settings.Sample.WindowsPhone.Views
 {

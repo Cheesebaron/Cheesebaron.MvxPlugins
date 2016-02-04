@@ -1,5 +1,5 @@
 ﻿using WindowsCommon.Core.ViewModels;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
 
 namespace WindowsCommon.Core
 {

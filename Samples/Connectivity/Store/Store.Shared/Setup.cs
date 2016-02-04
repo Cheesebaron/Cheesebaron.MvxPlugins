@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
-using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.WindowsCommon.Platform;
-using Cirrious.MvvmCross.WindowsCommon.Views;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.WindowsCommon.Platform;
+using MvvmCross.WindowsCommon.Views;
 
 namespace Store
 {

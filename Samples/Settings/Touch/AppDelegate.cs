@@ -1,7 +1,7 @@
-﻿using Cirrious.CrossCore;
-using Cirrious.MvvmCross.Touch.Platform;
-using Cirrious.MvvmCross.Touch.Views.Presenters;
-using Cirrious.MvvmCross.ViewModels;
+﻿using MvvmCross.Platform;
+using MvvmCross.iOS.Platform;
+using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Core.ViewModels;
 using Foundation;
 using UIKit;
 
@@ -28,7 +28,7 @@ namespace Settings.Sample.Touch
             // create a new window instance based on the screen size
             _window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            var presenter = new MvxTouchViewPresenter(this, _window);
+            var presenter = new MvxIosViewPresenter(this, _window);
             var setup = new Setup(this, presenter);
             setup.Initialize();
 

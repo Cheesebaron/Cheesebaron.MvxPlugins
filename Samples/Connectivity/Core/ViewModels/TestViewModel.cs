@@ -2,7 +2,8 @@
 using System.Threading;
 using System.Windows.Input;
 using Cheesebaron.MvxPlugins.Connectivity;
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Core.ViewModels;
 
 namespace Core.ViewModels
 {

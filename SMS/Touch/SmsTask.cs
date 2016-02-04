@@ -15,22 +15,22 @@
 //---------------------------------------------------------------------------------
 
 using System;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Touch.Platform;
-using Cirrious.CrossCore.Touch.Views;
+using MvvmCross.Platform;
 using MessageUI;
 using UIKit;
+using MvvmCross.Platform.iOS.Platform;
+using MvvmCross.Platform.iOS.Views;
 
 namespace Cheesebaron.MvxPlugins.SMS.Touch
 {
-    public class SmsTask: MvxTouchTask, ISmsTask
+    public class SmsTask: MvxIosTask, ISmsTask
     {
-        private readonly IMvxTouchModalHost _modalHost;
+        private readonly IMvxIosModalHost _modalHost;
         private MFMessageComposeViewController _sms;
 
         public SmsTask()
         {
-            _modalHost = Mvx.Resolve<IMvxTouchModalHost>();
+            _modalHost = Mvx.Resolve<IMvxIosModalHost>();
         }
 
         public void SendSMS(string body, string phoneNumber)

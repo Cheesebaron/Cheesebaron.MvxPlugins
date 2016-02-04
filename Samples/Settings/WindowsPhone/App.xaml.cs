@@ -7,6 +7,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 using Settings.Sample.WindowsPhone.Resources;
+using MvvmCross.Platform;
+using MvvmCross.Core.ViewModels;
 
 namespace Settings.Sample.WindowsPhone
 {
@@ -69,7 +71,7 @@ namespace Settings.Sample.WindowsPhone
         {
             args.Cancel = true;
             RootFrame.Navigating -= RootFrameOnNavigating;
-            RootFrame.Dispatcher.BeginInvoke(() => Cirrious.CrossCore.Mvx.Resolve<Cirrious.MvvmCross.ViewModels.IMvxAppStart>().Start());
+            RootFrame.Dispatcher.BeginInvoke(() => Mvx.Resolve<IMvxAppStart>().Start());
         }
 
         // Code to execute when the application is activated (brought to foreground)

@@ -1,10 +1,10 @@
 using System;
 using Cirrious.FluentLayouts.Touch;
-using Cirrious.MvvmCross.Binding.BindingContext;
-using Cirrious.MvvmCross.Touch.Views;
 using Core.ViewModels;
 using Foundation;
 using UIKit;
+using MvvmCross.iOS.Views;
+using MvvmCross.Binding.BindingContext;
 
 namespace Settings.Sample.Touch.Views
 {

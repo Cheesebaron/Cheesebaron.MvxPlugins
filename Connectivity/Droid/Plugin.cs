@@ -14,8 +14,8 @@
 // permissions and limitations under the License.
 //---------------------------------------------------------------------------------
 
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Plugins;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.Connectivity.Droid
 {

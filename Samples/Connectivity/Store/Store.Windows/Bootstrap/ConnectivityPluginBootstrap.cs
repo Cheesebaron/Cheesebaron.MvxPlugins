@@ -1,5 +1,5 @@
 ﻿using Cheesebaron.MvxPlugins.Connectivity;
-using Cirrious.CrossCore.Plugins;
+using MvvmCross.Platform.Plugins;
 
 namespace Store.Bootstrap
 {

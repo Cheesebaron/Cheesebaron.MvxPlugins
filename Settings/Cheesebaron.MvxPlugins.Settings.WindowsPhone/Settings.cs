@@ -17,8 +17,8 @@
 
 using System.IO.IsolatedStorage;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Platform;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Platform;
 
 namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
 {
