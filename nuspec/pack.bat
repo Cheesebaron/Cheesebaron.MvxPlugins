@@ -1,7 +1,7 @@
 del *.nupkg
 nuget setapikey
 
-nuget pack Cheesebaron.MvxPlugins.AppId.nuspec -symbols
+nuget pack Cheesebaron.MvxPlugins.Connectivity.nuspec -symbols
 nuget pack Cheesebaron.MvxPlugins.DeviceInfo.nuspec -symbols
 nuget pack Cheesebaron.MvxPlugins.Settings.nuspec -symbols
 nuget pack Cheesebaron.MvxPlugins.SimpleWebToken.nuspec -symbols
