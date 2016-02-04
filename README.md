@@ -1,14 +1,13 @@
-MvxPlugins
+﻿MvxPlugins
 ==========
 
 This repository is a collection of plugins for MvvmCross. Currently it consists of the following plugins:
 
-- **AppId** A plugin for genererating a Unique application ID and get some basic information about the phone
+- **DeviceInfo** A plugin for getting information about your device, such as screen dimensions, device id, firmware version, memory, type and more.
 - **Connectivity** A plugin for getting network information and status. [aritchie's](https://github.com/aritchie/acrmvvmcross/tree/master/Acr.MvvmCross.Plugins.Network) plugin is a great alternative to this plugin.
 - **Settings** A plugin for saving simple key/value kind of settings into persistant storage
 - **SimpleWebToken** A plugin to create SimpleWebToken's from raw representations and to generate your own.
 - **SMS** A simple task to send SMS using default/install SMS applications on device.
-- **FormsPresenters** Presenters which make MvvmCross play along with Xamarin.Forms (mainly ViewModel navigation).
 - More to come! If you have a good idea, feel free to pitch it with me.
 
 Thanks to
@@ -23,7 +22,6 @@ Contributors
 ============
 Major contributors will be listed below.
 
-- [Marcos Cobeña Morián][marcos] - contributions to the [FormsPresenters][fp] plugin.
 - [Patrick Long][munkii] - WPF solution for [Settings][settings].
 
 Documentation
@@ -51,12 +49,11 @@ Other people are doing MvvmCross plugins as well and I think it is great to ment
 License
 =======
 
-- **AppId** plugin is licensed under [Apache 2.0][apache]
+- **DeviceInfo** plugin is licensed under [Apache 2.0][apache]
 - **Connectivity** plugin is licensed under [Apache 2.0][apache]
 - **Settings** plugin is licensed under [Apache 2.0][apache]
 - **SimpleWebToken** plugin is licensed under [Apache 2.0][apache]
 - **SMS** plugin is licensed under [Apache 2.0][apache]
-- **FormsPresenters** plugin is licensed under [MIT][mit]
 
 [apache]: https://www.apache.org/licenses/LICENSE-2.0.html
 [mit]: http://opensource.org/licenses/mit-license
