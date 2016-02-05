@@ -84,7 +84,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E2A2E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspecs", "Nuspecs", "{3C8E8577-3543-43C6-B337-76EDEE8FCBDA}"
 	ProjectSection(SolutionItems) = preProject
-		nuspec\Cheesebaron.MvxPlugins.AppId.nuspec = nuspec\Cheesebaron.MvxPlugins.AppId.nuspec
 		nuspec\Cheesebaron.MvxPlugins.Connectivity.nuspec = nuspec\Cheesebaron.MvxPlugins.Connectivity.nuspec
 		nuspec\Cheesebaron.MvxPlugins.DeviceInfo.nuspec = nuspec\Cheesebaron.MvxPlugins.DeviceInfo.nuspec
 		nuspec\Cheesebaron.MvxPlugins.Settings.nuspec = nuspec\Cheesebaron.MvxPlugins.Settings.nuspec
