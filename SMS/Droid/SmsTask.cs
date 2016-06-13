@@ -17,6 +17,7 @@
 using Android.Content;
 using Android.Net;
 using MvvmCross.Droid.Platform;
+using MvvmCross.Platform.Droid.Platform;
 
 namespace Cheesebaron.MvxPlugins.SMS
 {
