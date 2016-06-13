@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Sms</id>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
     <title>MvvmCross SMS Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -13,34 +13,36 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone sms xamarin</tags>
     <dependencies>
       <group targetFramework ="net">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="win">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="wp">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="wpa">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="MonoAndroid">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="Xamarin.iOS">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="portable-net45+win8+wpa81+wp8">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="uap">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
       <group targetFramework ="dotnet">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
       </group>
     </dependencies>
     <releaseNotes>
+1.2.4
+Built against MvvmCross 4.2.0
 1.2.3
 Built against MvvmCross 4.1.6
 1.2.1-1.2.2

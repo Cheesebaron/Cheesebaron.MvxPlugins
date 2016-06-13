@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Connectivity</id>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <title>MvvmCross Connectivity Plugin</title>
     <authors>Tomasz Cielecki</authors>
     <owners>Tomasz Cielecki</owners>
@@ -13,40 +13,40 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
       <group targetFramework ="net">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="win">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="wp">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="wpa">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="MonoAndroid">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="Xamarin.iOS">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="portable-net45+win8+wpa81+wp8">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="uap">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
       <group targetFramework ="dotnet">
-        <dependency id="MvvmCross.Platform" version="4.1.6" />
-        <dependency id="MvvmCross.Plugin.Messenger" version="4.1.6" />
+        <dependency id="MvvmCross.Platform" version="4.2.0" />
+        <dependency id="MvvmCross.Plugin.Messenger" version="4.2.0" />
       </group>
     </dependencies>
     <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
