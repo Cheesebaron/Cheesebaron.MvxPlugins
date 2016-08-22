@@ -50,6 +50,8 @@ namespace Cheesebaron.MvxPlugins.SMS.Touch
             if (uiViewController == null)
                 throw new ArgumentException("sender");
 
+            _sms.Finished -= HandleSmsFinished;
+
             uiViewController.DismissViewController(true, () => {});
             _modalHost.NativeModalViewControllerDisappearedOnItsOwn();
         }
