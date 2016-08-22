@@ -77,9 +77,13 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Droid
             if (intent.Extras == null || OnChange == null)
                 return;
 
-            var ni = intent.Extras.Get(ConnectivityManager.ExtraNetworkInfo) as NetworkInfo;
-            if (ni == null)
-                return;
+            //var ni = intent.Extras.Get(ConnectivityManager.ExtraNetworkInfo) as NetworkInfo;
+            //if (ni == null)
+            //    return;
+
+            var manager = context.GetSystemService(Context.ConnectivityService)
+                .JavaCast<ConnectivityManager>();
+            var ni = manager.ActiveNetworkInfo;
 
             OnChange?.Invoke(ni);
         }
