@@ -29,7 +29,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
         public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
 			if (string.IsNullOrEmpty(key))
-				throw new ArgumentException("Key must have a value", "key");
+				throw new ArgumentException("Key must have a value", nameof(key));
 			
 			lock(_locker)
 			{
@@ -90,8 +90,8 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
                                 break;
                             }
 
-                            throw new ArgumentException(string.Format("Type {0} is not supported", type),
-                                "defaultValue");
+                            throw new ArgumentException($"Type {type} is not supported",
+                                nameof(defaultValue));
                     }
 			    }
 
@@ -105,7 +105,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
         public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
         {
 			if (string.IsNullOrEmpty(key))
-				throw new ArgumentException("Key must have a value", "key");
+				throw new ArgumentException("Key must have a value", nameof(key));
 			
 			lock(_locker)
 			{
@@ -152,7 +152,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
 							break;
 						}
 						
-						throw new ArgumentException(string.Format("Type {0} is not supported", type), "value");
+						throw new ArgumentException($"Type {type} is not supported", nameof(value));
 				}
 				return defaults.Synchronize();
 			}
@@ -161,7 +161,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
         public bool Contains(string key, bool roaming = false)
         {
 			if (string.IsNullOrEmpty(key))
-				throw new ArgumentException("Key must have a value", "key");
+				throw new ArgumentException("Key must have a value", nameof(key));
 			
 			lock(_locker)
 			{
@@ -181,7 +181,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Touch
         public bool DeleteValue(string key, bool roaming = false)
         {
 			if (string.IsNullOrEmpty(key))
-				throw new ArgumentException("Key must have a value", "key");
+				throw new ArgumentException("Key must have a value", nameof(key));
 
 			lock(_locker)
 			{

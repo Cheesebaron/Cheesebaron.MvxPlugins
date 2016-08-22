@@ -50,7 +50,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
         public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have a value", "key");
+                throw new ArgumentException("Key must have a value", nameof(key));
 
             lock (_locker)
             {
@@ -112,8 +112,8 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                                 break;
                             }
 
-                            throw new ArgumentException(string.Format("Type {0} is not supported", type),
-                                "defaultValue");
+                            throw new ArgumentException($"Type {type} is not supported",
+                                nameof(defaultValue));
                     }
                     return (T)returnVal;
                 }
@@ -123,7 +123,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
         public bool AddOrUpdateValue<T>(string key, T value = default(T), bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have a value", "key");
+                throw new ArgumentException("Key must have a value", nameof(key));
 
             lock (_locker)
             {
@@ -168,7 +168,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
                                 break;
                             }
                             throw new ArgumentException(
-                                string.Format("Type {0} is not supported", type), "value");
+                                $"Type {type} is not supported", nameof(value));
 
                     }
                     return editor.Commit();
@@ -179,7 +179,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
         public bool DeleteValue(string key, bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have a value", "key");
+                throw new ArgumentException("Key must have a value", nameof(key));
 
             lock (_locker)
             {
@@ -195,7 +195,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
         public bool Contains(string key, bool roaming = false)
         {
             if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have a value", "key");
+                throw new ArgumentException("Key must have a value", nameof(key));
 
             lock (_locker)
             {

@@ -24,10 +24,7 @@ namespace Cheesebaron.MvxPlugins.Settings.WindowsPhone
 {
     public class Settings : ISettings
     {
-        private static IsolatedStorageSettings IsolatedStorageSettings
-        {
-            get { return IsolatedStorageSettings.ApplicationSettings; }
-        }
+        private static IsolatedStorageSettings IsolatedStorageSettings => IsolatedStorageSettings.ApplicationSettings;
 
         public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
