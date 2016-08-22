@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FC5A91C0-A918-4995-8AB6-48B392001CCE}"
 EndProject
@@ -131,12 +131,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectivitySample.Touch", 
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Samples\Connectivity\Store\Store.Shared\Store.Shared.projitems*{d44c42d6-bf55-43f4-be38-8ed01ae6562c}*SharedItemsImports = 13
+		Samples\Settings\WindowsCommon\WindowsCommon.Shared\WindowsCommon.Shared.projitems*{08a79c99-2a96-4663-bc4a-7a1d34bc0757}*SharedItemsImports = 13
 		Samples\Connectivity\Store\Store.Shared\Store.Shared.projitems*{2154bfbd-9471-42f7-920f-509d07bc9cdb}*SharedItemsImports = 4
+		Samples\Connectivity\Store\Store.Shared\Store.Shared.projitems*{226cf7a8-9a90-4938-8730-ccda4431adfd}*SharedItemsImports = 4
 		Samples\Settings\WindowsCommon\WindowsCommon.Shared\WindowsCommon.Shared.projitems*{ab42fcef-67dc-4ffc-99d7-cd65eca8066a}*SharedItemsImports = 4
 		Samples\Settings\WindowsCommon\WindowsCommon.Shared\WindowsCommon.Shared.projitems*{bed776c6-9d2c-4b4c-8495-0b0205966125}*SharedItemsImports = 4
-		Samples\Settings\WindowsCommon\WindowsCommon.Shared\WindowsCommon.Shared.projitems*{08a79c99-2a96-4663-bc4a-7a1d34bc0757}*SharedItemsImports = 13
-		Samples\Connectivity\Store\Store.Shared\Store.Shared.projitems*{226cf7a8-9a90-4938-8730-ccda4431adfd}*SharedItemsImports = 4
+		Samples\Connectivity\Store\Store.Shared\Store.Shared.projitems*{d44c42d6-bf55-43f4-be38-8ed01ae6562c}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
