@@ -1,6 +1,16 @@
 ﻿MvxPlugins
 ==========
 
+[![Build status](https://ci.appveyor.com/api/projects/status/p22bm2v0m41lgqni?svg=true)](https://ci.appveyor.com/project/Cheesebaron/cheesebaron-mvxplugins)
+
+| Plugin          | NuGet version                                                                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Settings        | [![NuGet](https://img.shields.io/nuget/v/Cheesebaron.MvxPlugins.Settings.svg?maxAge=2592000)](https://www.nuget.org/packages/Cheesebaron.MvxPlugins.Settings/)             |
+| DeviceInfo      | [![NuGet](https://img.shields.io/nuget/v/Cheesebaron.MvxPlugins.DeviceInfo.svg?maxAge=2592000)](https://www.nuget.org/packages/Cheesebaron.MvxPlugins.DeviceInfo/)         |
+| Connectivity    | [![NuGet](https://img.shields.io/nuget/v/Cheesebaron.MvxPlugins.Connectivity.svg?maxAge=2592000)](https://www.nuget.org/packages/Cheesebaron.MvxPlugins.Connectivity/)     |
+| SMS             | [![NuGet](https://img.shields.io/nuget/v/Cheesebaron.MvxPlugins.SMS.svg?maxAge=2592000)](https://www.nuget.org/packages/Cheesebaron.MvxPlugins.SMS/)                       |
+| SimpleWebToken  | [![NuGet](https://img.shields.io/nuget/v/Cheesebaron.MvxPlugins.SimpleWebToken.svg?maxAge=2592000)](https://www.nuget.org/packages/Cheesebaron.MvxPlugins.SimpleWebToken/) |
+
 This repository is a collection of plugins for MvvmCross. Currently it consists of the following plugins:
 
 - **DeviceInfo** A plugin for getting information about your device, such as screen dimensions, device id, firmware version, memory, type and more.
