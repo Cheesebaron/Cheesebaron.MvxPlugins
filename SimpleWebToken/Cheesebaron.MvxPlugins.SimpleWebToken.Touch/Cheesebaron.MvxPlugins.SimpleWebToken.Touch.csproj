@@ -25,7 +25,8 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\Release\Touch\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -34,10 +35,10 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Plugin.cs">
+    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.Console\Plugin.cs">
       <Link>Plugin.cs</Link>
     </Compile>
-    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\SimpleWebToken.cs">
+    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.Console\SimpleWebToken.cs">
       <Link>SimpleWebToken.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

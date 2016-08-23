@@ -47,13 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\Plugin.cs">
-      <Link>Plugin.cs</Link>
-    </Compile>
-    <Compile Include="..\Cheesebaron.MvxPlugins.SimpleWebToken.WindowsPhone\SimpleWebToken.cs">
-      <Link>SimpleWebToken.cs</Link>
-    </Compile>
+    <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleWebToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cheesebaron.MvxPlugins.SimpleWebToken\Cheesebaron.MvxPlugins.SimpleWebToken.csproj">
