@@ -5,3 +5,5 @@ deploy:
 - provider: NuGet
   api_key:
     secure: cjUFAKvz0TqOrRFYhnuiEspsrFKeRr1xdfS2H4YY2THW2JZ+tCwHVQxYqLm+UZ33
+  on:
+    appveyor_repo_tag: true
