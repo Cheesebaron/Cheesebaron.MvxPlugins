@@ -2,24 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Settings</id>
-    <version>1.3.0</version>
     <title>MvvmCross Settings Plugin</title>
-    <authors>Tomasz Cielecki</authors>
-    <owners>Tomasz Cielecki</owners>
-    <licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Settings Plugin for MvvmCross, supporting Android, iOS, Windows Phone 8/8.1 (silverlight),  Windows Store (Windows Phone 8.1 and Windows Store 8.1) and WPF projects.</description>
+    <description>Settings Plugin for MvvmCross, supporting Android, iOS, Windows Store (Windows Phone 8.1 and Windows Store 8.1) and WPF projects.</description>
     <tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin wpa81 win81 mvx</tags>
-    <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
   <dependencies>
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
     <group targetFramework ="win">
-      <dependency id="MvvmCross.Platform" version="4.2.3" />
-    </group>
-    <group targetFramework ="wp">
       <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
     <group targetFramework ="wpa">
@@ -44,79 +34,11 @@
       <dependency id="MvvmCross.Platform" version="4.2.3" />
     </group>
   </dependencies>
-  <releaseNotes>
-1.3.0
-Built against MvvmCross 4.2.3 and Newtonsoft.Json 9.0.1
-1.2.7
-Built against MvvmCross 4.2.0
-1.2.6
-Built against MvvmCross 4.1.6
-1.2.3-1.2.5
-Fix PCL targets, sorry about that :)
-
-1.2.2
-Built against MvvmCross 4.0.0
-    
-1.2.2-pre6
-Built against MvvmCross 4.0.0-beta7
-
-1.2.2-pre
-Updated to JSON.Net 7
-Updated MvvmCross packages to latest beta
-
-1.2.1
-Fix nuspec dependencies
-
-1.2.0
-Removed permissions in Android
-
-1.1.9
-WindowsCommon version now internally serializing and deserializing using JSON.Net
-
-1.1.8
-Fix missing bootstrap content for iOS
-
-1.1.7
-Fix regression for other types on iOS
-
-1.1.6
-Fix boolean always returning default value on iOS
-
-1.1.5
-Built against 4.0.0-beta5 instead of main branch
-Added Guid support on Android and iOS
-
-1.1.4
-Fixed bug where booleans would return false instead of specified default value on iOS
-
-1.1.3
-Added Wpf
-
-1.1.2
-Added WindowsCommon project to package
-Added PDB files
-Added source to package
-
-1.1.1
-Fix for "ArgumentException: 'jobject' must not be IntPtr.Zero. Parameter name: jobject"
-
-1.1.0
-Added support for iOS Unified API
-
-1.0.2
-Fixes boolean getter
-  </releaseNotes>
   </metadata>
   <files>   
     <!-- PCL -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" 
 	  target="lib\portable-net45+win+wpa81+wp80" />
-
-    <!-- phone -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\wp8" />
-    <file src="..\bin\Release\WindowsPhone\Cheesebaron.MvxPlugins.Settings.WindowsPhone.*" target="lib\wp8" />
-    <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" 
-	  target="content\wp8\Bootstrap\SettingsPluginBootstrap.cs.pp" />
     
     <!-- store -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\win81" />
@@ -128,7 +50,7 @@ Fixes boolean getter
     
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\portable-win81+wpa81" />
     <file src="..\bin\Release\WindowsCommon\Cheesebaron.MvxPlugins.Settings.WindowsCommon.*" 
-	  target="lib\portable-win81+wpa81" />
+	    target="lib\portable-win81+wpa81" />
     
     <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" 
 	  target="content\win81\Bootstrap\SettingsPluginBootstrap.cs.pp" />
@@ -158,7 +80,5 @@ Fixes boolean getter
     
     <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp" 
 	  target="content\net45\Bootstrap\SettingsPluginBootstrap.cs.pp" />
-    
-    <file src="..\Settings\**\*.cs" target="src\Settings" />
   </files>
 </package>

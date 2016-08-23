@@ -2,13 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Cheesebaron.MvxPlugins.Connectivity</id>
-    <version>1.0.0</version>
     <title>MvvmCross Connectivity Plugin</title>
-    <authors>Tomasz Cielecki</authors>
-    <owners>Tomasz Cielecki</owners>
-    <licenseUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A MvvmCross plugin to detect network changes in your application</description>
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone xamarin wpa81 win81 mvx</tags>
     <dependencies>
@@ -49,7 +43,6 @@
         <dependency id="MvvmCross.Plugin.Messenger" version="4.2.3" />
       </group>
     </dependencies>
-    <iconUrl>http://i.imgur.com/V3983YY.png</iconUrl>
   </metadata>
   <files>     
     <!-- PCL -->
@@ -86,7 +79,5 @@
 
     <!-- dotnet -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\dotnet" />
-        
-    <file src="..\Connectivity\**\*.cs" target="src\Connectivity" />
   </files>
 </package>
