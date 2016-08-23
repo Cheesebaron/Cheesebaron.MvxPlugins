@@ -50,7 +50,7 @@ Task("GitLink")
 	if (IsRunningOnWindows()) //pdbstr.exe and costura are not xplat currently
 		GitLink(sln.GetDirectory(), new GitLinkSettings {
 			ArgumentCustomization = args => args.Append(
-				"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch")
+				"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch,settingssample.windowscommon.windows,settingssample.windowscommon.windowsphone,connectivitysample.store.windows,connectivitysample.store.windowsphone")
 		});
 });
 
