@@ -7,28 +7,28 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wp wpdev windowsphone deviceinfo screen hardware identification xamarin</tags>
     <dependencies>
       <group targetFramework ="net">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="win">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="wpa">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="MonoAndroid">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="Xamarin.iOS">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="portable-net45+win8+wpa81">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="uap">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
       <group targetFramework ="dotnet">
-        <dependency id="MvvmCross.Platform" version="4.2.3" />
+        <dependency id="MvvmCross.Platform" version="4.3.0" />
       </group>
     </dependencies>
   </metadata>
