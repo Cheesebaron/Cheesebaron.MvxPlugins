@@ -28,6 +28,19 @@ Thanks to
 - [Coworkers at Brüel & Kjœr EMS](http://bksv.com) for allowing me to publicise code to generate a **SimpleWebToken**.
 - [Xamarin][xam] for providing a [reachability sample][reach] for Touch projects.
 
+Supported Platforms
+===================
+
+| Plugin/Platform | Android | iOS | UWP | Windows Phone 8.1 | Windows 8.1 |
+|-----------------|---------|-----|-----|-------------------|-------------|
+| Settings        |   x     |  x  |  x  |          x        |      x      |
+| Connectivity    |   x     |  x  |  x*  |          x        |      x      |
+| Device Info     |   x     |  x  |  x  |          x        |      x      |
+| SMS             |   x     |  x  |  x*  |          x        |      x      |
+| SimpleWebToken  |   x     |  x  |  x*  |          x        |      x      |
+
+> Note: *UWP is supported by using WindowsPhone 8.1/Windows 8.1 implementation
+
 Contributors 
 ============
 Major contributors will be listed below.
