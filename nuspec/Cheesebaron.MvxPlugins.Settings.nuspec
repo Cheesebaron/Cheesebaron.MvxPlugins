@@ -4,7 +4,7 @@
     <id>Cheesebaron.MvxPlugins.Settings</id>
     <title>MvvmCross Settings Plugin</title>
     <description>Settings Plugin for MvvmCross, supporting Android, iOS, Windows Store (Windows Phone 8.1 and Windows Store 8.1) and WPF projects.</description>
-    <tags>mvvm mvvmcross xamarin monodroid monotouch wpf wp wpdev windowsphone settings xamarin wpa81 win81 mvx</tags>
+    <tags>mvvm mvvmcross xamarin monodroid monotouch wpf windowsphone settings xamarin wpa81 win81 mvx</tags>
   <dependencies>
     <group targetFramework ="net">
       <dependency id="MvvmCross.Platform" version="4.3.0" />
