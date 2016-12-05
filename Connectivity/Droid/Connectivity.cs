@@ -21,9 +21,9 @@ using Android.App;
 using Android.Content;
 using Android.Net;
 using Android.Runtime;
-using Java.Net;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Droid;
+using System.Net.Http;
 
 namespace Cheesebaron.MvxPlugins.Connectivity.Droid
 {
@@ -49,20 +49,20 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Droid
                 info.Type == ConnectivityType.Mobile, fireMissiles);
         }
 
-        public override Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken))
+        private static readonly HttpClient HttpClient = new HttpClient();
+        public override async Task<bool> GetHostReachableAsync(string host, 
+            CancellationToken token = default(CancellationToken))
         {
-            return Task.Run(() =>
-            {
-                if (string.IsNullOrEmpty(host))
-                    throw new ArgumentNullException(nameof(host));
+            if (!IsConnected) return false;
 
-                try {
-                    return InetAddress.GetByName(host).IsReachable(5000);
-                }
-                catch (UnknownHostException) {
-                    return false;
-                }
-            }, token);
+            if (!host.StartsWith("http"))
+                host = "http://" + host;
+
+            HttpClient.DefaultRequestHeaders.Add("User-Agent", "Cheesebaron.MvxPlugins");
+            HttpClient.DefaultRequestHeaders.ConnectionClose = true;
+
+            var response = await HttpClient.GetAsync(host, token).ConfigureAwait(false);
+            return response.IsSuccessStatusCode;
         }
     }
 
