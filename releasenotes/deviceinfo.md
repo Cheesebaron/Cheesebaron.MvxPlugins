@@ -17,4 +17,8 @@
 
 ### New in 2.1.0
 
+* Built against MvvmCross 4.3.0
+
+### New in 2.2.0
+
 * Built against MvvmCross 4.4.0
