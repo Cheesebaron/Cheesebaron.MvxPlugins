@@ -48,7 +48,8 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Touch
             }
         }
 
-        public override Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken))
+        public override Task<bool> GetHostReachableAsync(string host, 
+            CancellationToken token = default(CancellationToken))
         {
             return Task.Run(() => Reachability.IsHostReachable(host), token);
         }

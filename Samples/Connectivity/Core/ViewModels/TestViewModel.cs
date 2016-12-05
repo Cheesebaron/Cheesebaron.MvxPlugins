@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Cheesebaron.MvxPlugins.Connectivity;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.ViewModels;
 
 namespace Core.ViewModels
@@ -11,7 +11,8 @@ namespace Core.ViewModels
     {
         private string _hostName;
         private bool _hostResolved;
-        private MvxCommand _resolveHostCommand;
+        private MvxAsyncCommand _resolveHostCommand;
+        private MvxCommand _goToWifiCommand;
 
         public TestViewModel(IConnectivity connectivity) { Connectivity = connectivity; }
 
@@ -20,30 +21,25 @@ namespace Core.ViewModels
         public string HostName
         {
             get { return _hostName; }
-            set
-            {
-                _hostName = value;
-                RaisePropertyChanged(() => HostName);
-            }
+            set { SetProperty(ref _hostName, value); }
         }
 
         public bool HostResolved
         {
             get { return _hostResolved; }
-            set
-            {
-                _hostResolved = value;
-                RaisePropertyChanged(() => HostResolved);
-            }
+            set { SetProperty(ref _hostResolved, value); }
         }
 
         public ICommand ResolveHostCommand =>
-            _resolveHostCommand ?? (_resolveHostCommand = new MvxCommand(DoResolveHostCommand));
+            _resolveHostCommand ?? (_resolveHostCommand = new MvxAsyncCommand(DoResolveHostCommand));
 
-        private async void DoResolveHostCommand()
+        public ICommand GoToWifiCommand =>
+            _goToWifiCommand ?? (_goToWifiCommand = new MvxCommand(() => ShowViewModel<WifiViewModel>()));
+
+        private async Task DoResolveHostCommand()
         {
             var cts = new CancellationTokenSource(new TimeSpan(0, 0, 1, 0));
-            HostResolved = await Connectivity.GetHostReachableAsync(HostName, cts.Token).ConfigureAwait(false);
+            HostResolved = await Connectivity.GetHostReachableAsync(HostName, cts.Token);
         }
     }
 }
