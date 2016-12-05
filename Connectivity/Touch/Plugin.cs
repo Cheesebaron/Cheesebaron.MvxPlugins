@@ -23,7 +23,8 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Touch
     {
         public void Load()
         {
-            Mvx.RegisterSingleton<IConnectivity>(new Connectivity());
+            Mvx.RegisterSingleton<IConnectivity>(() => new Connectivity());
+            Mvx.RegisterSingleton<IWifi>(() => new Wifi());
         }
     }
 }

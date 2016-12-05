@@ -36,6 +36,8 @@
     <Compile Include="BaseConnectivityService.cs" />
     <Compile Include="ConnectivityStatusChangedMessage.cs" />
     <Compile Include="IConnectivity.cs" />
+    <Compile Include="IWifi.cs" />
+    <Compile Include="Models\WifiInfo.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
