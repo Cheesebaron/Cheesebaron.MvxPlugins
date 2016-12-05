@@ -67,11 +67,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Sett
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Sample.Touch", "Samples\Settings\Touch\Settings.Sample.Touch.csproj", "{CD06D972-BA47-4E34-9DAE-C9D060998BD9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E2A2E03-C44B-4F05-857E-AED18F4EB4AE}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspecs", "Nuspecs", "{3C8E8577-3543-43C6-B337-76EDEE8FCBDA}"
 	ProjectSection(SolutionItems) = preProject
 		nuspec\Cheesebaron.MvxPlugins.Connectivity.nuspec = nuspec\Cheesebaron.MvxPlugins.Connectivity.nuspec
