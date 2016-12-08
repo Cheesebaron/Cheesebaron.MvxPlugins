@@ -33,12 +33,11 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Droid
         {
             ConnectivityChangeBroadcastReceiver.OnChange = info => NetworkChanged(info);
 
-            Mvx.CallbackWhenRegistered<IMvxAndroidGlobals>(x => {
-                var manager =
-                    x.ApplicationContext.GetSystemService(Context.ConnectivityService)
+            var globals = Mvx.Resolve<IMvxAndroidGlobals>();
+            var manager =
+                    globals.ApplicationContext.GetSystemService(Context.ConnectivityService)
                         .JavaCast<ConnectivityManager>();
-                NetworkChanged(manager.ActiveNetworkInfo, false);
-            });
+            NetworkChanged(manager.ActiveNetworkInfo, false);
         }
 
         private void NetworkChanged(NetworkInfo info, bool fireMissiles = true)
