@@ -22,3 +22,7 @@
 ### New in 2.2.0
 
 * Built against MvvmCross 4.4.0
+
+### New in 2.2.2
+
+* Added PreserveAttribute to help linker

@@ -16,3 +16,7 @@
 ### New in 2.2.1
 
 * Now calls connectivity check in Constructor on Android to get initial status
+
+### New in 2.2.2
+
+* Added PreserveAttribute to help linker
