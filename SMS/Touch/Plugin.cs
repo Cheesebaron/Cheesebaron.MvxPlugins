@@ -3,6 +3,7 @@ using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.SMS.Touch
 {
+    [Preserve(AllMembers = true)]
     public class Plugin : IMvxPlugin
     {
         public void Load()

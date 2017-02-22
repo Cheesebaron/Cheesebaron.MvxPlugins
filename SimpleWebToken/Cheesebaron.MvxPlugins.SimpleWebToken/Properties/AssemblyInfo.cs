@@ -28,3 +28,8 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: InternalsVisibleTo("Cheesebaron.MvxPlugins.SimpleWebToken.Droid")]
+[assembly: InternalsVisibleTo("Cheesebaron.MvxPlugins.SimpleWebToken.Touch")]
+[assembly: InternalsVisibleTo("Cheesebaron.MvxPlugins.SimpleWebToken.Console")]
+[assembly: InternalsVisibleTo("Cheesebaron.MvxPlugins.SimpleWebToken.WindowsCommon")]

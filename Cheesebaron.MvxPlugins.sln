@@ -74,6 +74,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspecs", "Nuspecs", "{3C8E
 		nuspec\Cheesebaron.MvxPlugins.Settings.nuspec = nuspec\Cheesebaron.MvxPlugins.Settings.nuspec
 		nuspec\Cheesebaron.MvxPlugins.SimpleWebToken.nuspec = nuspec\Cheesebaron.MvxPlugins.SimpleWebToken.nuspec
 		nuspec\Cheesebaron.MvxPlugins.Sms.nuspec = nuspec\Cheesebaron.MvxPlugins.Sms.nuspec
+		releasenotes\connectivity.md = releasenotes\connectivity.md
+		releasenotes\deviceinfo.md = releasenotes\deviceinfo.md
+		releasenotes\settings.md = releasenotes\settings.md
+		releasenotes\simplewebtoken.md = releasenotes\simplewebtoken.md
+		releasenotes\sms.md = releasenotes\sms.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsCommon", "WindowsCommon", "{4450C7EA-775C-4DA7-98C0-351508DFE972}"
@@ -115,6 +120,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectivitySample.Touch", "Samples\Connectivity\Touch\ConnectivitySample.Touch.csproj", "{2C1A2CFD-28C3-4383-BC8D-BC356F9EF7CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectivitySample.Droid", "Samples\Connectivity\Droid\ConnectivitySample.Droid.csproj", "{9D95237E-6738-44C9-B37A-8316708682A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{80469F8A-5845-49A4-92E9-B4B9B9AA5716}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		appveyor.yml = appveyor.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

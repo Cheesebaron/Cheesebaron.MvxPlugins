@@ -5,7 +5,8 @@ using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.Settings.Droid
 {
-    public class Plugin 
+    [Preserve(AllMembers = true)]
+    public class Plugin
         : IMvxConfigurablePlugin
     {
         private DroidCheeseSettingsConfiguration _config;
@@ -16,7 +17,7 @@ namespace Cheesebaron.MvxPlugins.Settings.Droid
             if (_loaded) return;
 
             var fileName = "";
-            if(_config != null)
+            if (_config != null)
                 fileName = _config.SettingsFileName;
 
             var instance = new Settings(fileName);

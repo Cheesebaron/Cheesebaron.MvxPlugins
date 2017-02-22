@@ -4,6 +4,7 @@ using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.SimpleWebToken
 {
+    [Preserve(AllMembers = true)]
     public class Plugin
         : IMvxPlugin
     {
