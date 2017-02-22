@@ -116,6 +116,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectivitySample.Touch", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectivitySample.Droid", "Samples\Connectivity\Droid\ConnectivitySample.Droid.csproj", "{9D95237E-6738-44C9-B37A-8316708682A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{80469F8A-5845-49A4-92E9-B4B9B9AA5716}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		appveyor.yml = appveyor.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Samples\Settings\WindowsCommon\WindowsCommon.Shared\WindowsCommon.Shared.projitems*{08a79c99-2a96-4663-bc4a-7a1d34bc0757}*SharedItemsImports = 13

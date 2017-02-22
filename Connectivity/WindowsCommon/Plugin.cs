@@ -19,6 +19,7 @@ using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.Connectivity.WindowsCommon
 {
+    [Preserve(AllMembers = true)]
     public class Plugin : IMvxPlugin
     {
         public void Load()

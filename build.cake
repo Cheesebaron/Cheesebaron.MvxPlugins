@@ -107,6 +107,8 @@ Task("UploadAppVeyorArtifact")
 	}
 });
 
-Task("Default").IsDependentOn("UploadAppVeyorArtifact").Does(() => {});
+Task("Default")
+	.IsDependentOn("UploadAppVeyorArtifact")
+	.Does(() => {});
 
 RunTarget(target);

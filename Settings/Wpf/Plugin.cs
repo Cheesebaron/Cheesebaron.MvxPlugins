@@ -6,6 +6,7 @@ using MvvmCross.Platform.Plugins;
 
 namespace Cheesebaron.MvxPlugins.Settings.Wpf
 {
+    [Preserve(AllMembers = true)]
     /// <summary>
     /// Plugin class
     /// </summary>
