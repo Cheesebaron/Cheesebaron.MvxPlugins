@@ -31,15 +31,13 @@ Thanks to
 Supported Platforms
 ===================
 
-| Plugin/Platform | Android | iOS | UWP | Windows Phone 8.1 | Windows 8.1 | WPF |
-|-----------------|---------|-----|-----|-------------------|-------------|-----|
-| Settings        |   x     |  x  |  x  |          x        |      x      |  x  |
-| Connectivity    |   x     |  x  |  x*  |          x        |      x      |    |
-| Device Info     |   x     |  x  |  x  |          x        |      x      |     |
-| SMS             |   x     |  x  |  x*  |          x        |      x      |    |
-| SimpleWebToken  |   x     |  x  |  x*  |          x        |      x      |  x |
-
-> Note: *UWP is supported by using WindowsPhone 8.1/Windows 8.1 implementation
+| Plugin/Platform | Android | iOS | UWP |  WPF |
+|-----------------|---------|-----|-----|------|
+| Settings        |   x     |  x  |  x  |   x  |
+| Connectivity    |   x     |  x  |  x  |      |
+| Device Info     |   x     |  x  |  x  |      |
+| SMS             |   x     |  x  |  x  |      |
+| SimpleWebToken  |   x     |  x  |  x  |   x  |
 
 Contributors 
 ============
