@@ -14,3 +14,8 @@
 ### New in 2.2.2
 
 * Added PreserveAttribute to help linker
+
+### New in 3.0.0
+
+* Now using PCLCrypto for HMACSHA256 hashing
+* Removed platform specific projects
