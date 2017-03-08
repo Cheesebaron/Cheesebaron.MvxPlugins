@@ -33,23 +33,23 @@
   <files>   
     <!-- PCL -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" 
-	    target="lib\portable-net45+win+wpa81+wp80" />
+	    target="lib\portable-net45+win+wpa81+wp80" exclude="**\*.mdb" />
 
     <!-- uwp -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\uap" />
-    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.SMS.WindowsUWP.*" target="lib\uap" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.SMS.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
     <file src="BootstrapContent\SmsPluginBootstrap.cs.pp"
 	    target="content\uap\Bootstrap\SmsPluginBootstrap.cs.pp" />
   
     <!-- droid -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\MonoAndroid10" />
-    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.SMS.Droid.*" target="lib\MonoAndroid10" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\MonoAndroid10" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.SMS.Droid.*" target="lib\MonoAndroid10" exclude="**\*.mdb" />
     <file src="BootstrapContent\SmsPluginBootstrap.cs.pp" 
 	    target="content\MonoAndroid10\Bootstrap\SmsPluginBootstrap.cs.pp" />
     
     <!-- touch -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\Xamarin.iOS10" />
-    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.SMS.Touch.*" target="lib\Xamarin.iOS10" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\Xamarin.iOS10" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.SMS.Touch.*" target="lib\Xamarin.iOS10" exclude="**\*.mdb" />
     <file src="TouchBootstrapContent\SmsPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\SmsPluginBootstrap.cs.pp" />
   </files>
 </package>

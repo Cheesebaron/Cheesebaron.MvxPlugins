@@ -30,21 +30,21 @@
   <files>   
     <!-- PCL -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" 
-	  target="lib\portable-net45+win+wpa81" />
+	    target="lib\portable-net45+win+wpa81" exclude="**\*.mdb" />
 
     <!-- uwp -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\uap" />
-    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.DeviceInfo.WindowsUWP.*" target="lib\uap" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.DeviceInfo.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
     <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\uap\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
     
     <!-- droid -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\MonoAndroid10" />
-    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.DeviceInfo.Droid.*" target="lib\MonoAndroid10" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\MonoAndroid10" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Droid\Cheesebaron.MvxPlugins.DeviceInfo.Droid.*" target="lib\MonoAndroid10" exclude="**\*.mdb" />
     <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\MonoAndroid10\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
     
     <!-- touch -->
-    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\Xamarin.iOS10" />
-    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.DeviceInfo.Touch.*" target="lib\Xamarin.iOS10" />
+    <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\Xamarin.iOS10" exclude="**\*.mdb" />
+    <file src="..\bin\Release\Touch\Cheesebaron.MvxPlugins.DeviceInfo.Touch.*" target="lib\Xamarin.iOS10" exclude="**\*.mdb" />
     <file src="TouchBootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\Xamarin.iOS10\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
   </files>
 </package>
