@@ -2,7 +2,7 @@
 using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 
-namespace Cheesebaron.MvxPlugins.Settings.Uwp
+namespace Cheesebaron.MvxPlugins.Settings.WindowsUWP
 {
     public class Plugin
         : IMvxPlugin

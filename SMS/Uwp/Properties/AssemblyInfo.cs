@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cheesebaron.MvxPlugins.SMS.WindowsUwp")]
+[assembly: AssemblyTitle("Cheesebaron.MvxPlugins.SMS.WindowsUWP")]
 [assembly: AssemblyDescription("SMS plugin for MvvmCross, Windows UWP")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Cheesebaron.MvxPlugins.SMS.WindowsUwp")]
+[assembly: AssemblyProduct("Cheesebaron.MvxPlugins.SMS.WindowsUWP")]
 [assembly: AssemblyCopyright("Copyright © Tomasz Cielecki 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

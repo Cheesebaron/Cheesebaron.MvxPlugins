@@ -1,6 +1,6 @@
 using Windows.ApplicationModel.Chat;
 
-namespace Cheesebaron.MvxPlugins.SMS.WindowsUwp
+namespace Cheesebaron.MvxPlugins.SMS.WindowsUWP
 {
     public class SmsTask : ISmsTask
     {

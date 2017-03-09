@@ -57,7 +57,7 @@
 
     <!-- uwp -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Connectivity.*" target="lib\uap" exclude="**\*.mdb" />
-    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.Connectivity.Uwp.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\WindowsUWP\Cheesebaron.MvxPlugins.Connectivity.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
     <file src="BootstrapContent\ConnectivityPluginBootstrap.cs.pp"
       target="content\uap\Bootstrap\ConnectivityPluginBootstrap.cs.pp" />
   </files>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Windows.Networking.Connectivity;
 using Cheesebaron.MvxPlugins.Connectivity.Models;
 
-namespace Cheesebaron.MvxPlugins.Connectivity.Uwp
+namespace Cheesebaron.MvxPlugins.Connectivity.WindowsUWP
 {
     public class Wifi: IWifi
     {

@@ -3,7 +3,7 @@ using Windows.Storage;
 using Cheesebaron.MvxPlugins.Settings.Interfaces;
 using Newtonsoft.Json;
 
-namespace Cheesebaron.MvxPlugins.Settings.Uwp
+namespace Cheesebaron.MvxPlugins.Settings.WindowsUWP
 {
     public class WindowsUwpSettings : ISettings
     {

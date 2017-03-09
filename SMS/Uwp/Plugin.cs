@@ -1,7 +1,7 @@
 ﻿using MvvmCross.Platform;
 using MvvmCross.Platform.Plugins;
 
-namespace Cheesebaron.MvxPlugins.SMS.WindowsUwp
+namespace Cheesebaron.MvxPlugins.SMS.WindowsUWP
 {
     public class Plugin : IMvxPlugin
     {
