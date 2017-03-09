@@ -31,3 +31,7 @@
 
 * Discontinued Windows Phone 8.1 and Windows 8.1 support in line with latest MvvmCross develop builds
 * Added Windows UWP implementation
+
+### New in 3.0.1
+
+* Fixed rd.xml missing (thanks to @turibbio) #67
