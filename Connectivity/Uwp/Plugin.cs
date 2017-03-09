@@ -8,6 +8,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity.WindowsUWP
         public void Load()
         {
             Mvx.RegisterSingleton<IConnectivity>(new Connectivity());
+            Mvx.RegisterSingleton<IWifi>(() => new Wifi());
         }
     }
 }
