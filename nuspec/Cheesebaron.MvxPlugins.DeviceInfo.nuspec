@@ -34,7 +34,7 @@
 
     <!-- uwp -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.DeviceInfo.*" target="lib\uap" exclude="**\*.mdb" />
-    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.DeviceInfo.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\WindowsUWP\Cheesebaron.MvxPlugins.DeviceInfo.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
     <file src="BootstrapContent\DeviceInfoPluginBootstrap.cs.pp" target="content\uap\Bootstrap\DeviceInfoPluginBootstrap.cs.pp" />
     
     <!-- droid -->

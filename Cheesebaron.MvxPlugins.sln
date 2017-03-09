@@ -95,11 +95,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{80469F8A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceInfo.WindowsUWP", "DeviceInfo\WindowsUWP\DeviceInfo.WindowsUWP.csproj", "{63FBB7B4-2ADC-471C-BEEA-FF958E8B1928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Uwp", "SMS\Uwp\SMS.Uwp.csproj", "{1E8A773A-5EDB-4A97-B0FE-DAC633FD5DEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.WindowsUWP", "SMS\Uwp\SMS.WindowsUWP.csproj", "{1E8A773A-5EDB-4A97-B0FE-DAC633FD5DEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Settings.Uwp", "Settings\Uwp\Cheesebaron.MvxPlugins.Settings.Uwp.csproj", "{B92F3879-05AA-48BB-9075-27E8681BC96B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheesebaron.MvxPlugins.Settings.WindowsUWP", "Settings\Uwp\Cheesebaron.MvxPlugins.Settings.WindowsUWP.csproj", "{B92F3879-05AA-48BB-9075-27E8681BC96B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connectivity.Uwp", "Connectivity\Uwp\Connectivity.Uwp.csproj", "{DB05AC35-4CD3-4BDF-8828-3724A4F6D901}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connectivity.WindowsUWP", "Connectivity\Uwp\Connectivity.WindowsUWP.csproj", "{DB05AC35-4CD3-4BDF-8828-3724A4F6D901}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

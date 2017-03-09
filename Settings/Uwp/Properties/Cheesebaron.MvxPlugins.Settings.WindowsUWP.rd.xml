@@ -25,7 +25,7 @@
     http://go.microsoft.com/fwlink/?LinkID=391919
 -->
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
-  <Library Name="Uwp">
+  <Library Name="Cheesebaron.MvxPlugins.Settings.WindowsUWP">
 
   	<!-- add directives for your library here -->
 

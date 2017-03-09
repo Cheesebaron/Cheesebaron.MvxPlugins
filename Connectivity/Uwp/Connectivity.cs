@@ -5,7 +5,7 @@ using Windows.Networking;
 using Windows.Networking.Connectivity;
 using Windows.Networking.Sockets;
 
-namespace Cheesebaron.MvxPlugins.Connectivity.Uwp
+namespace Cheesebaron.MvxPlugins.Connectivity.WindowsUWP
 {
     public class Connectivity
         : BaseConnectivity

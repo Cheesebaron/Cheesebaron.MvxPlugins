@@ -37,7 +37,7 @@
 
     <!-- uwp -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.SMS.*" target="lib\uap" exclude="**\*.mdb" />
-    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.SMS.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\WindowsUWP\Cheesebaron.MvxPlugins.SMS.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
     <file src="BootstrapContent\SmsPluginBootstrap.cs.pp"
 	    target="content\uap\Bootstrap\SmsPluginBootstrap.cs.pp" />
   

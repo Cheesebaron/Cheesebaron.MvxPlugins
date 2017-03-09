@@ -64,7 +64,7 @@
 
     <!-- wpf -->
     <file src="..\bin\Release\Portable\Cheesebaron.MvxPlugins.Settings.*" target="lib\uap" exclude="**\*.mdb" />
-    <file src="..\bin\Release\Uwp\Cheesebaron.MvxPlugins.Settings.Uwp.*" target="lib\uap" exclude="**\*.mdb" />
+    <file src="..\bin\Release\WindowsUWP\Cheesebaron.MvxPlugins.Settings.WindowsUWP.*" target="lib\uap" exclude="**\*.mdb" />
 
     <file src="BootstrapContent\SettingsPluginBootstrap.cs.pp"
 	    target="content\uap\Bootstrap\SettingsPluginBootstrap.cs.pp" />
