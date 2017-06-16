@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
-    "MvvmCross.Platform": "4.4.0",
+    "MvvmCross.Platform": "5.0.2",
     "Newtonsoft.Json": "9.0.1"
   },
   "frameworks": {
