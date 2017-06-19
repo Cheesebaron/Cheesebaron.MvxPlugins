@@ -22187,10 +22187,7 @@
     },
     "dependencies": {
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
-      "MvvmCross.Platform": {
-        "target": "Package",
-        "version": "[5.0.2, )"
-      }
+      "MvvmCross.Platform": "5.0.2"
     },
     "frameworks": {
       "uap10.0": {}
