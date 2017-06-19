@@ -35,3 +35,7 @@
 ### New in 3.0.1
 
 * Fixed rd.xml missing (thanks to @turibbio) #67
+
+### New in 3.1.0
+
+* Built against MvvmCross 5.0.2

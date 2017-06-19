@@ -19,3 +19,7 @@
 
 * Now using PCLCrypto for HMACSHA256 hashing
 * Removed platform specific projects
+
+### New in 3.1.0
+
+* Built against MvvmCross 5.0.2
