@@ -92,6 +92,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Droid
                 {
                     IpAddress = androidInfo.IpAddress.ToString(),
                     MacAddress = androidInfo.MacAddress,
+                    // Android RSSI is dBm
                     Rssi = androidInfo.Rssi
                 }
             };

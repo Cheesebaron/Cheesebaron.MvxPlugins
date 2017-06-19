@@ -19,8 +19,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Touch
             var wifiInfo = new WifiInfo();
             try
             {
-                NSDictionary dict;
-                var status = CaptiveNetwork.TryCopyCurrentNetworkInfo("en0", out dict);
+                var status = CaptiveNetwork.TryCopyCurrentNetworkInfo("en0", out NSDictionary dict);
                 if (status == StatusCode.OK)
                 {
                     var bssid = dict[CaptiveNetwork.NetworkInfoKeyBSSID];
@@ -56,15 +55,12 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Touch
             {
                 var wifiInfo = new List<WifiInfo>();
 
-                string[] supportedInterfaces;
-                var status = CaptiveNetwork.TryGetSupportedInterfaces(out supportedInterfaces);
-
+                var status = CaptiveNetwork.TryGetSupportedInterfaces(out string[] supportedInterfaces);
                 if (status == StatusCode.OK && supportedInterfaces != null)
                 {
                     foreach (var @interface in supportedInterfaces)
                     {
-                        NSDictionary dict;
-                        CaptiveNetwork.TryCopyCurrentNetworkInfo(@interface, out dict);
+                        CaptiveNetwork.TryCopyCurrentNetworkInfo(@interface, out NSDictionary dict);
 
                         var bssid = dict[CaptiveNetwork.NetworkInfoKeyBSSID];
                         var ssid = dict[CaptiveNetwork.NetworkInfoKeySSID];
