@@ -42,7 +42,11 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Droid
 
         private void NetworkChanged(NetworkInfo info, bool fireMissiles = true)
         {
-            if (info == null) return;
+            if (info == null) // null when airplane mode
+            {
+                ChangeConnectivityStatus(false, false, false, fireMissiles);
+                return;
+            }
 
             ChangeConnectivityStatus(info.IsConnected, info.Type == ConnectivityType.Wifi,
                 info.Type == ConnectivityType.Mobile, fireMissiles);
