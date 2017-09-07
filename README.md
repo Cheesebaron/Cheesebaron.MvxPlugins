@@ -1,7 +1,7 @@
 ﻿MvxPlugins
 ==========
 
-[![Build status](https://ci.appveyor.com/api/projects/status/p22bm2v0m41lgqni?svg=true)](https://ci.appveyor.com/project/Cheesebaron/cheesebaron-mvxplugins)
+[![Build status](https://ci.appveyor.com/api/projects/status/qr68nc7l8n8pq5yd?svg=true)](https://ci.appveyor.com/project/Cheesebaron/cheesebaron-mvxplugins)
 
 | Plugin          | NuGet version                                                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
