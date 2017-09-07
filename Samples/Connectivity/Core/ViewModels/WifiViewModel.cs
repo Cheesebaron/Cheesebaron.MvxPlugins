@@ -25,7 +25,7 @@ namespace Core.ViewModels
         public string IpAddress => _info.Extra?.IpAddress;
         public string MacAddress => _info.Extra?.MacAddress;
         public string SecurityMode => _info.Extra?.SecurityMode;
-        public int? Rssi => _info.Extra?.Rssi;
+        public int? Rssi => (int?) _info.Extra?.Rssi;
     }
 
 
