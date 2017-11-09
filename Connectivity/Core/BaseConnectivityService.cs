@@ -20,11 +20,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Plugins.Messenger;
 using MvvmCross.Platform;
+using System;
 
 namespace Cheesebaron.MvxPlugins.Connectivity
 {
     public abstract class BaseConnectivity 
-        : IConnectivity
+        : IConnectivity, IDisposable
     {
         private bool _isConnected;
         private bool _isWifi;
@@ -93,6 +94,15 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }
