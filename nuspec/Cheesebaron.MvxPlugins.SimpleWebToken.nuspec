@@ -7,7 +7,7 @@
     <tags>mvvm mvvmcross xamarin monodroid monotouch wpf settings xamarin wpa81 win81 mvx</tags>
     <dependencies>
       <group targetFramework ="portable-net45+win8+wpa81+wp8">
-        <dependency id="MvvmCross.Platform" version="5.0.2" />
+        <dependency id="MvvmCross.Platform" version="5.4.2" />
         <dependency id="PCLCrypto" version="2.0.147" />
       </group>
     </dependencies>

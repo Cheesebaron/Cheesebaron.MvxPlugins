@@ -1,3 +1,7 @@
+### New in 3.2.0
+
+* Built against MvvmCross 5.4.2
+
 ### New in 3.1.0
 
 * Built against MvvmCross 5.0.2

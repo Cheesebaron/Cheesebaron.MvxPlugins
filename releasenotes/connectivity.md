@@ -1,3 +1,8 @@
+### New in 3.2.0
+
+* Built against MvvmCross 5.4.2
+* Android implementation accomodates new rules about having to explicitly register broadcast receivers
+
 ### New in 3.1.0
 
 * Built against MvvmCross 5.0.2
