@@ -239,11 +239,6 @@ nuspec/nuget.exe
 
 #Build
 project.lock.json
-tools/Cake/
-tools/Addins/
-tools/gitlink/
-tools/GitVersion.CommandLine/
-tools/nuget.exe
-tools/packages.config.md5sum
+tools/
 artifacts/
 *.nupkg
