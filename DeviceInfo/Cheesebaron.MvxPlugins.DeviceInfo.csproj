@@ -5,7 +5,7 @@
     <RootNamespace>Cheesebaron.MvxPlugins.DeviceInfo</RootNamespace>
     <PackageId>Cheesebaron.MvxPlugins.DeviceInfo</PackageId>
     <TargetFrameworks>Xamarin.iOS10;MonoAndroid81;uap10.0.16299</TargetFrameworks>
-    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/deviceinfo.md<PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/deviceinfo.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

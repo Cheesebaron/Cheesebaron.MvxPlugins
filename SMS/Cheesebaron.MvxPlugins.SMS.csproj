@@ -5,7 +5,7 @@
     <RootNamespace>Cheesebaron.MvxPlugins.SMS</RootNamespace>
     <PackageId>Cheesebaron.MvxPlugins.SMS</PackageId>
     <TargetFrameworks>Xamarin.iOS10;MonoAndroid81;net471;uap10.0.16299</TargetFrameworks>
-    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/sms.md<PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/sms.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

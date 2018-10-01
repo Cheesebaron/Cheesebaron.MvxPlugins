@@ -5,7 +5,7 @@
     <RootNamespace>Cheesebaron.MvxPlugins.Settings</RootNamespace>
     <PackageId>Cheesebaron.MvxPlugins.Settings</PackageId>
     <TargetFrameworks>Xamarin.iOS10;MonoAndroid81;net471;uap10.0.16299</TargetFrameworks>
-    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/settings.md<PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/settings.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

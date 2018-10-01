@@ -5,7 +5,7 @@
     <RootNamespace>Cheesebaron.MvxPlugins.SimpleWebToken</RootNamespace>
     <PackageId>Cheesebaron.MvxPlugins.SimpleWebToken</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/simplewebtoken.md<PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/simplewebtoken.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
