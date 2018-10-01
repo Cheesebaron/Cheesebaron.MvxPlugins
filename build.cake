@@ -1,115 +1,102 @@
 #tool "nuget:?package=GitVersion.CommandLine"
-#tool "nuget:?package=gitlink&version=2.4.0"
 #tool "nuget:?package=vswhere"
 
-var sln = new FilePath("Cheesebaron.MvxPlugins.sln");
-var binDir = new DirectoryPath("bin");
-var outputDir = new DirectoryPath("artifacts");
+#addin "nuget:?package=Cake.Figlet"
+
+var sln = new FilePath("./Cheesebaron.MvxPlugins.sln");
+var outputDir = new DirectoryPath("./artifacts");
 var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
+var verbosityArg = Argument("verbosity", "Minimal");
+var verbosity = Verbosity.Minimal;
 
 var isRunningOnAppVeyor = AppVeyor.IsRunningOnAppVeyor;
 var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
 
-Task("Clean").Does(() =>
+GitVersion versionInfo = null;
+Setup(context => {
+    versionInfo = context.GitVersion(new GitVersionSettings {
+        UpdateAssemblyInfo = true,
+        OutputType = GitVersionOutput.Json
+    });
+
+    if (isRunningOnAppVeyor)
+    {
+        var buildNumber = AppVeyor.Environment.Build.Number;
+        AppVeyor.UpdateBuildVersion(versionInfo.InformationalVersion
+            + "-" + buildNumber);
+    }
+
+    var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
+
+    Information(Figlet("MvxPlugins"));
+    Information("Building version {0}, ({1}, {2}) using version {3} of Cake.",
+        versionInfo.SemVer,
+        configuration,
+        target,
+        cakeVersion);
+
+    verbosity = (Verbosity) Enum.Parse(typeof(Verbosity), verbosityArg, true);
+});
+
+Task("Clean")
+	.Does(() =>
 {
     CleanDirectories("./**/bin");
     CleanDirectories("./**/obj");
-	CleanDirectories(binDir.FullPath);
 	CleanDirectories(outputDir.FullPath);
+
+	EnsureDirectoryExists(outputDir);
 });
 
 FilePath msBuildPath;
 Task("ResolveBuildTools")
-	.Does(() => 
+    .WithCriteria(() => IsRunningOnWindows())
+    .Does(() => 
 {
-	var vsLatest = VSWhereLatest();
-	msBuildPath = (vsLatest == null)
-		? null
-		: vsLatest.CombineWithFilePath("./MSBuild/15.0/Bin/MSBuild.exe");
+    var vsWhereSettings = new VSWhereLatestSettings
+    {
+        IncludePrerelease = true,
+        Requires = "Component.Xamarin"
+    };
+    
+    var vsLatest = VSWhereLatest(vsWhereSettings);
+    msBuildPath = (vsLatest == null)
+        ? null
+        : vsLatest.CombineWithFilePath("./MSBuild/15.0/Bin/MSBuild.exe");
+
+    if (msBuildPath != null)
+        Information("Found MSBuild at {0}", msBuildPath.ToString());
 });
 
-GitVersion versionInfo = null;
-Task("Version").Does(() => {
-	GitVersion(new GitVersionSettings {
-		UpdateAssemblyInfo = true,
-		OutputType = GitVersionOutput.BuildServer
-	});
-
-	versionInfo = GitVersion(new GitVersionSettings{ OutputType = GitVersionOutput.Json });
-	Information("VI:\t{0}", versionInfo.FullSemVer);
-});
-
-Task("Restore").Does(() => {
-	NuGetRestore(sln);
+Task("Restore")
+    .IsDependentOn("ResolveBuildTools")
+    .Does(() => 
+{
+    var settings = GetDefaultBuildSettings()
+        .WithTarget("Restore");
+    MSBuild(sln, settings);
 });
 
 Task("Build")
-	.IsDependentOn("Clean")
-	.IsDependentOn("Version")
-	.IsDependentOn("Restore")
-	.IsDependentOn("ResolveBuildTools")
-	.Does(() =>  {
+    .IsDependentOn("ResolveBuildTools")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Restore")
+    .Does(() => 
+{
 
-	var settings = new MSBuildSettings 
-	{
-		Configuration = "Release",
-		ToolPath = msBuildPath
-	};
+    var settings = GetDefaultBuildSettings()
+        .WithProperty("Version", versionInfo.SemVer)
+        .WithProperty("PackageVersion", versionInfo.SemVer)
+        .WithProperty("InformationalVersion", versionInfo.InformationalVersion)
+        .WithProperty("NoPackageAnalysis", "True")
+        .WithTarget("Build");
 	
-	MSBuild(sln, settings);
-});
-
-Task("GitLink")
-	.WithCriteria(() => IsRunningOnWindows()) //pdbstr.exe and costura are not xplat currently
-	.IsDependentOn("Build")
-	.Does(() => {
-	GitLink(sln.GetDirectory(), new GitLinkSettings {
-		RepositoryUrl = "https://github.com/Cheesebaron/Cheesebaron.MvxPlugins",
-		ArgumentCustomization = args => args.Append(
-			"-ignore Sample,sms.sample.core,sms.sample.droid,sms.sample.touch,settings.sample.core,settings.sample.droid,settings.sample.windowsphone,settings.sample.touch,settingssample.windowscommon.core,connectivitysample.core,connectivitysample.touch,settingssample.windowscommon.windows,settingssample.windowscommon.windowsphone,connectivitysample.store.windows,connectivitysample.store.windowsphone,connectivitysample.droid")
-	});
-});
-
-Task("PackageAll")
-	.IsDependentOn("GitLink")
-	.Does(() => {
-
-	EnsureDirectoryExists(outputDir);
-
-	var nugetSettings = new NuGetPackSettings {
-		Authors = new [] { "Tomasz Cielecki" },
-		Owners = new [] { "Tomasz Cielecki" },
-		IconUrl = new Uri("http://i.imgur.com/V3983YY.png"),
-		ProjectUrl = new Uri("https://github.com/Cheesebaron/Cheesebaron.MvxPlugins"),
-		LicenseUrl = new Uri("https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/LICENSE"),
-		Copyright = "Copyright (c) Tomasz Cielecki",
-		RequireLicenseAcceptance = false,
-		ReleaseNotes = ParseReleaseNotes("./releasenotes/settings.md").Notes.ToArray(),
-		Version = versionInfo.NuGetVersion,
-		Symbols = false,
-		NoPackageAnalysis = true,
-		OutputDirectory = outputDir,
-		Verbosity = NuGetVerbosity.Detailed,
-		BasePath = "./nuspec"
-	};
-
-	NuGetPack("./nuspec/Cheesebaron.MvxPlugins.Settings.nuspec", nugetSettings);
-
-	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/connectivity.md").Notes.ToArray();
-	NuGetPack("./nuspec/Cheesebaron.MvxPlugins.Connectivity.nuspec", nugetSettings);
-
-	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/deviceinfo.md").Notes.ToArray();
-	NuGetPack("./nuspec/Cheesebaron.MvxPlugins.DeviceInfo.nuspec", nugetSettings);
-
-	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/simplewebtoken.md").Notes.ToArray();
-	NuGetPack("./nuspec/Cheesebaron.MvxPlugins.SimpleWebToken.nuspec", nugetSettings);
-
-	nugetSettings.ReleaseNotes = ParseReleaseNotes("./releasenotes/sms.md").Notes.ToArray();
-	NuGetPack("./nuspec/Cheesebaron.MvxPlugins.Sms.nuspec", nugetSettings);
+    MSBuild(sln, settings);
 });
 
 Task("UploadAppVeyorArtifact")
-	.IsDependentOn("PackageAll")
+	.IsDependentOn("CopyPackages")
 	.WithCriteria(() => !isPullRequest)
 	.WithCriteria(() => isRunningOnAppVeyor)
 	.Does(() => {
@@ -122,8 +109,31 @@ Task("UploadAppVeyorArtifact")
 	}
 });
 
+
+Task("CopyPackages")
+    .IsDependentOn("Build")
+    .Does(() => 
+{
+    var nugetFiles = GetFiles("./**/bin/" + configuration + "/**/*.nupkg");
+    CopyFiles(nugetFiles, outputDir);
+});
+
 Task("Default")
 	.IsDependentOn("UploadAppVeyorArtifact")
 	.Does(() => {});
 
 RunTarget(target);
+
+MSBuildSettings GetDefaultBuildSettings()
+{
+    var settings = new MSBuildSettings 
+    {
+        Configuration = configuration,
+        ToolPath = msBuildPath,
+        Verbosity = verbosity,
+        ArgumentCustomization = args => args.Append("/m"),
+        ToolVersion = MSBuildToolVersion.VS2017
+    };
+
+    return settings;
+}
