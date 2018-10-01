@@ -1,0 +1,40 @@
+<Project>
+  <PropertyGroup>
+    <Copyright>Copyright (c) Tomasz Cielecki</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</PackageProjectUrl>
+    <PackageIconUrl>http://i.imgur.com/V3983YY.png</PackageIconUrl>
+    <Authors>Cheesebaron</Authors>
+    <Owners>Cheesebaron</Owners>
+    <PackageTags>mvvm;mvvmcross;xamarin;android;ios;mac;forms;monodroid;monotouch;xamarin.android;xamarin.ios;wpf;plugins</PackageTags>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+    
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);1591;1701;1702;1705;VSX1000;NU1603</NoWarn>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' and '$(IsTestProject)' != 'true'">true</GeneratePackageOnBuild>
+    
+    <Platform>AnyCPU</Platform>
+    <DebugType>portable</DebugType>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    
+    <IsTestProject>$(MSBuildProjectName.Contains('UnitTest'))</IsTestProject>
+    <IsLibraryProject>$(MSBuildProjectName.Contains('Cheesebaron.MvxPlugins'))</IsLibraryProject>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(SourceLinkEnabled)' != 'false' and '$(IsLibraryProject)' == 'true'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="6.2.0" />
+  </ItemGroup>
+  
+</Project>

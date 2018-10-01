@@ -43,3 +43,10 @@
 ### New in 3.2.0
 
 * Built against MvvmCross 5.4.2
+
+### New in 4.0.0
+
+* Built against MvvmCross 6.2.0
+* Namespaces have changed to no longer include .{Platform Name} in the end
+* All projects have been converted to multi-target
+* Plugin now use new MvvmCross plugin system with `[MvxPlugin]` attribute

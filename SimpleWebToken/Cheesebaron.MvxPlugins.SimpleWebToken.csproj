@@ -1,0 +1,15 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <AssemblyName>Cheesebaron.MvxPlugins.SimpleWebToken</AssemblyName>
+    <RootNamespace>Cheesebaron.MvxPlugins.SimpleWebToken</RootNamespace>
+    <PackageId>Cheesebaron.MvxPlugins.SimpleWebToken</PackageId>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/simplewebtoken.md<PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+</Project>

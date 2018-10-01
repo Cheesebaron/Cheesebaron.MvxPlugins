@@ -1,0 +1,39 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <AssemblyName>Cheesebaron.MvxPlugins.Connectivity</AssemblyName>
+    <RootNamespace>Cheesebaron.MvxPlugins.Connectivity</RootNamespace>
+    <PackageId>Cheesebaron.MvxPlugins.Connectivity</PackageId>
+    <TargetFrameworks>Xamarin.iOS10;MonoAndroid81;uap10.0.16299</TargetFrameworks>
+    <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/connectivity.md<PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="platforms\**\*.cs" />
+    <None Include="platforms\**\*.cs" />
+    <None Include="Resources\*.cs" />
+    <Compile Remove="Resources\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
+    <Compile Condition=" '$(OS)' == 'Windows_NT' " Include="platforms\Uap\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
+    <Compile Include="platforms\wpf\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+    <Compile Include="platforms\ios\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <Compile Include="platforms\android\**\*.cs" />
+    <AndroidResource Include="Resources\**\*.xml" SubType="Designer" Generator="MSBuild:UpdateAndroidResources" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.2.0" />
+  </ItemGroup>
+
+</Project>
