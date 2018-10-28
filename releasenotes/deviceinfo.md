@@ -50,3 +50,7 @@
 * Namespaces have changed to no longer include .{Platform Name} in the end
 * All projects have been converted to multi-target
 * Plugin now use new MvvmCross plugin system with `[MvxPlugin]` attribute
+
+### New in 4.0.1
+
+* Added missing netstandard2.0 target

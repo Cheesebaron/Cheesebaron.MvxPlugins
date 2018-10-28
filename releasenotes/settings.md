@@ -1,3 +1,7 @@
+### New in 4.0.1
+
+* Added missing netstandard2.0 target
+
 ### New in 4.0.0
 
 * Built against MvvmCross 6.2.0
