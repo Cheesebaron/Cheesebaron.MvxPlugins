@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
@@ -14,3 +9,15 @@ steps:
   inputs:
     targetType: filePath
     filePath: ./build.sh
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'artifacts/'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+- task: NuGetCommand@2
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  inputs:
+    command: 'push'
+    packagesToPush: 'artifacts/**/*.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet.org MvxPlugins'
