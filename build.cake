@@ -18,7 +18,8 @@ Setup(context =>
         OutputType = GitVersionOutput.Json
     });
 
-    if (TFBuild.IsRunningOnAzurePipelinesHosted)
+    if (TFBuild.IsRunningOnAzurePipelinesHosted ||
+        TFBuild.IsRunningOnAzurePipelines) 
     {
         var buildNumber = TFBuild.Environment.Build.Number;
         TFBuild.Commands.UpdateBuildNumber(versionInfo.InformationalVersion
