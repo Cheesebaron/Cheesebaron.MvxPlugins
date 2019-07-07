@@ -4,11 +4,10 @@ trigger:
 pool: 'Hosted Windows 2019 with VS2019'
 
 steps:
-- task: Bash@3
-  displayName: 'Run Cake Build'
+- task: PowerShell@2
+  displayName: "Run Cake Build"
   inputs:
-    targetType: filePath
-    filePath: ./build.sh
+    filePath: 'build.ps1'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'artifacts/'
