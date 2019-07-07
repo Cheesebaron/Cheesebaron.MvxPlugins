@@ -10,20 +10,18 @@ var configuration = Argument("configuration", "Release");
 var verbosityArg = Argument("verbosity", "Minimal");
 var verbosity = Verbosity.Minimal;
 
-var isRunningOnAppVeyor = AppVeyor.IsRunningOnAppVeyor;
-var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
-
 GitVersion versionInfo = null;
-Setup(context => {
+Setup(context => 
+{
     versionInfo = context.GitVersion(new GitVersionSettings {
         UpdateAssemblyInfo = true,
         OutputType = GitVersionOutput.Json
     });
 
-    if (isRunningOnAppVeyor)
+    if (TFBuild.IsRunningOnAzurePipelinesHosted)
     {
-        var buildNumber = AppVeyor.Environment.Build.Number;
-        AppVeyor.UpdateBuildVersion(versionInfo.InformationalVersion
+        var buildNumber = TFBuild.Environment.Build.Number;
+        TFBuild.Commands.UpdateBuildNumber(versionInfo.InformationalVersion
             + "-" + buildNumber);
     }
 
@@ -95,20 +93,6 @@ Task("Build")
     MSBuild(sln, settings);
 });
 
-Task("UploadAppVeyorArtifact")
-	.IsDependentOn("CopyPackages")
-	.WithCriteria(() => !isPullRequest)
-	.WithCriteria(() => isRunningOnAppVeyor)
-	.Does(() => {
-
-	Information("Artifacts Dir: {0}", outputDir.FullPath);
-
-	foreach(var file in GetFiles(outputDir.FullPath + "/*")) {
-		Information("Uploading {0}", file.FullPath);
-		AppVeyor.UploadArtifact(file.FullPath);
-	}
-});
-
 
 Task("CopyPackages")
     .IsDependentOn("Build")
@@ -119,7 +103,7 @@ Task("CopyPackages")
 });
 
 Task("Default")
-	.IsDependentOn("UploadAppVeyorArtifact")
+	.IsDependentOn("CopyPackages")
 	.Does(() => {});
 
 RunTarget(target);
@@ -132,7 +116,7 @@ MSBuildSettings GetDefaultBuildSettings()
         ToolPath = msBuildPath,
         Verbosity = verbosity,
         ArgumentCustomization = args => args.Append("/m"),
-        ToolVersion = MSBuildToolVersion.VS2017
+        ToolVersion = MSBuildToolVersion.VS2019
     };
 
     return settings;
