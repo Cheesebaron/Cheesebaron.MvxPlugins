@@ -1,7 +1,7 @@
-#tool "nuget:?package=GitVersion.CommandLine"
-#tool "nuget:?package=vswhere"
+#tool nuget:?package=GitVersion.CommandLine&version=4.0.0
+#tool nuget:?package=vswhere&version=2.6.7
 
-#addin "nuget:?package=Cake.Figlet"
+#addin nuget:?package=Cake.Figlet&version=1.3.0
 
 var sln = new FilePath("./Cheesebaron.MvxPlugins.sln");
 var outputDir = new DirectoryPath("./artifacts");
@@ -63,7 +63,7 @@ Task("ResolveBuildTools")
     var vsLatest = VSWhereLatest(vsWhereSettings);
     msBuildPath = (vsLatest == null)
         ? null
-        : vsLatest.CombineWithFilePath("./MSBuild/15.0/Bin/MSBuild.exe");
+        : vsLatest.CombineWithFilePath("./MSBuild/Current/Bin/MSBuild.exe");
 
     if (msBuildPath != null)
         Information("Found MSBuild at {0}", msBuildPath.ToString());
