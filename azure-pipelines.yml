@@ -1,18 +1,25 @@
 trigger:
 - master
 
-pool: 'Hosted Windows 2019 with VS2019'
+pool:
+  vmImage: windows-2019
+
+variables: 
+  BuildConfiguration: Release
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 steps:
 - task: PowerShell@2
   displayName: "Run Cake Build"
   inputs:
     filePath: 'build.ps1'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'artifacts/'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
 - task: NuGetCommand@2
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   inputs:
