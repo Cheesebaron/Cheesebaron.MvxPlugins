@@ -54,3 +54,8 @@
 ### New in 4.0.1
 
 * Added missing netstandard2.0 target
+
+### New in 4.1.0
+
+* Updated to MvvmCross 6.3.1
+* Updated Android target to 9.0
