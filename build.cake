@@ -10,6 +10,10 @@ var configuration = Argument("configuration", "Release");
 var verbosityArg = Argument("verbosity", "Minimal");
 var verbosity = Verbosity.Minimal;
 
+var isRunningInVSTS = 
+	TFBuild.IsRunningOnAzurePipelinesHosted ||
+    TFBuild.IsRunningOnAzurePipelines;
+
 GitVersion versionInfo = null;
 Setup(context => 
 {
@@ -18,8 +22,7 @@ Setup(context =>
         OutputType = GitVersionOutput.Json
     });
 
-    if (TFBuild.IsRunningOnAzurePipelinesHosted ||
-        TFBuild.IsRunningOnAzurePipelines) 
+    if (isRunningInVSTS) 
     {
         var buildNumber = TFBuild.Environment.Build.Number;
         TFBuild.Commands.UpdateBuildNumber(versionInfo.InformationalVersion
@@ -119,6 +122,11 @@ MSBuildSettings GetDefaultBuildSettings()
         ArgumentCustomization = args => args.Append("/m"),
         ToolVersion = MSBuildToolVersion.VS2019
     };
+	
+    if (isRunningInVSTS && IsRunningOnWindows())
+    {
+        msBuildSettings = settings.WithProperty("JavaSdkDirectory", @"C:/Program Files/Java/zulu-8-azure-jdk_8.38.0.13-8.0.212-win_x64");
+    }
 
     return settings;
 }
