@@ -1,5 +1,22 @@
 trigger:
-- master
+  branches:
+    include:
+    - master
+    - rel/*
+  paths:
+    exclude:
+    - '**/*.md'
+    - '**/*.yml'
+
+pr:
+  branches:
+    include:
+    - master
+    - rel/*
+  paths:
+    exclude:
+    - '**/*.md'
+    - '**/*.yml'
 
 pool:
   vmImage: windows-2019
