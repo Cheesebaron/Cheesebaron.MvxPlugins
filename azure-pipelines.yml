@@ -12,6 +12,7 @@ pr:
   branches:
     include:
     - master
+    - develop
     - rel/*
   paths:
     exclude:
@@ -38,7 +39,7 @@ steps:
     publishLocation: 'Container'
 
 - task: NuGetCommand@2
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     command: 'push'
     packagesToPush: 'artifacts/**/*.nupkg'
