@@ -1,7 +1,6 @@
-#tool nuget:?package=GitVersion.CommandLine&version=4.0.0
-#tool nuget:?package=vswhere&version=2.6.7
-
-#addin nuget:?package=Cake.Figlet&version=1.3.0
+#tool nuget:?package=GitVersion.CommandLine&version=5.0.1
+#tool nuget:?package=vswhere&version=2.7.1
+#addin nuget:?package=Cake.Figlet&version=1.3.1
 
 var sln = new FilePath("./Cheesebaron.MvxPlugins.sln");
 var outputDir = new DirectoryPath("./artifacts");
@@ -24,9 +23,9 @@ Setup(context =>
 
     if (isRunningInVSTS) 
     {
-        var buildNumber = TFBuild.Environment.Build.Number;
-        TFBuild.Commands.UpdateBuildNumber(versionInfo.InformationalVersion
-            + "-" + buildNumber);
+        var buildNumber = versionInfo.InformationalVersion + "-" + TFBuild.Environment.Build.Number;
+        buildNumber = buildNumber.Replace("/", "-");
+        TFBuild.Commands.UpdateBuildNumber(buildNumber);
     }
 
     var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
@@ -123,9 +122,12 @@ MSBuildSettings GetDefaultBuildSettings()
         ToolVersion = MSBuildToolVersion.VS2019
     };
 	
-    if (isRunningInVSTS && IsRunningOnWindows())
+    // workaround for derped Java Home ENV vars
+    if (IsRunningOnWindows() && isRunningInVSTS)
     {
-        settings = settings.WithProperty("JavaSdkDirectory", @"C:/Program Files/Java/zulu-8-azure-jdk_8.38.0.13-8.0.212-win_x64");
+        var javaSdkDir = EnvironmentVariable("JAVA_HOME_8_X64");
+        Information("Setting JavaSdkDirectory to: " + javaSdkDir);
+        settings = settings.WithProperty("JavaSdkDirectory", javaSdkDir);
     }
 
     return settings;
