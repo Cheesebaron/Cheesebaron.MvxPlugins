@@ -28,9 +28,9 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 steps:
-- script: |
-    dotnet tool install --tool-path ./tools --version 0.35.0 Cake.Tool
-    ./tools/dotnet-cake
+- powershell: |
+    dotnet tool install --tool-path . --version 0.35.0 Cake.Tool
+    ./dotnet-cake
 
 - task: PublishBuildArtifacts@1
   inputs:
