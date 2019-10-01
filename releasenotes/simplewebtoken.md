@@ -43,3 +43,7 @@
 
 * Updated to MvvmCross 6.3.1
 * Updated Android target to 9.0
+
+### New in 4.1.1
+
+* Updated to MvvmCross 6.4.1
