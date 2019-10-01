@@ -1,3 +1,7 @@
+### New in 4.1.1
+
+* Updated to MvvmCross 6.4.1
+
 ### New in 4.1.0
 
 * Updated to MvvmCross 6.3.1

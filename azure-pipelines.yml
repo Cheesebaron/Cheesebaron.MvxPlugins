@@ -28,10 +28,9 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 steps:
-- task: PowerShell@2
-  displayName: "Run Cake Build"
-  inputs:
-    filePath: 'build.ps1'
+- powershell: |
+    dotnet tool install --tool-path . --version 0.35.0 Cake.Tool
+    ./dotnet-cake
 
 - task: PublishBuildArtifacts@1
   inputs:
