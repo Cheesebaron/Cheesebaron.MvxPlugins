@@ -1,7 +1,7 @@
 ﻿MvxPlugins
 ==========
 
-[![Build Status](https://osteost.visualstudio.com/Cheesebaron.MvxPlugins/_apis/build/status/Cheesebaron.Cheesebaron.MvxPlugins?branchName=master)](https://osteost.visualstudio.com/Cheesebaron.MvxPlugins/_build/latest?definitionId=8&branchName=master)
+[![Build Status](https://dev.azure.com/Cheesebaron/Cheesebaron.MvxPlugins/_apis/build/status/Cheesebaron.MvxPlugins?branchName=master)](https://dev.azure.com/Cheesebaron/Cheesebaron.MvxPlugins/_build/latest?definitionId=8&branchName=master)
 
 | Plugin          | NuGet version                                                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
