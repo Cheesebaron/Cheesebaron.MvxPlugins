@@ -51,3 +51,7 @@
 ### New in 4.1.2
 
 * Updated to MvvmCross 6.4.2
+
+### New in 4.2.0
+
+* Enabled C#8 Nullable Reference Types
