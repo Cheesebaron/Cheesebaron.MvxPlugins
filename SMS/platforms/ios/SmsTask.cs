@@ -40,9 +40,9 @@ namespace Cheesebaron.MvxPlugins.SMS
 
         private void HandleSmsFinished(object sender, MFMessageComposeResultEventArgs e)
         {
-            var uiViewController = sender as UIViewController;
-            if (uiViewController == null)
-                throw new ArgumentException("sender");
+                if (sender is UIViewController uiViewController)
+                    uiViewController.DismissViewController(true, () => { });
+            }
 
             _sms.Finished -= HandleSmsFinished;
 
