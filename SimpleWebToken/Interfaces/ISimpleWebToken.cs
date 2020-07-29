@@ -9,42 +9,42 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
         /// Gets the Audience for the token.
         /// </summary>
         /// <value>The audience of the token.</value>
-        string Audience { get; }
+        string? Audience { get; }
 
         /// <summary>
         /// Gets the time when the token expires.
         /// </summary>
         /// <value>The time upto which the token is valid.</value>
-        DateTime ExpiresOn { get; }
+        DateTime? ExpiresOn { get; }
 
         /// <summary>
         /// Gets the Issuer for the token.
         /// </summary>
         /// <value>The issuer for the token.</value>
-        string Issuer { get; }
+        string? Issuer { get; }
 
         /// <summary>
         /// Gets the serialized form of the token if the token was created from its serialized form by the token handler.
         /// </summary>
         /// <value>The serialized form of the token.</value>
-        string RawToken { get; }
+        string? RawToken { get; }
 
         /// <summary>
         /// Gets the signature for the token.
         /// </summary>
         /// <value>The signature for the token.</value>
-        string Signature { get; }
+        string? Signature { get; }
 
-        string IdentityProvider { get; }
-        IDictionary<string, string> Properties { get; }
+        string? IdentityProvider { get; }
+        IDictionary<string, string>? Properties { get; }
 
         IEnumerable<string> Keys { get; }
-        string this[string key] { get; }
+        string? this[string key] { get; }
 
         ISimpleWebToken CreateTokenFromRaw(string rawToken);
         ISimpleWebToken CreateToken(
             string issuer, string audience, DateTime expiryTime, string signingKey,
-            IEnumerable<KeyValuePair<string, string>> values = null);
+            IEnumerable<KeyValuePair<string, string>>? values = null);
 
         bool ValidateSignature(string keyString);
 

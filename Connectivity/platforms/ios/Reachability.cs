@@ -84,7 +84,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         // we do not even pass the info as to what changed, and
         // we lump all three status we probe into one
         //
-        public static event EventHandler ReachabilityChanged;
+        public static event EventHandler? ReachabilityChanged;
 
         static void OnChange(NetworkReachabilityFlags flags)
         {
@@ -98,7 +98,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         // and optionally provides extra network reachability flags as the
         // out parameter
         //
-        static NetworkReachability adHocWiFiNetworkReachability;
+        static NetworkReachability? adHocWiFiNetworkReachability;
 
         public static bool IsAdHocWiFiNetworkAvailable(out NetworkReachabilityFlags flags)
         {
@@ -112,7 +112,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             return adHocWiFiNetworkReachability.TryGetFlags(out flags) && IsReachableWithoutRequiringConnection(flags);
         }
 
-        static NetworkReachability defaultRouteReachability;
+        static NetworkReachability? defaultRouteReachability;
 
         static bool IsNetworkAvailable(out NetworkReachabilityFlags flags)
         {
@@ -125,7 +125,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             return defaultRouteReachability.TryGetFlags(out flags) && IsReachableWithoutRequiringConnection(flags);
         }
 
-        static NetworkReachability remoteHostReachability;
+        static NetworkReachability? remoteHostReachability;
 
         public static NetworkStatus RemoteHostStatus()
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Android.Content;
 using Android.Runtime;
@@ -12,26 +13,24 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
     [DebuggerDisplay("Height: {Height}, Width: {Width}, Xdpi: {Xdpi}, Ydpi: {Ydpi}, Scale: {Scale}")]
     public class Display : IDisplay
     {
-        private static DisplayMetrics DisplayMetrics
+        private readonly static Lazy<DisplayMetrics> _displayMetrics 
+            = new Lazy<DisplayMetrics>(() =>
         {
-            get
-            {
-                var globals = Mvx.IoCProvider.Resolve<IMvxAndroidGlobals>();
-                var metrics = new DisplayMetrics();
-                var windowManager =
-                    globals.ApplicationContext.GetSystemService(Context.WindowService)
-                        .JavaCast<IWindowManager>();
-                windowManager.DefaultDisplay.GetMetrics(metrics);
+            var globals = Mvx.IoCProvider.Resolve<IMvxAndroidGlobals>();
+            var metrics = new DisplayMetrics();
+            var windowManager =
+                globals.ApplicationContext.GetSystemService(Context.WindowService)
+                    .JavaCast<IWindowManager>();
+            windowManager.DefaultDisplay.GetMetrics(metrics);
 
-                return metrics;
-            }
-        }
+            return metrics;
+        });
 
-        public int Height => DisplayMetrics.HeightPixels;
-        public int Width => DisplayMetrics.WidthPixels;
-        public double Xdpi => DisplayMetrics.Xdpi;
-        public double Ydpi => DisplayMetrics.Ydpi;
-        public double Scale => DisplayMetrics.Density;
+        public int Height => _displayMetrics.Value.HeightPixels;
+        public int Width => _displayMetrics.Value.WidthPixels;
+        public double Xdpi => _displayMetrics.Value.Xdpi;
+        public double Ydpi => _displayMetrics.Value.Ydpi;
+        public double Scale => _displayMetrics.Value.Density;
 
         public override string ToString()
         {

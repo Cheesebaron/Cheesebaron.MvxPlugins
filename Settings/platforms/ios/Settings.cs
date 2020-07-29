@@ -20,7 +20,7 @@ using Foundation;
 
 namespace Cheesebaron.MvxPlugins.Settings
 {
-    public class Settings
+	public class Settings
         : ISettings
     {
 		private readonly object _locker = new object();
@@ -40,7 +40,7 @@ namespace Cheesebaron.MvxPlugins.Settings
 
                 object returnVal;
 			    if (!Contains(key, roaming))
-			        returnVal = defaultValue;
+			        returnVal = defaultValue!;
 			    else
 			    {
                     var defaults = NSUserDefaults.StandardUserDefaults;
@@ -95,7 +95,7 @@ namespace Cheesebaron.MvxPlugins.Settings
 			    }
 
 			    if (Equals(default(T), returnVal) && Type.GetTypeCode(type) != TypeCode.Boolean)
-			        returnVal = defaultValue;
+					returnVal = defaultValue!;
 
 				return (T)returnVal;
 			}
@@ -108,7 +108,7 @@ namespace Cheesebaron.MvxPlugins.Settings
 			
 			lock(_locker)
 			{
-				var type = value.GetType();
+				var type = typeof(T);
 				if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
 				{
 					type = Nullable.GetUnderlyingType(type);
@@ -135,12 +135,12 @@ namespace Cheesebaron.MvxPlugins.Settings
 						defaults.SetString(Convert.ToString(value), key);
 						break;
 					case TypeCode.DateTime:
-						defaults.SetDouble(((DateTime)(object)value).Ticks, key);
+						defaults.SetDouble(((DateTime)(object)value!).Ticks, key);
 						break;
 					default:
 						if (type.Name == typeof(DateTimeOffset).Name) 
 						{
-							defaults.SetString(((DateTimeOffset)(object)value).ToString("o"), key);
+							defaults.SetString(((DateTimeOffset)(object)value!).ToString("o"), key);
 							break;
 						}
 						if (type.Name == typeof(Guid).Name)

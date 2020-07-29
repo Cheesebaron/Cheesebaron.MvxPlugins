@@ -16,10 +16,10 @@ namespace Cheesebaron.MvxPlugins.Settings
         /// <summary>
         /// Initializes static members of the <see cref="Settings"/> class.
         /// </summary>
-        public Settings(string settingsFileName = null)
+        public Settings(string? settingsFileName = null)
         {
             var formatter = new BinaryFormatter();
-            _settingsFileName = settingsFileName;
+            _settingsFileName = settingsFileName!;
             if (string.IsNullOrEmpty(_settingsFileName))
                 _settingsFileName = "mvx.settings";
 
@@ -71,12 +71,12 @@ namespace Cheesebaron.MvxPlugins.Settings
                 if (_settingsSet[key].Equals(value))
                     return false;
 
-                _settingsSet[key] = value;
+                _settingsSet[key] = value!;
                 SaveSettings();
                 return true;
             }
 
-            _settingsSet.Add(key, value);
+            _settingsSet.Add(key, value!);
             SaveSettings();
             return true;
         }

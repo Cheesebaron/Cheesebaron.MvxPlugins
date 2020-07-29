@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Net.Wifi;
-using Android.Runtime;
 using Cheesebaron.MvxPlugins.Connectivity.Models;
 using MvvmCross;
 using MvvmCross.Platforms.Android;
@@ -16,20 +15,18 @@ namespace Cheesebaron.MvxPlugins.Connectivity
     [Preserve(AllMembers = true)]
     public class Wifi : IWifi
     {
-        private WifiManager _manager;
+        private WifiManager? _manager;
 
         public Wifi()
         {
             Mvx.IoCProvider.CallbackWhenRegistered<IMvxAndroidGlobals>(() =>
             {
                 var globals = Mvx.IoCProvider.Resolve<IMvxAndroidGlobals>();
-                _manager =
-                    globals.ApplicationContext.GetSystemService(Context.WifiService)
-                        .JavaCast<WifiManager>();
+                _manager = WifiManager.FromContext(globals.ApplicationContext);
             });
         }
 
-        public WifiInfo GetCurrentWifiInfo()
+        public WifiInfo? GetCurrentWifiInfo()
         {
             if (_manager == null)
                 throw new InvalidOperationException("WifiManager not initialized");
@@ -82,7 +79,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         private static bool IsEnterprise(string capabilities)
             => capabilities.Contains("-EAP-");
 
-        private static WifiInfo GetWifiInfo(Android.Net.Wifi.WifiInfo androidInfo)
+        private static WifiInfo? GetWifiInfo(Android.Net.Wifi.WifiInfo androidInfo)
         {
             if (androidInfo == null) return null;
 
@@ -107,8 +104,8 @@ namespace Cheesebaron.MvxPlugins.Connectivity
         [IntentFilter(new[] { WifiManager.ScanResultsAvailableAction })]
         public class ScanResultReceiver : BroadcastReceiver
         {
-            public static WifiManager WifiManager { get; set; }
-            public static Action<IEnumerable<WifiInfo>> OnScanResult { get; set; }
+            public static WifiManager? WifiManager { get; set; }
+            public static Action<IEnumerable<WifiInfo>>? OnScanResult { get; set; }
 
             public override void OnReceive(Context context, Intent intent)
             {

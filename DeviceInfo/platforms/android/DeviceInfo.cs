@@ -23,9 +23,14 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
             {
                 var serial = "";
                 try
-                { 
+                {
                     // Android 2.3 and up (API 10)
-                    serial = Build.Serial;
+                    if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+#pragma warning disable CS0618 // Type or member is obsolete
+                        serial = Build.Serial;
+#pragma warning restore CS0618 // Type or member is obsolete
+                    else
+                        serial = Build.GetSerial();
                 }
                 catch (Exception) { /* ignored */ }
 
@@ -52,8 +57,8 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
         {
             get
             {
-                using (var calendar = new GregorianCalendar())
-                    return TimeUnit.Hours.Convert(calendar.TimeZone.RawOffset, TimeUnit.Microseconds)/3600.0;
+                using var calendar = new GregorianCalendar();
+                return TimeUnit.Hours.Convert(calendar.TimeZone.RawOffset, TimeUnit.Microseconds)/3600.0;
             }
         }
 
@@ -68,19 +73,14 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
                     globals.ApplicationContext.GetSystemService(Context.WindowService)
                         .JavaCast<IWindowManager>();
 
-                switch (windowManager.DefaultDisplay.Rotation)
+                return windowManager.DefaultDisplay.Rotation switch
                 {
-                    case SurfaceOrientation.Rotation0:
-                        return Orientation.PortraitUp;
-                    case SurfaceOrientation.Rotation180:
-                        return Orientation.PortraitDown;
-                    case SurfaceOrientation.Rotation90:
-                        return Orientation.LandscapeLeft;
-                    case SurfaceOrientation.Rotation270:
-                        return Orientation.LandscapeRight;
-                    default:
-                        return Orientation.None;   
-                }
+                    SurfaceOrientation.Rotation0 => Orientation.PortraitUp,
+                    SurfaceOrientation.Rotation180 => Orientation.PortraitDown,
+                    SurfaceOrientation.Rotation90 => Orientation.LandscapeLeft,
+                    SurfaceOrientation.Rotation270 => Orientation.LandscapeRight,
+                    _ => Orientation.None,
+                };
             }
         }
 
@@ -103,10 +103,10 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
                             .JavaCast<IWindowManager>();
                     windowManager.DefaultDisplay.GetMetrics(metrics);
 
-                    if (metrics.DensityDpi == DisplayMetricsDensity.Default
-                        || metrics.DensityDpi == DisplayMetricsDensity.High
-                        || metrics.DensityDpi == DisplayMetricsDensity.Medium
-                        || metrics.DensityDpi == DisplayMetricsDensity.Xhigh)
+                    if (metrics.DensityDpi == DisplayMetricsDensity.Default || 
+                        metrics.DensityDpi == DisplayMetricsDensity.High ||
+                        metrics.DensityDpi == DisplayMetricsDensity.Medium ||
+                        metrics.DensityDpi == DisplayMetricsDensity.Xhigh)
                     {
                         return true;
                     }
@@ -118,12 +118,10 @@ namespace Cheesebaron.MvxPlugins.DeviceInfo
 
         private static long GetTotalMemory()
         {
-            using (var reader = new RandomAccessFile("/proc/meminfo", "r"))
-            {
-                var line = reader.ReadLine();
-                var split = line.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-                return Convert.ToInt64(split[1])*1024;
-            }
+            using var reader = new RandomAccessFile("/proc/meminfo", "r");
+            var line = reader.ReadLine();
+            var split = line.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            return Convert.ToInt64(split[1])*1024;
         }
 
         public DeviceType DeviceType => DeviceType.Android;

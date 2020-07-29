@@ -9,17 +9,14 @@ namespace Cheesebaron.MvxPlugins.Settings
     public class Plugin
         : IMvxConfigurablePlugin
     {
-        private DroidCheeseSettingsConfiguration _config;
+        private DroidCheeseSettingsConfiguration? _config;
         private bool _loaded;
 
         public void Load()
         {
             if (_loaded) return;
 
-            var fileName = "";
-            if (_config != null)
-                fileName = _config.SettingsFileName;
-
+            var fileName = _config?.SettingsFileName;
             var instance = new Settings(fileName);
             Mvx.IoCProvider.RegisterSingleton<ISettings>(instance);
 
@@ -28,18 +25,18 @@ namespace Cheesebaron.MvxPlugins.Settings
 
         public void Configure(IMvxPluginConfiguration configuration)
         {
-            if (configuration != null && !(configuration is DroidCheeseSettingsConfiguration))
+            if (!(configuration is DroidCheeseSettingsConfiguration cheeseSettingsConfiguration))
                 throw new MvxException(
                     "Plugin configuration only supports instances of DroidCheeseSettingsConfiguration, you provided {0}",
                     configuration.GetType().Name);
 
-            _config = (DroidCheeseSettingsConfiguration)configuration;
+            _config = cheeseSettingsConfiguration;
         }
     }
 
     public class DroidCheeseSettingsConfiguration
         : IMvxPluginConfiguration
     {
-        public string SettingsFileName { get; set; }
+        public string SettingsFileName { get; set; } = null!;
     }
 }

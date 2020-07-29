@@ -8,16 +8,16 @@
         /// <summary>
         /// SSID of the Wireless network
         /// </summary>
-        public string Ssid { get; set; }
+        public string? Ssid { get; set; }
 
         /// <summary>
         /// BSSID of the Wireless network
         /// </summary>
-        public string Bssid { get; set; }
+        public string? Bssid { get; set; }
 
         /// <summary>
         /// Extras, such as MacAddress, Security Mode, RSSI
         /// </summary>
-        public WifiInfoExtra Extra { get; set; }
+        public WifiInfoExtra? Extra { get; set; }
     }
 }
