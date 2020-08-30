@@ -6,12 +6,6 @@
     <PackageId>Cheesebaron.MvxPlugins.SimpleWebToken</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/simplewebtoken.md</PackageReleaseNotes>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
 
 </Project>

@@ -28,12 +28,15 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 steps:
-- powershell: |
-    dotnet tool install --tool-path . --version 0.35.0 Cake.Tool
-    ./dotnet-cake
-
-- task: PublishBuildArtifacts@1
+- task: UseDotNet@2
   inputs:
-    PathtoPublish: 'artifacts/'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    version: 3.1.302
+  displayName: 'Use .Net Core sdk 3.1.302'
+
+- script: dotnet tool restore
+  displayName: Restore dotnet tools
+
+- script: dotnet cake --bootstrap --verbosity=$(verbosity)
+  displayName: Bootstrap cake
+
+- script: dotnet cake --configuration="$(configuration)" --outputDir="$(Build.ArtifactStagingDirectory)"

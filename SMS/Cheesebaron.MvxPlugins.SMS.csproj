@@ -4,10 +4,8 @@
     <AssemblyName>Cheesebaron.MvxPlugins.SMS</AssemblyName>
     <RootNamespace>Cheesebaron.MvxPlugins.SMS</RootNamespace>
     <PackageId>Cheesebaron.MvxPlugins.SMS</PackageId>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid90;net472;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid10.0;net472;uap10.0.16299</TargetFrameworks>
     <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins/blob/master/releasenotes/sms.md</PackageReleaseNotes>
-    <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

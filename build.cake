@@ -1,6 +1,7 @@
-#tool nuget:?package=GitVersion.CommandLine&version=5.0.1
-#tool nuget:?package=vswhere&version=2.7.1
-#addin nuget:?package=Cake.Figlet&version=1.3.1
+#module nuget:https://api.nuget.org/v3/index.json?package=Cake.DotNetTool.Module&version=0.4.0
+#tool dotnet:https://api.nuget.org/v3/index.json?package=GitVersion.Tool&version=5.3.7
+#tool nuget:https://api.nuget.org/v3/index.json?package=vswhere&version=2.8.4
+#addin nuget:https://api.nuget.org/v3/index.json?package=Cake.Figlet&version=1.3.1
 
 var sln = new FilePath("./Cheesebaron.MvxPlugins.sln");
 var outputDir = new DirectoryPath("./artifacts");
@@ -9,23 +10,24 @@ var configuration = Argument("configuration", "Release");
 var verbosityArg = Argument("verbosity", "Minimal");
 var verbosity = Verbosity.Minimal;
 
-var isRunningInVSTS = 
-	TFBuild.IsRunningOnAzurePipelinesHosted ||
-    TFBuild.IsRunningOnAzurePipelines;
+var gitVersionLog = new FilePath("./gitversion.log");
+
+var isRunningOnPipelines = AzurePipelines.IsRunningOnAzurePipelines || AzurePipelines.IsRunningOnAzurePipelinesHosted;
 
 GitVersion versionInfo = null;
 Setup(context => 
 {
     versionInfo = context.GitVersion(new GitVersionSettings {
         UpdateAssemblyInfo = true,
-        OutputType = GitVersionOutput.Json
+        OutputType = GitVersionOutput.Json,
+        LogFilePath = gitVersionLog.MakeAbsolute(context.Environment)
     });
 
-    if (isRunningInVSTS) 
+    if (isRunningOnPipelines) 
     {
-        var buildNumber = versionInfo.InformationalVersion + "-" + TFBuild.Environment.Build.Number;
+        var buildNumber = versionInfo.InformationalVersion + "-" + AzurePipelines.Environment.Build.Number;
         buildNumber = buildNumber.Replace("/", "-");
-        TFBuild.Commands.UpdateBuildNumber(buildNumber);
+        AzurePipelines.Commands.UpdateBuildNumber(buildNumber);
     }
 
     var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
@@ -96,18 +98,29 @@ Task("Build")
     MSBuild(sln, settings);
 });
 
-
-Task("CopyPackages")
+Task("CopyArtifacts")
     .IsDependentOn("Build")
     .Does(() => 
 {
-    var nugetFiles = GetFiles("./**/bin/" + configuration + "/**/*.nupkg");
+    var nugetFiles = GetFiles("Library/bin/" + configuration + "/**/*.nupkg");
     CopyFiles(nugetFiles, outputDir);
+    CopyFileToDirectory(gitVersionLog, outputDir);
+});
+
+Task("UploadArtifacts")
+    .IsDependentOn("CopyArtifacts")
+    .WithCriteria(() => isRunningOnPipelines)
+    .Does(() => 
+{
+    AzurePipelines.Commands.UploadArtifactDirectory(outputDir);
 });
 
 Task("Default")
-	.IsDependentOn("CopyPackages")
-	.Does(() => {});
+    .IsDependentOn("Clean")
+    .IsDependentOn("ResolveBuildTools")
+    .IsDependentOn("Restore")
+    .IsDependentOn("Build")
+    .IsDependentOn("UploadArtifacts");
 
 RunTarget(target);
 
@@ -118,12 +131,10 @@ MSBuildSettings GetDefaultBuildSettings()
         Configuration = configuration,
         ToolPath = msBuildPath,
         Verbosity = verbosity,
-        ArgumentCustomization = args => args.Append("/m"),
         ToolVersion = MSBuildToolVersion.VS2019
     };
 	
-    // workaround for derped Java Home ENV vars
-    if (IsRunningOnWindows() && isRunningInVSTS)
+    if (isRunningOnPipelines)
     {
         var javaSdkDir = EnvironmentVariable("JAVA_HOME_8_X64");
         Information("Setting JavaSdkDirectory to: " + javaSdkDir);
