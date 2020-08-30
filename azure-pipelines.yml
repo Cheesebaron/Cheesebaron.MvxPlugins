@@ -24,7 +24,6 @@ pool:
   vmImage: windows-2019
 
 variables: 
-  BuildConfiguration: Release
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 steps:
