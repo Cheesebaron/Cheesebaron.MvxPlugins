@@ -8,7 +8,7 @@
     <Owners>Cheesebaron</Owners>
     <PackageTags>mvvm;mvvmcross;xamarin;android;ios;mac;forms;monodroid;monotouch;xamarin.android;xamarin.ios;wpf;plugins</PackageTags>
     <PackageReleaseNotes>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</PackageReleaseNotes>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryUrl>https://github.com/Cheesebaron/Cheesebaron.MvxPlugins</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

@@ -4,7 +4,8 @@
 #addin nuget:https://api.nuget.org/v3/index.json?package=Cake.Figlet&version=1.3.1
 
 var sln = new FilePath("./Cheesebaron.MvxPlugins.sln");
-var outputDir = new DirectoryPath("./artifacts");
+var outputDirArg = Argument("outputDir", "./artifacts");
+var outputDir = new DirectoryPath(outputDirArg);
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var verbosityArg = Argument("verbosity", "Minimal");
@@ -102,7 +103,7 @@ Task("CopyArtifacts")
     .IsDependentOn("Build")
     .Does(() => 
 {
-    var nugetFiles = GetFiles("Library/bin/" + configuration + "/**/*.nupkg");
+    var nugetFiles = GetFiles("*/bin/" + configuration + "/**/*.nupkg");
     CopyFiles(nugetFiles, outputDir);
     CopyFileToDirectory(gitVersionLog, outputDir);
 });
