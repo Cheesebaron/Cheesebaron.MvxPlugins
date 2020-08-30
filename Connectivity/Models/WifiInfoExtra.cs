@@ -4,14 +4,14 @@ namespace Cheesebaron.MvxPlugins.Connectivity.Models
 {
     public class WifiInfoExtra
     {
-        public string IpAddress { get; set; }
+        public string? IpAddress { get; set; }
 
         /// <summary>
         /// RSSI in dBm
         /// </summary>
         public double Rssi { get; set; }
-        public string MacAddress { get; set; }
-        public string SecurityMode { get; set; }
+        public string? MacAddress { get; set; }
+        public string? SecurityMode { get; set; }
         public bool IsAdHoc { get; set; }
         public bool IsEnterprise { get; set; }
         public int SignalBars { get; set; }

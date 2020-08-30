@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Chat;
 
 namespace Cheesebaron.MvxPlugins.SMS
@@ -10,7 +11,7 @@ namespace Cheesebaron.MvxPlugins.SMS
             var chatMessage = new ChatMessage {Body = body};
             chatMessage.Recipients.Add(phoneNumber);
 
-            ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage);
+            Task.Run(() => ChatMessageManager.ShowComposeSmsMessageAsync(chatMessage));
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Cheesebaron.MvxPlugins.Settings
 {
     public class Settings : ISettings
     {
-        private static string _settingsFileName;
+        private static string? _settingsFileName;
         private readonly object _locker = new object();
 
         private static ISharedPreferences SharedPreferences
@@ -35,7 +35,7 @@ namespace Cheesebaron.MvxPlugins.Settings
                 var context = Mvx.IoCProvider.Resolve<IMvxAndroidGlobals>().ApplicationContext;
 
                 //If file name is empty use defaults
-                if(string.IsNullOrEmpty(_settingsFileName))
+                if (string.IsNullOrEmpty(_settingsFileName))
                     return PreferenceManager.GetDefaultSharedPreferences(context);
 
                 return context.ApplicationContext.GetSharedPreferences(_settingsFileName,
@@ -43,7 +43,7 @@ namespace Cheesebaron.MvxPlugins.Settings
             }
         }
 
-        public Settings(string settingsFileName = null) { _settingsFileName = settingsFileName; }
+        public Settings(string? settingsFileName = null) { _settingsFileName = settingsFileName; }
 
         public T GetValue<T>(string key, T defaultValue = default(T), bool roaming = false)
         {
@@ -80,7 +80,7 @@ namespace Cheesebaron.MvxPlugins.Settings
                             {
                                 var ticks = sharedPrefs.GetLong(key, -1);
                                 if (ticks == -1)
-                                    returnVal = defaultValue;
+                                    returnVal = defaultValue!;
                                 else
                                     returnVal = new DateTime(ticks);
                                 break;
@@ -90,7 +90,7 @@ namespace Cheesebaron.MvxPlugins.Settings
                             {
                                 var ticks = sharedPrefs.GetString(key, "");
                                 if (string.IsNullOrEmpty(ticks))
-                                    returnVal = defaultValue;
+                                    returnVal = defaultValue!;
                                 else
                                     returnVal = DateTimeOffset.Parse(ticks);
                                 break;
@@ -106,7 +106,7 @@ namespace Cheesebaron.MvxPlugins.Settings
                                     returnVal = outGuid;
                                 }
                                 else
-                                    returnVal = defaultValue;
+                                    returnVal = defaultValue!;
                                 break;
                             }
 
@@ -128,7 +128,7 @@ namespace Cheesebaron.MvxPlugins.Settings
                 using (var sharedPrefs = SharedPreferences)
                 using (var editor = sharedPrefs.Edit())
                 {
-                    var type = value.GetType();
+                    var type = typeof(T);
                     if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof (Nullable<>))
                         type = Nullable.GetUnderlyingType(type);
 
@@ -150,12 +150,12 @@ namespace Cheesebaron.MvxPlugins.Settings
                             editor.PutString(key, Convert.ToString(value));
                             break;
                         case TypeCode.DateTime:
-                            editor.PutLong(key, ((DateTime) (object) value).Ticks);
+                            editor.PutLong(key, ((DateTime) (object) value!).Ticks);
                             break;
                         default:
                             if (type.Name == typeof (DateTimeOffset).Name)
                             {
-                                editor.PutString(key, ((DateTimeOffset) (object) value).ToString("o"));
+                                editor.PutString(key, ((DateTimeOffset) (object) value!).ToString("o"));
                                 break;
                             }
                             if (type.Name == typeof (Guid).Name)

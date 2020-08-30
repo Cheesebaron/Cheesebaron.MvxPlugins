@@ -28,15 +28,14 @@ namespace Cheesebaron.MvxPlugins.Connectivity
     [Preserve(AllMembers = true)]
     public class Connectivity : BaseConnectivity
     {
-        private ConnectivityChangeBroadcastReceiver _receiver;
+        private ConnectivityChangeBroadcastReceiver? _receiver;
 
         public Connectivity()
         {
             ConnectivityChangeBroadcastReceiver.OnChange = info => NetworkChanged(info);
 
             var context = Application.Context;
-            var manager = context.GetSystemService(Context.ConnectivityService)
-                .JavaCast<ConnectivityManager>();
+            var manager = ConnectivityManager.FromContext(context);
             NetworkChanged(manager.ActiveNetworkInfo, false);
 
             _receiver = new ConnectivityChangeBroadcastReceiver();
@@ -44,7 +43,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
                 new IntentFilter(ConnectivityManager.ConnectivityAction));
         }
 
-        private void NetworkChanged(NetworkInfo info, bool fireMissiles = true)
+        private void NetworkChanged(NetworkInfo? info, bool fireMissiles = true)
         {
             if (info == null) // null when airplane mode
             {
@@ -91,15 +90,14 @@ namespace Cheesebaron.MvxPlugins.Connectivity
     [IntentFilter(new[] { ConnectivityManager.ConnectivityAction })]
     public class ConnectivityChangeBroadcastReceiver : BroadcastReceiver
     {
-        internal static Action<NetworkInfo> OnChange { get; set; }
+        internal static Action<NetworkInfo>? OnChange { get; set; }
 
         public override void OnReceive(Context context, Intent intent)
         {
             if (intent.Extras == null || OnChange == null)
                 return;
 
-            var manager = context.GetSystemService(Context.ConnectivityService)
-                .JavaCast<ConnectivityManager>();
+            var manager = ConnectivityManager.FromContext(context);
             var ni = manager.ActiveNetworkInfo;
 
             OnChange?.Invoke(ni);

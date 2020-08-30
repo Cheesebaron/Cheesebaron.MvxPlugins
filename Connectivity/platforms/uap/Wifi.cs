@@ -21,7 +21,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             if (details != null)
             {
                 var ssid = details.GetConnectedSsid();
-                var rssi = profile.GetSignalBars();
+                var rssi = profile?.GetSignalBars();
 
                 wifiInfo.Ssid = ssid;
                 wifiInfo.Extra = new WifiInfoExtra
@@ -33,12 +33,12 @@ namespace Cheesebaron.MvxPlugins.Connectivity
             return wifiInfo;
         }
 
-        private SemaphoreSlim _semaphore = new SemaphoreSlim(1);
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 
         public async Task<IEnumerable<WifiInfo>> GetAllWifiInfoAsync(
             CancellationToken token = new CancellationToken())
         {
-            await _semaphore.WaitAsync();
+            await _semaphore.WaitAsync().ConfigureAwait(false);
 
             var adapter = await InitializeFirstAdapter(token).ConfigureAwait(false);
             await adapter.ScanAsync().AsTask(token).ConfigureAwait(false);

@@ -36,18 +36,19 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
             public const string Signature = "HMACSHA256";
         }
 
-        public string Audience { get; private set; }
-        public IDictionary<string, string> Properties { get; private set; }
-        public DateTime ExpiresOn { get; private set; }
-        public string Issuer { get; private set; }
-        public string RawToken { get; private set; }
-        public string Signature { get; private set; }
+        public string? Audience { get; private set; }
+        public IDictionary<string, string>? Properties { get; private set; }
+        public DateTime? ExpiresOn { get; private set; }
+        public string? Issuer { get; private set; }
+        public string? RawToken { get; private set; }
+        public string? Signature { get; private set; }
 
-        public string IdentityProvider
+        public string? IdentityProvider
         {
             get
             {
-                if (Properties.Any() && Properties.ContainsKey(ClaimTypes.IdentityProvider))
+                if (Properties != null && 
+                    Properties.ContainsKey(ClaimTypes.IdentityProvider))
                     return Properties[ClaimTypes.IdentityProvider];
                 return null;
             }
@@ -55,7 +56,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
 
         public IEnumerable<string> Keys => Properties?.Keys ?? new string[] { };
 
-        public string this[string key] => Properties?[key];
+        public string? this[string key] => Properties?[key];
 
         public ISimpleWebToken CreateTokenFromRaw(string rawToken)
         {
@@ -103,7 +104,7 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
 
         public ISimpleWebToken CreateToken(
             string issuer, string audience, DateTime expiryTime, string signingKey,
-            IEnumerable<KeyValuePair<string, string>> values = null)
+            IEnumerable<KeyValuePair<string, string>>? values = null)
         {
             if (string.IsNullOrEmpty(issuer)) throw new ArgumentNullException(nameof(issuer));
             if (string.IsNullOrEmpty(audience)) throw new ArgumentNullException(nameof(audience));
@@ -146,11 +147,11 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
         {
             if (keyString == null) throw new ArgumentNullException(nameof(keyString));
 
-            if (string.IsNullOrEmpty(RawToken) || string.IsNullOrEmpty(RawToken))
+            if (string.IsNullOrEmpty(RawToken))
                 throw new Exception("The token does not have a signature to verify");
 
-            var serializedToken = RawToken;
-            string unsignedToken = null;
+            var serializedToken = RawToken!;
+            string? unsignedToken = null;
 
             // Find the last parameter. The signature must be last per SWT specification.
             var lastSeparator = serializedToken.LastIndexOf(ParameterSeparator);
@@ -167,8 +168,11 @@ namespace Cheesebaron.MvxPlugins.SimpleWebToken
                     unsignedToken = serializedToken.Substring(0, lastSeparator);
                 }
             }
-            var generatedSignature = GenerateSignature(unsignedToken, Convert.FromBase64String(keyString));
 
+            if (string.IsNullOrEmpty(unsignedToken))
+                throw new InvalidOperationException("RawToken didn't contain a correct SWT token");
+
+            var generatedSignature = GenerateSignature(unsignedToken!, Convert.FromBase64String(keyString));
             return string.CompareOrdinal(generatedSignature, Signature) == 0;
         }
 

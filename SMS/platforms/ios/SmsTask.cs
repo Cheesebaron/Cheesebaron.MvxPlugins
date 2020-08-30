@@ -25,28 +25,28 @@ namespace Cheesebaron.MvxPlugins.SMS
     [Preserve(AllMembers = true)]
     public class SmsTask: MvxIosTask, ISmsTask
     {
-        private MFMessageComposeViewController _sms;
-
         public void SendSMS(string body, string phoneNumber)
         {
             if (!MFMessageComposeViewController.CanSendText)
                 return;
 
-            _sms = new MFMessageComposeViewController {Body = body, Recipients = new[] {phoneNumber}};
-            _sms.Finished += HandleSmsFinished;
+            var sms = new MFMessageComposeViewController
+            {
+                Body = body, 
+                Recipients = new[] {phoneNumber}
+            };
 
-            UIApplication.SharedApplication.KeyWindow.GetTopModalHostViewController().PresentViewController(_sms, true, null);
-        }
+            void HandleSmsFinished(object sender, MFMessageComposeResultEventArgs e)
+            {
+                sms.Finished -= HandleSmsFinished;
 
-        private void HandleSmsFinished(object sender, MFMessageComposeResultEventArgs e)
-        {
-            var uiViewController = sender as UIViewController;
-            if (uiViewController == null)
-                throw new ArgumentException("sender");
+                if (sender is UIViewController uiViewController)
+                    uiViewController.DismissViewController(true, () => { });
+            }
 
-            _sms.Finished -= HandleSmsFinished;
+            sms.Finished += HandleSmsFinished;
 
-            uiViewController.DismissViewController(true, () => {});
+            UIApplication.SharedApplication.KeyWindow.GetTopModalHostViewController().PresentViewController(sms, true, null);
         }
     }
 }

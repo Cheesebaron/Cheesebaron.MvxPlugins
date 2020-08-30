@@ -89,9 +89,9 @@ namespace Cheesebaron.MvxPlugins.Connectivity
 
         public abstract Task<bool> GetHostReachableAsync(string host, CancellationToken token = default(CancellationToken));
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

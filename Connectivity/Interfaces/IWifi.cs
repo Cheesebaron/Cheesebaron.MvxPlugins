@@ -23,7 +23,7 @@ namespace Cheesebaron.MvxPlugins.Connectivity
 {
     public interface IWifi
     {
-        WifiInfo GetCurrentWifiInfo();
+        WifiInfo? GetCurrentWifiInfo();
         Task<IEnumerable<WifiInfo>> GetAllWifiInfoAsync(CancellationToken token = default(CancellationToken));
     }
 }
