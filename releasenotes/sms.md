@@ -57,3 +57,8 @@
 
 * Enabled C#8 Nullable Reference Types
 * Fixes bug on iOS where it could potentially crash
+
+### New in 5.0.0
+
+* Updated to MvvmCross 7.0.0
+* MonoAndroid10.0 target is now required!

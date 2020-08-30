@@ -1,3 +1,8 @@
+### New in 5.0.0
+
+* Updated to MvvmCross 7.0.0
+* MonoAndroid10.0 target is now required!
+
 ### New in 4.2.0
 
 * Enabled C#8 Nullable Reference Types
