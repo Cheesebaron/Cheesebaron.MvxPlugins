@@ -37,11 +37,3 @@ steps:
     PathtoPublish: 'artifacts/'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-
-- task: NuGetCommand@2
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  inputs:
-    command: 'push'
-    packagesToPush: 'artifacts/**/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'NuGet.org MvxPlugins'
