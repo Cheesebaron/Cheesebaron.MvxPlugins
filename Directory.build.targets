@@ -33,6 +33,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Update="MvvmCross.Plugin.Messenger" Version="7.0.0" />
+    <PackageReference Update="MvvmCross.Plugin.Messenger" Version="7.0.1" />
   </ItemGroup>
 </Project>
