@@ -30,6 +30,9 @@ namespace Cheesebaron.MvxPlugins.Settings
 
         public void Configure(IMvxPluginConfiguration configuration)
         {
+            if (configuration == null)
+                return;
+
             if (!(configuration is WpfCheeseSettingsConfiguration cheeseSettingsConfiguration))
                 throw new MvxException(
                     "Plugin configuration only supports instances of WpfCheeseSettingsConfiguration, you provided {0}",

@@ -25,6 +25,9 @@ namespace Cheesebaron.MvxPlugins.Settings
 
         public void Configure(IMvxPluginConfiguration configuration)
         {
+            if (configuration == null)
+                return;
+
             if (!(configuration is DroidCheeseSettingsConfiguration cheeseSettingsConfiguration))
                 throw new MvxException(
                     "Plugin configuration only supports instances of DroidCheeseSettingsConfiguration, you provided {0}",
