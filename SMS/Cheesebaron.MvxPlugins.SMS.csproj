@@ -17,7 +17,7 @@
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
     <Compile Condition=" '$(OS)' == 'Windows_NT' " Include="platforms\Uap\**\*.cs" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
