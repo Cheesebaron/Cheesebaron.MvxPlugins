@@ -1,3 +1,7 @@
+### New in 6.0.0
+
+* Updated to MvvmCross 8.0.1
+
 ### New in 5.1.0
 
 * Switched to Mainline versioning
