@@ -31,8 +31,4 @@
   <PropertyGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
     <DefineConstants>$(DefineConstants);NETCOREAPP</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Update="MvvmCross.Plugin.Messenger" Version="7.1.2" />
-  </ItemGroup>
 </Project>
