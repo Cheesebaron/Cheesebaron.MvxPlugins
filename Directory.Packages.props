@@ -2,7 +2,7 @@
   <ItemGroup>
     <PackageVersion Include="MvvmCross" Version="8.0.1" />
     <PackageVersion Include="MvvmCross.Plugin.Messenger" Version="8.0.1" />
-    <PackageVersion Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageVersion Include="SourceLink.Create.CommandLine" Version="2.8.3" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
   </ItemGroup>
