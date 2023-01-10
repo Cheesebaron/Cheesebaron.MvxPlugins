@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="MvvmCross" Version="8.0.1" />
+    <PackageVersion Include="MvvmCross" Version="9.0.5" />
     <PackageVersion Include="MvvmCross.Plugin.Messenger" Version="8.0.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageVersion Include="SourceLink.Create.CommandLine" Version="2.8.3" />
